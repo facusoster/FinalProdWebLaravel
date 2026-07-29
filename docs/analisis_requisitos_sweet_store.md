@@ -1,10 +1,10 @@
 # Análisis de Requisitos
 
-# Sistema de E-commerce de Pastelería "Sweet Store"
+# Sistema de E-commerce de Pastelería "Rincón del Pan"
 
 ## 1. Descripción General
 
-Sweet Store es una aplicación web de comercio electrónico dedicada a la venta de productos de pastelería artesanal.
+Rincón del Pan es una aplicación web de comercio electrónico dedicada a la venta de productos de pastelería artesanal.
 
 Los usuarios podrán registrarse, explorar productos organizados por categorías, agregar productos a una lista de deseos, realizar pedidos y dejar reseñas sobre productos adquiridos.
 

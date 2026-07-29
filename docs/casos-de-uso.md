@@ -1,10 +1,10 @@
 # Casos de Uso
 
-# Sweet Store - E-commerce de Pastelería
+# Rincón del Pan - E-commerce de Pastelería
 
 ## Objetivo
 
-Este documento describe los principales casos de uso del sistema Sweet Store, identificando los actores involucrados y las funcionalidades que podrán realizar dentro de la aplicación.
+Este documento describe los principales casos de uso del sistema Rincón del Pan, identificando los actores involucrados y las funcionalidades que podrán realizar dentro de la aplicación.
 
 ---
 

@@ -1,4 +1,4 @@
-# DER - Sweet Store (E-commerce de Pastelería)
+# DER - Rincón del Pan (E-commerce de Pastelería)
 
 ## Diagrama Entidad-Relación 
 
