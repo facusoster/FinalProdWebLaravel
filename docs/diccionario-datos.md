@@ -1,10 +1,10 @@
 # Diccionario de Datos
 
-# Sweet Store - E-commerce de Pastelería
+# Rincón del Pan - E-commerce de Pastelería
 
 ## Objetivo
 
-El presente documento describe detalladamente la estructura de datos del sistema Sweet Store. Su finalidad es documentar cada entidad, atributo, tipo de dato y restricciones de la base de datos para facilitar el desarrollo, mantenimiento y comprensión del sistema.
+El presente documento describe detalladamente la estructura de datos del sistema Rincón del Pan. Su finalidad es documentar cada entidad, atributo, tipo de dato y restricciones de la base de datos para facilitar el desarrollo, mantenimiento y comprensión del sistema.
 
 ---
 
@@ -209,4 +209,4 @@ wishlists.product_id -> products.id
 
 # Conclusión
 
-El diccionario de datos documenta todas las entidades obligatorias del proyecto Sweet Store y sirve como referencia para la implementación de migraciones, modelos Eloquent, validaciones y consultas dentro de Laravel.
+El diccionario de datos documenta todas las entidades obligatorias del proyecto Rincón del Pan y sirve como referencia para la implementación de migraciones, modelos Eloquent, validaciones y consultas dentro de Laravel.

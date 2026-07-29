@@ -1,10 +1,10 @@
 # Arquitectura MVC
 
-# Sweet Store - E-commerce de Pastelería
+# Rincón del Pan - E-commerce de Pastelería
 
 ## Objetivo
 
-Este documento describe la arquitectura de software utilizada en el proyecto Sweet Store, desarrollado con Laravel siguiendo el patrón MVC (Model-View-Controller).
+Este documento describe la arquitectura de software utilizada en el proyecto Rincón del Pan, desarrollado con Laravel siguiendo el patrón MVC (Model-View-Controller).
 
 La finalidad es mantener una separación clara de responsabilidades, facilitar el mantenimiento del código, mejorar la escalabilidad y cumplir con los requisitos técnicos establecidos para el trabajo práctico.
 
@@ -288,4 +288,4 @@ La arquitectura propuesta cumple con los requisitos técnicos del trabajo práct
 - Validaciones mediante Form Requests.
 - Migraciones y Seeders.
 
-Esta arquitectura servirá como base para el desarrollo completo de Sweet Store y permitirá mantener una estructura escalable y sencilla de mantener.
+Esta arquitectura servirá como base para el desarrollo completo de Rincón del Pan y permitirá mantener una estructura escalable y sencilla de mantener.

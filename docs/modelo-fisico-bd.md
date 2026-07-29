@@ -2,13 +2,13 @@
 
 ## Proyecto
 
-**Sweet Store - E-commerce de Pastelería**
+**Rincón del Pan - E-commerce de Pastelería**
 
 ---
 
 # Objetivo
 
-Este documento describe el modelo físico de la base de datos utilizado por la aplicación Sweet Store.
+Este documento describe el modelo físico de la base de datos utilizado por la aplicación Rincón del Pan.
 
 El diseño fue elaborado a partir del análisis de requisitos y del Diagrama Entidad-Relación (DER) definido para el proyecto.
 
