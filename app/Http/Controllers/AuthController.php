@@ -47,8 +47,9 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('dashboard')
-            ->with('status', 'Login exitoso');
+        return Auth::user()->role === 'admin'
+            ? redirect()->route('admin.dashboard')
+            : redirect()->route('dashboard');
     }
 
     public function logout()
@@ -62,4 +63,3 @@ class AuthController extends Controller
             ->with('status', 'Sesión cerrada correctamente');
     }
 }
-
