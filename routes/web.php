@@ -38,7 +38,6 @@ Route::get('/dashboard', function () {
 */
 
 Route::get('/admin', function () {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     return view('admin.index');
 })->middleware('auth')->name('admin.dashboard');
 
@@ -49,34 +48,28 @@ Route::get('/admin', function () {
 */
 
 Route::get('/admin/products', function () {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     return (new ProductController)->index();
 })->middleware('auth')->name('products.index');
 
 Route::get('/admin/products/create', function () {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     return (new ProductController)->create();
 })->middleware('auth')->name('products.create');
 
 Route::post('/admin/products', function () {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     return (new ProductController)->store(request());
 })->middleware('auth')->name('products.store');
 
 Route::get('/admin/products/{product}/edit', function ($product) {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     $product = \App\Models\Product::findOrFail($product);
     return (new ProductController)->edit($product);
 })->middleware('auth')->name('products.edit');
 
 Route::put('/admin/products/{product}', function ($product) {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     $product = \App\Models\Product::findOrFail($product);
     return (new ProductController)->update(request(), $product);
 })->middleware('auth')->name('products.update');
 
 Route::delete('/admin/products/{product}', function ($product) {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     $product = \App\Models\Product::findOrFail($product);
     return (new ProductController)->destroy($product);
 })->middleware('auth')->name('products.destroy');
@@ -88,34 +81,28 @@ Route::delete('/admin/products/{product}', function ($product) {
 */
 
 Route::get('/admin/categories', function () {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     return (new CategoryController)->index();
 })->middleware('auth')->name('categories.index');
 
 Route::get('/admin/categories/create', function () {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     return (new CategoryController)->create();
 })->middleware('auth')->name('categories.create');
 
 Route::post('/admin/categories', function () {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     return (new CategoryController)->store(request());
 })->middleware('auth')->name('categories.store');
 
 Route::get('/admin/categories/{category}/edit', function ($category) {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     $category = \App\Models\Category::findOrFail($category);
     return (new CategoryController)->edit($category);
 })->middleware('auth')->name('categories.edit');
 
 Route::put('/admin/categories/{category}', function ($category) {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     $category = \App\Models\Category::findOrFail($category);
     return (new CategoryController)->update(request(), $category);
 })->middleware('auth')->name('categories.update');
 
 Route::delete('/admin/categories/{category}', function ($category) {
-    abort_unless(auth()->check() && auth()->user()->role === 'admin', 403);
     $category = \App\Models\Category::findOrFail($category);
     return (new CategoryController)->destroy($category);
 })->middleware('auth')->name('categories.destroy');
