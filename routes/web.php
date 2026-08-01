@@ -39,7 +39,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/admin', function () {
     return view('admin.index');
-})->middleware('auth')->name('admin.dashboard');
+})->middleware('onlyadmin')->name('admin.dashboard');
 
 /*
 |--------------------------------------------------------------------------
@@ -62,17 +62,17 @@ Route::post('/admin/products', function () {
 Route::get('/admin/products/{product}/edit', function ($product) {
     $product = \App\Models\Product::findOrFail($product);
     return (new ProductController)->edit($product);
-})->middleware('auth')->name('products.edit');
+})->middleware('onlyadmin')->name('products.edit');
 
 Route::put('/admin/products/{product}', function ($product) {
     $product = \App\Models\Product::findOrFail($product);
     return (new ProductController)->update(request(), $product);
-})->middleware('auth')->name('products.update');
+})->middleware('onlyadmin')->name('products.update');
 
 Route::delete('/admin/products/{product}', function ($product) {
     $product = \App\Models\Product::findOrFail($product);
     return (new ProductController)->destroy($product);
-})->middleware('auth')->name('products.destroy');
+})->middleware('onlyadmin')->name('products.destroy');
 
 /*
 |--------------------------------------------------------------------------
@@ -82,27 +82,27 @@ Route::delete('/admin/products/{product}', function ($product) {
 
 Route::get('/admin/categories', function () {
     return (new CategoryController)->index();
-})->middleware('auth')->name('categories.index');
+})->middleware('onlyadmin')->name('categories.index');
 
 Route::get('/admin/categories/create', function () {
     return (new CategoryController)->create();
-})->middleware('auth')->name('categories.create');
+})->middleware('onlyadmin')->name('categories.create');
 
 Route::post('/admin/categories', function () {
     return (new CategoryController)->store(request());
-})->middleware('auth')->name('categories.store');
+})->middleware('onlyadmin')->name('categories.store');
 
 Route::get('/admin/categories/{category}/edit', function ($category) {
     $category = \App\Models\Category::findOrFail($category);
     return (new CategoryController)->edit($category);
-})->middleware('auth')->name('categories.edit');
+})->middleware('onlyadmin')->name('categories.edit');
 
 Route::put('/admin/categories/{category}', function ($category) {
     $category = \App\Models\Category::findOrFail($category);
     return (new CategoryController)->update(request(), $category);
-})->middleware('auth')->name('categories.update');
+})->middleware('onlyadmin')->name('categories.update');
 
 Route::delete('/admin/categories/{category}', function ($category) {
     $category = \App\Models\Category::findOrFail($category);
     return (new CategoryController)->destroy($category);
-})->middleware('auth')->name('categories.destroy');
+})->middleware('onlyadmin')->name('categories.destroy');
