@@ -34,6 +34,11 @@
         img {
             border-radius: 4px;
         }
+
+        .logout-btn {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -43,6 +48,15 @@
         <a href="{{ route('admin.dashboard') }}">Dashboard</a>
         <a href="{{ route('products.index') }}">Productos</a>
         <a href="{{ route('categories.index') }}">Categorías</a>
+        <a href="{{ route('admin.orders.index') }}">Pedidos</a>
+
+        <!-- Logout -->
+        <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+            @csrf
+            <button class="logout-btn" style="background:none;border:none;cursor:pointer;">
+                Cerrar sesión
+            </button>
+        </form>
     </nav>
 
     <hr>

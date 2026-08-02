@@ -21,33 +21,48 @@ class Order extends Model
 
     /* -------------------- Relaciones -------------------- */
 
-    // Un pedido pertenece a un usuario
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    // Un pedido usa una dirección
     public function address(): BelongsTo
     {
         return $this->belongsTo(Address::class);
     }
 
-    // Un pedido contiene muchos items
     public function items(): HasMany
     {
         return $this->hasMany(OrderItem::class);
     }
 
-    /* -------------------- Scopes -------------------- */
+    /* -------------------- Scopes (Estados) -------------------- */
 
     public function scopePending($query)
     {
-        return $query->where('status', 'pendiente');
+        return $query->where('status', 'pending');
     }
 
-    public function scopePaid($query)
+    public function scopeProcessing($query)
     {
-        return $query->where('status', 'pagado');
+        return $query->where('status', 'processing');
+    }
+
+    public function scopeCompleted($query)
+    {
+        return $query->where('status', 'completed');
+    }
+
+    public function scopeCancelled($query)
+    {
+        return $query->where('status', 'cancelled');
+    }
+
+    /* -------------------- Métodos útiles -------------------- */
+
+    // Calcula el total dinámicamente desde los items
+    public function calculateTotal()
+    {
+        return $this->items->sum('subtotal');
     }
 }

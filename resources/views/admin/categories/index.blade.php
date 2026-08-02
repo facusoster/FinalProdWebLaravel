@@ -1,20 +1,35 @@
+@extends('layouts.admin')
+
+@section('content')
 <h1>Categorías</h1>
 
-<a href="{{ route('categories.create') }}">Crear categoría</a>
+<a href="{{ route('categories.create') }}">Crear Categoría</a>
 
-<ul>
-@foreach ($categories as $category)
-    <li>
-        <strong>{{ $category->name }}</strong><br>
-        {{ $category->description }}
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
 
-        <a href="{{ route('categories.edit', $category) }}">Editar</a>
+    <tbody>
+        @foreach ($categories as $category)
+        <tr>
+            <td>{{ $category->name }}</td>
+            <td>
+                <a href="{{ route('categories.edit', $category->id) }}">Editar</a>
 
-        <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display:inline;">
-            @csrf
-            @method('DELETE')
-            <button type="submit">Eliminar</button>
-        </form>
-    </li>
-@endforeach
-</ul>
+                <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button>Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
+{{ $categories->links() }}
+@endsection

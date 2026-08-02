@@ -1,7 +1,12 @@
-<h1>Panel de Administración</h1>
-<p>Bienvenido {{ auth()->user()->name }} (Admin)</p>
+@extends('layouts.admin')
 
-<form method="POST" action="/logout">
+@section('content')
+<h1>Panel de Administración</h1>
+
+<p>Bienvenido Admin Sweet Store (Admin)</p>
+
+<form action="{{ route('logout') }}" method="POST">
     @csrf
-    <button type="submit">Cerrar sesión</button>
+    <button>Cerrar sesión</button>
 </form>
+@endsection

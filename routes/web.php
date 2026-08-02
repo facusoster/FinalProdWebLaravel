@@ -46,33 +46,27 @@ Route::get('/admin', function () {
 | CRUD Productos (solo admin)
 |--------------------------------------------------------------------------
 */
+    Route::middleware(['auth'])->prefix('admin')->name('products.')->group(function () {
 
-Route::get('/admin/products', function () {
-    return (new ProductController)->index();
-})->middleware('auth')->name('products.index');
+    Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])
+        ->name('index');
 
-Route::get('/admin/products/create', function () {
-    return (new ProductController)->create();
-})->middleware('auth')->name('products.create');
+    Route::get('/products/create', [\App\Http\Controllers\ProductController::class, 'create'])
+        ->name('create');
 
-Route::post('/admin/products', function () {
-    return (new ProductController)->store(request());
-})->middleware('auth')->name('products.store');
+    Route::post('/products', [\App\Http\Controllers\ProductController::class, 'store'])
+        ->name('store');
 
-Route::get('/admin/products/{product}/edit', function ($product) {
-    $product = \App\Models\Product::findOrFail($product);
-    return (new ProductController)->edit($product);
-})->middleware('onlyadmin')->name('products.edit');
+    Route::get('/products/{product}/edit', [\App\Http\Controllers\ProductController::class, 'edit'])
+        ->name('edit');
 
-Route::put('/admin/products/{product}', function ($product) {
-    $product = \App\Models\Product::findOrFail($product);
-    return (new ProductController)->update(request(), $product);
-})->middleware('onlyadmin')->name('products.update');
+    Route::put('/products/{product}', [\App\Http\Controllers\ProductController::class, 'update'])
+        ->name('update');
 
-Route::delete('/admin/products/{product}', function ($product) {
-    $product = \App\Models\Product::findOrFail($product);
-    return (new ProductController)->destroy($product);
-})->middleware('onlyadmin')->name('products.destroy');
+    Route::delete('/products/{product}', [\App\Http\Controllers\ProductController::class, 'destroy'])
+        ->name('destroy');
+});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -80,29 +74,50 @@ Route::delete('/admin/products/{product}', function ($product) {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/admin/categories', function () {
-    return (new CategoryController)->index();
-})->middleware('onlyadmin')->name('categories.index');
+    Route::middleware(['auth'])->prefix('admin')->name('categories.')->group(function () {
 
-Route::get('/admin/categories/create', function () {
-    return (new CategoryController)->create();
-})->middleware('onlyadmin')->name('categories.create');
+    Route::get('/categories', [\App\Http\Controllers\CategoryController::class, 'index'])
+        ->name('index');
 
-Route::post('/admin/categories', function () {
-    return (new CategoryController)->store(request());
-})->middleware('onlyadmin')->name('categories.store');
+    Route::get('/categories/create', [\App\Http\Controllers\CategoryController::class, 'create'])
+        ->name('create');
 
-Route::get('/admin/categories/{category}/edit', function ($category) {
-    $category = \App\Models\Category::findOrFail($category);
-    return (new CategoryController)->edit($category);
-})->middleware('onlyadmin')->name('categories.edit');
+    Route::post('/categories', [\App\Http\Controllers\CategoryController::class, 'store'])
+        ->name('store');
 
-Route::put('/admin/categories/{category}', function ($category) {
-    $category = \App\Models\Category::findOrFail($category);
-    return (new CategoryController)->update(request(), $category);
-})->middleware('onlyadmin')->name('categories.update');
+    Route::get('/categories/{category}/edit', [\App\Http\Controllers\CategoryController::class, 'edit'])
+        ->name('edit');
 
-Route::delete('/admin/categories/{category}', function ($category) {
-    $category = \App\Models\Category::findOrFail($category);
-    return (new CategoryController)->destroy($category);
-})->middleware('onlyadmin')->name('categories.destroy');
+    Route::put('/categories/{category}', [\App\Http\Controllers\CategoryController::class, 'update'])
+        ->name('update');
+
+    Route::delete('/categories/{category}', [\App\Http\Controllers\CategoryController::class, 'destroy'])
+        ->name('destroy');
+});
+
+
+
+/*
+|--------------------------------------------------------------------------
+| CRUD Pedidos (solo admin)
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+
+        // Panel de pedidos
+        Route::get('/orders', [\App\Http\Controllers\Admin\OrderController::class, 'index'])
+            ->name('orders.index');
+
+        Route::get('/orders/{order}', [\App\Http\Controllers\Admin\OrderController::class, 'show'])
+            ->name('orders.show');
+
+        Route::put('/orders/{order}/status', [\App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])
+            ->name('orders.updateStatus');
+
+        Route::put('/orders/{order}/cancel', [\App\Http\Controllers\Admin\OrderController::class, 'cancel'])
+            ->name('orders.cancel');
+    });
+});

@@ -1,15 +1,14 @@
+@extends('layouts.admin')
+
+@section('content')
 <h1>Crear Categoría</h1>
 
-<form method="POST" action="{{ route('categories.store') }}">
+<form action="{{ route('categories.store') }}" method="POST">
     @csrf
 
-    <input type="text" name="name" placeholder="Nombre">
+    <label>Nombre:</label>
+    <input type="text" name="name">
 
-    <textarea name="description" placeholder="Descripción"></textarea>
-
-    <button type="submit">Guardar</button>
+    <button>Guardar</button>
 </form>
-
-@if ($errors->any())
-    <p>{{ $errors->first() }}</p>
-@endif
+@endsection

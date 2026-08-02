@@ -1,16 +1,15 @@
+@extends('layouts.admin')
+
+@section('content')
 <h1>Editar Categoría</h1>
 
-<form method="POST" action="{{ route('categories.update', $category) }}">
+<form action="{{ route('categories.update', $category->id) }}" method="POST">
     @csrf
     @method('PUT')
 
+    <label>Nombre:</label>
     <input type="text" name="name" value="{{ $category->name }}">
 
-    <textarea name="description">{{ $category->description }}</textarea>
-
-    <button type="submit">Actualizar</button>
+    <button>Actualizar</button>
 </form>
-
-@if ($errors->any())
-    <p>{{ $errors->first() }}</p>
-@endif
+@endsection

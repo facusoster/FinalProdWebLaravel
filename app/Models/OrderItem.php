@@ -22,13 +22,11 @@ class OrderItem extends Model
 
     /* -------------------- Relaciones -------------------- */
 
-    // Item pertenece a un pedido
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
     }
 
-    // Item referencia un producto
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
