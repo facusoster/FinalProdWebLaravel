@@ -26,7 +26,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Descripción</label>
-                        <textarea name="description" required class="form-control @error('description') is-invalid @enderror rounded-3 border-0 shadow-sm" rows="4" placeholder="Descripción breve del producto">{{ old('description') }}</textarea>
+                        <textarea name="description" class="form-control @error('description') is-invalid @enderror rounded-3 border-0 shadow-sm" rows="4" placeholder="Descripción breve del producto">{{ old('description') }}</textarea>
                         @error('description')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

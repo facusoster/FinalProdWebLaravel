@@ -58,10 +58,10 @@
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
 
-                            @if($product->image)
+                            @if($product->image_url)
                                 <div class="mt-3">
                                     <p class="mb-1 text-muted">Imagen actual:</p>
-                                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid rounded" style="max-width: 180px;">
+                                    <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="img-fluid rounded" style="max-width: 180px;">
                                 </div>
                             @endif
                         </div>

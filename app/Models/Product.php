@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -16,6 +17,7 @@ class Product extends Model
         'description',
         'price',
         'stock',
+        'category_id',
         'image_url',
     ];
 
@@ -25,9 +27,9 @@ class Product extends Model
 
     /* -------------------- Relaciones -------------------- */
 
-    public function categories(): BelongsToMany
+    public function category(): BelongsTo
     {
-        return $this->belongsToMany(Category::class, 'category_product');
+        return $this->belongsTo(Category::class);
     }
 
     public function orderItems(): HasMany
@@ -54,6 +56,6 @@ class Product extends Model
 
     public function scopeByCategory($query, $categoryId)
     {
-        return $query->whereHas('categories', fn($q) => $q->where('id', $categoryId));
+        return $query->where('category_id', $categoryId);
     }
 }

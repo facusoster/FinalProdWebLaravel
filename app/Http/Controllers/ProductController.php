@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('categories')->paginate(10);
+        $products = Product::with('category')->paginate(10);
         return view('admin.products.index', compact('products'));
     }
 
@@ -27,7 +27,7 @@ class ProductController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('products', 'public');
+            $data['image_url'] = $request->file('image')->store('products', 'public');
         }
 
         Product::create($data);
@@ -46,11 +46,11 @@ class ProductController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('image')) {
-            if ($product->image) {
-                Storage::disk('public')->delete($product->image);
+            if ($product->image_url) {
+                Storage::disk('public')->delete($product->image_url);
             }
 
-            $data['image'] = $request->file('image')->store('products', 'public');
+            $data['image_url'] = $request->file('image')->store('products', 'public');
         }
 
         $product->update($data);
@@ -60,8 +60,8 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        if ($product->image) {
-            Storage::disk('public')->delete($product->image);
+        if ($product->image_url) {
+            Storage::disk('public')->delete($product->image_url);
         }
 
         $product->delete();

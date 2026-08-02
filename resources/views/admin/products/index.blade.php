@@ -11,7 +11,7 @@
         <thead class="table-light">
             <tr>
                 <th>Nombre</th>
-                <th>Categorías</th>
+                <th>Categoría</th>
                 <th>Precio</th>
                 <th>Stock</th>
                 <th>Imagen</th>
@@ -25,11 +25,11 @@
                 <td>{{ $product->name }}</td>
 
                 <td>
-                    @forelse ($product->categories as $cat)
-                        <span class="badge rounded-pill badge-category">{{ $cat->name }}</span>
-                    @empty
-                        <em>Sin categorías</em>
-                    @endforelse
+                    @if ($product->category)
+                        <span class="badge rounded-pill badge-category">{{ $product->category->name }}</span>
+                    @else
+                        <em>Sin categoría</em>
+                    @endif
                 </td>
 
                 <td>${{ $product->price }}</td>

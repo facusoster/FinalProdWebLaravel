@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
@@ -14,10 +14,10 @@ class Category extends Model
 
     /* -------------------- Relaciones -------------------- */
 
-    // Relación N:M con productos
-    public function products(): BelongsToMany
+    // Relación 1:N con productos
+    public function products(): HasMany
     {
-        return $this->belongsToMany(Product::class, 'category_product');
+        return $this->hasMany(Product::class);
     }
 
     /* -------------------- Scopes -------------------- */
