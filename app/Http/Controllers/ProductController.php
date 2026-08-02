@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductEditRequest;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -40,7 +41,7 @@ class ProductController extends Controller
         return view('admin.products.edit', compact('product', 'categories'));
     }
 
-    public function update(ProductRequest $request, Product $product)
+    public function update(ProductEditRequest $request, Product $product)
     {
         $data = $request->validated();
 

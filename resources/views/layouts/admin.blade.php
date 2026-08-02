@@ -2,66 +2,42 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Panel Admin - Sweet Store</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-
-        nav {
-            margin-bottom: 20px;
-        }
-
-        nav a {
-            margin-right: 15px;
-            text-decoration: none;
-            color: #333;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        table th, table td {
-            border: 1px solid #ccc;
-            padding: 8px;
-        }
-
-        img {
-            border-radius: 4px;
-        }
-
-        .logout-btn {
-            color: red;
-            font-weight: bold;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
 
 <body>
 
-    <nav>
-        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
-        <a href="{{ route('products.index') }}">Productos</a>
-        <a href="{{ route('categories.index') }}">Categorías</a>
-        <a href="{{ route('admin.orders.index') }}">Pedidos</a>
-
-        <!-- Logout -->
-        <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-            @csrf
-            <button class="logout-btn" style="background:none;border:none;cursor:pointer;">
-                Cerrar sesión
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Sweet Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-        </form>
+
+            <div class="collapse navbar-collapse" id="adminNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="{{ route('products.index') }}">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('categories.index') }}">Categorías</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.orders.index') }}">Pedidos</a></li>
+                </ul>
+
+                <form class="d-flex align-items-center" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button class="btn btn-sm btn-logout" type="submit">Cerrar sesión</button>
+                </form>
+            </div>
+        </div>
     </nav>
 
-    <hr>
+    <div class="container mt-4">
+        <hr class="my-3">
+        @yield('content')
+    </div>
 
-    @yield('content')
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
