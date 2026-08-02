@@ -33,6 +33,58 @@ Route::get('/dashboard', function () {
 
 /*
 |--------------------------------------------------------------------------
+| CLIENTE - WISHLIST / PRODUCTOS / PEDIDOS
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth'])->group(function () {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Catálogo de productos (cliente)
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/products', [\App\Http\Controllers\ClientProductController::class, 'index'])
+        ->name('client.products.index');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Wishlist (carrito)
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/wishlist', [\App\Http\Controllers\WishlistController::class, 'index'])
+        ->name('wishlist.index');
+
+    Route::post('/wishlist/add/{product}', [\App\Http\Controllers\WishlistController::class, 'add'])
+        ->name('wishlist.add');
+
+    Route::delete('/wishlist/remove/{product}', [\App\Http\Controllers\WishlistController::class, 'remove'])
+        ->name('wishlist.remove');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Pedidos del cliente
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'index'])
+        ->name('orders.index');
+
+    Route::get('/orders/create', [\App\Http\Controllers\OrderController::class, 'create'])
+        ->name('orders.create');
+
+    Route::post('/orders', [\App\Http\Controllers\OrderController::class, 'store'])
+        ->name('orders.store');
+
+    Route::get('/orders/{order}', [\App\Http\Controllers\OrderController::class, 'show'])
+        ->name('orders.show');
+
+    Route::put('/orders/{order}/cancel', [\App\Http\Controllers\OrderController::class, 'cancel'])
+        ->name('orders.cancel');
+});
+
+
+/*
+|--------------------------------------------------------------------------
 | Dashboard Admin
 |--------------------------------------------------------------------------
 */
@@ -46,7 +98,8 @@ Route::get('/admin', function () {
 | CRUD Productos (solo admin)
 |--------------------------------------------------------------------------
 */
-    Route::middleware(['auth'])->prefix('admin')->name('products.')->group(function () {
+
+Route::middleware(['auth'])->prefix('admin')->name('products.')->group(function () {
 
     Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])
         ->name('index');
@@ -74,7 +127,7 @@ Route::get('/admin', function () {
 |--------------------------------------------------------------------------
 */
 
-    Route::middleware(['auth'])->prefix('admin')->name('categories.')->group(function () {
+Route::middleware(['auth'])->prefix('admin')->name('categories.')->group(function () {
 
     Route::get('/categories', [\App\Http\Controllers\CategoryController::class, 'index'])
         ->name('index');

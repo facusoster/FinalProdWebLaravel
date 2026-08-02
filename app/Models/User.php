@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -23,7 +21,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /* -------------------- Helpers de ROl -------------------- */
+    /* -------------------- Helpers de Rol -------------------- */
 
     public function isAdmin(): bool
     {
@@ -37,29 +35,25 @@ class User extends Authenticatable
 
     /* -------------------- Relaciones -------------------- */
 
-    // Un usuario posee muchas direcciones
     public function addresses(): HasMany
     {
         return $this->hasMany(Address::class);
     }
 
-    // Un usuario realiza muchos pedidos
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
 
-    // Un usuario escribe muchas reseñas
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
     }
 
-    // Wishlist: relación N:M con productos
-    public function wishlist(): BelongsToMany
+    // Wishlist correcta: relación 1:N
+    public function wishlist(): HasMany
     {
-        return $this->belongsToMany(Product::class, 'wishlists')
-            ->withTimestamps();
+        return $this->hasMany(Wishlist::class);
     }
 
     /* -------------------- Scopes -------------------- */
