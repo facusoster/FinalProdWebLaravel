@@ -1,199 +1,173 @@
+# 🍰 Sweet Store
 
----
+Sistema de comercio electrónico desarrollado con **Laravel** como trabajo práctico integrador de la materia **Desarrollo de Aplicaciones Web con Laravel** perteneciente a la **Tecnicatura Superior en Análisis de Sistemas** de la **Escuela Da Vinci**.
 
-## Carátula
-
-**Universidad:** Escuela Da Vinci  
-**Carrera:** Tecnicatura Superior en Análisis de Sistemas  
-**Materia:** Desarrollo de Aplicaciones Web con Laravel  
-**Profesor:** *Completar*  
-**Alumnos:** Facundo Nahuel Soster - Julian Verdirame  
-**Trabajo Práctico:** Sweet Store – Plataforma E-commerce desarrollada con Laravel
-
----
-
-# Sweet Store
-
-Sistema de comercio electrónico desarrollado con **Laravel** como trabajo práctico para la materia **Desarrollo de Aplicaciones Web con Laravel** de la **Tecnicatura Superior en Análisis de Sistemas** de la **Escuela Da Vinci**.
-
-El proyecto implementa una plataforma de venta de productos de pastelería con funcionalidades para clientes y administradores, aplicando los conceptos abordados durante la cursada: arquitectura MVC, Eloquent ORM, migraciones, seeders, autenticación, autorización, Blade, API REST y administración de bases de datos relacionales.
+El proyecto implementa una tienda online especializada en productos de pastelería, aplicando arquitectura MVC, Eloquent ORM, migraciones, seeders, autenticación, autorización, Blade, bases de datos relacionales y una API REST como componente complementario.
 
 ---
 
 # Información del Proyecto
 
-| Dato        | Información                                  |
-| ----------- | -------------------------------------------- |
-| Institución | Escuela Da Vinci                             |
-| Carrera     | Tecnicatura Superior en Análisis de Sistemas |
-| Materia     | Desarrollo de Aplicaciones Web con Laravel   |
-| Proyecto    | Sweet Store                                  |
-| Integrantes | Facundo Soster - Julian Verdirame            |
-| Profesor    | Nicolas Ariel Calderón                       |
+| Dato | Información |
+|------|-------------|
+| Institución | Escuela Da Vinci |
+| Carrera | Tecnicatura Superior en Análisis de Sistemas |
+| Materia | Desarrollo de Aplicaciones Web con Laravel |
+| Proyecto | Sweet Store |
+| Integrantes | Facundo Nahuel Soster · Julián Verdirame |
+| Profesor | Nicolás Ariel Calderón |
 
 ---
 
 # Objetivos
 
-El proyecto tiene como objetivo desarrollar una aplicación web completa utilizando Laravel, integrando los principales componentes del framework en un caso de uso real.
-
-Durante el desarrollo se aplicaron conceptos relacionados con:
-
-- Arquitectura Modelo – Vista – Controlador (MVC).
-- Persistencia de datos mediante Eloquent ORM.
-- Diseño e implementación de una base de datos relacional.
-- Migraciones y Seeders.
-- Autenticación y autorización de usuarios.
-- Gestión de archivos.
-- Desarrollo de interfaces utilizando Blade.
-- Construcción de una API REST.
-- Organización y documentación del proyecto.
+El objetivo del proyecto es desarrollar una aplicación web funcional utilizando Laravel y MySQL, aplicando buenas prácticas de desarrollo, documentación y organización del código, siguiendo los requerimientos establecidos por la cátedra.
 
 ---
 
-# Funcionalidades
-
-El sistema se divide en dos grandes áreas funcionales.
+# Alcance Funcional
 
 ## Cliente
 
-Los usuarios registrados pueden:
-
-- Registrarse e iniciar sesión.
-- Navegar el catálogo de productos.
-- Consultar el detalle de cada producto.
-- Gestionar una lista de favoritos (Wishlist).
-- Administrar direcciones de entrega.
-- Realizar pedidos.
-- Consultar el historial de compras.
-- Publicar reseñas de productos.
+- Registro e inicio de sesión.
+- Navegación por categorías.
+- Consulta del catálogo.
+- Gestión de Wishlist.
+- Gestión de direcciones.
+- Realización de pedidos.
+- Historial de compras.
+- Publicación de reseñas.
 
 ## Administrador
 
-Los usuarios con rol administrador pueden:
-
-- Gestionar categorías.
-- Gestionar productos.
-- Administrar pedidos.
-- Actualizar el estado de las órdenes.
-- Acceder al panel de administración.
-
----
-
-# Tecnologías utilizadas
-
-- Laravel
-- PHP
-- MySQL
-- Blade
-- Eloquent ORM
-- Bootstrap
-- HTML5
-- CSS3
-- JavaScript
-- Composer
+- CRUD de categorías.
+- CRUD de productos.
+- Gestión de pedidos.
+- Actualización del estado de pedidos.
 
 ---
 
 # Arquitectura
 
-El proyecto sigue la arquitectura **Modelo – Vista – Controlador (MVC)** propuesta por Laravel.
+El proyecto sigue el patrón **Modelo – Vista – Controlador (MVC)** utilizando Laravel.
 
-La lógica de negocio se encuentra organizada mediante modelos Eloquent y controladores, mientras que la presentación utiliza plantillas Blade. La persistencia se realiza sobre MySQL utilizando migraciones y relaciones definidas mediante Eloquent ORM.
+La lógica de negocio se implementa mediante:
 
-La estructura del proyecto respeta la organización estándar del framework, facilitando su mantenimiento y escalabilidad.
+- Modelos Eloquent.
+- Controladores.
+- Middleware.
+- Blade Templates.
+- Migraciones.
+- Seeders.
+
+La arquitectura completa puede consultarse en:
+
+➡️ [[docs/01_Arquitectura]]
+
+---
+
+# Modelo de Datos
+
+Las entidades principales son:
+
+- Users
+- Addresses
+- Categories
+- Products
+- Category_Product
+- Orders
+- Order_Items
+- Reviews
+- Wishlists
+
+La documentación correspondiente puede consultarse en:
+
+- [[docs/02_ModeloDominio]]
+- [[docs/03_BaseDatos]]
+- [[docs/04_DER]]
+
+---
+
+# API REST
+
+Como componente adicional solicitado por la materia, el proyecto contempla la implementación de una API REST con un conjunto reducido de endpoints.
+
+Estado actual:
+
+🚧 En desarrollo
+
+Documentación:
+
+➡️ [[docs/06_API_REST]]
 
 ---
 
 # Instalación
 
-1. Clonar el repositorio.
-
 ```bash
 git clone <repositorio>
-```
 
-2. Instalar las dependencias.
+cd SweetStore
 
-```bash
 composer install
-```
 
-3. Crear el archivo `.env`.
-
-```bash
 cp .env.example .env
-```
 
-4. Generar la clave de la aplicación.
-
-```bash
 php artisan key:generate
-```
 
-5. Configurar la conexión a la base de datos.
-
-6. Ejecutar las migraciones y seeders.
-
-```bash
 php artisan migrate --seed
-```
 
-7. Iniciar el servidor de desarrollo.
+npm install
 
-```bash
+npm run dev
+
 php artisan serve
 ```
 
 ---
 
-# Estructura del proyecto
+# Entorno de Desarrollo Recomendado
 
-```
-app/
-config/
-database/
-docs/
-public/
-resources/
-routes/
-storage/
-```
+Durante el desarrollo del backend se utilizó un entorno basado en:
+
+- Docker
+- MySQL 8
+- phpMyAdmin
+
+La configuración completa del entorno local puede consultarse en:
+
+➡️ [[docs/setup-local-dev]]
 
 ---
 
 # Documentación
 
-La documentación técnica del proyecto se encuentra organizada dentro de la carpeta **docs**. Cada documento desarrolla un aspecto específico del sistema y se encuentra enlazado con el resto de la documentación para facilitar la navegación desde Obsidian.
+La documentación del proyecto se encuentra organizada dentro de la carpeta **docs**.
 
-| Documento                | Descripción                                       |
-| ------------------------ | ------------------------------------------------- |
-| [[01_Arquitectura]]      | Arquitectura general del sistema.                 |
-| [[02_ModeloDominio]]     | Modelo de dominio y entidades principales.        |
-| [[03_BaseDatos]]         | Descripción de la base de datos.                  |
-| [[04_DER]]               | Diagrama Entidad-Relación y diccionario de datos. |
-| [[05_CasosUso]]          | Casos de uso del sistema.                         |
-| [[06_API_REST]]          | Documentación de la API REST.                     |
-| [[07_UML]]               | Diagramas UML del proyecto.                       |
-| [[08_ManualTecnico]]     | Descripción técnica de la implementación.         |
-| [[09_ManualInstalacion]] | Instalación y configuración del proyecto.         |
+- [[docs/HOME]]
+- [[docs/00_AnalisisRequisitos]]
+- [[docs/01_Arquitectura]]
+- [[docs/02_ModeloDominio]]
+- [[docs/03_BaseDatos]]
+- [[docs/04_DER]]
+- [[docs/05_CasosUso]]
+- [[docs/06_API_REST]]
+- [[docs/07_UML]]
+- [[docs/08_ManualTecnico]]
+- [[docs/09_ManualInstalacion]]
 
 ---
 
-# Estado del proyecto
+# Estado del Proyecto
 
-Actualmente el sistema implementa:
-
-- Autenticación de usuarios.
-- Gestión de roles.
-- CRUD de categorías.
-- CRUD de productos.
-- Gestión de pedidos.
-- Wishlist/Carrito.
-- Sistema de reseñas.
-- API REST.
-- Migraciones y Seeders.
-- Panel de administración.
+| Componente | Estado |
+|------------|:------:|
+| Relevamiento | ✅ |
+| Arquitectura | ✅ |
+| Base de Datos | ✅ |
+| Backend Laravel | 🚧 |
+| API REST | 🚧 |
+| Documentación | 🚧 |
 
 ---
 

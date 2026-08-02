@@ -1,88 +1,128 @@
-# 🏠 Sweet Store - Wiki
+# 🏠 Sweet Store Wiki
 
-Bienvenido a la documentación técnica de **Sweet Store**, un proyecto desarrollado con **Laravel** para la materia **Desarrollo de Aplicaciones Web con Laravel** de la **Tecnicatura Superior en Análisis de Sistemas** de la **Escuela Da Vinci**.
+Bienvenido a la documentación técnica del proyecto **Sweet Store**.
 
-Esta Wiki reúne toda la documentación funcional y técnica del proyecto, organizada por temas para facilitar su consulta y mantenimiento.
+Esta Wiki reúne el análisis funcional, la documentación técnica y las decisiones de diseño adoptadas durante el desarrollo del proyecto.
 
 ---
 
-# 📖 Documentación Principal
+# 📚 Índice General
+
+## Inicio
 
 - [[README]]
 
 ---
 
-# 🏗️ Arquitectura
+## Análisis
+
+- [[00_AnalisisRequisitos]]
+- [[05_CasosUso]]
+
+---
+
+## Arquitectura
 
 - [[01_Arquitectura]]
 - [[02_ModeloDominio]]
 - [[03_BaseDatos]]
 - [[04_DER]]
-
----
-
-# 📐 Análisis y Diseño
-
-- [[05_CasosUso]]
 - [[07_UML]]
 
 ---
 
-# 🌐 Desarrollo
+## Desarrollo
 
 - [[06_API_REST]]
 - [[08_ManualTecnico]]
-
----
-
-# ⚙️ Instalación
-
 - [[09_ManualInstalacion]]
 
 ---
 
-# 🗂️ Estructura de la documentación
+## Entorno de Desarrollo
+
+- [[setup-local-dev]]
+
+---
+
+# Flujo de Lectura Recomendado
 
 ```text
-Home
-│
-├── README
-│
-├── Arquitectura
-│   ├── Modelo de Dominio
-│   ├── Base de Datos
-│   └── DER
-│
-├── Casos de Uso
-│
-├── UML
-│
-├── API
-│
-├── Manual Técnico
-│
-└── Manual de Instalación
+README
+   │
+   ▼
+00_AnalisisRequisitos
+   │
+   ▼
+01_Arquitectura
+   │
+   ▼
+02_ModeloDominio
+   │
+   ▼
+03_BaseDatos
+   │
+   ▼
+04_DER
+   │
+   ▼
+05_CasosUso
+   │
+   ▼
+07_UML
+   │
+   ▼
+06_API_REST
+   │
+   ▼
+08_ManualTecnico
+   │
+   ▼
+09_ManualInstalacion
 ```
 
 ---
 
-# 🚀 Estado de la documentación
+# Entorno de Desarrollo
 
-| Documento                | Estado |
-| ------------------------ | :----: |
-| [[README]]               |   ✅    |
-| [[01_Arquitectura]]      |   🚧   |
-| [[02_ModeloDominio]]     |   ⏳    |
-| [[03_BaseDatos]]         |   ⏳    |
-| [[04_DER]]               |   ⏳    |
-| [[05_CasosUso]]          |   ⏳    |
-| [[06_API_REST]]          |   ⏳    |
-| [[07_UML]]               |   ⏳    |
-| [[08_ManualTecnico]]     |   ⏳    |
-| [[09_ManualInstalacion]] |   ⏳    |
+Durante el desarrollo del backend se utilizó un entorno local compuesto por:
+
+- Laravel
+- PHP
+- Composer
+- Docker
+- MySQL 8
+- phpMyAdmin
+- Visual Studio Code
+
+La configuración completa del entorno, incluyendo `docker-compose.yml`, variables de entorno y flujo de trabajo diario, se encuentra documentada en [[setup-local-dev]]. 
 
 ---
 
-# 📌 Notas
+# Estado de la Documentación
 
-Esta documentación se encuentra en constante evolución y será actualizada conforme avance el desarrollo del proyecto y se incorporen nuevas funcionalidades o mejoras.
+| Documento                 | Estado |
+| ------------------------- | :----: |
+| [[README]]                |   ✅    |
+| [[00_AnalisisRequisitos]] |   ⏳    |
+| [[01_Arquitectura]]       |   🚧   |
+| [[02_ModeloDominio]]      |   🚧   |
+| [[03_BaseDatos]]          |   🚧   |
+| [[04_DER]]                |   🚧   |
+| [[05_CasosUso]]           |   🚧   |
+| [[06_API_REST]]           |   🚧   |
+| [[07_UML]]                |   🚧   |
+| [[08_ManualTecnico]]      |   🚧   |
+| [[09_ManualInstalacion]]  |   🚧   |
+| [[setup-local-dev]]       |   ✅    |
+
+---
+
+# Próximas Tareas
+
+- Completar el relevamiento de requisitos.
+- Incorporar el DER definitivo generado desde el código.
+- Agregar diagramas UML.
+- Implementar la API REST.
+- Incorporar la colección de Postman.
+- Completar el manual técnico con las decisiones finales de implementación.
