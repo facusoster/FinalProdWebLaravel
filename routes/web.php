@@ -11,6 +11,10 @@ use App\Http\Controllers\CategoryController;
 |--------------------------------------------------------------------------
 */
 
+Route::get('/', function (){
+    return redirect()->route('login');
+});
+
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 

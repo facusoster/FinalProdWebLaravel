@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Panel Admin - Sweet Store</title>
+    <title>Panel Admin - Rincón del Pan</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
@@ -13,7 +13,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Sweet Store</a>
+            <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Rincón del Pan</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

@@ -1,7 +1,7 @@
 # 🗃️ Diagrama Entidad - Relación (DER)
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > **Documentación relacionada**
 > - [[README]]
@@ -14,7 +14,7 @@
 
 # Introducción
 
-El Diagrama Entidad - Relación (DER) representa la estructura lógica de la base de datos utilizada por **Sweet Store**.
+El Diagrama Entidad - Relación (DER) representa la estructura lógica de la base de datos utilizada por **Rincón del Pan**.
 
 Su finalidad es describir las entidades que componen el sistema, sus atributos principales y las relaciones existentes entre ellas, proporcionando una visión completa del modelo de datos implementado.
 
@@ -152,7 +152,7 @@ Las restricciones definidas permiten preservar la coherencia del modelo de datos
 
 # Resumen
 
-El DER constituye la representación gráfica del modelo relacional de **Sweet Store**, mostrando las entidades principales del sistema y las relaciones que permiten soportar las funcionalidades implementadas por la aplicación.
+El DER constituye la representación gráfica del modelo relacional de **Rincón del Pan**, mostrando las entidades principales del sistema y las relaciones que permiten soportar las funcionalidades implementadas por la aplicación.
 
 Este documento complementa la descripción conceptual desarrollada en [[02_ModeloDominio]] y la organización general de la base de datos presentada en [[03_BaseDatos]].
 

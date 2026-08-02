@@ -1,7 +1,7 @@
 # 🏗️ Arquitectura del Sistema
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > - [[README]]
 > - [[02_ModeloDominio]]
@@ -14,7 +14,7 @@
 
 # Introducción
 
-La arquitectura de **Sweet Store** sigue la estructura propuesta por el framework **Laravel**, basada en el patrón **Modelo – Vista – Controlador (MVC)**.
+La arquitectura de **Rincón del Pan** sigue la estructura propuesta por el framework **Laravel**, basada en el patrón **Modelo – Vista – Controlador (MVC)**.
 
 Esta organización permite separar claramente las responsabilidades del sistema, facilitando el mantenimiento del código, la incorporación de nuevas funcionalidades y la reutilización de componentes.
 
@@ -210,7 +210,7 @@ Su utilización permite:
 
 # Arquitectura Física
 
-Desde un punto de vista funcional, Sweet Store se compone de los siguientes módulos.
+Desde un punto de vista funcional, Rincón del Pan se compone de los siguientes módulos.
 
 ```text
 Cliente Web
@@ -244,7 +244,7 @@ MySQL
 
 # Resumen
 
-La arquitectura implementada en Sweet Store aprovecha la estructura propuesta por Laravel para construir una aplicación organizada, modular y fácilmente mantenible.
+La arquitectura implementada en Rincón del Pan aprovecha la estructura propuesta por Laravel para construir una aplicación organizada, modular y fácilmente mantenible.
 
 La separación entre rutas, controladores, modelos, vistas y base de datos permite que cada componente tenga una responsabilidad claramente definida, favoreciendo tanto el desarrollo como la evolución futura del proyecto.
 

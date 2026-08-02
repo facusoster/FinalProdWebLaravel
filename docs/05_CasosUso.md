@@ -1,7 +1,7 @@
 # 👥 Casos de Uso
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > **Documentación relacionada**
 > - [[README]]
@@ -16,7 +16,7 @@
 
 Los casos de uso describen las principales interacciones entre los actores del sistema y la aplicación.
 
-Su objetivo es representar las funcionalidades ofrecidas por **Sweet Store** desde la perspectiva del usuario, identificando las acciones que pueden realizar tanto los clientes como los administradores.
+Su objetivo es representar las funcionalidades ofrecidas por **Rincón del Pan** desde la perspectiva del usuario, identificando las acciones que pueden realizar tanto los clientes como los administradores.
 
 Este documento presenta una visión funcional del sistema y sirve como complemento de la arquitectura y del modelo de dominio.
 
@@ -59,7 +59,7 @@ Sus responsabilidades incluyen:
 # Diagrama General de Casos de Uso
 
 ```text
-                    Sweet Store
+                    Rincón del Pan
 
                  ┌────────────────────┐
 
@@ -240,7 +240,7 @@ Permite modificar el estado de un pedido durante su procesamiento.
 
 # Resumen
 
-Los casos de uso representan las funcionalidades principales implementadas por **Sweet Store**, diferenciando claramente las operaciones disponibles para clientes y administradores.
+Los casos de uso representan las funcionalidades principales implementadas por **Rincón del Pan**, diferenciando claramente las operaciones disponibles para clientes y administradores.
 
 Este documento constituye una visión funcional del sistema y complementa la información desarrollada en [[02_ModeloDominio]], [[04_DER]] y [[07_UML]].
 
