@@ -1,58 +1,202 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+## Carátula
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Universidad:** Escuela Da Vinci  
+**Carrera:** Tecnicatura Superior en Análisis de Sistemas  
+**Materia:** Desarrollo de Aplicaciones Web con Laravel  
+**Profesor:** *Completar*  
+**Alumnos:** Facundo Nahuel Soster - Julian Verdirame  
+**Trabajo Práctico:** Sweet Store – Plataforma E-commerce desarrollada con Laravel
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Sweet Store
 
-## Learning Laravel
+Sistema de comercio electrónico desarrollado con **Laravel** como trabajo práctico para la materia **Desarrollo de Aplicaciones Web con Laravel** de la **Tecnicatura Superior en Análisis de Sistemas** de la **Escuela Da Vinci**.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+El proyecto implementa una plataforma de venta de productos de pastelería con funcionalidades para clientes y administradores, aplicando los conceptos abordados durante la cursada: arquitectura MVC, Eloquent ORM, migraciones, seeders, autenticación, autorización, Blade, API REST y administración de bases de datos relacionales.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+# Información del Proyecto
 
-## Agentic Development
+| Dato        | Información                                  |
+| ----------- | -------------------------------------------- |
+| Institución | Escuela Da Vinci                             |
+| Carrera     | Tecnicatura Superior en Análisis de Sistemas |
+| Materia     | Desarrollo de Aplicaciones Web con Laravel   |
+| Proyecto    | Sweet Store                                  |
+| Integrantes | Facundo Soster - Julian Verdirame            |
+| Profesor    | Nicolas Ariel Calderón                       |
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
+
+# Objetivos
+
+El proyecto tiene como objetivo desarrollar una aplicación web completa utilizando Laravel, integrando los principales componentes del framework en un caso de uso real.
+
+Durante el desarrollo se aplicaron conceptos relacionados con:
+
+- Arquitectura Modelo – Vista – Controlador (MVC).
+- Persistencia de datos mediante Eloquent ORM.
+- Diseño e implementación de una base de datos relacional.
+- Migraciones y Seeders.
+- Autenticación y autorización de usuarios.
+- Gestión de archivos.
+- Desarrollo de interfaces utilizando Blade.
+- Construcción de una API REST.
+- Organización y documentación del proyecto.
+
+---
+
+# Funcionalidades
+
+El sistema se divide en dos grandes áreas funcionales.
+
+## Cliente
+
+Los usuarios registrados pueden:
+
+- Registrarse e iniciar sesión.
+- Navegar el catálogo de productos.
+- Consultar el detalle de cada producto.
+- Gestionar una lista de favoritos (Wishlist).
+- Administrar direcciones de entrega.
+- Realizar pedidos.
+- Consultar el historial de compras.
+- Publicar reseñas de productos.
+
+## Administrador
+
+Los usuarios con rol administrador pueden:
+
+- Gestionar categorías.
+- Gestionar productos.
+- Administrar pedidos.
+- Actualizar el estado de las órdenes.
+- Acceder al panel de administración.
+
+---
+
+# Tecnologías utilizadas
+
+- Laravel
+- PHP
+- MySQL
+- Blade
+- Eloquent ORM
+- Bootstrap
+- HTML5
+- CSS3
+- JavaScript
+- Composer
+
+---
+
+# Arquitectura
+
+El proyecto sigue la arquitectura **Modelo – Vista – Controlador (MVC)** propuesta por Laravel.
+
+La lógica de negocio se encuentra organizada mediante modelos Eloquent y controladores, mientras que la presentación utiliza plantillas Blade. La persistencia se realiza sobre MySQL utilizando migraciones y relaciones definidas mediante Eloquent ORM.
+
+La estructura del proyecto respeta la organización estándar del framework, facilitando su mantenimiento y escalabilidad.
+
+---
+
+# Instalación
+
+1. Clonar el repositorio.
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone <repositorio>
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+2. Instalar las dependencias.
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. Crear el archivo `.env`.
 
-## Code of Conduct
+```bash
+cp .env.example .env
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. Generar la clave de la aplicación.
 
-## Security Vulnerabilities
+```bash
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5. Configurar la conexión a la base de datos.
 
-## License
+6. Ejecutar las migraciones y seeders.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan migrate --seed
+```
+
+7. Iniciar el servidor de desarrollo.
+
+```bash
+php artisan serve
+```
+
+---
+
+# Estructura del proyecto
+
+```
+app/
+config/
+database/
+docs/
+public/
+resources/
+routes/
+storage/
+```
+
+---
+
+# Documentación
+
+La documentación técnica del proyecto se encuentra organizada dentro de la carpeta **docs**. Cada documento desarrolla un aspecto específico del sistema y se encuentra enlazado con el resto de la documentación para facilitar la navegación desde Obsidian.
+
+| Documento                | Descripción                                       |
+| ------------------------ | ------------------------------------------------- |
+| [[01_Arquitectura]]      | Arquitectura general del sistema.                 |
+| [[02_ModeloDominio]]     | Modelo de dominio y entidades principales.        |
+| [[03_BaseDatos]]         | Descripción de la base de datos.                  |
+| [[04_DER]]               | Diagrama Entidad-Relación y diccionario de datos. |
+| [[05_CasosUso]]          | Casos de uso del sistema.                         |
+| [[06_API_REST]]          | Documentación de la API REST.                     |
+| [[07_UML]]               | Diagramas UML del proyecto.                       |
+| [[08_ManualTecnico]]     | Descripción técnica de la implementación.         |
+| [[09_ManualInstalacion]] | Instalación y configuración del proyecto.         |
+
+---
+
+# Estado del proyecto
+
+Actualmente el sistema implementa:
+
+- Autenticación de usuarios.
+- Gestión de roles.
+- CRUD de categorías.
+- CRUD de productos.
+- Gestión de pedidos.
+- Wishlist/Carrito.
+- Sistema de reseñas.
+- API REST.
+- Migraciones y Seeders.
+- Panel de administración.
+
+---
+
+# Licencia
+
+Este proyecto fue desarrollado con fines académicos como trabajo práctico para la materia **Desarrollo de Aplicaciones Web con Laravel** de la **Escuela Da Vinci**.
