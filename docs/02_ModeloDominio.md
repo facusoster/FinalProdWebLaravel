@@ -1,7 +1,7 @@
 # 🧩 Modelo de Dominio
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > **Documentación relacionada**
 > - [[README]]
@@ -15,7 +15,7 @@
 
 # Introducción
 
-El modelo de dominio representa los principales conceptos del negocio implementados en **Sweet Store** y las relaciones existentes entre ellos.
+El modelo de dominio representa los principales conceptos del negocio implementados en **Rincón del Pan** y las relaciones existentes entre ellos.
 
 Su objetivo es describir cómo se organiza la información dentro del sistema desde una perspectiva funcional, independientemente de su implementación técnica o de la estructura de la base de datos.
 
@@ -25,7 +25,7 @@ Las entidades identificadas reflejan los actores y objetos que intervienen en el
 
 # Visión General del Dominio
 
-Sweet Store se organiza alrededor de un proceso de compra realizado por usuarios registrados.
+Rincón del Pan se organiza alrededor de un proceso de compra realizado por usuarios registrados.
 
 Los clientes pueden explorar el catálogo de productos, administrar sus direcciones de entrega, mantener una lista de productos favoritos, realizar pedidos y publicar reseñas.
 
@@ -69,7 +69,7 @@ Estas direcciones pueden utilizarse durante el proceso de compra para indicar el
 
 ## Producto
 
-Representa los artículos comercializados por Sweet Store.
+Representa los artículos comercializados por Rincón del Pan.
 
 Cada producto posee información descriptiva, disponibilidad y precio.
 
@@ -235,7 +235,7 @@ Usuario
 
 # Resumen
 
-El modelo de dominio de Sweet Store identifica las entidades necesarias para representar el funcionamiento de un comercio electrónico orientado a la venta de productos de pastelería.
+El modelo de dominio de Rincón del Pan identifica las entidades necesarias para representar el funcionamiento de un comercio electrónico orientado a la venta de productos de pastelería.
 
 Cada entidad encapsula una responsabilidad específica dentro del negocio y se relaciona con las demás para cubrir el ciclo completo de compra, desde la exploración del catálogo hasta la gestión de pedidos y la publicación de reseñas.
 

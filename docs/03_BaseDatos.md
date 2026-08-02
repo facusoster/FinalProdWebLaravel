@@ -1,7 +1,7 @@
 # 🗄️ Base de Datos
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > **Documentación relacionada**
 > - [[README]]
@@ -14,7 +14,7 @@
 
 # Introducción
 
-La persistencia de datos de **Sweet Store** se implementa mediante una base de datos relacional administrada por **MySQL**, utilizando las herramientas provistas por Laravel para definir, versionar y poblar su estructura.
+La persistencia de datos de **Rincón del Pan** se implementa mediante una base de datos relacional administrada por **MySQL**, utilizando las herramientas provistas por Laravel para definir, versionar y poblar su estructura.
 
 La organización de la información fue diseñada para representar las principales entidades del negocio y sus relaciones, permitiendo mantener la integridad de los datos y facilitar el acceso mediante **Eloquent ORM**.
 
@@ -178,7 +178,7 @@ Products
 
 # Resumen
 
-La base de datos de Sweet Store fue diseñada para almacenar de forma estructurada toda la información necesaria para el funcionamiento del sistema.
+La base de datos de Rincón del Pan fue diseñada para almacenar de forma estructurada toda la información necesaria para el funcionamiento del sistema.
 
 La utilización de MySQL junto con las herramientas de Laravel, como Migraciones, Seeders y Eloquent ORM, permite mantener una estructura consistente, fácilmente reproducible y preparada para futuras ampliaciones del proyecto.
 

@@ -3,7 +3,7 @@
 > [!warning]
 > **Estado:** 🚧 En desarrollo
 >
-> Este documento describe el diseño previsto de la API REST del proyecto **Sweet Store**, solicitado como componente adicional por la consigna de la materia **Desarrollo de Aplicaciones Web con Laravel**.
+> Este documento describe el diseño previsto de la API REST del proyecto **Rincón del Pan**, solicitado como componente adicional por la consigna de la materia **Desarrollo de Aplicaciones Web con Laravel**.
 >
 > Al momento de redactar esta documentación, los endpoints aún no se encuentran implementados. La información presentada corresponde al diseño funcional previsto y será actualizada una vez finalizado el desarrollo.
 
@@ -223,7 +223,7 @@ La implementación definitiva de la API deberá contemplar:
 
 # Resumen
 
-La API REST constituye un componente complementario de **Sweet Store**, cuyo propósito es aplicar los conceptos básicos de servicios web utilizando Laravel.
+La API REST constituye un componente complementario de **Rincón del Pan**, cuyo propósito es aplicar los conceptos básicos de servicios web utilizando Laravel.
 
 Aunque su implementación aún se encuentra pendiente, el diseño presentado establece la estructura general que deberá seguir el desarrollo, incluyendo los endpoints requeridos, el formato de las respuestas y la estrategia de autenticación definida por la consigna.
 

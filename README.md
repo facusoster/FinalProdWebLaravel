@@ -8,11 +8,11 @@
 **Materia:** Desarrollo de Aplicaciones Web con Laravel  
 **Profesor:** *Completar*  
 **Alumnos:** Facundo Nahuel Soster - Julian Verdirame  
-**Trabajo Práctico:** Sweet Store – Plataforma E-commerce desarrollada con Laravel
+**Trabajo Práctico:** Rincón del Pan – Plataforma E-commerce desarrollada con Laravel
 
 ---
 
-# Sweet Store
+# Rincón del Pan
 
 Sistema de comercio electrónico desarrollado con **Laravel** como trabajo práctico para la materia **Desarrollo de Aplicaciones Web con Laravel** de la **Tecnicatura Superior en Análisis de Sistemas** de la **Escuela Da Vinci**.
 
@@ -27,7 +27,7 @@ El proyecto implementa una plataforma de venta de productos de pastelería con f
 | Institución | Escuela Da Vinci                             |
 | Carrera     | Tecnicatura Superior en Análisis de Sistemas |
 | Materia     | Desarrollo de Aplicaciones Web con Laravel   |
-| Proyecto    | Sweet Store                                  |
+| Proyecto    | Rincón del Pan                                  |
 | Integrantes | Facundo Soster - Julian Verdirame            |
 | Profesor    | Nicolas Ariel Calderón                       |
 

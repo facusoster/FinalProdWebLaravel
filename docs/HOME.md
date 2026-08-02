@@ -1,6 +1,6 @@
-# 🏠 Sweet Store - Wiki
+# 🏠 Rincón del Pan - Wiki
 
-Bienvenido a la documentación técnica de **Sweet Store**, un proyecto desarrollado con **Laravel** para la materia **Desarrollo de Aplicaciones Web con Laravel** de la **Tecnicatura Superior en Análisis de Sistemas** de la **Escuela Da Vinci**.
+Bienvenido a la documentación técnica de **Rincón del Pan**, un proyecto desarrollado con **Laravel** para la materia **Desarrollo de Aplicaciones Web con Laravel** de la **Tecnicatura Superior en Análisis de Sistemas** de la **Escuela Da Vinci**.
 
 Esta Wiki reúne toda la documentación funcional y técnica del proyecto, organizada por temas para facilitar su consulta y mantenimiento.
 

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Panel Cliente - Sweet Store</title>
+    <title>Panel Cliente - Rincón del Pan</title>
 
     <style>
         body {
