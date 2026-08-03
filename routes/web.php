@@ -12,7 +12,7 @@ use App\Http\Controllers\AddressController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function (){
+Route::get('/', function () {
     return redirect()->route('login');
 });
 
@@ -201,4 +201,38 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/orders/{order}/cancel', [\App\Http\Controllers\Admin\OrderController::class, 'cancel'])
             ->name('orders.cancel');
     });
+});
+
+/*
+|--------------------------------------------------------------------------
+| CLIENTE - RESEÑAS
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/reviews', [\App\Http\Controllers\ReviewController::class, 'index'])
+        ->name('reviews.index');
+
+    Route::get('/reviews/create/{product}', [\App\Http\Controllers\ReviewController::class, 'create'])
+        ->name('reviews.create');
+
+    Route::post('/reviews/{product}', [\App\Http\Controllers\ReviewController::class, 'store'])
+        ->name('reviews.store');
+
+    Route::delete('/reviews/{review}', [\App\Http\Controllers\ReviewController::class, 'destroy'])
+        ->name('reviews.destroy');
+});
+
+/*
+|--------------------------------------------------------------------------
+| ADMIN - RESEÑAS
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+
+    Route::get('/reviews', [\App\Http\Controllers\Admin\ReviewController::class, 'index'])
+        ->name('reviews.index');
+
+    Route::delete('/reviews/{review}', [\App\Http\Controllers\Admin\ReviewController::class, 'destroy'])
+        ->name('reviews.destroy');
 });
