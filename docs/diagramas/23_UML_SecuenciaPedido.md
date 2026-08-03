@@ -1,7 +1,7 @@
-# 🛒 UML - Diagrama de Secuencia: Realizar Pedido
+﻿# ðŸ›’ UML - Diagrama de Secuencia: Realizar Pedido
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Tipo de Diagrama:** UML - Secuencia
 
@@ -9,7 +9,7 @@
 
 # Objetivo
 
-Este diagrama representa la interacción entre los principales componentes del sistema durante el proceso de creación de un pedido.
+Este diagrama representa la interacciÃ³n entre los principales componentes del sistema durante el proceso de creaciÃ³n de un pedido.
 
 El flujo comienza cuando un cliente confirma la compra de los productos agregados al carrito y finaliza cuando el pedido queda registrado en la base de datos con su correspondiente detalle.
 
@@ -75,16 +75,16 @@ OrderController->>Wishlist: Vaciar carrito
 
 Wishlist->>MySQL: DELETE carrito
 
-MySQL-->>Wishlist: Carrito vacío
+MySQL-->>Wishlist: Carrito vacÃ­o
 
-OrderController-->>Navegador: Redirect Confirmación
+OrderController-->>Navegador: Redirect ConfirmaciÃ³n
 
 Navegador-->>Cliente: Pedido realizado
 ```
 
 ---
 
-# Descripción del Flujo
+# DescripciÃ³n del Flujo
 
 El proceso comienza cuando el cliente confirma la compra de los productos almacenados en su carrito.
 
@@ -92,33 +92,33 @@ El controlador recupera los productos seleccionados, calcula el importe total de
 
 Posteriormente genera un registro en **OrderItem** por cada producto adquirido, actualiza el stock disponible y finalmente elimina los productos del carrito.
 
-Una vez completado el proceso, el usuario es redirigido a la pantalla de confirmación.
+Una vez completado el proceso, el usuario es redirigido a la pantalla de confirmaciÃ³n.
 
 ---
 
 # Participantes
 
-## 👤 Cliente
+## ðŸ‘¤ Cliente
 
 Usuario autenticado que realiza la compra.
 
 ---
 
-## 🌐 Navegador
+## ðŸŒ Navegador
 
-Envía la solicitud HTTP y presenta la respuesta generada por Laravel.
+EnvÃ­a la solicitud HTTP y presenta la respuesta generada por Laravel.
 
 ---
 
-## 🛣️ Routes
+## ðŸ›£ï¸ Routes
 
 Reciben la solicitud y la derivan al controlador correspondiente.
 
 ---
 
-## 🎮 OrderController
+## ðŸŽ® OrderController
 
-Coordina todo el proceso de creación del pedido.
+Coordina todo el proceso de creaciÃ³n del pedido.
 
 Entre sus responsabilidades se encuentran:
 
@@ -127,32 +127,32 @@ Entre sus responsabilidades se encuentran:
 - crear el pedido;
 - generar el detalle;
 - actualizar el stock;
-- finalizar la operación.
+- finalizar la operaciÃ³n.
 
 ---
 
-## 🛒 Wishlist
+## ðŸ›’ Wishlist
 
-Aunque mantiene este nombre en la implementación, representa el **carrito de compras** del sistema.
+Aunque mantiene este nombre en la implementaciÃ³n, representa el **carrito de compras** del sistema.
 
 Contiene los productos seleccionados por el cliente antes de confirmar la compra.
 
 ---
 
-## 📦 Order
+## ðŸ“¦ Order
 
 Representa el pedido principal generado durante la compra.
 
-Incluye información como:
+Incluye informaciÃ³n como:
 
 - cliente;
-- dirección;
+- direcciÃ³n;
 - estado;
 - importe total.
 
 ---
 
-## 📄 OrderItem
+## ðŸ“„ OrderItem
 
 Representa cada uno de los productos incluidos dentro del pedido.
 
@@ -165,17 +165,17 @@ Cada registro almacena:
 
 ---
 
-## 🍞 Product
+## ðŸž Product
 
-Modelo encargado de representar los productos del catálogo.
+Modelo encargado de representar los productos del catÃ¡logo.
 
 Durante este proceso actualiza el stock disponible luego de registrar la venta.
 
 ---
 
-## 🗄️ MySQL
+## ðŸ—„ï¸ MySQL
 
-Persistencia de toda la información relacionada con el pedido y sus detalles.
+Persistencia de toda la informaciÃ³n relacionada con el pedido y sus detalles.
 
 ---
 
@@ -189,7 +189,7 @@ Durante el proceso se ejecutan las siguientes acciones principales:
 - Registrar los productos adquiridos.
 - Actualizar el stock.
 - Vaciar el carrito.
-- Confirmar la operación al usuario.
+- Confirmar la operaciÃ³n al usuario.
 
 ---
 
@@ -200,12 +200,12 @@ El flujo refleja las siguientes reglas del sistema:
 - Solo un usuario autenticado puede generar pedidos.
 - El pedido debe contener al menos un producto.
 - Cada producto genera un registro independiente en **OrderItem**.
-- El stock debe actualizarse inmediatamente después de registrar la compra.
-- Una vez confirmado el pedido, el carrito queda vacío.
+- El stock debe actualizarse inmediatamente despuÃ©s de registrar la compra.
+- Una vez confirmado el pedido, el carrito queda vacÃ­o.
 
 ---
 
-# Relación con Laravel
+# RelaciÃ³n con Laravel
 
 En este proceso participan los siguientes componentes del framework:
 
@@ -218,28 +218,29 @@ En este proceso participan los siguientes componentes del framework:
 
 ---
 
-# Relación con otros Diagramas
+# RelaciÃ³n con otros Diagramas
 
 Este diagrama complementa:
 
-- [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
-- [diagramas/24_UML_ActividadCompra](docs/diagramas/24_UML_ActividadCompra.md)
-- [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md)
+- [diagramas/20_UML_CasosUso](20_UML_CasosUso.md)
+- [diagramas/21_UML_Clases](21_UML_Clases.md)
+- [diagramas/24_UML_ActividadCompra](24_UML_ActividadCompra.md)
+- [diagramas/25_UML_EstadosPedido](25_UML_EstadosPedido.md)
 
 ---
 
-# Documentación Relacionada
+# DocumentaciÃ³n Relacionada
 
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [05_CasosUso](../docs/05_CasosUso.md)
+- [03_BaseDatos](../docs/03_BaseDatos.md)
+- [04_DER](../docs/04_DER.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
 
 ---
 
 # Consideraciones Finales
 
-El proceso de creación de pedidos constituye el núcleo funcional de **Rincón del Pan**.
+El proceso de creaciÃ³n de pedidos constituye el nÃºcleo funcional de **RincÃ³n del Pan**.
 
-El diagrama muestra cómo colaboran los distintos componentes del sistema para transformar el contenido del carrito de compras en un pedido persistente, manteniendo la consistencia de la información mediante la creación del pedido, sus ítems asociados y la actualización del stock de los productos.
+El diagrama muestra cÃ³mo colaboran los distintos componentes del sistema para transformar el contenido del carrito de compras en un pedido persistente, manteniendo la consistencia de la informaciÃ³n mediante la creaciÃ³n del pedido, sus Ã­tems asociados y la actualizaciÃ³n del stock de los productos.
+

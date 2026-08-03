@@ -1,19 +1,19 @@
-# 📐 Diagramas UML
+﻿# ðŸ“ Diagramas UML
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Lenguaje:** PHP 8.3.32
 
 ---
 
-# Introducción
+# IntroducciÃ³n
 
-El presente documento describe los diagramas UML elaborados durante el desarrollo de **Rincón del Pan**.
+El presente documento describe los diagramas UML elaborados durante el desarrollo de **RincÃ³n del Pan**.
 
-Los diagramas constituyen una representación gráfica del análisis, diseño e implementación del sistema y permiten comprender su estructura, comportamiento e interacción entre los distintos componentes.
+Los diagramas constituyen una representaciÃ³n grÃ¡fica del anÃ¡lisis, diseÃ±o e implementaciÃ³n del sistema y permiten comprender su estructura, comportamiento e interacciÃ³n entre los distintos componentes.
 
-Con el objetivo de facilitar su mantenimiento y evolución, cada diagrama se documenta de manera independiente dentro de la carpeta **diagramas**, permitiendo actualizar cada representación sin afectar el resto de la documentación.
+Con el objetivo de facilitar su mantenimiento y evoluciÃ³n, cada diagrama se documenta de manera independiente dentro de la carpeta **diagramas**, permitiendo actualizar cada representaciÃ³n sin afectar el resto de la documentaciÃ³n.
 
 ---
 
@@ -21,27 +21,27 @@ Con el objetivo de facilitar su mantenimiento y evolución, cada diagrama se doc
 
 Los diagramas UML tienen como finalidad:
 
-- Representar gráficamente la arquitectura del sistema.
+- Representar grÃ¡ficamente la arquitectura del sistema.
 - Documentar las entidades y sus relaciones.
-- Mostrar la interacción entre los actores y la aplicación.
+- Mostrar la interacciÃ³n entre los actores y la aplicaciÃ³n.
 - Facilitar el mantenimiento del proyecto.
-- Servir como documentación técnica para futuras modificaciones.
-- Mantener trazabilidad entre el análisis y la implementación.
+- Servir como documentaciÃ³n tÃ©cnica para futuras modificaciones.
+- Mantener trazabilidad entre el anÃ¡lisis y la implementaciÃ³n.
 
 ---
 
 # Diagramas Incluidos
 
-La documentación UML del proyecto se encuentra organizada en los siguientes archivos.
+La documentaciÃ³n UML del proyecto se encuentra organizada en los siguientes archivos.
 
-| Diagrama | Descripción |
+| Diagrama | DescripciÃ³n |
 |----------|-------------|
-| [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md) | Interacción entre actores y funcionalidades del sistema. |
-| [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md) | Representación de las clases del dominio y sus relaciones. |
-| [diagramas/22_UML_SecuenciaLogin](docs/diagramas/22_UML_SecuenciaLogin.md) | Flujo de autenticación de usuarios. |
-| [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido) | Proceso completo de creación de un pedido. |
-| [diagramas/24_UML_ActividadCompra](docs/diagramas/24_UML_ActividadCompra.md) | Flujo de actividades durante una compra. |
-| [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md) | Ciclo de vida y transiciones de los pedidos. |
+| [diagramas/20_UML_CasosUso](../diagramas/20_UML_CasosUso.md) | InteracciÃ³n entre actores y funcionalidades del sistema. |
+| [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md) | RepresentaciÃ³n de las clases del dominio y sus relaciones. |
+| [diagramas/22_UML_SecuenciaLogin](../diagramas/22_UML_SecuenciaLogin.md) | Flujo de autenticaciÃ³n de usuarios. |
+| [diagramas/23_UML_SecuenciaPedido](../diagramas/23_UML_SecuenciaPedido.md) | Proceso completo de creaciÃ³n de un pedido. |
+| [diagramas/24_UML_ActividadCompra](../diagramas/24_UML_ActividadCompra.md) | Flujo de actividades durante una compra. |
+| [diagramas/25_UML_EstadosPedido](../diagramas/25_UML_EstadosPedido.md) | Ciclo de vida y transiciones de los pedidos. |
 
 ---
 
@@ -58,13 +58,13 @@ Permite identificar:
 
 Se encuentra disponible en:
 
-➡️ [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md)
+âž¡ï¸ [diagramas/20_UML_CasosUso](../diagramas/20_UML_CasosUso.md)
 
 ---
 
 # Diagrama de Clases
 
-El diagrama de clases representa la estructura estática del sistema.
+El diagrama de clases representa la estructura estÃ¡tica del sistema.
 
 Incluye:
 
@@ -77,19 +77,19 @@ Este diagrama mantiene una correspondencia directa con los modelos Eloquent impl
 
 Disponible en:
 
-➡️ [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
+âž¡ï¸ [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md)
 
 ---
 
 # Diagramas de Secuencia
 
-Los diagramas de secuencia documentan el intercambio de mensajes entre los distintos componentes durante la ejecución de procesos relevantes.
+Los diagramas de secuencia documentan el intercambio de mensajes entre los distintos componentes durante la ejecuciÃ³n de procesos relevantes.
 
 Actualmente se documentan los siguientes procesos:
 
-## Inicio de Sesión
+## Inicio de SesiÃ³n
 
-Representa el flujo de autenticación del usuario.
+Representa el flujo de autenticaciÃ³n del usuario.
 
 Incluye:
 
@@ -102,13 +102,13 @@ Incluye:
 
 Diagrama:
 
-➡️ [diagramas/22_UML_SecuenciaLogin](docs/diagramas/22_UML_SecuenciaLogin.md)
+âž¡ï¸ [diagramas/22_UML_SecuenciaLogin](../diagramas/22_UML_SecuenciaLogin.md)
 
 ---
 
-## Realización de Pedido
+## RealizaciÃ³n de Pedido
 
-Describe el proceso completo desde la confirmación de la compra hasta el almacenamiento del pedido.
+Describe el proceso completo desde la confirmaciÃ³n de la compra hasta el almacenamiento del pedido.
 
 Incluye:
 
@@ -120,7 +120,7 @@ Incluye:
 
 Diagrama:
 
-➡️ [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido)
+âž¡ï¸ [diagramas/23_UML_SecuenciaPedido](../diagramas/23_UML_SecuenciaPedido.md)
 
 ---
 
@@ -130,16 +130,16 @@ Representa el flujo funcional que sigue un cliente al realizar una compra.
 
 Entre las actividades modeladas se encuentran:
 
-- Navegación del catálogo.
-- Selección de productos.
-- Gestión del carrito.
-- Selección de dirección.
-- Confirmación del pedido.
+- NavegaciÃ³n del catÃ¡logo.
+- SelecciÃ³n de productos.
+- GestiÃ³n del carrito.
+- SelecciÃ³n de direcciÃ³n.
+- ConfirmaciÃ³n del pedido.
 - Registro de la compra.
 
 Disponible en:
 
-➡️ [diagramas/24_UML_ActividadCompra](docs/diagramas/24_UML_ActividadCompra.md)
+âž¡ï¸ [diagramas/24_UML_ActividadCompra](../diagramas/24_UML_ActividadCompra.md)
 
 ---
 
@@ -155,15 +155,15 @@ Los estados contemplados son:
 - Entregado
 - Cancelado
 
-Además, documenta las transiciones válidas entre cada uno de ellos, facilitando la comprensión de las reglas de negocio implementadas.
+AdemÃ¡s, documenta las transiciones vÃ¡lidas entre cada uno de ellos, facilitando la comprensiÃ³n de las reglas de negocio implementadas.
 
 Disponible en:
 
-➡️ [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md)
+âž¡ï¸ [diagramas/25_UML_EstadosPedido](../diagramas/25_UML_EstadosPedido.md)
 
 ---
 
-# Relación con la Implementación
+# RelaciÃ³n con la ImplementaciÃ³n
 
 Los diagramas UML fueron elaborados tomando como referencia:
 
@@ -174,28 +174,28 @@ Los diagramas UML fueron elaborados tomando como referencia:
 - Los controladores.
 - La arquitectura MVC de Laravel.
 
-Esto garantiza la coherencia entre la documentación y la implementación del proyecto.
+Esto garantiza la coherencia entre la documentaciÃ³n y la implementaciÃ³n del proyecto.
 
 ---
 
-# Organización de los Diagramas
+# OrganizaciÃ³n de los Diagramas
 
 ```text
 diagramas/
-│
-├── 01_ArquitecturaMVC.md
-├── 02_Componentes.md
-├── 03_Deployment.md
-│
-├── 10_DER.md
-├── 11_ModeloDominio.md
-│
-├── 20_UML_CasosUso.md
-├── 21_UML_Clases.md
-├── 22_UML_SecuenciaLogin.md
-├── 23_UML_SecuenciaPedido.md
-├── 24_UML_ActividadCompra.md
-└── 25_UML_EstadosPedido.md
+â”‚
+â”œâ”€â”€ 01_ArquitecturaMVC.md
+â”œâ”€â”€ 02_Componentes.md
+â”œâ”€â”€ 03_Deployment.md
+â”‚
+â”œâ”€â”€ 10_DER.md
+â”œâ”€â”€ 11_ModeloDominio.md
+â”‚
+â”œâ”€â”€ 20_UML_CasosUso.md
+â”œâ”€â”€ 21_UML_Clases.md
+â”œâ”€â”€ 22_UML_SecuenciaLogin.md
+â”œâ”€â”€ 23_UML_SecuenciaPedido.md
+â”œâ”€â”€ 24_UML_ActividadCompra.md
+â””â”€â”€ 25_UML_EstadosPedido.md
 ```
 
 ---
@@ -204,32 +204,33 @@ diagramas/
 
 Todos los diagramas fueron desarrollados utilizando **Mermaid**, integrado con **Obsidian**.
 
-Esta decisión permite:
+Esta decisiÃ³n permite:
 
-- Mantener los diagramas versionados junto con el código.
+- Mantener los diagramas versionados junto con el cÃ³digo.
 - Editarlos mediante archivos Markdown.
-- Visualizarlos automáticamente en Obsidian.
+- Visualizarlos automÃ¡ticamente en Obsidian.
 - Integrarlos con Git y GitHub.
 - Facilitar futuras modificaciones sin depender de herramientas externas.
 
 ---
 
-# Documentación Relacionada
+# DocumentaciÃ³n Relacionada
 
-Este documento complementa la siguiente documentación técnica:
+Este documento complementa la siguiente documentaciÃ³n tÃ©cnica:
 
-- [00_AnalisisRequisitos](docs/docs/00_AnalisisRequisitos.md)
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [00_AnalisisRequisitos](00_AnalisisRequisitos.md)
+- [01_Arquitectura](01_Arquitectura.md)
+- [02_ModeloDominio](02_ModeloDominio.md)
+- [03_BaseDatos](03_BaseDatos.md)
+- [04_DER](04_DER.md)
+- [05_CasosUso](05_CasosUso.md)
+- [08_ManualTecnico](08_ManualTecnico.md)
 
 ---
 
 # Consideraciones Finales
 
-La documentación UML de **Rincón del Pan** proporciona una visión gráfica de la arquitectura y del comportamiento del sistema, complementando la documentación textual del proyecto.
+La documentaciÃ³n UML de **RincÃ³n del Pan** proporciona una visiÃ³n grÃ¡fica de la arquitectura y del comportamiento del sistema, complementando la documentaciÃ³n textual del proyecto.
 
-La decisión de mantener cada diagrama en un archivo independiente favorece la modularidad de la documentación, simplifica su mantenimiento y permite actualizar cada representación de forma aislada a medida que evoluciona el proyecto, manteniendo siempre sincronizados el análisis, el diseño y la implementación.
+La decisiÃ³n de mantener cada diagrama en un archivo independiente favorece la modularidad de la documentaciÃ³n, simplifica su mantenimiento y permite actualizar cada representaciÃ³n de forma aislada a medida que evoluciona el proyecto, manteniendo siempre sincronizados el anÃ¡lisis, el diseÃ±o y la implementaciÃ³n.
+

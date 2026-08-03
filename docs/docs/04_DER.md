@@ -1,29 +1,29 @@
-# 🗄️ Diagrama Entidad–Relación (DER)
+﻿# ðŸ—„ï¸ Diagrama Entidadâ€“RelaciÃ³n (DER)
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Motor de Base de Datos:** MySQL 8
 
 ---
 
-# Introducción
+# IntroducciÃ³n
 
-El presente documento describe el **Modelo Entidad–Relación (DER)** implementado en **Rincón del Pan**.
+El presente documento describe el **Modelo Entidadâ€“RelaciÃ³n (DER)** implementado en **RincÃ³n del Pan**.
 
-El DER constituye la representación lógica de la base de datos y muestra las entidades que conforman el sistema, sus atributos principales y las relaciones existentes entre ellas.
+El DER constituye la representaciÃ³n lÃ³gica de la base de datos y muestra las entidades que conforman el sistema, sus atributos principales y las relaciones existentes entre ellas.
 
-Este modelo fue diseñado durante la etapa de análisis y posteriormente implementado mediante **Migraciones** y **Eloquent ORM**, respetando la estructura relacional definida para el proyecto.
+Este modelo fue diseÃ±ado durante la etapa de anÃ¡lisis y posteriormente implementado mediante **Migraciones** y **Eloquent ORM**, respetando la estructura relacional definida para el proyecto.
 
 El diagrama detallado se encuentra documentado por separado para facilitar su mantenimiento.
 
-➡️ [diagramas/10_DER](docs/diagramas/10_DER].md)
+âž¡ï¸ [diagramas/10_DER](../diagramas/10_DER.md)
 
 ---
 
 # Objetivos
 
-El diseño del modelo entidad–relación persigue los siguientes objetivos:
+El diseÃ±o del modelo entidadâ€“relaciÃ³n persigue los siguientes objetivos:
 
 - Representar correctamente el dominio del negocio.
 - Mantener la integridad referencial.
@@ -36,91 +36,91 @@ El diseño del modelo entidad–relación persigue los siguientes objetivos:
 
 # Entidades Principales
 
-El modelo de datos está compuesto por las siguientes entidades.
+El modelo de datos estÃ¡ compuesto por las siguientes entidades.
 
-| Entidad | Descripción |
+| Entidad | DescripciÃ³n |
 |----------|-------------|
 | **Users** | Usuarios registrados del sistema (clientes y administradores). |
-| **Addresses** | Direcciones de envío pertenecientes a cada usuario. |
+| **Addresses** | Direcciones de envÃ­o pertenecientes a cada usuario. |
 | **Products** | Productos comercializados por la tienda. |
-| **Categories** | Clasificación de productos del catálogo. |
+| **Categories** | ClasificaciÃ³n de productos del catÃ¡logo. |
 | **Orders** | Pedidos realizados por los clientes. |
 | **OrderItems** | Productos incluidos dentro de un pedido. |
-| **Reviews** | Reseñas realizadas por los clientes. |
-| **Wishlists** | Entidad utilizada como implementación del carrito de compras. |
-| **Category_Product** | Tabla pivote que relaciona productos y categorías. |
+| **Reviews** | ReseÃ±as realizadas por los clientes. |
+| **Wishlists** | Entidad utilizada como implementaciÃ³n del carrito de compras. |
+| **Category_Product** | Tabla pivote que relaciona productos y categorÃ­as. |
 
 ---
 
 # Relaciones
 
-## Usuario — Dirección
+## Usuario â€” DirecciÃ³n
 
-Un usuario puede registrar múltiples direcciones de envío.
-
-Cardinalidad:
-
-```text
-User (1) ──────────────── (N) Address
-```
-
----
-
-## Usuario — Pedido
-
-Cada pedido pertenece a un único usuario.
+Un usuario puede registrar mÃºltiples direcciones de envÃ­o.
 
 Cardinalidad:
 
 ```text
-User (1) ──────────────── (N) Order
+User (1) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ (N) Address
 ```
 
 ---
 
-## Dirección — Pedido
+## Usuario â€” Pedido
 
-Cada pedido utiliza una única dirección de envío.
-
-Una dirección puede ser reutilizada en distintos pedidos.
+Cada pedido pertenece a un Ãºnico usuario.
 
 Cardinalidad:
 
 ```text
-Address (1) ──────────────── (N) Order
+User (1) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ (N) Order
 ```
 
 ---
 
-## Pedido — Detalle del Pedido
+## DirecciÃ³n â€” Pedido
 
-Cada pedido contiene uno o más productos.
+Cada pedido utiliza una Ãºnica direcciÃ³n de envÃ­o.
 
-Esta relación se implementa mediante la entidad **OrderItem**.
+Una direcciÃ³n puede ser reutilizada en distintos pedidos.
 
 Cardinalidad:
 
 ```text
-Order (1) ──────────────── (N) OrderItem
+Address (1) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ (N) Order
 ```
 
 ---
 
-## Producto — Detalle del Pedido
+## Pedido â€” Detalle del Pedido
 
-Un mismo producto puede formar parte de múltiples pedidos.
+Cada pedido contiene uno o mÃ¡s productos.
+
+Esta relaciÃ³n se implementa mediante la entidad **OrderItem**.
 
 Cardinalidad:
 
 ```text
-Product (1) ──────────────── (N) OrderItem
+Order (1) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ (N) OrderItem
 ```
 
 ---
 
-## Producto — Categoría
+## Producto â€” Detalle del Pedido
 
-Los productos pueden pertenecer a múltiples categorías y cada categoría puede contener múltiples productos.
+Un mismo producto puede formar parte de mÃºltiples pedidos.
+
+Cardinalidad:
+
+```text
+Product (1) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ (N) OrderItem
+```
+
+---
+
+## Producto â€” CategorÃ­a
+
+Los productos pueden pertenecer a mÃºltiples categorÃ­as y cada categorÃ­a puede contener mÃºltiples productos.
 
 Se implementa mediante la tabla pivote:
 
@@ -131,55 +131,55 @@ category_product
 Cardinalidad:
 
 ```text
-Product (N) ──────────────── (N) Category
+Product (N) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ (N) Category
 ```
 
 ---
 
-## Usuario — Reseña
+## Usuario â€” ReseÃ±a
 
-Cada usuario puede publicar múltiples reseñas.
+Cada usuario puede publicar mÃºltiples reseÃ±as.
 
 Cardinalidad:
 
 ```text
-User (1) ──────────────── (N) Review
+User (1) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ (N) Review
 ```
 
 ---
 
-## Producto — Reseña
+## Producto â€” ReseÃ±a
 
-Cada producto puede recibir múltiples reseñas.
+Cada producto puede recibir mÃºltiples reseÃ±as.
 
 Cardinalidad:
 
 ```text
-Product (1) ──────────────── (N) Review
+Product (1) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ (N) Review
 ```
 
 ---
 
-## Usuario — Carrito de Compras
+## Usuario â€” Carrito de Compras
 
-La implementación actual utiliza la entidad **Wishlist** para representar el carrito de compras.
+La implementaciÃ³n actual utiliza la entidad **Wishlist** para representar el carrito de compras.
 
 Cardinalidad:
 
 ```text
-User (1) ──────────────── (N) Wishlist
+User (1) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ (N) Wishlist
 ```
 
 ---
 
-## Producto — Carrito de Compras
+## Producto â€” Carrito de Compras
 
-Cada registro del carrito referencia un único producto.
+Cada registro del carrito referencia un Ãºnico producto.
 
 Cardinalidad:
 
 ```text
-Product (1) ──────────────── (N) Wishlist
+Product (1) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ (N) Wishlist
 ```
 
 ---
@@ -203,29 +203,29 @@ Product (1) ──────────────── (N) Wishlist
 
 # Integridad Referencial
 
-El modelo implementa integridad referencial mediante claves foráneas administradas por Laravel.
+El modelo implementa integridad referencial mediante claves forÃ¡neas administradas por Laravel.
 
-Cada relación fue definida utilizando Migraciones y Eloquent ORM, garantizando la consistencia de los datos.
+Cada relaciÃ³n fue definida utilizando Migraciones y Eloquent ORM, garantizando la consistencia de los datos.
 
-Las claves foráneas permiten:
+Las claves forÃ¡neas permiten:
 
-- mantener relaciones válidas entre entidades;
-- evitar registros huérfanos;
-- facilitar la navegación mediante Eloquent;
+- mantener relaciones vÃ¡lidas entre entidades;
+- evitar registros huÃ©rfanos;
+- facilitar la navegaciÃ³n mediante Eloquent;
 - preservar la consistencia del modelo.
 
 ---
 
-# Normalización
+# NormalizaciÃ³n
 
-El diseño de la base de datos sigue criterios de normalización para minimizar redundancias y mantener la coherencia de la información.
+El diseÃ±o de la base de datos sigue criterios de normalizaciÃ³n para minimizar redundancias y mantener la coherencia de la informaciÃ³n.
 
 Entre las decisiones adoptadas se destacan:
 
-- separación de entidades según responsabilidades;
-- utilización de tablas pivote para relaciones N:M;
+- separaciÃ³n de entidades segÃºn responsabilidades;
+- utilizaciÃ³n de tablas pivote para relaciones N:M;
 - uso de claves primarias autoincrementales;
-- utilización de claves foráneas para mantener la integridad referencial.
+- utilizaciÃ³n de claves forÃ¡neas para mantener la integridad referencial.
 
 ---
 
@@ -239,29 +239,30 @@ Las relaciones fueron implementadas mediante:
 - `belongsTo()`
 - `belongsToMany()`
 
-Esta correspondencia mantiene sincronizado el modelo conceptual con la implementación realizada en Laravel.
+Esta correspondencia mantiene sincronizado el modelo conceptual con la implementaciÃ³n realizada en Laravel.
 
 ---
 
-# Documentación Relacionada
+# DocumentaciÃ³n Relacionada
 
 Este documento se complementa con:
 
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [07_UML](docs/07_UML.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
+- [02_ModeloDominio](02_ModeloDominio.md)
+- [03_BaseDatos](03_BaseDatos.md)
+- [07_UML](07_UML.md)
+- [10_DiccionarioDatos](10_DiccionarioDatos.md)
 
 Diagramas relacionados:
 
-- [diagramas/10_DER](docs/diagramas/10_DER].md)
-- [diagramas/11_ModeloDominio](docs/diagramas/11_ModeloDominio.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
+- [diagramas/10_DER](../diagramas/10_DER.md)
+- [diagramas/11_ModeloDominio](../diagramas/11_ModeloDominio.md)
+- [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md)
 
 ---
 
 # Consideraciones Finales
 
-El Modelo Entidad–Relación representa la estructura lógica sobre la que se construyó la aplicación **Rincón del Pan**.
+El Modelo Entidadâ€“RelaciÃ³n representa la estructura lÃ³gica sobre la que se construyÃ³ la aplicaciÃ³n **RincÃ³n del Pan**.
 
-La implementación mediante **Migraciones**, **Eloquent ORM** y **MySQL** permitió mantener una correspondencia directa entre el análisis funcional, el modelo de dominio y la base de datos, facilitando el mantenimiento, la evolución del proyecto y la incorporación de nuevas funcionalidades.
+La implementaciÃ³n mediante **Migraciones**, **Eloquent ORM** y **MySQL** permitiÃ³ mantener una correspondencia directa entre el anÃ¡lisis funcional, el modelo de dominio y la base de datos, facilitando el mantenimiento, la evoluciÃ³n del proyecto y la incorporaciÃ³n de nuevas funcionalidades.
+

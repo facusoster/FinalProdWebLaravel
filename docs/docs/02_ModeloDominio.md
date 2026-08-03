@@ -1,37 +1,37 @@
-# 🧩 Modelo de Dominio
+﻿# ðŸ§© Modelo de Dominio
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Lenguaje:** PHP 8.3.32
 
 ---
 
-# Introducción
+# IntroducciÃ³n
 
-El modelo de dominio describe las entidades principales que conforman **Rincón del Pan** y las relaciones funcionales existentes entre ellas.
+El modelo de dominio describe las entidades principales que conforman **RincÃ³n del Pan** y las relaciones funcionales existentes entre ellas.
 
-Su objetivo es representar el funcionamiento del negocio desde una perspectiva conceptual, independientemente de la implementación física de la base de datos.
+Su objetivo es representar el funcionamiento del negocio desde una perspectiva conceptual, independientemente de la implementaciÃ³n fÃ­sica de la base de datos.
 
-Este documento constituye el puente entre el relevamiento de requisitos y el diseño de la base de datos, permitiendo comprender cómo interactúan los distintos actores con la información administrada por el sistema.
+Este documento constituye el puente entre el relevamiento de requisitos y el diseÃ±o de la base de datos, permitiendo comprender cÃ³mo interactÃºan los distintos actores con la informaciÃ³n administrada por el sistema.
 
 ---
 
 # Dominio del Negocio
 
-**Rincón del Pan** es una aplicación web de comercio electrónico orientada a la comercialización de productos de panadería y pastelería.
+**RincÃ³n del Pan** es una aplicaciÃ³n web de comercio electrÃ³nico orientada a la comercializaciÃ³n de productos de panaderÃ­a y pastelerÃ­a.
 
 El sistema permite que un cliente:
 
-- Se registre e inicie sesión.
-- Explore el catálogo de productos.
+- Se registre e inicie sesiÃ³n.
+- Explore el catÃ¡logo de productos.
 - Agregue productos a su carrito de compras.
-- Gestione direcciones de envío.
+- Gestione direcciones de envÃ­o.
 - Realice pedidos.
 - Consulte el historial de compras.
-- Publique reseñas sobre productos adquiridos.
+- Publique reseÃ±as sobre productos adquiridos.
 
-Por otra parte, un administrador dispone de un panel para gestionar el catálogo y supervisar el estado de los pedidos.
+Por otra parte, un administrador dispone de un panel para gestionar el catÃ¡logo y supervisar el estado de los pedidos.
 
 ---
 
@@ -41,7 +41,7 @@ El dominio del sistema se encuentra compuesto por las siguientes entidades.
 
 ## User
 
-Representa a los usuarios registrados en la aplicación.
+Representa a los usuarios registrados en la aplicaciÃ³n.
 
 Existen dos perfiles principales:
 
@@ -50,11 +50,11 @@ Existen dos perfiles principales:
 
 Responsabilidades:
 
-- Autenticación.
-- Gestión de direcciones.
-- Gestión del carrito de compras.
-- Gestión de pedidos.
-- Publicación de reseñas.
+- AutenticaciÃ³n.
+- GestiÃ³n de direcciones.
+- GestiÃ³n del carrito de compras.
+- GestiÃ³n de pedidos.
+- PublicaciÃ³n de reseÃ±as.
 
 Relaciones:
 
@@ -67,9 +67,9 @@ Relaciones:
 
 ## Address
 
-Representa una dirección de envío perteneciente a un usuario.
+Representa una direcciÃ³n de envÃ­o perteneciente a un usuario.
 
-Permite registrar múltiples domicilios para facilitar futuras compras.
+Permite registrar mÃºltiples domicilios para facilitar futuras compras.
 
 Relaciones:
 
@@ -80,12 +80,12 @@ Relaciones:
 
 ## Product
 
-Representa un artículo comercializado por la tienda.
+Representa un artÃ­culo comercializado por la tienda.
 
-Cada producto almacena información como:
+Cada producto almacena informaciÃ³n como:
 
 - Nombre.
-- Descripción.
+- DescripciÃ³n.
 - Precio.
 - Stock disponible.
 - Imagen.
@@ -101,14 +101,14 @@ Relaciones:
 
 ## Category
 
-Agrupa los productos del catálogo según su clasificación comercial.
+Agrupa los productos del catÃ¡logo segÃºn su clasificaciÃ³n comercial.
 
 Ejemplos:
 
 - Panificados
 - Facturas
 - Tortas
-- Pastelería
+- PastelerÃ­a
 
 Relaciones:
 
@@ -123,7 +123,7 @@ Representa una compra realizada por un cliente.
 Cada pedido posee:
 
 - Usuario asociado.
-- Dirección de envío.
+- DirecciÃ³n de envÃ­o.
 - Estado.
 - Total de la compra.
 
@@ -155,11 +155,11 @@ Relaciones:
 
 ## Review
 
-Representa la valoración realizada por un cliente sobre un producto adquirido.
+Representa la valoraciÃ³n realizada por un cliente sobre un producto adquirido.
 
-Cada reseña contiene:
+Cada reseÃ±a contiene:
 
-- Puntuación.
+- PuntuaciÃ³n.
 - Comentario.
 
 Relaciones:
@@ -171,12 +171,12 @@ Relaciones:
 
 ## Wishlist
 
-En la implementación actual del proyecto, esta entidad se utiliza como **carrito de compras**.
+En la implementaciÃ³n actual del proyecto, esta entidad se utiliza como **carrito de compras**.
 
 Permite asociar productos seleccionados por el cliente antes de confirmar un pedido.
 
 > [!note]
-> Aunque el nombre técnico de la entidad y de la tabla es **Wishlist**, funcionalmente representa el **carrito de compras** del sistema.
+> Aunque el nombre tÃ©cnico de la entidad y de la tabla es **Wishlist**, funcionalmente representa el **carrito de compras** del sistema.
 
 Relaciones:
 
@@ -187,7 +187,7 @@ Relaciones:
 
 # Relaciones del Dominio
 
-| Entidad | Relación | Entidad |
+| Entidad | RelaciÃ³n | Entidad |
 |----------|----------|----------|
 | User | 1:N | Address |
 | User | 1:N | Order |
@@ -204,34 +204,34 @@ Relaciones:
 
 # Reglas del Negocio
 
-Durante el análisis del dominio se establecieron las siguientes reglas principales:
+Durante el anÃ¡lisis del dominio se establecieron las siguientes reglas principales:
 
-- Un usuario puede registrar múltiples direcciones de envío.
-- Un producto puede pertenecer a varias categorías.
-- Una categoría puede contener múltiples productos.
-- Cada pedido pertenece a un único cliente.
+- Un usuario puede registrar mÃºltiples direcciones de envÃ­o.
+- Un producto puede pertenecer a varias categorÃ­as.
+- Una categorÃ­a puede contener mÃºltiples productos.
+- Cada pedido pertenece a un Ãºnico cliente.
 - Un pedido debe contener al menos un producto.
 - Cada pedido registra el importe total de la compra.
-- Un cliente únicamente puede consultar sus propios pedidos.
-- Solo los administradores pueden gestionar el catálogo.
+- Un cliente Ãºnicamente puede consultar sus propios pedidos.
+- Solo los administradores pueden gestionar el catÃ¡logo.
 - Solo los administradores pueden modificar el estado de un pedido.
-- Un cliente puede publicar reseñas únicamente sobre productos adquiridos.
+- Un cliente puede publicar reseÃ±as Ãºnicamente sobre productos adquiridos.
 - El carrito de compras pertenece exclusivamente al usuario autenticado.
 
 ---
 
 # Modelo Conceptual
 
-El dominio fue diseñado para representar las operaciones habituales de un comercio electrónico, manteniendo una separación clara entre:
+El dominio fue diseÃ±ado para representar las operaciones habituales de un comercio electrÃ³nico, manteniendo una separaciÃ³n clara entre:
 
-- Gestión de usuarios.
-- Gestión del catálogo.
-- Gestión de pedidos.
-- Gestión del carrito.
-- Gestión de direcciones.
-- Gestión de reseñas.
+- GestiÃ³n de usuarios.
+- GestiÃ³n del catÃ¡logo.
+- GestiÃ³n de pedidos.
+- GestiÃ³n del carrito.
+- GestiÃ³n de direcciones.
+- GestiÃ³n de reseÃ±as.
 
-Cada módulo mantiene responsabilidades bien definidas y se comunica mediante relaciones establecidas en el modelo de datos.
+Cada mÃ³dulo mantiene responsabilidades bien definidas y se comunica mediante relaciones establecidas en el modelo de datos.
 
 ---
 
@@ -245,30 +245,31 @@ Los modelos implementan las relaciones utilizando:
 - belongsTo()
 - belongsToMany()
 
-Esta correspondencia permite mantener alineado el modelo conceptual con la implementación física de la aplicación.
+Esta correspondencia permite mantener alineado el modelo conceptual con la implementaciÃ³n fÃ­sica de la aplicaciÃ³n.
 
 ---
 
-# Relación con la Documentación
+# RelaciÃ³n con la DocumentaciÃ³n
 
 El modelo de dominio se complementa con los siguientes documentos:
 
-- [00_AnalisisRequisitos](docs/docs/00_AnalisisRequisitos.md)
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [07_UML](docs/07_UML.md)
+- [00_AnalisisRequisitos](00_AnalisisRequisitos.md)
+- [01_Arquitectura](01_Arquitectura.md)
+- [03_BaseDatos](03_BaseDatos.md)
+- [04_DER](04_DER.md)
+- [05_CasosUso](05_CasosUso.md)
+- [07_UML](07_UML.md)
 
 Diagramas relacionados:
 
-- [diagramas/11_ModeloDominio](docs/diagramas/11_ModeloDominio.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
+- [diagramas/11_ModeloDominio](../diagramas/11_ModeloDominio.md)
+- [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md)
 
 ---
 
 # Conclusiones
 
-El modelo de dominio define la estructura conceptual de **Rincón del Pan** y constituye la base para el diseño de la base de datos y la implementación de la lógica de negocio.
+El modelo de dominio define la estructura conceptual de **RincÃ³n del Pan** y constituye la base para el diseÃ±o de la base de datos y la implementaciÃ³n de la lÃ³gica de negocio.
 
-Su correcta definición permitió construir una aplicación organizada, coherente y alineada con los requisitos funcionales establecidos durante la etapa de análisis.
+Su correcta definiciÃ³n permitiÃ³ construir una aplicaciÃ³n organizada, coherente y alineada con los requisitos funcionales establecidos durante la etapa de anÃ¡lisis.
+

@@ -263,7 +263,7 @@ La implementación de la API REST forma parte de los requisitos del trabajo prá
 
 Su documentación estará disponible en:
 
-- `06_API_REST.md`
+- [06_API_REST](docs/docs/06_API_REST.md)
 
 ---
 

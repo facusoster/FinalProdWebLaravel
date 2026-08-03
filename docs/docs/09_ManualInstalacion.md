@@ -1,21 +1,21 @@
-# 🛠️ Manual de Instalación
+﻿# ðŸ› ï¸ Manual de InstalaciÃ³n
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Lenguaje:** PHP 8.3.32
 
 ---
 
-# Introducción
+# IntroducciÃ³n
 
-Este documento describe el procedimiento recomendado para instalar y ejecutar el proyecto **Rincón del Pan** en un entorno local de desarrollo.
+Este documento describe el procedimiento recomendado para instalar y ejecutar el proyecto **RincÃ³n del Pan** en un entorno local de desarrollo.
 
-El objetivo es permitir que cualquier integrante del equipo pueda reconstruir completamente el entorno de trabajo utilizando únicamente el repositorio del proyecto y las herramientas necesarias.
+El objetivo es permitir que cualquier integrante del equipo pueda reconstruir completamente el entorno de trabajo utilizando Ãºnicamente el repositorio del proyecto y las herramientas necesarias.
 
-La configuración detallada del entorno utilizado durante el desarrollo puede consultarse en:
+La configuraciÃ³n detallada del entorno utilizado durante el desarrollo puede consultarse en:
 
-➡️ [setup-local-dev](docs/setup-local-dev.md)
+âž¡ï¸ [setup-local-dev](../setup-local-dev.md)
 
 ---
 
@@ -23,15 +23,15 @@ La configuración detallada del entorno utilizado durante el desarrollo puede co
 
 Antes de comenzar, se recomienda contar con el siguiente software instalado.
 
-| Software | Versión recomendada |
+| Software | VersiÃ³n recomendada |
 |-----------|---------------------|
 | PHP | 8.3.32 o superior |
-| Composer | Última versión estable |
+| Composer | Ãšltima versiÃ³n estable |
 | MySQL | 8.x |
-| Docker Desktop | Última versión |
-| Git | Última versión |
+| Docker Desktop | Ãšltima versiÃ³n |
+| Git | Ãšltima versiÃ³n |
 | Visual Studio Code | Opcional |
-| Obsidian | Opcional (documentación) |
+| Obsidian | Opcional (documentaciÃ³n) |
 
 ---
 
@@ -59,7 +59,7 @@ Instalar todas las dependencias definidas por Composer.
 composer install
 ```
 
-Este comando descargará automáticamente todos los paquetes definidos en `composer.json`.
+Este comando descargarÃ¡ automÃ¡ticamente todos los paquetes definidos en `composer.json`.
 
 ---
 
@@ -71,7 +71,7 @@ Copiar el archivo de ejemplo.
 cp .env.example .env
 ```
 
-En Windows PowerShell también puede utilizarse:
+En Windows PowerShell tambiÃ©n puede utilizarse:
 
 ```powershell
 Copy-Item .env.example .env
@@ -82,7 +82,7 @@ Editar posteriormente el archivo `.env` con los datos correspondientes al entorn
 Ejemplo:
 
 ```dotenv
-APP_NAME="Rincón del Pan"
+APP_NAME="RincÃ³n del Pan"
 
 APP_ENV=local
 APP_DEBUG=true
@@ -93,7 +93,7 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=<nombre_base>
 DB_USERNAME=<usuario>
-DB_PASSWORD=<contraseña>
+DB_PASSWORD=<contraseÃ±a>
 ```
 
 > [!warning]
@@ -103,7 +103,7 @@ DB_PASSWORD=<contraseña>
 
 # Generar la Clave de Laravel
 
-Laravel requiere generar una clave única para el proyecto.
+Laravel requiere generar una clave Ãºnica para el proyecto.
 
 Ejecutar:
 
@@ -111,13 +111,13 @@ Ejecutar:
 php artisan key:generate
 ```
 
-El comando actualizará automáticamente la variable `APP_KEY` del archivo `.env`.
+El comando actualizarÃ¡ automÃ¡ticamente la variable `APP_KEY` del archivo `.env`.
 
 ---
 
 # Crear la Base de Datos
 
-Crear previamente una base de datos vacía en MySQL.
+Crear previamente una base de datos vacÃ­a en MySQL.
 
 Por ejemplo:
 
@@ -125,7 +125,7 @@ Por ejemplo:
 rincon_del_pan
 ```
 
-La base deberá coincidir con el nombre configurado en el archivo `.env`.
+La base deberÃ¡ coincidir con el nombre configurado en el archivo `.env`.
 
 ---
 
@@ -147,7 +147,7 @@ Generar los registros de prueba mediante Seeders.
 php artisan db:seed
 ```
 
-También es posible realizar ambos pasos simultáneamente.
+TambiÃ©n es posible realizar ambos pasos simultÃ¡neamente.
 
 ```bash
 php artisan migrate --seed
@@ -179,7 +179,7 @@ Durante el desarrollo:
 npm run dev
 ```
 
-Para producción:
+Para producciÃ³n:
 
 ```bash
 npm run build
@@ -195,7 +195,7 @@ Ejecutar:
 php artisan serve
 ```
 
-La aplicación estará disponible en:
+La aplicaciÃ³n estarÃ¡ disponible en:
 
 ```text
 http://127.0.0.1:8000
@@ -205,7 +205,7 @@ http://127.0.0.1:8000
 
 # Usuarios de Prueba
 
-Los usuarios iniciales son creados automáticamente por los Seeders.
+Los usuarios iniciales son creados automÃ¡ticamente por los Seeders.
 
 Las credenciales exactas pueden consultarse en los archivos de seed correspondientes dentro de:
 
@@ -214,13 +214,13 @@ database/seeders/
 ```
 
 > [!note]
-> En la documentación pública no se incluyen credenciales reales para evitar exponer información sensible.
+> En la documentaciÃ³n pÃºblica no se incluyen credenciales reales para evitar exponer informaciÃ³n sensible.
 
 ---
 
 # Estructura Esperada
 
-Una vez finalizada la instalación, el proyecto debería presentar una estructura similar a la siguiente.
+Una vez finalizada la instalaciÃ³n, el proyecto deberÃ­a presentar una estructura similar a la siguiente.
 
 ```text
 app/
@@ -242,22 +242,22 @@ vite.config.js
 
 ---
 
-# Verificación de la Instalación
+# VerificaciÃ³n de la InstalaciÃ³n
 
-La instalación puede considerarse correcta cuando:
+La instalaciÃ³n puede considerarse correcta cuando:
 
 - Laravel inicia sin errores.
-- La página principal responde correctamente.
+- La pÃ¡gina principal responde correctamente.
 - La base de datos contiene todas las tablas.
-- Los Seeders generan información de prueba.
-- Es posible iniciar sesión con usuarios generados por el sistema.
+- Los Seeders generan informaciÃ³n de prueba.
+- Es posible iniciar sesiÃ³n con usuarios generados por el sistema.
 - El panel administrativo funciona correctamente para usuarios con rol de administrador.
 
 ---
 
 # Problemas Frecuentes
 
-## Error de conexión con MySQL
+## Error de conexiÃ³n con MySQL
 
 Verificar:
 
@@ -294,9 +294,9 @@ npm install
 
 ---
 
-## Caché de Configuración
+## CachÃ© de ConfiguraciÃ³n
 
-Si se modificó el archivo `.env`, limpiar la caché.
+Si se modificÃ³ el archivo `.env`, limpiar la cachÃ©.
 
 ```bash
 php artisan optimize:clear
@@ -304,7 +304,7 @@ php artisan optimize:clear
 
 ---
 
-# Actualización del Proyecto
+# ActualizaciÃ³n del Proyecto
 
 Para actualizar el proyecto desde Git:
 
@@ -324,15 +324,15 @@ En caso de existir nuevas migraciones.
 
 ---
 
-# Configuración del Entorno
+# ConfiguraciÃ³n del Entorno
 
-La configuración completa del entorno de desarrollo utilizado durante la realización del proyecto se encuentra documentada en:
+La configuraciÃ³n completa del entorno de desarrollo utilizado durante la realizaciÃ³n del proyecto se encuentra documentada en:
 
-➡️ [setup-local-dev](docs/setup-local-dev.md)
+âž¡ï¸ [setup-local-dev](../setup-local-dev.md)
 
 Este documento incluye:
 
-- Instalación de PHP.
+- InstalaciÃ³n de PHP.
 - Composer.
 - Docker Desktop.
 - MySQL.
@@ -340,22 +340,23 @@ Este documento incluye:
 - Git.
 - GitHub.
 - Visual Studio Code.
-- Configuración inicial del proyecto Laravel.
+- ConfiguraciÃ³n inicial del proyecto Laravel.
 
 ---
 
-# Documentación Relacionada
+# DocumentaciÃ³n Relacionada
 
-- [README](README.md)
-- [HOME](docs/HOME.md)
-- [setup-local-dev](docs/setup-local-dev.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
+- [README](../../README.md)
+- [HOME](../HOME.md)
+- [setup-local-dev](../setup-local-dev.md)
+- [08_ManualTecnico](08_ManualTecnico.md)
+- [03_BaseDatos](03_BaseDatos.md)
 
 ---
 
 # Consideraciones Finales
 
-El proyecto **Rincón del Pan** fue desarrollado siguiendo las convenciones oficiales de **Laravel Framework 13** y puede ser reconstruido completamente a partir del repositorio utilizando las migraciones, los seeders y el archivo `.env.example`.
+El proyecto **RincÃ³n del Pan** fue desarrollado siguiendo las convenciones oficiales de **Laravel Framework 13** y puede ser reconstruido completamente a partir del repositorio utilizando las migraciones, los seeders y el archivo `.env.example`.
 
-La separación entre el **Manual de Instalación** y el documento **setup-local-dev** permite distinguir el procedimiento general de despliegue del proyecto respecto de la configuración específica del entorno de desarrollo utilizado por el equipo.
+La separaciÃ³n entre el **Manual de InstalaciÃ³n** y el documento **setup-local-dev** permite distinguir el procedimiento general de despliegue del proyecto respecto de la configuraciÃ³n especÃ­fica del entorno de desarrollo utilizado por el equipo.
+

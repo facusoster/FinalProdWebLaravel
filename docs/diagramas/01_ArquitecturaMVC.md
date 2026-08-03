@@ -1,20 +1,20 @@
-# 🏛️ Arquitectura MVC
+﻿# ðŸ›ï¸ Arquitectura MVC
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Lenguaje:** PHP 8.3.32  
-> **Patrón Arquitectónico:** Modelo - Vista - Controlador (MVC)
+> **PatrÃ³n ArquitectÃ³nico:** Modelo - Vista - Controlador (MVC)
 
 ---
 
 # Objetivo
 
-Este diagrama representa la arquitectura general de **Rincón del Pan**, desarrollada siguiendo el patrón **MVC (Model–View–Controller)** propuesto por Laravel.
+Este diagrama representa la arquitectura general de **RincÃ³n del Pan**, desarrollada siguiendo el patrÃ³n **MVC (Modelâ€“Viewâ€“Controller)** propuesto por Laravel.
 
-Su propósito es mostrar el flujo de una solicitud desde que un usuario interactúa con la aplicación hasta que se genera la respuesta HTML correspondiente.
+Su propÃ³sito es mostrar el flujo de una solicitud desde que un usuario interactÃºa con la aplicaciÃ³n hasta que se genera la respuesta HTML correspondiente.
 
-Este diagrama complementa la explicación desarrollada en [01_Arquitectura](docs/docs/01_Arquitectura.md).
+Este diagrama complementa la explicaciÃ³n desarrollada en [01_Arquitectura](../docs/01_Arquitectura.md).
 
 ---
 
@@ -23,52 +23,52 @@ Este diagrama complementa la explicación desarrollada en [01_Arquitectura](docs
 ```mermaid
 flowchart LR
 
-    A["👤 Usuario"] --> B["🌐 Routes<br/>routes/web.php"]
+    A["ðŸ‘¤ Usuario"] --> B["ðŸŒ Routes<br/>routes/web.php"]
 
-    B --> C["🛡️ Middleware"]
+    B --> C["ðŸ›¡ï¸ Middleware"]
 
-    C --> D["🎮 Controllers"]
+    C --> D["ðŸŽ® Controllers"]
 
-    D --> E["📦 Models<br/>Eloquent ORM"]
+    D --> E["ðŸ“¦ Models<br/>Eloquent ORM"]
 
-    E --> F[("🗄️ MySQL")]
+    E --> F[("ðŸ—„ï¸ MySQL")]
 
-    D --> G["🖥️ Blade Views"]
+    D --> G["ðŸ–¥ï¸ Blade Views"]
 
-    G --> H["📄 HTML"]
+    G --> H["ðŸ“„ HTML"]
 
     H --> A
 
-    D -. Utiliza .-> I["📄 Form Requests"]
+    D -. Utiliza .-> I["ðŸ“„ Form Requests"]
 
-    D -. Consulta .-> J["⚙️ Config"]
+    D -. Consulta .-> J["âš™ï¸ Config"]
 
-    K["🛠️ Migrations"] --> F
+    K["ðŸ› ï¸ Migrations"] --> F
 
-    L["🌱 Seeders"] --> F
+    L["ðŸŒ± Seeders"] --> F
 ```
 
 ---
 
-# Descripción del Flujo
+# DescripciÃ³n del Flujo
 
 El procesamiento de una solicitud dentro del sistema sigue las siguientes etapas:
 
-1. El usuario realiza una petición desde el navegador.
+1. El usuario realiza una peticiÃ³n desde el navegador.
 2. Laravel identifica la ruta correspondiente en `routes/web.php`.
-3. Los **Middleware** verifican autenticación y permisos antes de permitir el acceso.
-4. El **Controller** recibe la solicitud y coordina la lógica de negocio.
-5. Cuando es necesario acceder a información persistente, el controlador utiliza los **Models**, que interactúan con la base de datos mediante **Eloquent ORM**.
-6. El controlador obtiene los datos necesarios y los envía a una **Vista Blade**.
-7. Blade genera el HTML final que será enviado nuevamente al navegador.
+3. Los **Middleware** verifican autenticaciÃ³n y permisos antes de permitir el acceso.
+4. El **Controller** recibe la solicitud y coordina la lÃ³gica de negocio.
+5. Cuando es necesario acceder a informaciÃ³n persistente, el controlador utiliza los **Models**, que interactÃºan con la base de datos mediante **Eloquent ORM**.
+6. El controlador obtiene los datos necesarios y los envÃ­a a una **Vista Blade**.
+7. Blade genera el HTML final que serÃ¡ enviado nuevamente al navegador.
 
 ---
 
 # Componentes
 
-## 👤 Usuario
+## ðŸ‘¤ Usuario
 
-Representa al actor que interactúa con el sistema mediante un navegador web.
+Representa al actor que interactÃºa con el sistema mediante un navegador web.
 
 Puede tratarse de:
 
@@ -77,11 +77,11 @@ Puede tratarse de:
 
 ---
 
-## 🌐 Routes
+## ðŸŒ Routes
 
-Las rutas definen los puntos de entrada de la aplicación.
+Las rutas definen los puntos de entrada de la aplicaciÃ³n.
 
-Su función consiste en asociar una URL con el controlador responsable de procesar la solicitud.
+Su funciÃ³n consiste en asociar una URL con el controlador responsable de procesar la solicitud.
 
 Archivo principal:
 
@@ -91,33 +91,33 @@ routes/web.php
 
 ---
 
-## 🛡️ Middleware
+## ðŸ›¡ï¸ Middleware
 
 Los Middleware interceptan las solicitudes HTTP antes de llegar al controlador.
 
 Entre sus responsabilidades se encuentran:
 
-- Verificar autenticación.
+- Verificar autenticaciÃ³n.
 - Validar permisos.
 - Restringir el acceso al panel administrativo.
 
 ---
 
-## 🎮 Controllers
+## ðŸŽ® Controllers
 
-Los controladores implementan la lógica de aplicación.
+Los controladores implementan la lÃ³gica de aplicaciÃ³n.
 
 Sus responsabilidades incluyen:
 
 - Recibir solicitudes HTTP.
-- Validar información.
-- Coordinar la lógica de negocio.
+- Validar informaciÃ³n.
+- Coordinar la lÃ³gica de negocio.
 - Consultar modelos.
 - Seleccionar la vista correspondiente.
 
 ---
 
-## 📦 Models
+## ðŸ“¦ Models
 
 Los modelos representan las entidades del dominio.
 
@@ -136,9 +136,9 @@ Los principales modelos del proyecto son:
 
 ---
 
-## 🗄️ Base de Datos
+## ðŸ—„ï¸ Base de Datos
 
-Toda la información se almacena en una base de datos **MySQL**.
+Toda la informaciÃ³n se almacena en una base de datos **MySQL**.
 
 La estructura se administra mediante:
 
@@ -148,7 +148,7 @@ La estructura se administra mediante:
 
 ---
 
-## 🖥️ Blade Views
+## ðŸ–¥ï¸ Blade Views
 
 Blade es el motor de plantillas utilizado por Laravel.
 
@@ -157,28 +157,28 @@ Permite:
 - Reutilizar layouts.
 - Crear componentes.
 - Organizar vistas.
-- Separar presentación y lógica.
+- Separar presentaciÃ³n y lÃ³gica.
 
 ---
 
-## 📄 Form Requests
+## ðŸ“„ Form Requests
 
-Las validaciones de formularios se implementan mediante **Form Requests**, manteniendo los controladores limpios y favoreciendo la reutilización de reglas de validación.
+Las validaciones de formularios se implementan mediante **Form Requests**, manteniendo los controladores limpios y favoreciendo la reutilizaciÃ³n de reglas de validaciÃ³n.
 
 ---
 
-## ⚙️ Configuración
+## âš™ï¸ ConfiguraciÃ³n
 
-Laravel centraliza la configuración del sistema mediante:
+Laravel centraliza la configuraciÃ³n del sistema mediante:
 
 - Archivos ubicados en `config/`
 - Variables definidas en `.env`
 
-Esto permite desacoplar la configuración del código fuente.
+Esto permite desacoplar la configuraciÃ³n del cÃ³digo fuente.
 
 ---
 
-## 🛠️ Migraciones
+## ðŸ› ï¸ Migraciones
 
 Las migraciones permiten construir la estructura completa de la base de datos desde cero.
 
@@ -186,48 +186,49 @@ Facilitan el versionado del esquema y el trabajo colaborativo.
 
 ---
 
-## 🌱 Seeders
+## ðŸŒ± Seeders
 
-Los Seeders generan información inicial para el desarrollo y las pruebas.
+Los Seeders generan informaciÃ³n inicial para el desarrollo y las pruebas.
 
 Incluyen registros de:
 
 - Usuarios
-- Categorías
+- CategorÃ­as
 - Productos
 - Direcciones
 - Pedidos
-- Reseñas
+- ReseÃ±as
 - Carrito de compras
 
 ---
 
-# Características de la Arquitectura
+# CaracterÃ­sticas de la Arquitectura
 
-La implementación sigue las recomendaciones oficiales de Laravel:
+La implementaciÃ³n sigue las recomendaciones oficiales de Laravel:
 
-- Separación clara de responsabilidades.
+- SeparaciÃ³n clara de responsabilidades.
 - Uso de Eloquent ORM.
 - Motor de plantillas Blade.
-- Middleware para autenticación y autorización.
+- Middleware para autenticaciÃ³n y autorizaciÃ³n.
 - Migraciones versionadas.
 - Seeders para datos de prueba.
-- Configuración mediante variables de entorno.
-- Organización modular del proyecto.
+- ConfiguraciÃ³n mediante variables de entorno.
+- OrganizaciÃ³n modular del proyecto.
 
 ---
 
-# Documentación Relacionada
+# DocumentaciÃ³n Relacionada
 
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [01_Arquitectura](../docs/01_Arquitectura.md)
+- [02_ModeloDominio](../docs/02_ModeloDominio.md)
+- [03_BaseDatos](../docs/03_BaseDatos.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
 
 ---
 
 # Consideraciones Finales
 
-La arquitectura implementada en **Rincón del Pan** adopta el patrón **MVC** propuesto por Laravel, promoviendo una estructura organizada, mantenible y escalable.
+La arquitectura implementada en **RincÃ³n del Pan** adopta el patrÃ³n **MVC** propuesto por Laravel, promoviendo una estructura organizada, mantenible y escalable.
 
-La separación entre rutas, middleware, controladores, modelos, vistas y base de datos facilita la evolución del proyecto y permite incorporar nuevas funcionalidades respetando las buenas prácticas del framework.
+La separaciÃ³n entre rutas, middleware, controladores, modelos, vistas y base de datos facilita la evoluciÃ³n del proyecto y permite incorporar nuevas funcionalidades respetando las buenas prÃ¡cticas del framework.
+
