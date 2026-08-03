@@ -23,6 +23,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('products.index') }}">Productos</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('categories.index') }}">Categorías</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('admin.orders.index') }}">Pedidos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.reviews.index') }}">Reseñas</a></li>
                 </ul>
 
                 <form class="d-flex align-items-center" action="{{ route('logout') }}" method="POST">

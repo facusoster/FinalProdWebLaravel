@@ -80,7 +80,12 @@ class OrderController extends Controller
 
         $order->load('items.product', 'address');
 
-        return view('clients.orders.show', compact('order'));
+        $reviewedProductIds = Review::where('user_id', Auth::id())
+            ->whereIn('product_id', $order->items->pluck('product_id'))
+            ->pluck('product_id')
+            ->toArray();
+
+        return view('clients.orders.show', compact('order', 'reviewedProductIds'));
     }
 
     public function cancel(Order $order)
