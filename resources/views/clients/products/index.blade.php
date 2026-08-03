@@ -59,10 +59,19 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">{{ $product->name }}</h5>
                             <p class="text-muted mb-3">${{ number_format($product->price, 2, ',', '.') }}</p>
-                            <form action="{{ route('wishlist.add', $product->id) }}" method="POST" class="mt-auto wishlist-add-form">
-                                @csrf
-                                <button type="submit" class="btn btn-green w-100">Agregar al carrito</button>
-                            </form>
+
+                            {{-- ===== INICIO: Control de stock ===== --}}
+                            @if($product->stock > 0)
+                                <form action="{{ route('wishlist.add', $product->id) }}" method="POST" class="mt-auto wishlist-add-form">
+                                    @csrf
+                                    <button type="submit" class="btn btn-green w-100">Agregar al carrito</button>
+                                </form>
+                                <small class="text-muted mt-1">Stock: {{ $product->stock }}</small>
+                            @else
+                                <button type="button" class="btn btn-secondary w-100 mt-auto" disabled>Sin stock</button>
+                                <small class="text-danger mt-1">Agotado</small>
+                            @endif
+                            {{-- ===== FIN: Control de stock ===== --}}
                         </div>
                     </div>
                 </div>
@@ -105,7 +114,15 @@
                     },
                     body: formData,
                 })
-                .then(response => response.json())
+                .then(async response => {
+                    // El backend puede devolver JSON o HTML (ej. error de validación)
+                    const contentType = response.headers.get('content-type') || '';
+                    if (contentType.includes('application/json')) {
+                        return response.json();
+                    }
+                    // Si no es JSON, forzamos un error para caer en el catch
+                    throw new Error('Respuesta inesperada del servidor');
+                })
                 .then(data => {
                     if (data.success) {
                         showFeedback(data.message || 'Producto agregado al carrito');

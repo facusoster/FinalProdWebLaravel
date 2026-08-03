@@ -62,7 +62,7 @@ La lógica de negocio se implementa mediante:
 
 La arquitectura completa puede consultarse en:
 
-➡️ [[docs/01_Arquitectura]]
+➡️ [docs/01_Arquitectura](docs/docs/01_Arquitectura.md)
 
 ---
 
@@ -82,9 +82,9 @@ Las entidades principales son:
 
 La documentación correspondiente puede consultarse en:
 
-- [[docs/02_ModeloDominio]]
-- [[docs/03_BaseDatos]]
-- [[docs/04_DER]]
+- [docs/02_ModeloDominio](docs/docs/02_ModeloDominio.md)
+- [docs/03_BaseDatos](docs/docs/03_BaseDatos.md)
+- [docs/04_DER](docs/docs/04_DER.md)
 
 ---
 

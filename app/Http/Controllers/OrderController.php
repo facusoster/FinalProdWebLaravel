@@ -42,14 +42,27 @@ class OrderController extends Controller
             ->get();
 
         if ($wishlist->isEmpty()) {
-            return back()->withErrors('El carrito está vacío.');
+            return back()->withErrors(['cart' => 'El carrito está vacío.']);
+        }
+
+        /* ---------------------------------------------------------
+         * VALIDACIÓN DE STOCK ANTES DE GENERAR LA ORDEN
+         * --------------------------------------------------------- */
+        foreach ($wishlist as $item) {
+            if ($item->product->stock < $item->quantity) {
+                return back()->withErrors([
+                    'stock' => "Stock insuficiente para \"{$item->product->name}\".
+                               Disponible: {$item->product->stock},
+                               Solicitado: {$item->quantity}"
+                ]);
+            }
         }
 
         $order = Order::create([
-            'user_id' => Auth::id(),
+            'user_id'    => Auth::id(),
             'address_id' => $request->address_id,
-            'status' => 'pending',
-            'total' => 0,
+            'status'     => 'pending',
+            'total'      => 0,
         ]);
 
         $total = 0;
@@ -58,12 +71,15 @@ class OrderController extends Controller
             $subtotal = $item->product->price * $item->quantity;
 
             OrderItem::create([
-                'order_id' => $order->id,
+                'order_id'   => $order->id,
                 'product_id' => $item->product_id,
-                'quantity' => $item->quantity,
+                'quantity'   => $item->quantity,
                 'unit_price' => $item->product->price,
-                'subtotal' => $subtotal,
+                'subtotal'   => $subtotal,
             ]);
+
+            // DESCUENTO INMEDIATO DEL STOCK (reserva)
+            $item->product->decrement('stock', $item->quantity);
 
             $total += $subtotal;
         }
@@ -94,7 +110,13 @@ class OrderController extends Controller
         abort_unless($order->user_id === Auth::id(), 403);
 
         if ($order->status !== 'pending') {
-            return back()->withErrors('Solo se pueden cancelar pedidos pendientes.');
+            return back()->withErrors(['status' => 'Solo se pueden cancelar pedidos pendientes.']);
+        }
+
+        // RESTAURAR STOCK AL CANCELAR
+        $order->load('items.product');
+        foreach ($order->items as $item) {
+            $item->product->increment('stock', $item->quantity);
         }
 
         $order->update(['status' => 'cancelled']);

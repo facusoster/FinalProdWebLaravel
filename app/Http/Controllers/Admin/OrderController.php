@@ -13,9 +13,6 @@ class OrderController extends Controller
         abort_unless(auth()->check() && auth()->user()->isAdmin(), 403);
     }
 
-    /* ---------------------------------------------------------
-     * LISTADO DE PEDIDOS
-     * --------------------------------------------------------- */
     public function index()
     {
         $orders = Order::with(['user', 'address'])
@@ -25,9 +22,6 @@ class OrderController extends Controller
         return view('admin.orders.index', compact('orders'));
     }
 
-    /* ---------------------------------------------------------
-     * DETALLE DE PEDIDO
-     * --------------------------------------------------------- */
     public function show(Order $order)
     {
         $order->load(['items.product', 'user', 'address']);
@@ -35,9 +29,6 @@ class OrderController extends Controller
         return view('admin.orders.show', compact('order'));
     }
 
-    /* ---------------------------------------------------------
-     * ACTUALIZAR ESTADO
-     * --------------------------------------------------------- */
     public function updateStatus(Request $request, Order $order)
     {
         $request->validate([
@@ -45,8 +36,8 @@ class OrderController extends Controller
         ]);
 
         $newStatus = $request->status;
+        $oldStatus = $order->status;
 
-        // Validación de transiciones permitidas
         $allowedTransitions = [
             'pending'    => ['processing', 'cancelled'],
             'processing' => ['completed', 'cancelled'],
@@ -60,6 +51,14 @@ class OrderController extends Controller
             ]);
         }
 
+        // Si se cancela desde el admin, devolver stock al inventario
+        if ($newStatus === 'cancelled' && $oldStatus !== 'cancelled') {
+            $order->load('items.product');
+            foreach ($order->items as $item) {
+                $item->product->increment('stock', $item->quantity);
+            }
+        }
+
         $order->update(['status' => $newStatus]);
 
         return redirect()
@@ -67,15 +66,18 @@ class OrderController extends Controller
             ->with('status', 'Estado actualizado correctamente.');
     }
 
-    /* ---------------------------------------------------------
-     * CANCELAR PEDIDO
-     * --------------------------------------------------------- */
     public function cancel(Order $order)
     {
         if (! in_array($order->status, ['pending', 'processing'])) {
             return back()->withErrors([
                 'status' => 'No se puede cancelar un pedido en estado: ' . $order->status,
             ]);
+        }
+
+        // RESTAURAR STOCK
+        $order->load('items.product');
+        foreach ($order->items as $item) {
+            $item->product->increment('stock', $item->quantity);
         }
 
         $order->update(['status' => 'cancelled']);

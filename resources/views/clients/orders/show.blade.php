@@ -7,7 +7,11 @@
     <div class="card mb-4">
         <div class="card-body">
             <p class="mb-1"><strong>Total:</strong> ${{ number_format($order->total, 2, ',', '.') }}</p>
-            <p class="mb-1"><strong>Estado:</strong> <span class="badge bg-secondary">{{ ucfirst($order->status) }}</span></p>
+            <p class="mb-1"><strong>Estado:</strong>
+                <span class="badge bg-{{ $order->status === 'completed' ? 'success' : ($order->status === 'cancelled' ? 'danger' : 'secondary') }}">
+                    {{ ucfirst($order->status) }}
+                </span>
+            </p>
             <p class="mb-0"><strong>Dirección:</strong> {{ $order->address->street }}, {{ $order->address->city }}</p>
         </div>
     </div>
@@ -23,10 +27,24 @@
             <h3 class="h6 mb-3">Resumen de productos</h3>
             <div class="list-group list-group-flush rounded-4 overflow-hidden">
                 @foreach ($order->items as $item)
-                <div class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center border-0 border-bottom">
+                <div class="list-group-item px-0 py-3 d-flex justify-content-between align-items-start border-0 border-bottom">
                     <div>
                         <div class="fw-semibold">{{ $item->quantity }}x {{ $item->product->name }}</div>
                         <small class="text-muted">${{ number_format($item->product->price, 2, ',', '.') }} c/u</small>
+
+                        {{-- ===== INICIO: Botón de reseña ===== --}}
+                        @if ($order->status === 'completed')
+                            @if (in_array($item->product_id, $reviewedProductIds))
+                                <div class="mt-2">
+                                    <span class="badge bg-success">✓ Ya reseñaste este producto</span>
+                                </div>
+                            @else
+                                <a href="{{ route('reviews.create', $item->product) }}" class="btn btn-sm btn-outline-primary mt-2">
+                                    Dejar reseña
+                                </a>
+                            @endif
+                        @endif
+                        {{-- ===== FIN: Botón de reseña ===== --}}
                     </div>
                     <div class="text-end">
                         <div class="fw-semibold">${{ number_format($item->product->price * $item->quantity, 2, ',', '.') }}</div>
@@ -47,7 +65,6 @@
 
             <a href="{{ route('orders.index') }}" class="btn btn-outline-secondary mt-3">Volver a mis pedidos</a>
         </div>
-
     </div>
 </div>
 @endsection
