@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,11 +28,25 @@
                 </ul>
 
                 <div class="d-flex align-items-center">
-                    <a class="nav-link d-flex align-items-center me-3" href="{{ route('wishlist.index') }}" title="Carrito">
+                    <a class="nav-link d-flex align-items-center me-3 position-relative" href="{{ route('wishlist.index') }}" title="Carrito">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                            <path d="M0 1.5A.5.5 0 0 1 .5 1h1a.5.5 0 0 1 .485.379L2.89 5H14.5a.5.5 0 0 1 .49.598l-1.5 6A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L1.01 2H.5a.5.5 0 0 1-.5-.5zm3.14 4l1.25 5h7.22l1.2-4.8H3.14z"/>
-                            <path d="M5.5 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm8 1a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1h1a.5.5 0 0 1 .485.379L2.89 5H14.5a.5.5 0 0 1 .49.598l-1.5 6A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L1.01 2H.5a.5.5 0 0 1-.5-.5zm3.14 4l1.25 5h7.22l1.2-4.8H3.14z" />
+                            <path d="M5.5 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm8 1a1 1 0 1 0-2 0 1 1 0 0 0 2 0z" />
                         </svg>
+
+                        @auth
+                        @php
+                        $cartCount = Auth::user()->wishlist()->sum('quantity');
+                        @endphp
+                        @if($cartCount > 0)
+                        <span id="cart-badge" class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle" style="font-size: 0.65rem; padding: 0.3em 0.55em;">
+                            {{ $cartCount }}
+                        </span>
+                        @else
+                        {{-- Placeholder invisible para que el JS pueda inyectar el badge cuando sea > 0 --}}
+                        <span id="cart-badge" class="d-none"></span>
+                        @endif
+                        @endauth
                     </a>
                     <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center ms-auto">
                         @csrf
@@ -49,4 +64,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

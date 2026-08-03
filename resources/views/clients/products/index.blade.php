@@ -18,9 +18,9 @@
                         Todas
                     </a>
                     @foreach ($categories as $category)
-                        <a href="{{ route('client.products.index', ['category' => $category->id]) }}" class="list-group-item list-group-item-action sidebar-category-item {{ $selectedCategoryId == $category->id ? 'active' : '' }}">
-                            {{ $category->name }}
-                        </a>
+                    <a href="{{ route('client.products.index', ['category' => $category->id]) }}" class="list-group-item list-group-item-action sidebar-category-item {{ $selectedCategoryId == $category->id ? 'active' : '' }}">
+                        {{ $category->name }}
+                    </a>
                     @endforeach
                 </div>
             </div>
@@ -32,60 +32,60 @@
             <div>
                 <h2 class="h4 mb-1">Productos</h2>
                 @if ($selectedCategoryId)
-                    @php $activeCategory = $categories->firstWhere('id', $selectedCategoryId); @endphp
-                    <p class="text-muted mb-0">Mostrando: {{ $activeCategory ? $activeCategory->name : 'Categoría seleccionada' }}</p>
+                @php $activeCategory = $categories->firstWhere('id', $selectedCategoryId); @endphp
+                <p class="text-muted mb-0">Mostrando: {{ $activeCategory ? $activeCategory->name : 'Categoría seleccionada' }}</p>
                 @else
-                    <p class="text-muted mb-0">Mostrando todos los productos.</p>
+                <p class="text-muted mb-0">Mostrando todos los productos.</p>
                 @endif
             </div>
 
             @if ($selectedCategoryId)
-                <a href="{{ route('client.products.index') }}" class="btn btn-outline-secondary btn-sm">Ver todos</a>
+            <a href="{{ route('client.products.index') }}" class="btn btn-outline-secondary btn-sm">Ver todos</a>
             @endif
         </div>
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
             @forelse ($products as $product)
-                <div class="col">
-                    <div class="card h-100 border-0 shadow-sm">
-                        @if ($product->image_url)
-                            <img src="{{ asset('storage/' . $product->image_url) }}" class="card-img-top" alt="{{ $product->name }}" style="height: 200px; object-fit: cover;">
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm">
+                    @if ($product->image_url)
+                    <img src="{{ asset('storage/' . $product->image_url) }}" class="card-img-top" alt="{{ $product->name }}" style="height: 200px; object-fit: cover;">
+                    @else
+                    <div class="bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <span class="text-muted">Sin imagen</span>
+                    </div>
+                    @endif
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <p class="text-muted mb-3">${{ number_format($product->price, 2, ',', '.') }}</p>
+
+                        {{-- ===== INICIO: Control de stock ===== --}}
+                        @if($product->stock > 0)
+                        <form action="{{ route('wishlist.add', $product->id) }}" method="POST" class="mt-auto wishlist-add-form">
+                            @csrf
+                            <button type="submit" class="btn btn-green w-100">Agregar al carrito</button>
+                        </form>
+                        <small class="text-muted mt-1">Stock: {{ $product->stock }}</small>
                         @else
-                            <div class="bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="height: 200px;">
-                                <span class="text-muted">Sin imagen</span>
-                            </div>
+                        <button type="button" class="btn btn-secondary w-100 mt-auto" disabled>Sin stock</button>
+                        <small class="text-danger mt-1">Agotado</small>
                         @endif
-
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">{{ $product->name }}</h5>
-                            <p class="text-muted mb-3">${{ number_format($product->price, 2, ',', '.') }}</p>
-
-                            {{-- ===== INICIO: Control de stock ===== --}}
-                            @if($product->stock > 0)
-                                <form action="{{ route('wishlist.add', $product->id) }}" method="POST" class="mt-auto wishlist-add-form">
-                                    @csrf
-                                    <button type="submit" class="btn btn-green w-100">Agregar al carrito</button>
-                                </form>
-                                <small class="text-muted mt-1">Stock: {{ $product->stock }}</small>
-                            @else
-                                <button type="button" class="btn btn-secondary w-100 mt-auto" disabled>Sin stock</button>
-                                <small class="text-danger mt-1">Agotado</small>
-                            @endif
-                            {{-- ===== FIN: Control de stock ===== --}}
-                        </div>
+                        {{-- ===== FIN: Control de stock ===== --}}
                     </div>
                 </div>
+            </div>
             @empty
-                <div class="col-12">
-                    <div class="alert alert-info">No hay productos para esta categoría.</div>
-                </div>
+            <div class="col-12">
+                <div class="alert alert-info">No hay productos para esta categoría.</div>
+            </div>
             @endforelse
         </div>
     </section>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         const feedback = document.getElementById('wishlist-toast');
 
         function showFeedback(message, type = 'success') {
@@ -99,40 +99,50 @@
             }, 3000);
         }
 
-        document.querySelectorAll('.wishlist-add-form').forEach(function (form) {
-            form.addEventListener('submit', function (event) {
+        document.querySelectorAll('.wishlist-add-form').forEach(function(form) {
+            form.addEventListener('submit', function(event) {
                 event.preventDefault();
 
                 const url = form.action;
                 const formData = new FormData(form);
 
                 fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest',
-                    },
-                    body: formData,
-                })
-                .then(async response => {
-                    // El backend puede devolver JSON o HTML (ej. error de validación)
-                    const contentType = response.headers.get('content-type') || '';
-                    if (contentType.includes('application/json')) {
-                        return response.json();
-                    }
-                    // Si no es JSON, forzamos un error para caer en el catch
-                    throw new Error('Respuesta inesperada del servidor');
-                })
-                .then(data => {
-                    if (data.success) {
-                        showFeedback(data.message || 'Producto agregado al carrito');
-                    } else {
-                        showFeedback(data.message || 'No se pudo agregar el producto', 'danger');
-                    }
-                })
-                .catch(() => {
-                    showFeedback('Error al agregar el producto', 'danger');
-                });
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                        },
+                        body: formData,
+                    })
+                    .then(async response => {
+                        // El backend puede devolver JSON o HTML (ej. error de validación)
+                        const contentType = response.headers.get('content-type') || '';
+                        if (contentType.includes('application/json')) {
+                            return response.json();
+                        }
+                        // Si no es JSON, forzamos un error para caer en el catch
+                        throw new Error('Respuesta inesperada del servidor');
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            showFeedback(data.message || 'Producto agregado al carrito');
+
+                            // Actualizar badge del carrito
+                            const badge = document.getElementById('cart-badge');
+                            if (badge) {
+                                let current = parseInt(badge.textContent) || 0;
+                                badge.textContent = current + 1;
+                                badge.classList.remove('d-none');
+                                badge.classList.add('badge', 'bg-danger', 'rounded-pill', 'position-absolute', 'top-0', 'start-100', 'translate-middle');
+                                badge.style.cssText = 'font-size: 0.65rem; padding: 0.3em 0.55em;';
+                            }
+                        } else {
+                            showFeedback(data.message || 'No se pudo agregar el producto', 'danger');
+                        }
+                    })
+                    .catch(() => {
+                        showFeedback('Error al agregar el producto', 'danger');
+                    });
             });
         });
     });
