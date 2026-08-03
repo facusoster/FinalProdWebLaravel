@@ -1,7 +1,7 @@
 # 📖 Diccionario de Datos
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > **Documentación relacionada**
 > - [[README]]
@@ -13,7 +13,7 @@
 
 # Introducción
 
-El presente documento describe las entidades implementadas en la base de datos del proyecto **Sweet Store**, detallando el propósito de cada tabla, sus atributos principales y las relaciones existentes entre ellas.
+El presente documento describe las entidades implementadas en la base de datos del proyecto **Rincón del Pan**, detallando el propósito de cada tabla, sus atributos principales y las relaciones existentes entre ellas.
 
 Su objetivo es servir como referencia para desarrolladores y facilitar el mantenimiento y evolución del sistema.
 

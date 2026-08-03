@@ -1,7 +1,7 @@
 # 🏛️ Arquitectura MVC
 
 > [!info]
-> Diagrama general de la arquitectura utilizada por **Sweet Store**.
+> Diagrama general de la arquitectura utilizada por **Rincón del Pan**.
 >
 > Documento relacionado:
 > - [[01_Arquitectura]]

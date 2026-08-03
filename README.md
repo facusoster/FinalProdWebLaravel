@@ -1,4 +1,4 @@
-# 🍰 Sweet Store
+# 🍰 Rincón del Pan
 
 Sistema de comercio electrónico desarrollado con **Laravel** como trabajo práctico integrador de la materia **Desarrollo de Aplicaciones Web con Laravel** perteneciente a la **Tecnicatura Superior en Análisis de Sistemas** de la **Escuela Da Vinci**.
 
@@ -13,7 +13,7 @@ El proyecto implementa una tienda online especializada en productos de pasteler�
 | Institución | Escuela Da Vinci |
 | Carrera | Tecnicatura Superior en Análisis de Sistemas |
 | Materia | Desarrollo de Aplicaciones Web con Laravel |
-| Proyecto | Sweet Store |
+| Proyecto | Rincón del Pan |
 | Integrantes | Facundo Nahuel Soster · Julián Verdirame |
 | Profesor | Nicolás Ariel Calderón |
 

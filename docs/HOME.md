@@ -1,6 +1,6 @@
-# 🏠 Sweet Store Wiki
+# 🏠 Rincón del Pan Wiki
 
-Bienvenido a la documentación técnica del proyecto **Sweet Store**.
+Bienvenido a la documentación técnica del proyecto **Rincón del Pan**.
 
 Esta Wiki reúne el análisis funcional, la documentación técnica y las decisiones de diseño adoptadas durante el desarrollo del proyecto.
 

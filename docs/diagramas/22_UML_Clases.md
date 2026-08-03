@@ -1,7 +1,7 @@
 # 📐 UML - Diagrama de Clases
 
 > [!info]
-> Documento perteneciente a la documentación del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación del proyecto **Rincón del Pan**.
 >
 > Documento relacionado:
 > - [[07_UML]]

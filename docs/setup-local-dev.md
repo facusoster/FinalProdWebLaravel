@@ -1,7 +1,7 @@
 # 💻 Setup Local de Desarrollo
 
 > [!info]
-> Este documento describe el entorno de desarrollo utilizado durante la implementación del proyecto **Sweet Store**.
+> Este documento describe el entorno de desarrollo utilizado durante la implementación del proyecto **Rincón del Pan**.
 >
 > La configuración presentada tiene como objetivo permitir que cualquier desarrollador pueda reproducir el entorno de trabajo desde cero.
 >
@@ -440,7 +440,7 @@ En futuras versiones del entorno podrían incorporarse:
 
 # Resumen
 
-El entorno de desarrollo documentado permite reproducir de manera consistente la implementación de **Sweet Store**, manteniendo una separación clara entre el código fuente y la configuración específica de cada desarrollador.
+El entorno de desarrollo documentado permite reproducir de manera consistente la implementación de **Rincón del Pan**, manteniendo una separación clara entre el código fuente y la configuración específica de cada desarrollador.
 
 La anonimización de credenciales y configuraciones sensibles garantiza que este documento pueda formar parte del repositorio público del proyecto sin comprometer la seguridad ni exponer información personal.
 

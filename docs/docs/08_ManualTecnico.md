@@ -1,7 +1,7 @@
 # ⚙️ Manual Técnico
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > **Documentación relacionada**
 > - [[README]]
@@ -15,7 +15,7 @@
 
 # Introducción
 
-Este documento describe la implementación técnica del proyecto **Sweet Store**, desarrollado utilizando Laravel bajo el patrón Modelo–Vista–Controlador (MVC).
+Este documento describe la implementación técnica del proyecto **Rincón del Pan**, desarrollado utilizando Laravel bajo el patrón Modelo–Vista–Controlador (MVC).
 
 Su objetivo es brindar una visión de la estructura interna del sistema, las tecnologías utilizadas y las decisiones adoptadas durante el desarrollo.
 

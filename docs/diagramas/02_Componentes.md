@@ -1,7 +1,7 @@
 # 🧩 Diagrama de Componentes
 
 > [!info]
-> Componentes principales del sistema Sweet Store.
+> Componentes principales del sistema Rincón del Pan.
 >
 > Documento relacionado:
 > - [[01_Arquitectura]]

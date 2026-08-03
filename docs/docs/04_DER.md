@@ -1,7 +1,7 @@
 # 🗂️ Diagrama Entidad-Relación (DER)
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > **Documentación relacionada**
 > - [[README]]
@@ -15,7 +15,7 @@
 
 # Introducción
 
-El Diagrama Entidad-Relación (DER) representa la estructura lógica de la base de datos del proyecto **Sweet Store**.
+El Diagrama Entidad-Relación (DER) representa la estructura lógica de la base de datos del proyecto **Rincón del Pan**.
 
 Su propósito es mostrar las entidades que conforman el sistema, los atributos más relevantes y las relaciones existentes entre ellas, constituyendo el puente entre el análisis funcional y la implementación mediante Eloquent ORM.
 
@@ -222,7 +222,7 @@ El detalle de atributos, claves primarias, claves foráneas y tipos de datos se 
 
 # Resumen
 
-El DER constituye la representación formal del modelo de datos de Sweet Store y sirve como referencia para comprender la organización de la información y las relaciones implementadas mediante Laravel y MySQL.
+El DER constituye la representación formal del modelo de datos de Rincón del Pan y sirve como referencia para comprender la organización de la información y las relaciones implementadas mediante Laravel y MySQL.
 
 ---
 

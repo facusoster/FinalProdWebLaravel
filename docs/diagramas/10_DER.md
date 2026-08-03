@@ -9,7 +9,7 @@
 
 # Descripción
 
-El siguiente diagrama representa el modelo lógico de la base de datos del proyecto **Sweet Store**.
+El siguiente diagrama representa el modelo lógico de la base de datos del proyecto **Rincón del Pan**.
 
 ```mermaid
 erDiagram

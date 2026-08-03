@@ -1,7 +1,7 @@
 # 🔄 UML - Diagrama de Actividad: Compra de Productos
 
 > [!info]
-> Documento perteneciente a la documentación UML del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación UML del proyecto **Rincón del Pan**.
 >
 > Documento relacionado:
 > - [[05_CasosUso]]

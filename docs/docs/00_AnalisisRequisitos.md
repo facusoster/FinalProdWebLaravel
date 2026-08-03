@@ -1,7 +1,7 @@
 # 📋 Análisis de Requisitos
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > **Documentación relacionada**
 > - [[README]]
@@ -13,7 +13,7 @@
 
 # Introducción
 
-Este documento reúne el relevamiento funcional realizado durante la etapa de análisis del proyecto **Sweet Store**.
+Este documento reúne el relevamiento funcional realizado durante la etapa de análisis del proyecto **Rincón del Pan**.
 
 Su objetivo es definir los actores, requisitos funcionales, requisitos no funcionales, alcance y supuestos del sistema antes de su implementación.
 
@@ -190,7 +190,7 @@ La descripción detallada se encuentra en:
 
 # Resumen
 
-El relevamiento de requisitos constituye el punto de partida del proyecto Sweet Store y define las funcionalidades, restricciones y supuestos que guiaron el diseño de la arquitectura, el modelo de datos y la implementación de la aplicación.
+El relevamiento de requisitos constituye el punto de partida del proyecto Rincón del Pan y define las funcionalidades, restricciones y supuestos que guiaron el diseño de la arquitectura, el modelo de datos y la implementación de la aplicación.
 
 ---
 

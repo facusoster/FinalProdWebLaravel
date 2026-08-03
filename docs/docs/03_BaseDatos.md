@@ -1,7 +1,7 @@
 # 🗄️ Base de Datos
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > **Documentación relacionada**
 > - [[README]]
@@ -148,7 +148,7 @@ Este procedimiento crea todas las tablas y carga datos iniciales para pruebas.
 
 # Resumen
 
-La base de datos de Sweet Store fue diseñada siguiendo principios de normalización e integridad referencial, aprovechando las capacidades de Laravel para gestionar migraciones, relaciones y datos de prueba de forma consistente y reproducible.
+La base de datos de Rincón del Pan fue diseñada siguiendo principios de normalización e integridad referencial, aprovechando las capacidades de Laravel para gestionar migraciones, relaciones y datos de prueba de forma consistente y reproducible.
 
 ---
 

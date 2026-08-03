@@ -1,7 +1,7 @@
 # 🛒 UML - Secuencia: Realizar Pedido
 
 > [!info]
-> Documento perteneciente a la documentación UML del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación UML del proyecto **Rincón del Pan**.
 >
 > Documento relacionado:
 > - [[05_CasosUso]]
@@ -14,7 +14,7 @@
 
 El siguiente diagrama representa la secuencia de eventos que ocurre cuando un cliente realiza un pedido dentro del sistema.
 
-El flujo fue elaborado a partir de la implementación del proyecto y del dominio definido para Sweet Store.
+El flujo fue elaborado a partir de la implementación del proyecto y del dominio definido para Rincón del Pan.
 
 ---
 

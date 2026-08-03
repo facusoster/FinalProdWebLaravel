@@ -1,7 +1,7 @@
 # 🏛️ Arquitectura
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > **Documentación relacionada**
 > - [[README]]
@@ -16,7 +16,7 @@
 
 # Introducción
 
-Sweet Store es una aplicación web desarrollada utilizando **Laravel** bajo el patrón de arquitectura **Modelo – Vista – Controlador (MVC)**.
+Rincón del Pan es una aplicación web desarrollada utilizando **Laravel** bajo el patrón de arquitectura **Modelo – Vista – Controlador (MVC)**.
 
 La arquitectura fue diseñada siguiendo las buenas prácticas propuestas por Laravel y los requerimientos establecidos por la cátedra, priorizando la separación de responsabilidades, la reutilización del código y la mantenibilidad del proyecto.
 
@@ -280,7 +280,7 @@ Durante el desarrollo se adoptaron las siguientes decisiones:
 
 # Resumen
 
-La arquitectura de Sweet Store se basa en el patrón MVC implementado por Laravel, utilizando Eloquent ORM, Blade y MySQL para construir una aplicación modular, mantenible y alineada con las buenas prácticas recomendadas por el framework.
+La arquitectura de Rincón del Pan se basa en el patrón MVC implementado por Laravel, utilizando Eloquent ORM, Blade y MySQL para construir una aplicación modular, mantenible y alineada con las buenas prácticas recomendadas por el framework.
 
 ---
 

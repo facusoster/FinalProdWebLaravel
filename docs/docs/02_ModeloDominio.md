@@ -1,7 +1,7 @@
 # 🧁 Modelo de Dominio
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > **Documentación relacionada**
 > - [[README]]
@@ -226,7 +226,7 @@ Esto permite mantener una correspondencia directa entre el modelo conceptual y l
 
 # Resumen
 
-El modelo de dominio constituye la representación conceptual de Sweet Store y describe los objetos principales del negocio junto con sus relaciones y responsabilidades. Sobre este modelo se construyeron posteriormente la base de datos y la implementación en Laravel.
+El modelo de dominio constituye la representación conceptual de Rincón del Pan y describe los objetos principales del negocio junto con sus relaciones y responsabilidades. Sobre este modelo se construyeron posteriormente la base de datos y la implementación en Laravel.
 
 ---
 

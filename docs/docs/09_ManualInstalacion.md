@@ -1,7 +1,7 @@
 # 🚀 Manual de Instalación
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Sweet Store**.
+> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
 >
 > **Documentación relacionada**
 > - [[README]]
@@ -12,7 +12,7 @@
 
 # Introducción
 
-Este documento describe el procedimiento necesario para instalar y ejecutar el proyecto Sweet Store en un entorno local.
+Este documento describe el procedimiento necesario para instalar y ejecutar el proyecto Rincón del Pan en un entorno local.
 
 La guía contempla la instalación desde un repositorio limpio utilizando Composer, Docker y las herramientas estándar del ecosistema Laravel.
 
