@@ -6,7 +6,7 @@
     <title>Panel Cliente - Rincón del Pan</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}?v={{ filemtime(public_path('css/styles.css')) }}" rel="stylesheet">
 </head>
 
 <body>
@@ -32,9 +32,9 @@
                             <path d="M5.5 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm8 1a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
                         </svg>
                     </a>
-                    <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center">
+                    <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center ms-auto">
                         @csrf
-                        <button class="btn btn-sm btn-logout" type="submit">Cerrar sesión</button>
+                        <button class="btn btn-sm btn-green" type="submit">Cerrar sesión</button>
                     </form>
                 </div>
             </div>

@@ -6,7 +6,7 @@
     <title>Panel Admin - Rincón del Pan</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}?v={{ filemtime(public_path('css/styles.css')) }}" rel="stylesheet">
 </head>
 
 <body>
@@ -27,7 +27,7 @@
 
                 <form class="d-flex align-items-center" action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button class="btn btn-sm btn-logout" type="submit">Cerrar sesión</button>
+                    <button class="btn btn-sm btn-green" type="submit">Cerrar sesión</button>
                 </form>
             </div>
         </div>
