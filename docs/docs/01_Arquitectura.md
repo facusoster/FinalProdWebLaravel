@@ -1,19 +1,19 @@
-﻿# ðŸ›ï¸ Arquitectura del Sistema
+# 🏛️ Arquitectura del Sistema
 
 > [!info]
-> **Proyecto:** RincÃ³n del Pan  
+> **Proyecto:** Rincón del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Lenguaje:** PHP 8.3.32
 
 ---
 
-# IntroducciÃ³n
+# Introducción
 
-La arquitectura de **RincÃ³n del Pan** fue diseÃ±ada siguiendo el patrÃ³n **Modelo - Vista - Controlador (MVC)** propuesto por Laravel.
+La arquitectura de **Rincón del Pan** fue diseñada siguiendo el patrón **Modelo - Vista - Controlador (MVC)** propuesto por Laravel.
 
-Esta arquitectura permite separar claramente las responsabilidades de cada componente del sistema, facilitando el mantenimiento del cÃ³digo, la reutilizaciÃ³n de componentes y la escalabilidad de la aplicaciÃ³n.
+Esta arquitectura permite separar claramente las responsabilidades de cada componente del sistema, facilitando el mantenimiento del código, la reutilización de componentes y la escalabilidad de la aplicación.
 
-Laravel proporciona una estructura organizada para el desarrollo de aplicaciones web modernas, integrando herramientas para autenticaciÃ³n, acceso a datos, enrutamiento, validaciones, middleware y renderizado de vistas.
+Laravel proporciona una estructura organizada para el desarrollo de aplicaciones web modernas, integrando herramientas para autenticación, acceso a datos, enrutamiento, validaciones, middleware y renderizado de vistas.
 
 ---
 
@@ -21,19 +21,19 @@ Laravel proporciona una estructura organizada para el desarrollo de aplicaciones
 
 La arquitectura del proyecto busca:
 
-- Separar la lÃ³gica de negocio de la interfaz de usuario.
-- Mantener una organizaciÃ³n clara del cÃ³digo fuente.
-- Facilitar el mantenimiento y la evoluciÃ³n del sistema.
+- Separar la lógica de negocio de la interfaz de usuario.
+- Mantener una organización clara del código fuente.
+- Facilitar el mantenimiento y la evolución del sistema.
 - Aprovechar las funcionalidades nativas del framework Laravel.
 - Centralizar el acceso a la base de datos mediante Eloquent ORM.
-- Implementar un sistema seguro de autenticaciÃ³n y autorizaciÃ³n.
-- Favorecer la reutilizaciÃ³n de componentes.
+- Implementar un sistema seguro de autenticación y autorización.
+- Favorecer la reutilización de componentes.
 
 ---
 
-# PatrÃ³n MVC
+# Patrón MVC
 
-El proyecto implementa el patrÃ³n **Modelo - Vista - Controlador (MVC)**.
+El proyecto implementa el patrón **Modelo - Vista - Controlador (MVC)**.
 
 ## Modelo (Model)
 
@@ -61,21 +61,21 @@ Modelos principales:
 
 ## Vista (View)
 
-La capa de presentaciÃ³n fue desarrollada utilizando **Blade Templates**, el motor de plantillas incluido en Laravel.
+La capa de presentación fue desarrollada utilizando **Blade Templates**, el motor de plantillas incluido en Laravel.
 
 Las vistas permiten:
 
 - Reutilizar componentes mediante layouts.
 - Mantener una interfaz consistente.
-- Separar la presentaciÃ³n de la lÃ³gica del negocio.
+- Separar la presentación de la lógica del negocio.
 
-La interfaz utiliza **Bootstrap** para proporcionar un diseÃ±o responsive y una experiencia de usuario homogÃ©nea.
+La interfaz utiliza **Bootstrap** para proporcionar un diseño responsive y una experiencia de usuario homogénea.
 
 ---
 
 ## Controlador (Controller)
 
-Los controladores reciben las solicitudes HTTP, coordinan la lÃ³gica de la aplicaciÃ³n y devuelven la respuesta correspondiente.
+Los controladores reciben las solicitudes HTTP, coordinan la lógica de la aplicación y devuelven la respuesta correspondiente.
 
 Sus principales responsabilidades son:
 
@@ -99,31 +99,31 @@ Ejemplos de controladores implementados:
 
 # Arquitectura General
 
-La interacciÃ³n entre los distintos componentes puede resumirse de la siguiente manera:
+La interacción entre los distintos componentes puede resumirse de la siguiente manera:
 
 ```text
 Cliente
-    â”‚
-    â–¼
+    |
+    v
 Routes (web.php)
-    â”‚
-    â–¼
+    |
+    v
 Controllers
-    â”‚
-    â–¼
+    |
+    v
 Models (Eloquent ORM)
-    â”‚
-    â–¼
+    |
+    v
 MySQL
-    â”‚
-    â–²
+    ^
+    |
 Blade Views
-    â”‚
-    â–²
+    ^
+    |
 Respuesta HTTP
 ```
 
-El flujo de ejecuciÃ³n comienza con una solicitud del usuario, continÃºa mediante las rutas definidas en Laravel, es procesado por el controlador correspondiente y, cuando es necesario, interactÃºa con la base de datos mediante Eloquent ORM antes de devolver una vista al navegador.
+El flujo de ejecución comienza con una solicitud del usuario, continúa mediante las rutas definidas en Laravel, es procesado por el controlador correspondiente y, cuando es necesario, interactúa con la base de datos mediante Eloquent ORM antes de devolver una vista al navegador.
 
 ---
 
@@ -131,7 +131,7 @@ El flujo de ejecuciÃ³n comienza con una solicitud del usuario, continÃºa med
 
 ## Rutas
 
-Las rutas constituyen el punto de entrada de la aplicaciÃ³n.
+Las rutas constituyen el punto de entrada de la aplicación.
 
 Se organizan principalmente en:
 
@@ -148,11 +148,11 @@ Los middleware permiten interceptar las solicitudes HTTP antes de que lleguen al
 
 En el proyecto se utilizan para:
 
-- Verificar autenticaciÃ³n.
-- Restringir acceso segÃºn el rol del usuario.
+- Verificar autenticación.
+- Restringir acceso según el rol del usuario.
 - Proteger funcionalidades administrativas.
 
-Esta separaciÃ³n evita duplicar controles de seguridad dentro de los controladores.
+Esta separación evita duplicar controles de seguridad dentro de los controladores.
 
 ---
 
@@ -160,12 +160,12 @@ Esta separaciÃ³n evita duplicar controles de seguridad dentro de los controlad
 
 Toda la persistencia de datos se implementa mediante **Eloquent ORM**.
 
-Las principales ventajas de esta aproximaciÃ³n son:
+Las principales ventajas de esta aproximación son:
 
 - Consultas orientadas a objetos.
 - Relaciones entre modelos.
-- IntegraciÃ³n con migraciones.
-- Mayor legibilidad del cÃ³digo.
+- Integración con migraciones.
+- Mayor legibilidad del código.
 - Independencia respecto del motor de base de datos.
 
 ---
@@ -185,91 +185,91 @@ Esto permite:
 
 ## Seeders
 
-Los seeders generan informaciÃ³n inicial para facilitar las pruebas del sistema.
+Los seeders generan información inicial para facilitar las pruebas del sistema.
 
 Incluyen datos como:
 
 - Usuarios.
-- CategorÃ­as.
+- Categorías.
 - Productos.
 - Direcciones.
 - Pedidos.
-- ReseÃ±as.
+- Reseñas.
 
-Esto permite disponer rÃ¡pidamente de un entorno funcional para desarrollo y demostraciÃ³n.
+Esto permite disponer rápidamente de un entorno funcional para desarrollo y demostración.
 
 ---
 
 # Seguridad
 
-Laravel incorpora mÃºltiples mecanismos de seguridad utilizados por el proyecto.
+Laravel incorpora múltiples mecanismos de seguridad utilizados por el proyecto.
 
 Entre ellos:
 
-- ProtecciÃ³n CSRF.
-- Hash seguro de contraseÃ±as mediante Bcrypt.
-- GestiÃ³n de sesiones.
-- Middleware de autenticaciÃ³n.
-- AutorizaciÃ³n basada en roles.
-- ProtecciÃ³n frente a asignaciÃ³n masiva mediante `fillable`.
+- Protección CSRF.
+- Hash seguro de contraseñas mediante Bcrypt.
+- Gestión de sesiones.
+- Middleware de autenticación.
+- Autorización basada en roles.
+- Protección frente a asignación masiva mediante `fillable`.
 
 ---
 
-# OrganizaciÃ³n del Proyecto
+# Organización del Proyecto
 
-La estructura principal del proyecto sigue la organizaciÃ³n recomendada por Laravel.
+La estructura principal del proyecto sigue la organización recomendada por Laravel.
 
 ```text
 app/
-â”œâ”€â”€ Http/
-â”‚   â”œâ”€â”€ Controllers/
-â”‚   â”œâ”€â”€ Middleware/
-â”‚   â””â”€â”€ Requests/
-â”‚
-â”œâ”€â”€ Models/
-â”‚
+|-- Http/
+|   |-- Controllers/
+|   |-- Middleware/
+|   `-- Requests/
+|
+|-- Models/
+|
 bootstrap/
 config/
 database/
-â”‚
-â”œâ”€â”€ factories/
-â”œâ”€â”€ migrations/
-â””â”€â”€ seeders/
-â”‚
+|
+|-- factories/
+|-- migrations/
+`-- seeders/
+|
 public/
 resources/
-â”‚
-â”œâ”€â”€ css/
-â”œâ”€â”€ js/
-â””â”€â”€ views/
-â”‚
+|
+|-- css/
+|-- js/
+`-- views/
+|
 routes/
 storage/
 tests/
 ```
 
-Esta organizaciÃ³n facilita la separaciÃ³n de responsabilidades y mantiene una estructura consistente durante todo el desarrollo.
+Esta organización facilita la separación de responsabilidades y mantiene una estructura consistente durante todo el desarrollo.
 
 ---
 
 # Principios Aplicados
 
-Durante el desarrollo se procurÃ³ respetar las siguientes buenas prÃ¡cticas:
+Durante el desarrollo se procuró respetar las siguientes buenas prácticas:
 
-- SeparaciÃ³n de responsabilidades.
-- ReutilizaciÃ³n de componentes.
-- OrganizaciÃ³n modular.
+- Separación de responsabilidades.
+- Reutilización de componentes.
+- Organización modular.
 - Uso del ORM de Laravel.
 - Evitar consultas SQL embebidas.
-- ConfiguraciÃ³n mediante archivos `.env`.
+- Configuración mediante archivos `.env`.
 - Control de versiones con Git.
-- DocumentaciÃ³n paralela al desarrollo.
+- Documentación paralela al desarrollo.
 
 ---
 
-# RelaciÃ³n con la DocumentaciÃ³n
+# Relación con la Documentación
 
-La arquitectura presentada en este documento se complementa con los siguientes apartados de la documentaciÃ³n:
+La arquitectura presentada en este documento se complementa con los siguientes apartados de la documentación:
 
 - [00_AnalisisRequisitos](00_AnalisisRequisitos.md)
 - [02_ModeloDominio](02_ModeloDominio.md)
@@ -288,9 +288,8 @@ Los diagramas correspondientes pueden consultarse en:
 
 # Consideraciones Finales
 
-La arquitectura de **RincÃ³n del Pan** se apoya en las convenciones establecidas por Laravel, aprovechando las herramientas que ofrece el framework para desarrollar una aplicaciÃ³n organizada, mantenible y escalable.
+La arquitectura de **Rincón del Pan** se apoya en las convenciones establecidas por Laravel, aprovechando las herramientas que ofrece el framework para desarrollar una aplicación organizada, mantenible y escalable.
 
-La adopciÃ³n del patrÃ³n MVC, junto con Eloquent ORM, Blade Templates, Middleware y Migraciones, permitiÃ³ estructurar el proyecto de forma consistente y mantener una clara separaciÃ³n entre la lÃ³gica de negocio, el acceso a los datos y la presentaciÃ³n.
+La adopción del patrón MVC, junto con Eloquent ORM, Blade Templates, Middleware y Migraciones, permitió estructurar el proyecto de forma consistente y mantener una clara separación entre la lógica de negocio, el acceso a los datos y la presentación.
 
-Este enfoque facilita futuras ampliaciones del sistema y simplifica tanto el mantenimiento como la incorporaciÃ³n de nuevas funcionalidades.
-
+Este enfoque facilita futuras ampliaciones del sistema y simplifica tanto el mantenimiento como la incorporación de nuevas funcionalidades.

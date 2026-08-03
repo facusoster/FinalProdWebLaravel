@@ -1,30 +1,30 @@
-﻿# ðŸž RincÃ³n del Pan
+# 🍞 Rincón del Pan
 
 > [!info]
 > **Proyecto Final**  
 > Desarrollo de Aplicaciones Web con Laravel  
-> Tecnicatura Superior en AnÃ¡lisis de Sistemas  
+> Tecnicatura Superior en Análisis de Sistemas  
 > Escuela Da Vinci
 
 ---
 
 # Bienvenido
 
-Esta documentaciÃ³n reÃºne el anÃ¡lisis, diseÃ±o, desarrollo e implementaciÃ³n del proyecto **RincÃ³n del Pan**, un sistema web de comercio electrÃ³nico desarrollado utilizando **Laravel 13** y **MySQL**.
+Esta documentación reúne el análisis, diseño, desarrollo e implementación del proyecto **Rincón del Pan**, un sistema web de comercio electrónico desarrollado utilizando **Laravel 13** y **MySQL**.
 
-El objetivo de esta Wiki es centralizar toda la documentaciÃ³n tÃ©cnica y funcional del proyecto, permitiendo comprender la evoluciÃ³n del sistema desde el relevamiento de requisitos hasta su implementaciÃ³n.
+El objetivo de esta Wiki es centralizar toda la documentación técnica y funcional del proyecto, permitiendo comprender la evolución del sistema desde el relevamiento de requisitos hasta su implementación.
 
 ---
 
-# NavegaciÃ³n
+# Navegación
 
-## ðŸ“‹ AnÃ¡lisis
+## 📋 Análisis
 
 - [00_AnalisisRequisitos](docs/00_AnalisisRequisitos.md)
 
 ---
 
-## ðŸ›ï¸ Arquitectura
+## 🏛️ Arquitectura
 
 - [01_Arquitectura](docs/01_Arquitectura.md)
 - [02_ModeloDominio](docs/02_ModeloDominio.md)
@@ -34,19 +34,19 @@ El objetivo de esta Wiki es centralizar toda la documentaciÃ³n tÃ©cnica y fu
 
 ---
 
-## ðŸ‘¥ DiseÃ±o Funcional
+## 👥 Diseño Funcional
 
 - [05_CasosUso](docs/05_CasosUso.md)
 
 ---
 
-## ðŸ“ UML
+## 📐 UML
 
 - [07_UML](docs/07_UML.md)
 
 ---
 
-## âš™ï¸ ImplementaciÃ³n
+## ⚙️ Implementación
 
 - [08_ManualTecnico](docs/08_ManualTecnico.md)
 - [09_ManualInstalacion](docs/09_ManualInstalacion.md)
@@ -54,7 +54,7 @@ El objetivo de esta Wiki es centralizar toda la documentaciÃ³n tÃ©cnica y fu
 
 ---
 
-## ðŸŒ API REST
+## 🌐 API REST
 
 > En desarrollo.
 
@@ -64,7 +64,7 @@ El objetivo de esta Wiki es centralizar toda la documentaciÃ³n tÃ©cnica y fu
 
 # Diagramas
 
-La documentaciÃ³n grÃ¡fica del proyecto se encuentra organizada en la carpeta **diagramas**.
+La documentación gráfica del proyecto se encuentra organizada en la carpeta **diagramas**.
 
 ## Arquitectura
 
@@ -88,7 +88,7 @@ La documentaciÃ³n grÃ¡fica del proyecto se encuentra organizada en la carpet
 
 ---
 
-# TecnologÃ­as utilizadas
+# Tecnologías utilizadas
 
 - Laravel Framework 13.23.0
 - PHP 8.3.32
@@ -108,38 +108,38 @@ La documentaciÃ³n grÃ¡fica del proyecto se encuentra organizada en la carpet
 
 ---
 
-# OrganizaciÃ³n del Proyecto
+# Organización del Proyecto
 
 ```text
 docs/
-â”‚
-â”œâ”€â”€ HOME.md
-â”œâ”€â”€ README.md
-â”œâ”€â”€ 00_AnalisisRequisitos.md
-â”œâ”€â”€ 01_Arquitectura.md
-â”œâ”€â”€ 02_ModeloDominio.md
-â”œâ”€â”€ 03_BaseDatos.md
-â”œâ”€â”€ 04_DER.md
-â”œâ”€â”€ 05_CasosUso.md
-â”œâ”€â”€ 06_API_REST.md
-â”œâ”€â”€ 07_UML.md
-â”œâ”€â”€ 08_ManualTecnico.md
-â”œâ”€â”€ 09_ManualInstalacion.md
-â”œâ”€â”€ 10_DiccionarioDatos.md
-â”œâ”€â”€ setup-local-dev.md
-â”‚
-â””â”€â”€ diagramas/
-    â”œâ”€â”€ 01_ArquitecturaMVC.md
-    â”œâ”€â”€ 02_Componentes.md
-    â”œâ”€â”€ 03_Deployment.md
-    â”œâ”€â”€ 10_DER.md
-    â”œâ”€â”€ 11_ModeloDominio.md
-    â”œâ”€â”€ 20_UML_CasosUso.md
-    â”œâ”€â”€ 21_UML_Clases.md
-    â”œâ”€â”€ 22_UML_SecuenciaLogin.md
-    â”œâ”€â”€ 23_UML_SecuenciaPedido.md
-    â”œâ”€â”€ 24_UML_ActividadCompra.md
-    â””â”€â”€ 25_UML_EstadosPedido.md
+|
+|-- HOME.md
+|-- README.md
+|-- 00_AnalisisRequisitos.md
+|-- 01_Arquitectura.md
+|-- 02_ModeloDominio.md
+|-- 03_BaseDatos.md
+|-- 04_DER.md
+|-- 05_CasosUso.md
+|-- 06_API_REST.md
+|-- 07_UML.md
+|-- 08_ManualTecnico.md
+|-- 09_ManualInstalacion.md
+|-- 10_DiccionarioDatos.md
+|-- setup-local-dev.md
+|
+`-- diagramas/
+    |-- 01_ArquitecturaMVC.md
+    |-- 02_Componentes.md
+    |-- 03_Deployment.md
+    |-- 10_DER.md
+    |-- 11_ModeloDominio.md
+    |-- 20_UML_CasosUso.md
+    |-- 21_UML_Clases.md
+    |-- 22_UML_SecuenciaLogin.md
+    |-- 23_UML_SecuenciaPedido.md
+    |-- 24_UML_ActividadCompra.md
+    `-- 25_UML_EstadosPedido.md
 ```
 
 ---
@@ -148,31 +148,31 @@ docs/
 
 | Componente | Estado |
 |------------|:------:|
-| Relevamiento de requisitos | âœ… |
-| Arquitectura | âœ… |
-| Modelo de dominio | âœ… |
-| Base de datos | âœ… |
-| DER | âœ… |
-| Casos de uso | âœ… |
-| UML | âœ… |
-| Manual tÃ©cnico | âœ… |
-| Manual de instalaciÃ³n | âœ… |
-| Diccionario de datos | âœ… |
-| DocumentaciÃ³n Mermaid | âœ… |
-| API REST | ðŸš§ En desarrollo |
+| Relevamiento de requisitos | ✅ |
+| Arquitectura | ✅ |
+| Modelo de dominio | ✅ |
+| Base de datos | ✅ |
+| DER | ✅ |
+| Casos de uso | ✅ |
+| UML | ✅ |
+| Manual técnico | ✅ |
+| Manual de instalación | ✅ |
+| Diccionario de datos | ✅ |
+| Documentación Mermaid | ✅ |
+| API REST | 🚧 En desarrollo |
 
 ---
 
 # Observaciones
 
-La documentaciÃ³n se mantiene sincronizada con el cÃ³digo fuente del proyecto.
+La documentación se mantiene sincronizada con el código fuente del proyecto.
 
-Cada modificaciÃ³n relevante en la implementaciÃ³n deberÃ¡ reflejarse en los documentos correspondientes, favoreciendo la trazabilidad, el mantenimiento y la evoluciÃ³n del sistema.
+Cada modificación relevante en la implementación deberá reflejarse en los documentos correspondientes, favoreciendo la trazabilidad, el mantenimiento y la evolución del sistema.
 
 ---
 
-# Ãšltima actualizaciÃ³n
+# Última actualización
 
-**Proyecto:** RincÃ³n del Pan  
+**Proyecto:** Rincón del Pan  
 **Framework:** Laravel Framework 13.23.0  
 **Lenguaje:** PHP 8.3.32
