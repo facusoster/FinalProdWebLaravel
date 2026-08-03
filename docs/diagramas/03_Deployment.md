@@ -1,7 +1,7 @@
-# 🚀 Deployment
+﻿# ðŸš€ Deployment
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Lenguaje:** PHP 8.3.32
 
@@ -9,14 +9,14 @@
 
 # Objetivo
 
-Este documento representa el diagrama de despliegue (Deployment Diagram) del proyecto **Rincón del Pan**.
+Este documento representa el diagrama de despliegue (Deployment Diagram) del proyecto **RincÃ³n del Pan**.
 
-Su finalidad es mostrar cómo se distribuyen los distintos componentes del sistema dentro del entorno de ejecución utilizado durante el desarrollo local.
+Su finalidad es mostrar cÃ³mo se distribuyen los distintos componentes del sistema dentro del entorno de ejecuciÃ³n utilizado durante el desarrollo local.
 
-Este diagrama complementa la información presentada en:
+Este diagrama complementa la informaciÃ³n presentada en:
 
-- [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
-- [setup-local-dev](docs/setup-local-dev.md)
+- [09_ManualInstalacion](../docs/09_ManualInstalacion.md)
+- [setup-local-dev](../setup-local-dev.md)
 
 ---
 
@@ -25,27 +25,27 @@ Este diagrama complementa la información presentada en:
 ```mermaid
 flowchart LR
 
-    U["👤 Usuario<br/>Navegador Web"]
+    U["ðŸ‘¤ Usuario<br/>Navegador Web"]
 
-    subgraph PC["💻 Equipo de Desarrollo"]
+    subgraph PC["ðŸ’» Equipo de Desarrollo"]
         direction TB
 
-        VSC["📝 Visual Studio Code"]
-        GIT["🌿 Git"]
-        OBS["📚 Obsidian"]
+        VSC["ðŸ“ Visual Studio Code"]
+        GIT["ðŸŒ¿ Git"]
+        OBS["ðŸ“š Obsidian"]
 
-        subgraph Laravel["⚙️ Laravel 13"]
-            PHP["🐘 PHP 8.3"]
-            APP["🛒 Aplicación<br/>Rincón del Pan"]
+        subgraph Laravel["âš™ï¸ Laravel 13"]
+            PHP["ðŸ˜ PHP 8.3"]
+            APP["ðŸ›’ AplicaciÃ³n<br/>RincÃ³n del Pan"]
         end
 
-        subgraph Docker["🐳 Docker Desktop"]
-            MYSQL["🗄️ MySQL 8"]
-            PMA["📊 phpMyAdmin"]
+        subgraph Docker["ðŸ³ Docker Desktop"]
+            MYSQL["ðŸ—„ï¸ MySQL 8"]
+            PMA["ðŸ“Š phpMyAdmin"]
         end
     end
 
-    GH["☁️ GitHub"]
+    GH["â˜ï¸ GitHub"]
 
     U --> APP
     APP --> PHP
@@ -58,26 +58,26 @@ flowchart LR
     GIT --> GH
     GH --> GIT
 
-    OBS -. Documentación .-> APP
+    OBS -. DocumentaciÃ³n .-> APP
 ```
 
 ---
 
-# Descripción General
+# DescripciÃ³n General
 
-Durante el desarrollo, todos los componentes de la aplicación se ejecutan sobre un único equipo local.
+Durante el desarrollo, todos los componentes de la aplicaciÃ³n se ejecutan sobre un Ãºnico equipo local.
 
-La aplicación Laravel se comunica con una instancia de **MySQL** ejecutada mediante **Docker Desktop**, mientras que el código fuente es gestionado con **Git** y almacenado en un repositorio remoto de **GitHub**.
+La aplicaciÃ³n Laravel se comunica con una instancia de **MySQL** ejecutada mediante **Docker Desktop**, mientras que el cÃ³digo fuente es gestionado con **Git** y almacenado en un repositorio remoto de **GitHub**.
 
-La documentación técnica se desarrolla en **Markdown** utilizando **Obsidian**, permitiendo mantenerla versionada junto con el código.
+La documentaciÃ³n tÃ©cnica se desarrolla en **Markdown** utilizando **Obsidian**, permitiendo mantenerla versionada junto con el cÃ³digo.
 
 ---
 
 # Componentes del Entorno
 
-## 👤 Usuario
+## ðŸ‘¤ Usuario
 
-Interactúa con la aplicación mediante un navegador web utilizando el servidor de desarrollo integrado de Laravel.
+InteractÃºa con la aplicaciÃ³n mediante un navegador web utilizando el servidor de desarrollo integrado de Laravel.
 
 Acceso habitual:
 
@@ -87,9 +87,9 @@ http://127.0.0.1:8000
 
 ---
 
-## ⚙️ Aplicación Laravel
+## âš™ï¸ AplicaciÃ³n Laravel
 
-Implementa toda la lógica de negocio del sistema.
+Implementa toda la lÃ³gica de negocio del sistema.
 
 Incluye:
 
@@ -103,11 +103,11 @@ Incluye:
 
 ---
 
-## 🐘 PHP 8.3
+## ðŸ˜ PHP 8.3
 
-Motor encargado de ejecutar la aplicación Laravel.
+Motor encargado de ejecutar la aplicaciÃ³n Laravel.
 
-Versión utilizada durante el desarrollo:
+VersiÃ³n utilizada durante el desarrollo:
 
 ```text
 PHP 8.3.32
@@ -115,23 +115,23 @@ PHP 8.3.32
 
 ---
 
-## 🐳 Docker Desktop
+## ðŸ³ Docker Desktop
 
 Se utiliza para aislar los servicios de infraestructura necesarios para el proyecto.
 
-Permite ejecutar los contenedores de manera independiente del sistema operativo anfitrión.
+Permite ejecutar los contenedores de manera independiente del sistema operativo anfitriÃ³n.
 
 ---
 
-## 🗄️ MySQL
+## ðŸ—„ï¸ MySQL
 
-Motor de base de datos encargado de almacenar toda la información del sistema.
+Motor de base de datos encargado de almacenar toda la informaciÃ³n del sistema.
 
 Se ejecuta dentro de un contenedor Docker.
 
 ---
 
-## 📊 phpMyAdmin
+## ðŸ“Š phpMyAdmin
 
 Herramienta web utilizada para administrar visualmente la base de datos MySQL durante el desarrollo.
 
@@ -143,20 +143,20 @@ http://localhost:8080
 
 ---
 
-## 📝 Visual Studio Code
+## ðŸ“ Visual Studio Code
 
-Entorno de desarrollo principal utilizado para la implementación del proyecto.
+Entorno de desarrollo principal utilizado para la implementaciÃ³n del proyecto.
 
 Se emplea para:
 
-- Desarrollo del código.
-- Depuración.
-- Gestión de extensiones.
-- Integración con Git.
+- Desarrollo del cÃ³digo.
+- DepuraciÃ³n.
+- GestiÃ³n de extensiones.
+- IntegraciÃ³n con Git.
 
 ---
 
-## 🌿 Git
+## ðŸŒ¿ Git
 
 Sistema de control de versiones utilizado durante todo el desarrollo.
 
@@ -169,35 +169,35 @@ Permite:
 
 ---
 
-## ☁️ GitHub
+## â˜ï¸ GitHub
 
-Repositorio remoto donde se almacena el proyecto y toda su documentación.
+Repositorio remoto donde se almacena el proyecto y toda su documentaciÃ³n.
 
 Incluye:
 
-- Código fuente.
+- CÃ³digo fuente.
 - Diagramas Mermaid.
-- Documentación Markdown.
+- DocumentaciÃ³n Markdown.
 - Historial completo de versiones.
 
 ---
 
-## 📚 Obsidian
+## ðŸ“š Obsidian
 
-Herramienta utilizada para la elaboración y mantenimiento de la documentación técnica del proyecto.
+Herramienta utilizada para la elaboraciÃ³n y mantenimiento de la documentaciÃ³n tÃ©cnica del proyecto.
 
-Su integración con Markdown y Mermaid facilita:
+Su integraciÃ³n con Markdown y Mermaid facilita:
 
-- Navegación mediante enlaces internos.
-- Visualización del grafo documental.
-- Edición de diagramas.
-- Versionado junto al código.
+- NavegaciÃ³n mediante enlaces internos.
+- VisualizaciÃ³n del grafo documental.
+- EdiciÃ³n de diagramas.
+- Versionado junto al cÃ³digo.
 
 ---
 
 # Flujo de Despliegue
 
-El proceso de ejecución de la aplicación puede resumirse en los siguientes pasos:
+El proceso de ejecuciÃ³n de la aplicaciÃ³n puede resumirse en los siguientes pasos:
 
 1. El desarrollador inicia los contenedores Docker.
 2. MySQL queda disponible para Laravel.
@@ -210,36 +210,37 @@ El proceso de ejecución de la aplicación puede resumirse en los siguientes pas
 
 # Entorno de Desarrollo
 
-El entorno utilizado durante la realización del proyecto está compuesto por:
+El entorno utilizado durante la realizaciÃ³n del proyecto estÃ¡ compuesto por:
 
-| Componente | Tecnología |
+| Componente | TecnologÃ­a |
 |------------|------------|
 | Sistema Operativo | Windows 11 |
 | Framework | Laravel 13.23.0 |
 | Lenguaje | PHP 8.3.32 |
 | Base de Datos | MySQL 8 |
 | Contenedores | Docker Desktop |
-| Administración BD | phpMyAdmin |
+| AdministraciÃ³n BD | phpMyAdmin |
 | IDE | Visual Studio Code |
 | Control de Versiones | Git |
 | Repositorio Remoto | GitHub |
-| Documentación | Obsidian + Markdown + Mermaid |
+| DocumentaciÃ³n | Obsidian + Markdown + Mermaid |
 
 ---
 
-# Relación con la Documentación
+# RelaciÃ³n con la DocumentaciÃ³n
 
 Este diagrama complementa los siguientes documentos:
 
-- [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
-- [setup-local-dev](docs/setup-local-dev.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
+- [09_ManualInstalacion](../docs/09_ManualInstalacion.md)
+- [setup-local-dev](../setup-local-dev.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
+- [01_Arquitectura](../docs/01_Arquitectura.md)
 
 ---
 
 # Consideraciones Finales
 
-El despliegue representado corresponde al entorno de desarrollo utilizado para la construcción de **Rincón del Pan**.
+El despliegue representado corresponde al entorno de desarrollo utilizado para la construcciÃ³n de **RincÃ³n del Pan**.
 
-La utilización de **Laravel Framework 13**, **PHP 8.3**, **Docker Desktop**, **MySQL**, **GitHub** y **Obsidian** permitió construir un entorno moderno, reproducible y fácilmente mantenible, donde tanto el código fuente como la documentación evolucionan conjuntamente bajo control de versiones.
+La utilizaciÃ³n de **Laravel Framework 13**, **PHP 8.3**, **Docker Desktop**, **MySQL**, **GitHub** y **Obsidian** permitiÃ³ construir un entorno moderno, reproducible y fÃ¡cilmente mantenible, donde tanto el cÃ³digo fuente como la documentaciÃ³n evolucionan conjuntamente bajo control de versiones.
+

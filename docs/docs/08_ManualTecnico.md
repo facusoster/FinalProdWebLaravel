@@ -1,24 +1,24 @@
-# ⚙️ Manual Técnico
+﻿# âš™ï¸ Manual TÃ©cnico
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Lenguaje:** PHP 8.3.32  
-> **Patrón Arquitectónico:** Modelo - Vista - Controlador (MVC)
+> **PatrÃ³n ArquitectÃ³nico:** Modelo - Vista - Controlador (MVC)
 
 ---
 
-# Introducción
+# IntroducciÃ³n
 
-Este documento describe los aspectos técnicos más relevantes de la implementación del proyecto **Rincón del Pan**.
+Este documento describe los aspectos tÃ©cnicos mÃ¡s relevantes de la implementaciÃ³n del proyecto **RincÃ³n del Pan**.
 
-Su objetivo es proporcionar una visión general de la estructura del sistema, las tecnologías utilizadas y las decisiones adoptadas durante el desarrollo, facilitando el mantenimiento, la comprensión del código y la incorporación de futuras funcionalidades.
+Su objetivo es proporcionar una visiÃ³n general de la estructura del sistema, las tecnologÃ­as utilizadas y las decisiones adoptadas durante el desarrollo, facilitando el mantenimiento, la comprensiÃ³n del cÃ³digo y la incorporaciÃ³n de futuras funcionalidades.
 
 ---
 
-# Tecnologías Utilizadas
+# TecnologÃ­as Utilizadas
 
-| Tecnología | Versión |
+| TecnologÃ­a | VersiÃ³n |
 |------------|---------|
 | Laravel | 13.23.0 |
 | PHP | 8.3.32 |
@@ -31,62 +31,62 @@ Su objetivo es proporcionar una visión general de la estructura del sistema, la
 | Git | Control de versiones |
 | GitHub | Repositorio remoto |
 | Docker Desktop | Entorno de base de datos |
-| phpMyAdmin | Administración de MySQL |
-| Obsidian | Documentación técnica |
+| phpMyAdmin | AdministraciÃ³n de MySQL |
+| Obsidian | DocumentaciÃ³n tÃ©cnica |
 | Mermaid | Diagramas |
 
 ---
 
 # Arquitectura
 
-El proyecto sigue el patrón **Modelo - Vista - Controlador (MVC)** recomendado por Laravel.
+El proyecto sigue el patrÃ³n **Modelo - Vista - Controlador (MVC)** recomendado por Laravel.
 
-Cada componente posee una responsabilidad específica:
+Cada componente posee una responsabilidad especÃ­fica:
 
 - **Modelos**: representan las entidades del dominio y gestionan el acceso a la base de datos mediante Eloquent ORM.
-- **Vistas**: implementadas con Blade Templates para la presentación de la información.
-- **Controladores**: reciben las solicitudes HTTP, coordinan la lógica de negocio y generan la respuesta correspondiente.
+- **Vistas**: implementadas con Blade Templates para la presentaciÃ³n de la informaciÃ³n.
+- **Controladores**: reciben las solicitudes HTTP, coordinan la lÃ³gica de negocio y generan la respuesta correspondiente.
 
-La documentación completa de la arquitectura puede consultarse en:
+La documentaciÃ³n completa de la arquitectura puede consultarse en:
 
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
+- [01_Arquitectura](01_Arquitectura.md)
 
 ---
 
-# Organización del Proyecto
+# OrganizaciÃ³n del Proyecto
 
 La estructura principal del proyecto sigue las convenciones establecidas por Laravel.
 
 ```text
 app/
-├── Http/
-│   ├── Controllers/
-│   ├── Middleware/
-│   └── Requests/
-│
-├── Models/
-│
+â”œâ”€â”€ Http/
+â”‚   â”œâ”€â”€ Controllers/
+â”‚   â”œâ”€â”€ Middleware/
+â”‚   â””â”€â”€ Requests/
+â”‚
+â”œâ”€â”€ Models/
+â”‚
 bootstrap/
 config/
 database/
-│
-├── factories/
-├── migrations/
-└── seeders/
-│
+â”‚
+â”œâ”€â”€ factories/
+â”œâ”€â”€ migrations/
+â””â”€â”€ seeders/
+â”‚
 public/
 resources/
-│
-├── css/
-├── js/
-└── views/
-│
+â”‚
+â”œâ”€â”€ css/
+â”œâ”€â”€ js/
+â””â”€â”€ views/
+â”‚
 routes/
 storage/
 tests/
 ```
 
-Esta organización facilita la separación de responsabilidades y mejora la mantenibilidad del código.
+Esta organizaciÃ³n facilita la separaciÃ³n de responsabilidades y mejora la mantenibilidad del cÃ³digo.
 
 ---
 
@@ -106,9 +106,9 @@ El sistema implementa los siguientes modelos Eloquent:
 Cada modelo define:
 
 - Relaciones entre entidades.
-- Asignación masiva mediante `fillable`.
-- Conversión de atributos mediante `casts` cuando corresponde.
-- Métodos de navegación entre relaciones.
+- AsignaciÃ³n masiva mediante `fillable`.
+- ConversiÃ³n de atributos mediante `casts` cuando corresponde.
+- MÃ©todos de navegaciÃ³n entre relaciones.
 
 ---
 
@@ -121,11 +121,11 @@ La estructura de la base de datos se encuentra completamente versionada mediante
 - Migraciones.
 - Seeders.
 
-La documentación correspondiente puede consultarse en:
+La documentaciÃ³n correspondiente puede consultarse en:
 
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
+- [03_BaseDatos](03_BaseDatos.md)
+- [04_DER](04_DER.md)
+- [10_DiccionarioDatos](10_DiccionarioDatos.md)
 
 ---
 
@@ -149,17 +149,17 @@ php artisan migrate:fresh --seed
 
 # Seeders
 
-Los seeders generan información inicial para facilitar el desarrollo y las pruebas.
+Los seeders generan informaciÃ³n inicial para facilitar el desarrollo y las pruebas.
 
 Se incluyen registros de:
 
 - Usuarios.
-- Categorías.
+- CategorÃ­as.
 - Productos.
 - Direcciones.
 - Pedidos.
 - Detalles de pedidos.
-- Reseñas.
+- ReseÃ±as.
 - Carrito de compras.
 
 ---
@@ -170,28 +170,28 @@ Las rutas del sistema se organizan principalmente en:
 
 ```text
 routes/
-├── web.php
-├── console.php
+â”œâ”€â”€ web.php
+â”œâ”€â”€ console.php
 ```
 
 Las rutas web gestionan:
 
-- Autenticación.
-- Catálogo.
+- AutenticaciÃ³n.
+- CatÃ¡logo.
 - Productos.
-- Categorías.
+- CategorÃ­as.
 - Pedidos.
 - Direcciones.
-- Reseñas.
+- ReseÃ±as.
 - Panel administrativo.
 
 La API REST se encuentra prevista como una etapa posterior del proyecto.
 
 ---
 
-# Autenticación y Autorización
+# AutenticaciÃ³n y AutorizaciÃ³n
 
-El sistema implementa autenticación basada en sesiones utilizando los mecanismos provistos por Laravel.
+El sistema implementa autenticaciÃ³n basada en sesiones utilizando los mecanismos provistos por Laravel.
 
 El acceso a las funcionalidades privadas se controla mediante middleware.
 
@@ -200,7 +200,7 @@ Se distinguen dos tipos de usuarios:
 - Cliente.
 - Administrador.
 
-Los administradores poseen permisos para gestionar el catálogo y actualizar el estado de los pedidos.
+Los administradores poseen permisos para gestionar el catÃ¡logo y actualizar el estado de los pedidos.
 
 ---
 
@@ -210,21 +210,21 @@ Los middleware permiten interceptar solicitudes antes de llegar a los controlado
 
 Se utilizan para:
 
-- Verificar autenticación.
-- Restringir acceso según el rol.
+- Verificar autenticaciÃ³n.
+- Restringir acceso segÃºn el rol.
 - Proteger el panel administrativo.
 
 Esta estrategia evita duplicar validaciones dentro de los controladores.
 
 ---
 
-# Gestión de Archivos
+# GestiÃ³n de Archivos
 
-Los productos pueden almacenar imágenes asociadas.
+Los productos pueden almacenar imÃ¡genes asociadas.
 
 Laravel administra estos recursos mediante el sistema de almacenamiento configurado para el proyecto.
 
-Las vistas acceden a las imágenes utilizando las herramientas proporcionadas por el framework.
+Las vistas acceden a las imÃ¡genes utilizando las herramientas proporcionadas por el framework.
 
 ---
 
@@ -240,7 +240,7 @@ Se emplean:
 - Secciones (`@section`).
 - Herencia mediante `@extends`.
 
-Esto permite mantener una interfaz consistente y reducir la duplicación de código.
+Esto permite mantener una interfaz consistente y reducir la duplicaciÃ³n de cÃ³digo.
 
 ---
 
@@ -248,17 +248,17 @@ Esto permite mantener una interfaz consistente y reducir la duplicación de cód
 
 El proyecto utiliza **Bootstrap** como framework CSS.
 
-La compilación de recursos se realiza mediante **Vite**, integrado de forma nativa con Laravel.
+La compilaciÃ³n de recursos se realiza mediante **Vite**, integrado de forma nativa con Laravel.
 
-El diseño busca ofrecer una experiencia de uso adecuada tanto en equipos de escritorio como en dispositivos móviles.
+El diseÃ±o busca ofrecer una experiencia de uso adecuada tanto en equipos de escritorio como en dispositivos mÃ³viles.
 
 ---
 
-# Configuración del Entorno
+# ConfiguraciÃ³n del Entorno
 
-La configuración de la aplicación se centraliza en el archivo `.env`.
+La configuraciÃ³n de la aplicaciÃ³n se centraliza en el archivo `.env`.
 
-Entre las variables más relevantes se encuentran:
+Entre las variables mÃ¡s relevantes se encuentran:
 
 - APP_NAME
 - APP_ENV
@@ -278,22 +278,22 @@ El archivo `.env` no forma parte del repositorio por motivos de seguridad.
 
 # Control de Versiones
 
-El desarrollo del proyecto se gestionó utilizando Git.
+El desarrollo del proyecto se gestionÃ³ utilizando Git.
 
-Las principales prácticas adoptadas fueron:
+Las principales prÃ¡cticas adoptadas fueron:
 
 - Commits frecuentes.
 - Repositorio remoto en GitHub.
-- Exclusión de archivos sensibles mediante `.gitignore`.
-- Versionado de la documentación junto con el código fuente.
+- ExclusiÃ³n de archivos sensibles mediante `.gitignore`.
+- Versionado de la documentaciÃ³n junto con el cÃ³digo fuente.
 
 ---
 
-# Documentación Técnica
+# DocumentaciÃ³n TÃ©cnica
 
-Toda la documentación se encuentra desarrollada en formato Markdown y organizada dentro de la carpeta `docs`.
+Toda la documentaciÃ³n se encuentra desarrollada en formato Markdown y organizada dentro de la carpeta `docs`.
 
-La documentación incluye:
+La documentaciÃ³n incluye:
 
 - Relevamiento de requisitos.
 - Arquitectura.
@@ -302,7 +302,7 @@ La documentación incluye:
 - DER.
 - Casos de uso.
 - UML.
-- Manual de instalación.
+- Manual de instalaciÃ³n.
 - Diccionario de datos.
 - Diagramas Mermaid.
 
@@ -310,12 +310,12 @@ La documentación incluye:
 
 # Mantenimiento
 
-Para mantener la documentación sincronizada con el proyecto se recomienda:
+Para mantener la documentaciÃ³n sincronizada con el proyecto se recomienda:
 
-- Actualizar la documentación junto con cada cambio funcional.
-- Mantener los diagramas Mermaid alineados con la implementación.
+- Actualizar la documentaciÃ³n junto con cada cambio funcional.
+- Mantener los diagramas Mermaid alineados con la implementaciÃ³n.
 - Registrar nuevas entidades o relaciones en el diccionario de datos.
-- Versionar toda modificación mediante Git.
+- Versionar toda modificaciÃ³n mediante Git.
 
 ---
 
@@ -323,33 +323,34 @@ Para mantener la documentación sincronizada con el proyecto se recomienda:
 
 Entre las funcionalidades previstas para futuras versiones se encuentran:
 
-- Implementación de la API REST solicitada por la asignatura.
-- Documentación de la colección de Postman.
-- Incorporación de pruebas automatizadas.
-- Mejoras en la gestión del carrito de compras.
-- Optimización de consultas mediante Eloquent.
-- Incorporación de nuevas funcionalidades administrativas.
+- ImplementaciÃ³n de la API REST solicitada por la asignatura.
+- DocumentaciÃ³n de la colecciÃ³n de Postman.
+- IncorporaciÃ³n de pruebas automatizadas.
+- Mejoras en la gestiÃ³n del carrito de compras.
+- OptimizaciÃ³n de consultas mediante Eloquent.
+- IncorporaciÃ³n de nuevas funcionalidades administrativas.
 
 ---
 
-# Documentación Relacionada
+# DocumentaciÃ³n Relacionada
 
-- [00_AnalisisRequisitos](docs/docs/00_AnalisisRequisitos.md)
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [07_UML](docs/07_UML.md)
-- [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
+- [00_AnalisisRequisitos](00_AnalisisRequisitos.md)
+- [01_Arquitectura](01_Arquitectura.md)
+- [02_ModeloDominio](02_ModeloDominio.md)
+- [03_BaseDatos](03_BaseDatos.md)
+- [04_DER](04_DER.md)
+- [05_CasosUso](05_CasosUso.md)
+- [07_UML](07_UML.md)
+- [09_ManualInstalacion](09_ManualInstalacion.md)
+- [10_DiccionarioDatos](10_DiccionarioDatos.md)
 
 ---
 
 # Consideraciones Finales
 
-La implementación de **Rincón del Pan** sigue las buenas prácticas recomendadas por Laravel, manteniendo una estructura organizada, modular y fácilmente mantenible.
+La implementaciÃ³n de **RincÃ³n del Pan** sigue las buenas prÃ¡cticas recomendadas por Laravel, manteniendo una estructura organizada, modular y fÃ¡cilmente mantenible.
 
-La utilización de **Laravel Framework 13**, **PHP 8.3**, **Eloquent ORM**, **Blade**, **Bootstrap**, **Migraciones** y **Seeders** permitió desarrollar una aplicación consistente y alineada con los objetivos planteados durante la etapa de análisis.
+La utilizaciÃ³n de **Laravel Framework 13**, **PHP 8.3**, **Eloquent ORM**, **Blade**, **Bootstrap**, **Migraciones** y **Seeders** permitiÃ³ desarrollar una aplicaciÃ³n consistente y alineada con los objetivos planteados durante la etapa de anÃ¡lisis.
 
-La documentación técnica acompaña al código fuente y constituye una herramienta fundamental para comprender la arquitectura del sistema, facilitar su mantenimiento y apoyar futuras ampliaciones del proyecto.
+La documentaciÃ³n tÃ©cnica acompaÃ±a al cÃ³digo fuente y constituye una herramienta fundamental para comprender la arquitectura del sistema, facilitar su mantenimiento y apoyar futuras ampliaciones del proyecto.
+

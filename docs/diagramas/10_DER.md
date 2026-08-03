@@ -1,7 +1,7 @@
-# 🗄️ Diagrama Entidad–Relación (DER)
+﻿# ðŸ—„ï¸ Diagrama Entidadâ€“RelaciÃ³n (DER)
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Motor de Base de Datos:** MySQL 8
 
@@ -9,9 +9,9 @@
 
 # Objetivo
 
-Este documento presenta el **Diagrama Entidad–Relación (DER)** correspondiente a la base de datos del proyecto **Rincón del Pan**.
+Este documento presenta el **Diagrama Entidadâ€“RelaciÃ³n (DER)** correspondiente a la base de datos del proyecto **RincÃ³n del Pan**.
 
-El diagrama representa la estructura lógica del sistema, mostrando las entidades principales, sus atributos más relevantes y las relaciones existentes entre ellas.
+El diagrama representa la estructura lÃ³gica del sistema, mostrando las entidades principales, sus atributos mÃ¡s relevantes y las relaciones existentes entre ellas.
 
 Este modelo fue posteriormente implementado mediante **Laravel Migrations** y administrado utilizando **Eloquent ORM**.
 
@@ -118,11 +118,11 @@ erDiagram
 
 ---
 
-# Descripción de las Entidades
+# DescripciÃ³n de las Entidades
 
 ## Users
 
-Almacena la información de los usuarios registrados en el sistema.
+Almacena la informaciÃ³n de los usuarios registrados en el sistema.
 
 Incluye tanto clientes como administradores, diferenciados mediante el atributo **role**.
 
@@ -130,15 +130,15 @@ Incluye tanto clientes como administradores, diferenciados mediante el atributo 
 
 ## Addresses
 
-Contiene las direcciones de envío asociadas a cada usuario.
+Contiene las direcciones de envÃ­o asociadas a cada usuario.
 
-Un usuario puede registrar múltiples direcciones.
+Un usuario puede registrar mÃºltiples direcciones.
 
 ---
 
 ## Categories
 
-Agrupa los productos del catálogo según distintos criterios comerciales.
+Agrupa los productos del catÃ¡logo segÃºn distintos criterios comerciales.
 
 ---
 
@@ -146,18 +146,18 @@ Agrupa los productos del catálogo según distintos criterios comerciales.
 
 Representa los productos disponibles para la venta.
 
-Cada producto posee información descriptiva, precio, stock e imagen.
+Cada producto posee informaciÃ³n descriptiva, precio, stock e imagen.
 
 ---
 
 ## Category_Product
 
-Tabla pivote encargada de implementar la relación **Muchos a Muchos** entre productos y categorías.
+Tabla pivote encargada de implementar la relaciÃ³n **Muchos a Muchos** entre productos y categorÃ­as.
 
 Permite que:
 
-- un producto pertenezca a varias categorías;
-- una categoría contenga múltiples productos.
+- un producto pertenezca a varias categorÃ­as;
+- una categorÃ­a contenga mÃºltiples productos.
 
 ---
 
@@ -186,7 +186,7 @@ Cada registro almacena:
 
 Permite que los clientes califiquen y comenten productos adquiridos.
 
-Cada reseña pertenece simultáneamente a un usuario y a un producto.
+Cada reseÃ±a pertenece simultÃ¡neamente a un usuario y a un producto.
 
 ---
 
@@ -200,17 +200,17 @@ Cada registro representa un producto agregado por un usuario junto con la cantid
 
 # Relaciones Principales
 
-| Relación | Cardinalidad |
+| RelaciÃ³n | Cardinalidad |
 |-----------|--------------|
-| User → Addresses | 1:N |
-| User → Orders | 1:N |
-| User → Reviews | 1:N |
-| User → Wishlists | 1:N |
-| Order → OrderItems | 1:N |
-| Product → OrderItems | 1:N |
-| Product → Reviews | 1:N |
-| Product → Wishlists | 1:N |
-| Product ↔ Category | N:M |
+| User â†’ Addresses | 1:N |
+| User â†’ Orders | 1:N |
+| User â†’ Reviews | 1:N |
+| User â†’ Wishlists | 1:N |
+| Order â†’ OrderItems | 1:N |
+| Product â†’ OrderItems | 1:N |
+| Product â†’ Reviews | 1:N |
+| Product â†’ Wishlists | 1:N |
+| Product â†” Category | N:M |
 
 ---
 
@@ -218,20 +218,20 @@ Cada registro representa un producto agregado por un usuario junto con la cantid
 
 El modelo contempla las siguientes reglas principales:
 
-- Un usuario puede registrar múltiples direcciones.
-- Un usuario puede realizar múltiples pedidos.
-- Cada pedido pertenece a una única dirección de envío.
-- Un pedido contiene uno o más productos.
-- Un producto puede formar parte de múltiples pedidos.
-- Un producto puede pertenecer a múltiples categorías.
+- Un usuario puede registrar mÃºltiples direcciones.
+- Un usuario puede realizar mÃºltiples pedidos.
+- Cada pedido pertenece a una Ãºnica direcciÃ³n de envÃ­o.
+- Un pedido contiene uno o mÃ¡s productos.
+- Un producto puede formar parte de mÃºltiples pedidos.
+- Un producto puede pertenecer a mÃºltiples categorÃ­as.
 - Un usuario puede agregar productos al carrito de compras.
-- Un usuario puede publicar reseñas sobre productos.
+- Un usuario puede publicar reseÃ±as sobre productos.
 
 ---
 
 # Correspondencia con Laravel
 
-El modelo fue implementado utilizando las siguientes características del framework:
+El modelo fue implementado utilizando las siguientes caracterÃ­sticas del framework:
 
 - Laravel Migrations.
 - Foreign Keys.
@@ -243,19 +243,20 @@ El modelo fue implementado utilizando las siguientes características del framew
 
 ---
 
-# Documentación Relacionada
+# DocumentaciÃ³n Relacionada
 
 Este diagrama complementa:
 
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
+- [03_BaseDatos](../docs/03_BaseDatos.md)
+- [04_DER](../docs/04_DER.md)
+- [10_DiccionarioDatos](../docs/10_DiccionarioDatos.md)
+- [diagramas/21_UML_Clases](21_UML_Clases.md)
 
 ---
 
 # Consideraciones Finales
 
-El modelo entidad–relación implementado en **Rincón del Pan** constituye la base estructural del sistema, definiendo las entidades necesarias para gestionar usuarios, productos, pedidos, categorías, reseñas, direcciones y el carrito de compras.
+El modelo entidadâ€“relaciÃ³n implementado en **RincÃ³n del Pan** constituye la base estructural del sistema, definiendo las entidades necesarias para gestionar usuarios, productos, pedidos, categorÃ­as, reseÃ±as, direcciones y el carrito de compras.
 
-Su implementación mediante migraciones y relaciones Eloquent garantiza la integridad referencial de la base de datos y facilita la evolución futura del proyecto.
+Su implementaciÃ³n mediante migraciones y relaciones Eloquent garantiza la integridad referencial de la base de datos y facilita la evoluciÃ³n futura del proyecto.
+

@@ -1,7 +1,7 @@
-# 🔐 UML - Diagrama de Secuencia: Inicio de Sesión
+﻿# ðŸ” UML - Diagrama de Secuencia: Inicio de SesiÃ³n
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Tipo de Diagrama:** UML - Secuencia
 
@@ -9,11 +9,11 @@
 
 # Objetivo
 
-Este diagrama describe la interacción entre los distintos componentes del sistema durante el proceso de autenticación de un usuario.
+Este diagrama describe la interacciÃ³n entre los distintos componentes del sistema durante el proceso de autenticaciÃ³n de un usuario.
 
-El flujo refleja el funcionamiento implementado mediante el **AuthController**, las rutas de Laravel, el modelo **User**, la base de datos MySQL y el sistema de autenticación basado en sesiones.
+El flujo refleja el funcionamiento implementado mediante el **AuthController**, las rutas de Laravel, el modelo **User**, la base de datos MySQL y el sistema de autenticaciÃ³n basado en sesiones.
 
-Este documento complementa la descripción funcional desarrollada en [05_CasosUso](docs/docs/05_CasosUso.md).
+Este documento complementa la descripciÃ³n funcional desarrollada en [05_CasosUso](../docs/05_CasosUso.md).
 
 ---
 
@@ -47,17 +47,17 @@ MySQL-->>User: Datos del usuario
 
 User-->>AuthController: Usuario encontrado
 
-alt Credenciales válidas
+alt Credenciales vÃ¡lidas
 
-    AuthController->>Session: Crear sesión
+    AuthController->>Session: Crear sesiÃ³n
 
-    Session-->>AuthController: Sesión iniciada
+    Session-->>AuthController: SesiÃ³n iniciada
 
     AuthController-->>Navegador: Redirect Dashboard
 
     Navegador-->>Usuario: Panel principal
 
-else Credenciales inválidas
+else Credenciales invÃ¡lidas
 
     AuthController-->>Navegador: Redirect Login + Error
 
@@ -68,13 +68,13 @@ end
 
 ---
 
-# Descripción del Flujo
+# DescripciÃ³n del Flujo
 
-El proceso de autenticación comienza cuando el usuario completa el formulario de inicio de sesión y envía sus credenciales.
+El proceso de autenticaciÃ³n comienza cuando el usuario completa el formulario de inicio de sesiÃ³n y envÃ­a sus credenciales.
 
 Laravel recibe la solicitud mediante la ruta correspondiente y la deriva al **AuthController**, responsable de validar los datos ingresados y autenticar al usuario.
 
-Si las credenciales son correctas, se crea una sesión y el usuario es redirigido al panel principal.
+Si las credenciales son correctas, se crea una sesiÃ³n y el usuario es redirigido al panel principal.
 
 En caso contrario, el sistema vuelve al formulario de login mostrando un mensaje de error.
 
@@ -82,39 +82,39 @@ En caso contrario, el sistema vuelve al formulario de login mostrando un mensaje
 
 # Participantes
 
-## 👤 Usuario
+## ðŸ‘¤ Usuario
 
-Persona que intenta acceder al sistema utilizando su correo electrónico y contraseña.
-
----
-
-## 🌐 Navegador
-
-Envía la solicitud HTTP y recibe las respuestas generadas por Laravel.
+Persona que intenta acceder al sistema utilizando su correo electrÃ³nico y contraseÃ±a.
 
 ---
 
-## 🛣️ Routes
+## ðŸŒ Navegador
 
-Resuelven la URL solicitada y derivan la petición al controlador correspondiente.
+EnvÃ­a la solicitud HTTP y recibe las respuestas generadas por Laravel.
 
 ---
 
-## 🎮 AuthController
+## ðŸ›£ï¸ Routes
 
-Coordina todo el proceso de autenticación.
+Resuelven la URL solicitada y derivan la peticiÃ³n al controlador correspondiente.
+
+---
+
+## ðŸŽ® AuthController
+
+Coordina todo el proceso de autenticaciÃ³n.
 
 Sus responsabilidades incluyen:
 
 - Validar datos.
 - Buscar el usuario.
-- Verificar la contraseña.
-- Crear la sesión.
+- Verificar la contraseÃ±a.
+- Crear la sesiÃ³n.
 - Redireccionar al usuario.
 
 ---
 
-## 📦 User
+## ðŸ“¦ User
 
 Modelo Eloquent encargado de representar los usuarios registrados.
 
@@ -122,45 +122,45 @@ Realiza la consulta sobre la base de datos.
 
 ---
 
-## 🗄️ MySQL
+## ðŸ—„ï¸ MySQL
 
-Almacena la información de los usuarios registrados.
+Almacena la informaciÃ³n de los usuarios registrados.
 
 ---
 
-## 🔑 Session
+## ðŸ”‘ Session
 
-Gestiona la autenticación basada en sesiones de Laravel.
+Gestiona la autenticaciÃ³n basada en sesiones de Laravel.
 
-Una vez creada la sesión, el usuario puede acceder a las rutas protegidas por el middleware `auth`.
+Una vez creada la sesiÃ³n, el usuario puede acceder a las rutas protegidas por el middleware `auth`.
 
 ---
 
 # Escenarios Posibles
 
-## Autenticación Exitosa
+## AutenticaciÃ³n Exitosa
 
 El sistema:
 
 - encuentra el usuario;
-- valida la contraseña;
-- crea la sesión;
+- valida la contraseÃ±a;
+- crea la sesiÃ³n;
 - redirige al dashboard correspondiente.
 
 ---
 
-## Autenticación Fallida
+## AutenticaciÃ³n Fallida
 
 Si las credenciales son incorrectas:
 
-- no se crea ninguna sesión;
+- no se crea ninguna sesiÃ³n;
 - el usuario permanece sin autenticar;
 - se muestra un mensaje de error;
 - se redirecciona nuevamente al formulario de login.
 
 ---
 
-# Relación con Laravel
+# RelaciÃ³n con Laravel
 
 Durante este proceso intervienen los siguientes componentes del framework:
 
@@ -175,26 +175,27 @@ Durante este proceso intervienen los siguientes componentes del framework:
 
 ---
 
-# Relación con otros Diagramas
+# RelaciÃ³n con otros Diagramas
 
 Este diagrama se complementa con:
 
-- [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
-- [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido)
+- [diagramas/20_UML_CasosUso](20_UML_CasosUso.md)
+- [diagramas/21_UML_Clases](21_UML_Clases.md)
+- [diagramas/23_UML_SecuenciaPedido](23_UML_SecuenciaPedido.md)
 
 ---
 
-# Documentación Relacionada
+# DocumentaciÃ³n Relacionada
 
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [07_UML](docs/07_UML.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [05_CasosUso](../docs/05_CasosUso.md)
+- [07_UML](../docs/07_UML.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
 
 ---
 
 # Consideraciones Finales
 
-El proceso de autenticación implementado en **Rincón del Pan** sigue el flujo habitual de una aplicación Laravel basada en sesiones.
+El proceso de autenticaciÃ³n implementado en **RincÃ³n del Pan** sigue el flujo habitual de una aplicaciÃ³n Laravel basada en sesiones.
 
-La separación entre rutas, controlador, modelo, persistencia y gestión de sesiones permite mantener una arquitectura clara y facilita el mantenimiento del sistema, respetando el patrón MVC y las buenas prácticas recomendadas por el framework.
+La separaciÃ³n entre rutas, controlador, modelo, persistencia y gestiÃ³n de sesiones permite mantener una arquitectura clara y facilita el mantenimiento del sistema, respetando el patrÃ³n MVC y las buenas prÃ¡cticas recomendadas por el framework.
+

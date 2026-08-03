@@ -1,17 +1,17 @@
-# 🗄️ Base de Datos
+﻿# ðŸ—„ï¸ Base de Datos
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Motor de Base de Datos:** MySQL 8
 
 ---
 
-# Introducción
+# IntroducciÃ³n
 
-La persistencia de datos de **Rincón del Pan** fue implementada utilizando **MySQL** como motor de base de datos y **Eloquent ORM** como capa de acceso a datos provista por Laravel.
+La persistencia de datos de **RincÃ³n del Pan** fue implementada utilizando **MySQL** como motor de base de datos y **Eloquent ORM** como capa de acceso a datos provista por Laravel.
 
-El diseño busca garantizar la integridad de la información, minimizar la redundancia de datos y facilitar el mantenimiento de la aplicación mediante un esquema relacional normalizado.
+El diseÃ±o busca garantizar la integridad de la informaciÃ³n, minimizar la redundancia de datos y facilitar el mantenimiento de la aplicaciÃ³n mediante un esquema relacional normalizado.
 
 Toda la estructura se encuentra versionada mediante **Migraciones**, permitiendo reconstruir la base de datos desde cero en cualquier entorno de desarrollo.
 
@@ -19,14 +19,14 @@ Toda la estructura se encuentra versionada mediante **Migraciones**, permitiendo
 
 # Objetivos
 
-La base de datos fue diseñada con los siguientes objetivos:
+La base de datos fue diseÃ±ada con los siguientes objetivos:
 
-- Almacenar de forma consistente la información del sistema.
+- Almacenar de forma consistente la informaciÃ³n del sistema.
 - Mantener la integridad referencial entre las entidades.
 - Facilitar el crecimiento del proyecto.
-- Evitar duplicidad de información.
+- Evitar duplicidad de informaciÃ³n.
 - Aprovechar las capacidades del ORM Eloquent.
-- Permitir la reconstrucción automática mediante migraciones.
+- Permitir la reconstrucciÃ³n automÃ¡tica mediante migraciones.
 
 ---
 
@@ -34,31 +34,31 @@ La base de datos fue diseñada con los siguientes objetivos:
 
 El proyecto utiliza:
 
-| Característica | Tecnología |
+| CaracterÃ­stica | TecnologÃ­a |
 |---------------|------------|
 | Motor | MySQL 8 |
 | Framework ORM | Eloquent ORM |
 | Migraciones | Laravel Migrations |
 | Datos iniciales | Laravel Seeders |
-| Configuración | Archivo `.env` |
+| ConfiguraciÃ³n | Archivo `.env` |
 
 ---
 
 # Modelo Relacional
 
-La base de datos está compuesta por las siguientes tablas principales:
+La base de datos estÃ¡ compuesta por las siguientes tablas principales:
 
-| Tabla | Descripción |
+| Tabla | DescripciÃ³n |
 |--------|-------------|
 | users | Usuarios registrados del sistema. |
-| addresses | Direcciones de envío de los usuarios. |
-| categories | Categorías del catálogo. |
+| addresses | Direcciones de envÃ­o de los usuarios. |
+| categories | CategorÃ­as del catÃ¡logo. |
 | products | Productos comercializados. |
-| category_product | Tabla pivote entre productos y categorías. |
+| category_product | Tabla pivote entre productos y categorÃ­as. |
 | orders | Pedidos realizados por los clientes. |
 | order_items | Detalle de productos incluidos en cada pedido. |
-| reviews | Reseñas realizadas por los usuarios. |
-| wishlists | Implementación del carrito de compras. |
+| reviews | ReseÃ±as realizadas por los usuarios. |
+| wishlists | ImplementaciÃ³n del carrito de compras. |
 
 ---
 
@@ -66,26 +66,26 @@ La base de datos está compuesta por las siguientes tablas principales:
 
 Las principales relaciones implementadas son:
 
-| Relación | Cardinalidad |
+| RelaciÃ³n | Cardinalidad |
 |----------|--------------|
-| User → Address | 1:N |
-| User → Order | 1:N |
-| User → Review | 1:N |
-| User → Wishlist | 1:N |
-| Address → Order | 1:N |
-| Order → OrderItem | 1:N |
-| Product → OrderItem | 1:N |
-| Product ↔ Category | N:M |
-| Product → Review | 1:N |
-| Product → Wishlist | 1:N |
+| User â†’ Address | 1:N |
+| User â†’ Order | 1:N |
+| User â†’ Review | 1:N |
+| User â†’ Wishlist | 1:N |
+| Address â†’ Order | 1:N |
+| Order â†’ OrderItem | 1:N |
+| Product â†’ OrderItem | 1:N |
+| Product â†” Category | N:M |
+| Product â†’ Review | 1:N |
+| Product â†’ Wishlist | 1:N |
 
-Las relaciones son implementadas mediante claves foráneas y modelos Eloquent.
+Las relaciones son implementadas mediante claves forÃ¡neas y modelos Eloquent.
 
 ---
 
 # Integridad Referencial
 
-Todas las relaciones utilizan claves foráneas definidas mediante las migraciones de Laravel.
+Todas las relaciones utilizan claves forÃ¡neas definidas mediante las migraciones de Laravel.
 
 Se emplea la sintaxis recomendada por el framework:
 
@@ -97,7 +97,7 @@ Esto garantiza:
 
 - existencia de registros relacionados;
 - consistencia de los datos;
-- navegación entre entidades mediante Eloquent;
+- navegaciÃ³n entre entidades mediante Eloquent;
 - mantenimiento simplificado del esquema.
 
 ---
@@ -106,7 +106,7 @@ Esto garantiza:
 
 La estructura completa de la base de datos fue desarrollada mediante migraciones.
 
-Cada modificación del esquema queda registrada dentro del directorio:
+Cada modificaciÃ³n del esquema queda registrada dentro del directorio:
 
 ```text
 database/migrations/
@@ -119,7 +119,7 @@ Las migraciones permiten:
 - versionar cambios;
 - reconstruir el esquema desde cero.
 
-Su ejecución se realiza mediante:
+Su ejecuciÃ³n se realiza mediante:
 
 ```bash
 php artisan migrate
@@ -137,20 +137,20 @@ php artisan migrate:fresh --seed
 
 Los datos iniciales del proyecto son generados mediante **Seeders**.
 
-Estos permiten poblar automáticamente la base de datos con información de prueba.
+Estos permiten poblar automÃ¡ticamente la base de datos con informaciÃ³n de prueba.
 
 Entre los datos generados se incluyen:
 
 - usuarios;
-- categorías;
+- categorÃ­as;
 - productos;
 - direcciones;
 - pedidos;
 - detalle de pedidos;
-- reseñas;
+- reseÃ±as;
 - carrito de compras.
 
-La ejecución se realiza mediante:
+La ejecuciÃ³n se realiza mediante:
 
 ```bash
 php artisan db:seed
@@ -180,7 +180,7 @@ Esto permite navegar entre entidades utilizando objetos del dominio en lugar de 
 
 # Tabla Pivote
 
-La relación entre productos y categorías se implementa mediante la tabla pivote:
+La relaciÃ³n entre productos y categorÃ­as se implementa mediante la tabla pivote:
 
 ```text
 category_product
@@ -188,10 +188,10 @@ category_product
 
 Esta estructura permite que:
 
-- un producto pertenezca a múltiples categorías;
-- una categoría agrupe múltiples productos.
+- un producto pertenezca a mÃºltiples categorÃ­as;
+- una categorÃ­a agrupe mÃºltiples productos.
 
-Laravel administra esta relación mediante:
+Laravel administra esta relaciÃ³n mediante:
 
 ```php
 belongsToMany()
@@ -201,17 +201,17 @@ belongsToMany()
 
 # Carrito de Compras
 
-Durante el desarrollo se decidió reutilizar la entidad **Wishlist** como implementación del carrito de compras.
+Durante el desarrollo se decidiÃ³ reutilizar la entidad **Wishlist** como implementaciÃ³n del carrito de compras.
 
-Desde el punto de vista funcional, el usuario interactúa con un **Carrito de Compras**.
+Desde el punto de vista funcional, el usuario interactÃºa con un **Carrito de Compras**.
 
-Desde el punto de vista técnico, dicha funcionalidad se encuentra respaldada por la tabla:
+Desde el punto de vista tÃ©cnico, dicha funcionalidad se encuentra respaldada por la tabla:
 
 ```text
 wishlists
 ```
 
-Esta decisión permitió simplificar el modelo de datos sin afectar la funcionalidad del sistema.
+Esta decisiÃ³n permitiÃ³ simplificar el modelo de datos sin afectar la funcionalidad del sistema.
 
 ---
 
@@ -227,26 +227,26 @@ Los estados previstos son:
 - Entregado
 - Cancelado
 
-Las transiciones entre estados son administradas por la lógica de negocio implementada en la aplicación.
+Las transiciones entre estados son administradas por la lÃ³gica de negocio implementada en la aplicaciÃ³n.
 
 ---
 
-# Normalización
+# NormalizaciÃ³n
 
-El modelo de datos fue diseñado siguiendo principios de normalización con el objetivo de:
+El modelo de datos fue diseÃ±ado siguiendo principios de normalizaciÃ³n con el objetivo de:
 
 - minimizar redundancia;
 - evitar inconsistencias;
 - facilitar el mantenimiento;
-- preservar la integridad de la información.
+- preservar la integridad de la informaciÃ³n.
 
-Las relaciones N:M se resolvieron mediante tablas pivote, mientras que las relaciones 1:N se implementaron mediante claves foráneas.
+Las relaciones N:M se resolvieron mediante tablas pivote, mientras que las relaciones 1:N se implementaron mediante claves forÃ¡neas.
 
 ---
 
-# Configuración
+# ConfiguraciÃ³n
 
-La conexión a la base de datos se configura mediante variables de entorno definidas en el archivo:
+La conexiÃ³n a la base de datos se configura mediante variables de entorno definidas en el archivo:
 
 ```text
 .env
@@ -260,31 +260,32 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=<nombre_base>
 DB_USERNAME=<usuario>
-DB_PASSWORD=<contraseña>
+DB_PASSWORD=<contraseÃ±a>
 ```
 
-Esto permite mantener las credenciales fuera del código fuente y adaptar fácilmente la configuración a distintos entornos.
+Esto permite mantener las credenciales fuera del cÃ³digo fuente y adaptar fÃ¡cilmente la configuraciÃ³n a distintos entornos.
 
 ---
 
-# Documentación Relacionada
+# DocumentaciÃ³n Relacionada
 
 La estructura de la base de datos se complementa con los siguientes documentos:
 
-- [04_DER](docs/docs/04_DER.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [04_DER](04_DER.md)
+- [10_DiccionarioDatos](10_DiccionarioDatos.md)
+- [02_ModeloDominio](02_ModeloDominio.md)
+- [08_ManualTecnico](08_ManualTecnico.md)
 
 Diagramas relacionados:
 
-- [diagramas/10_DER](docs/diagramas/10_DER].md)
-- [diagramas/11_ModeloDominio](docs/diagramas/11_ModeloDominio.md)
+- [diagramas/10_DER](../diagramas/10_DER.md)
+- [diagramas/11_ModeloDominio](../diagramas/11_ModeloDominio.md)
 
 ---
 
 # Consideraciones Finales
 
-La base de datos de **Rincón del Pan** fue diseñada para acompañar la arquitectura MVC implementada con Laravel, aprovechando las capacidades de **Eloquent ORM**, las **Migraciones** y los **Seeders** para garantizar una estructura consistente, mantenible y fácilmente reproducible.
+La base de datos de **RincÃ³n del Pan** fue diseÃ±ada para acompaÃ±ar la arquitectura MVC implementada con Laravel, aprovechando las capacidades de **Eloquent ORM**, las **Migraciones** y los **Seeders** para garantizar una estructura consistente, mantenible y fÃ¡cilmente reproducible.
 
-El esquema relacional implementado refleja el dominio del negocio y constituye el soporte fundamental para el funcionamiento de todas las funcionalidades desarrolladas en la aplicación.
+El esquema relacional implementado refleja el dominio del negocio y constituye el soporte fundamental para el funcionamiento de todas las funcionalidades desarrolladas en la aplicaciÃ³n.
+

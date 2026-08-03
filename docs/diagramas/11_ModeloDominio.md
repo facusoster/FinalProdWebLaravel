@@ -1,19 +1,19 @@
-# 🧩 Modelo de Dominio
+﻿# ðŸ§© Modelo de Dominio
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
-> **Patrón:** Domain Model
+> **PatrÃ³n:** Domain Model
 
 ---
 
 # Objetivo
 
-Este diagrama representa el **Modelo de Dominio** del proyecto **Rincón del Pan**.
+Este diagrama representa el **Modelo de Dominio** del proyecto **RincÃ³n del Pan**.
 
-Su finalidad es mostrar las entidades principales del negocio y las relaciones conceptuales entre ellas, independientemente de los detalles de implementación de la base de datos o del framework utilizado.
+Su finalidad es mostrar las entidades principales del negocio y las relaciones conceptuales entre ellas, independientemente de los detalles de implementaciÃ³n de la base de datos o del framework utilizado.
 
-A diferencia del DER, este modelo se centra en los conceptos del dominio del negocio y cómo colaboran para satisfacer los requisitos funcionales del sistema.
+A diferencia del DER, este modelo se centra en los conceptos del dominio del negocio y cÃ³mo colaboran para satisfacer los requisitos funcionales del sistema.
 
 ---
 
@@ -86,13 +86,13 @@ Producto "1" --> "*" Carrito : agregado
 
 ---
 
-# Descripción del Modelo
+# DescripciÃ³n del Modelo
 
-El dominio de **Rincón del Pan** gira en torno a la gestión de una tienda virtual de productos de panadería y pastelería.
+El dominio de **RincÃ³n del Pan** gira en torno a la gestiÃ³n de una tienda virtual de productos de panaderÃ­a y pastelerÃ­a.
 
-El sistema permite que los clientes exploren el catálogo, seleccionen productos, gestionen un carrito de compras, realicen pedidos y posteriormente puedan dejar reseñas sobre los productos adquiridos.
+El sistema permite que los clientes exploren el catÃ¡logo, seleccionen productos, gestionen un carrito de compras, realicen pedidos y posteriormente puedan dejar reseÃ±as sobre los productos adquiridos.
 
-Por otro lado, los administradores administran el catálogo y supervisan los pedidos generados por los clientes.
+Por otro lado, los administradores administran el catÃ¡logo y supervisan los pedidos generados por los clientes.
 
 ---
 
@@ -107,50 +107,50 @@ Dependiendo de su rol puede actuar como:
 - Cliente
 - Administrador
 
-Desde esta entidad se originan la mayoría de las operaciones del negocio.
+Desde esta entidad se originan la mayorÃ­a de las operaciones del negocio.
 
 ---
 
-## Dirección
+## DirecciÃ³n
 
-Representa una dirección de entrega asociada a un usuario.
+Representa una direcciÃ³n de entrega asociada a un usuario.
 
-Cada cliente puede registrar múltiples direcciones para utilizarlas durante el proceso de compra.
+Cada cliente puede registrar mÃºltiples direcciones para utilizarlas durante el proceso de compra.
 
 ---
 
-## Categoría
+## CategorÃ­a
 
-Permite organizar los productos del catálogo.
+Permite organizar los productos del catÃ¡logo.
 
-Una categoría puede contener múltiples productos y un producto puede pertenecer a varias categorías.
+Una categorÃ­a puede contener mÃºltiples productos y un producto puede pertenecer a varias categorÃ­as.
 
 ---
 
 ## Producto
 
-Es la entidad central del catálogo.
+Es la entidad central del catÃ¡logo.
 
 Cada producto posee:
 
 - Nombre
-- Descripción
+- DescripciÃ³n
 - Precio
 - Stock disponible
 - Imagen
 
 Los productos pueden:
 
-- pertenecer a categorías;
+- pertenecer a categorÃ­as;
 - formar parte de pedidos;
-- recibir reseñas;
+- recibir reseÃ±as;
 - agregarse al carrito de compras.
 
 ---
 
 ## Carrito
 
-Durante la implementación del proyecto se reutilizó la entidad **Wishlist** para representar el carrito de compras.
+Durante la implementaciÃ³n del proyecto se reutilizÃ³ la entidad **Wishlist** para representar el carrito de compras.
 
 Cada registro almacena:
 
@@ -158,7 +158,7 @@ Cada registro almacena:
 - Producto seleccionado.
 - Cantidad.
 
-Este diseño permitió reutilizar la estructura existente sin modificar la lógica general del sistema.
+Este diseÃ±o permitiÃ³ reutilizar la estructura existente sin modificar la lÃ³gica general del sistema.
 
 ---
 
@@ -193,11 +193,11 @@ Esta entidad permite conservar el historial de precios aun cuando el valor del p
 
 ---
 
-## Reseña
+## ReseÃ±a
 
 Permite que un cliente califique y comente un producto adquirido.
 
-Cada reseña pertenece simultáneamente a:
+Cada reseÃ±a pertenece simultÃ¡neamente a:
 
 - un usuario;
 - un producto.
@@ -208,17 +208,17 @@ Cada reseña pertenece simultáneamente a:
 
 Las relaciones principales entre entidades son las siguientes:
 
-| Relación | Tipo |
+| RelaciÃ³n | Tipo |
 |----------|------|
-| Usuario → Dirección | Uno a Muchos |
-| Usuario → Pedido | Uno a Muchos |
-| Usuario → Reseña | Uno a Muchos |
-| Usuario → Carrito | Uno a Muchos |
-| Pedido → ItemPedido | Uno a Muchos |
-| ItemPedido → Producto | Muchos a Uno |
-| Producto ↔ Categoría | Muchos a Muchos |
-| Producto → Reseña | Uno a Muchos |
-| Producto → Carrito | Uno a Muchos |
+| Usuario â†’ DirecciÃ³n | Uno a Muchos |
+| Usuario â†’ Pedido | Uno a Muchos |
+| Usuario â†’ ReseÃ±a | Uno a Muchos |
+| Usuario â†’ Carrito | Uno a Muchos |
+| Pedido â†’ ItemPedido | Uno a Muchos |
+| ItemPedido â†’ Producto | Muchos a Uno |
+| Producto â†” CategorÃ­a | Muchos a Muchos |
+| Producto â†’ ReseÃ±a | Uno a Muchos |
+| Producto â†’ Carrito | Uno a Muchos |
 
 ---
 
@@ -226,15 +226,15 @@ Las relaciones principales entre entidades son las siguientes:
 
 El modelo refleja las principales reglas funcionales del sistema:
 
-- Un cliente puede registrar múltiples direcciones.
-- Un cliente puede realizar múltiples pedidos.
-- Cada pedido pertenece a un único cliente.
+- Un cliente puede registrar mÃºltiples direcciones.
+- Un cliente puede realizar mÃºltiples pedidos.
+- Cada pedido pertenece a un Ãºnico cliente.
 - Todo pedido contiene al menos un producto.
 - Un producto puede integrar distintos pedidos.
-- Un producto puede pertenecer a varias categorías.
+- Un producto puede pertenecer a varias categorÃ­as.
 - Los clientes pueden agregar productos al carrito antes de confirmar la compra.
-- Los clientes pueden publicar reseñas sobre productos adquiridos.
-- Los administradores gestionan productos, categorías y pedidos.
+- Los clientes pueden publicar reseÃ±as sobre productos adquiridos.
+- Los administradores gestionan productos, categorÃ­as y pedidos.
 
 ---
 
@@ -242,32 +242,33 @@ El modelo refleja las principales reglas funcionales del sistema:
 
 El **Modelo de Dominio** representa los conceptos del negocio y las relaciones entre ellos.
 
-El **Diagrama Entidad–Relación (DER)** incorpora además aspectos específicos de persistencia como:
+El **Diagrama Entidadâ€“RelaciÃ³n (DER)** incorpora ademÃ¡s aspectos especÃ­ficos de persistencia como:
 
 - claves primarias;
-- claves foráneas;
+- claves forÃ¡neas;
 - tablas pivote;
 - tipos de datos;
-- implementación física de la base de datos.
+- implementaciÃ³n fÃ­sica de la base de datos.
 
-Por esta razón ambos diagramas son complementarios y cumplen funciones diferentes dentro de la documentación del proyecto.
+Por esta razÃ³n ambos diagramas son complementarios y cumplen funciones diferentes dentro de la documentaciÃ³n del proyecto.
 
 ---
 
-# Documentación Relacionada
+# DocumentaciÃ³n Relacionada
 
 Este diagrama complementa:
 
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
+- [02_ModeloDominio](../docs/02_ModeloDominio.md)
+- [03_BaseDatos](../docs/03_BaseDatos.md)
+- [04_DER](../docs/04_DER.md)
+- [10_DiccionarioDatos](../docs/10_DiccionarioDatos.md)
+- [diagramas/21_UML_Clases](21_UML_Clases.md)
 
 ---
 
 # Consideraciones Finales
 
-El Modelo de Dominio de **Rincón del Pan** ofrece una visión conceptual del funcionamiento del negocio, identificando las entidades fundamentales y las relaciones que permiten implementar el proceso de compra de un comercio electrónico.
+El Modelo de Dominio de **RincÃ³n del Pan** ofrece una visiÃ³n conceptual del funcionamiento del negocio, identificando las entidades fundamentales y las relaciones que permiten implementar el proceso de compra de un comercio electrÃ³nico.
 
-Este modelo constituye el punto de partida para el diseño de la base de datos, la implementación de los modelos Eloquent y el desarrollo de la lógica de negocio siguiendo el patrón MVC propuesto por Laravel.
+Este modelo constituye el punto de partida para el diseÃ±o de la base de datos, la implementaciÃ³n de los modelos Eloquent y el desarrollo de la lÃ³gica de negocio siguiendo el patrÃ³n MVC propuesto por Laravel.
+

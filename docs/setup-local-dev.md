@@ -1,46 +1,46 @@
-# 💻 Setup del Entorno de Desarrollo
+﻿# ðŸ’» Setup del Entorno de Desarrollo
 
 > [!info]
-> **Proyecto:** Rincón del Pan  
+> **Proyecto:** RincÃ³n del Pan  
 > **Framework:** Laravel Framework 13.23.0  
 > **Lenguaje:** PHP 8.3.32  
 > **Sistema Operativo utilizado:** Windows 11
 
 ---
 
-# Introducción
+# IntroducciÃ³n
 
-Este documento describe el entorno de desarrollo utilizado durante la implementación del proyecto **Rincón del Pan**.
+Este documento describe el entorno de desarrollo utilizado durante la implementaciÃ³n del proyecto **RincÃ³n del Pan**.
 
-No se trata de un procedimiento obligatorio para ejecutar la aplicación, sino de una guía que documenta las herramientas, configuraciones y decisiones adoptadas durante el desarrollo.
+No se trata de un procedimiento obligatorio para ejecutar la aplicaciÃ³n, sino de una guÃ­a que documenta las herramientas, configuraciones y decisiones adoptadas durante el desarrollo.
 
-El objetivo es facilitar la reproducción del entorno por parte de otros integrantes del equipo o futuros desarrolladores.
+El objetivo es facilitar la reproducciÃ³n del entorno por parte de otros integrantes del equipo o futuros desarrolladores.
 
 > [!note]
-> Para instalar únicamente el proyecto consultar [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md).
+> Para instalar Ãºnicamente el proyecto consultar [09_ManualInstalacion](docs/09_ManualInstalacion.md).
 
 ---
 
 # Entorno Utilizado
 
-| Software | Versión |
+| Software | VersiÃ³n |
 |-----------|----------|
 | Windows | 11 |
 | PHP | 8.3.32 |
 | Laravel | 13.23.0 |
 | Composer | 2.x |
-| Docker Desktop | Última versión estable |
+| Docker Desktop | Ãšltima versiÃ³n estable |
 | MySQL | 8.x |
 | phpMyAdmin | Incluido en Docker |
-| Git for Windows | Última versión |
-| Visual Studio Code | Última versión |
-| Windows Terminal | Última versión |
-| Obsidian | Documentación |
+| Git for Windows | Ãšltima versiÃ³n |
+| Visual Studio Code | Ãšltima versiÃ³n |
+| Windows Terminal | Ãšltima versiÃ³n |
+| Obsidian | DocumentaciÃ³n |
 | GitHub | Repositorio remoto |
 
 ---
 
-# 1. Instalación de PHP
+# 1. InstalaciÃ³n de PHP
 
 Descargar PHP para Windows desde el sitio oficial:
 
@@ -54,7 +54,7 @@ C:\php\
 
 Agregar la carpeta al `PATH` del sistema.
 
-Verificar la instalación:
+Verificar la instalaciÃ³n:
 
 ```bash
 php --version
@@ -68,23 +68,23 @@ PHP 8.3.32
 
 ---
 
-# 2. Instalación de Composer
+# 2. InstalaciÃ³n de Composer
 
 Descargar Composer desde:
 
 https://getcomposer.org/download/
 
-Finalizada la instalación verificar:
+Finalizada la instalaciÃ³n verificar:
 
 ```bash
 composer --version
 ```
 
-Composer detectará automáticamente la instalación de PHP.
+Composer detectarÃ¡ automÃ¡ticamente la instalaciÃ³n de PHP.
 
 ---
 
-# 3. Instalación de Docker Desktop
+# 3. InstalaciÃ³n de Docker Desktop
 
 Descargar Docker Desktop desde:
 
@@ -96,7 +96,7 @@ Verificar:
 docker --version
 ```
 
-Luego comprobar que Docker se encuentre ejecutándose correctamente.
+Luego comprobar que Docker se encuentre ejecutÃ¡ndose correctamente.
 
 ---
 
@@ -179,7 +179,7 @@ volumes:
 
 ---
 
-# 5. Creación del Proyecto Laravel
+# 5. CreaciÃ³n del Proyecto Laravel
 
 Crear el proyecto mediante Composer.
 
@@ -195,7 +195,7 @@ cd finalLaravel
 
 ---
 
-# 6. Configuración del Archivo .env
+# 6. ConfiguraciÃ³n del Archivo .env
 
 Copiar el archivo de ejemplo:
 
@@ -203,7 +203,7 @@ Copiar el archivo de ejemplo:
 cp .env.example .env
 ```
 
-Configurar la conexión a la base de datos.
+Configurar la conexiÃ³n a la base de datos.
 
 Ejemplo:
 
@@ -213,7 +213,7 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=<NOMBRE_BASE_DE_DATOS>
 DB_USERNAME=<USUARIO_MYSQL>
-DB_PASSWORD=<CONTRASEÑA_MYSQL>
+DB_PASSWORD=<CONTRASEÃ‘A_MYSQL>
 ```
 
 > [!warning]
@@ -231,7 +231,7 @@ Ejecutar:
 php artisan key:generate
 ```
 
-Este comando crea automáticamente la variable `APP_KEY`.
+Este comando crea automÃ¡ticamente la variable `APP_KEY`.
 
 ---
 
@@ -253,24 +253,24 @@ Si aparece la pantalla inicial de Laravel, el entorno se encuentra correctamente
 
 ---
 
-# 9. Instalación de Git
+# 9. InstalaciÃ³n de Git
 
 Instalar **Git for Windows** utilizando las opciones recomendadas.
 
-Durante la instalación se utilizaron las siguientes configuraciones:
+Durante la instalaciÃ³n se utilizaron las siguientes configuraciones:
 
-| Opción | Configuración |
+| OpciÃ³n | ConfiguraciÃ³n |
 |---------|---------------|
 | Editor | Visual Studio Code |
 | Rama inicial | Let Git decide |
 | Cliente SSH | Bundled OpenSSH |
 | Terminal | Windows Default Console |
 | Credential Manager | Git Credential Manager |
-| Integración | Windows Terminal |
+| IntegraciÃ³n | Windows Terminal |
 
 ---
 
-# 10. Integración con Windows Terminal
+# 10. IntegraciÃ³n con Windows Terminal
 
 Agregar manualmente el perfil de Git Bash.
 
@@ -300,7 +300,7 @@ git init
 
 # 12. Configurar la Identidad de Git
 
-Cada desarrollador deberá configurar su propia identidad.
+Cada desarrollador deberÃ¡ configurar su propia identidad.
 
 Ejemplo:
 
@@ -358,7 +358,7 @@ Enviar los cambios:
 git push -u origin main
 ```
 
-La autenticación puede realizarse mediante **Git Credential Manager**.
+La autenticaciÃ³n puede realizarse mediante **Git Credential Manager**.
 
 ---
 
@@ -393,7 +393,7 @@ node_modules/
 
 # Herramientas Utilizadas Durante el Desarrollo
 
-Además del stack principal, se utilizaron las siguientes herramientas:
+AdemÃ¡s del stack principal, se utilizaron las siguientes herramientas:
 
 - Visual Studio Code
 - GitHub
@@ -407,32 +407,33 @@ Además del stack principal, se utilizaron las siguientes herramientas:
 
 ---
 
-# Buenas Prácticas Adoptadas
+# Buenas PrÃ¡cticas Adoptadas
 
 Durante el desarrollo del proyecto se siguieron las siguientes recomendaciones:
 
 - Utilizar Git desde el inicio del proyecto.
-- Versionar el código mediante commits frecuentes.
+- Versionar el cÃ³digo mediante commits frecuentes.
 - Mantener el archivo `.env` fuera del repositorio.
 - Utilizar migraciones y seeders para reconstruir la base de datos.
-- Mantener la documentación en formato Markdown junto con el código fuente.
+- Mantener la documentaciÃ³n en formato Markdown junto con el cÃ³digo fuente.
 - Gestionar los diagramas mediante Mermaid para facilitar su mantenimiento y versionado.
 
 ---
 
-# Documentación Relacionada
+# DocumentaciÃ³n Relacionada
 
-- [README](README.md)
-- [HOME](docs/HOME.md)
-- [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [README](../README.md)
+- [HOME](HOME.md)
+- [09_ManualInstalacion](docs/09_ManualInstalacion.md)
+- [08_ManualTecnico](docs/08_ManualTecnico.md)
 
 ---
 
 # Consideraciones Finales
 
-El entorno descrito en este documento corresponde al utilizado durante el desarrollo de **Rincón del Pan**.
+El entorno descrito en este documento corresponde al utilizado durante el desarrollo de **RincÃ³n del Pan**.
 
-La combinación de **Laravel Framework 13.23.0**, **PHP 8.3.32**, **Docker Desktop**, **MySQL**, **Git** y **Visual Studio Code** permitió disponer de un entorno de desarrollo moderno, reproducible y alineado con las buenas prácticas recomendadas para proyectos Laravel.
+La combinaciÃ³n de **Laravel Framework 13.23.0**, **PHP 8.3.32**, **Docker Desktop**, **MySQL**, **Git** y **Visual Studio Code** permitiÃ³ disponer de un entorno de desarrollo moderno, reproducible y alineado con las buenas prÃ¡cticas recomendadas para proyectos Laravel.
 
-Este documento complementa el **Manual de Instalación**, documentando el proceso completo de preparación del entorno local utilizado por el equipo de desarrollo, sin exponer información sensible ni credenciales privadas.
+Este documento complementa el **Manual de InstalaciÃ³n**, documentando el proceso completo de preparaciÃ³n del entorno local utilizado por el equipo de desarrollo, sin exponer informaciÃ³n sensible ni credenciales privadas.
+
