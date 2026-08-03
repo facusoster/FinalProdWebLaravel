@@ -1,249 +1,316 @@
-# 📖 Diccionario de Datos
+# 📚 Diccionario de Datos
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
->
-> **Documentación relacionada**
-> - [[README]]
-> - [[03_BaseDatos]]
-> - [[04_DER]]
-> - [[02_ModeloDominio]]
+> **Proyecto:** Rincón del Pan  
+> **Framework:** Laravel Framework 13.23.0  
+> **Motor de Base de Datos:** MySQL 8
 
 ---
 
 # Introducción
 
-El presente documento describe las entidades implementadas en la base de datos del proyecto **Rincón del Pan**, detallando el propósito de cada tabla, sus atributos principales y las relaciones existentes entre ellas.
+El presente documento describe las entidades que conforman la base de datos del proyecto **Rincón del Pan**, detallando el propósito de cada tabla, sus atributos principales y las relaciones existentes entre ellas.
 
-Su objetivo es servir como referencia para desarrolladores y facilitar el mantenimiento y evolución del sistema.
+El objetivo del diccionario de datos es servir como referencia técnica durante el mantenimiento y evolución del sistema, complementando el Diagrama Entidad–Relación (DER) y la implementación realizada mediante **Laravel Migrations** y **Eloquent ORM**.
 
 ---
 
 # Convenciones
 
+En las tablas siguientes se utilizan las siguientes abreviaturas:
+
 | Abreviatura | Significado |
 |-------------|-------------|
-| PK | Primary Key |
-| FK | Foreign Key |
-| NN | Not Null |
-| AI | Auto Increment |
+| PK | Clave primaria |
+| FK | Clave foránea |
+| NN | Campo obligatorio (Not Null) |
+| AI | Autoincremental |
 
 ---
 
-# Users
+# Tabla: users
 
-Representa los usuarios registrados del sistema.
+## Descripción
 
-## Clave primaria
+Almacena la información de los usuarios registrados en el sistema.
 
-- **id**
+Incluye tanto clientes como administradores.
 
-## Campos principales
+## Campos
 
-| Campo | Tipo | Descripción |
-|--------|------|-------------|
-| id | bigint | Identificador del usuario. |
-| name | string | Nombre del usuario. |
-| email | string | Correo electrónico. |
-| password | string | Contraseña cifrada. |
-| role | enum/string | Rol del usuario (cliente o administrador). |
-| created_at | timestamp | Fecha de creación. |
-| updated_at | timestamp | Fecha de modificación. |
+| Campo | Tipo | Restricciones | Descripción |
+|--------|------|---------------|-------------|
+| id | BIGINT | PK, AI | Identificador del usuario |
+| name | VARCHAR | NN | Nombre completo |
+| email | VARCHAR | NN, UNIQUE | Correo electrónico |
+| password | VARCHAR | NN | Contraseña cifrada |
+| role | ENUM / VARCHAR | NN | Rol del usuario |
+| created_at | TIMESTAMP | | Fecha de creación |
+| updated_at | TIMESTAMP | | Última modificación |
 
 ## Relaciones
 
-- 1:N con Addresses.
-- 1:N con Orders.
-- 1:N con Reviews.
-- N:M con Products mediante Wishlists.
+- 1:N con **addresses**
+- 1:N con **orders**
+- 1:N con **reviews**
+- 1:N con **wishlists**
 
 ---
 
-# Addresses
+# Tabla: addresses
 
-Direcciones de envío registradas por los usuarios.
+## Descripción
+
+Almacena las direcciones de envío asociadas a cada usuario.
+
+## Campos
+
+| Campo | Tipo | Restricciones | Descripción |
+|--------|------|---------------|-------------|
+| id | BIGINT | PK, AI | Identificador |
+| user_id | BIGINT | FK | Usuario propietario |
+| street | VARCHAR | NN | Calle |
+| city | VARCHAR | NN | Ciudad |
+| province | VARCHAR | NN | Provincia |
+| postal_code | VARCHAR | NN | Código postal |
+| created_at | TIMESTAMP | | Fecha de creación |
+| updated_at | TIMESTAMP | | Última modificación |
 
 ## Relaciones
 
-- FK → Users
-
-## Campos principales
-
-| Campo | Descripción |
-|--------|-------------|
-| id | Identificador. |
-| user_id | Usuario propietario. |
-| street | Calle. |
-| city | Ciudad. |
-| province | Provincia. |
-| postal_code | Código postal. |
+- N:1 con **users**
+- 1:N con **orders**
 
 ---
 
-# Categories
+# Tabla: categories
 
-Clasificación de productos.
+## Descripción
+
+Agrupa los productos del catálogo.
+
+## Campos
+
+| Campo | Tipo | Restricciones | Descripción |
+|--------|------|---------------|-------------|
+| id | BIGINT | PK, AI | Identificador |
+| name | VARCHAR | NN | Nombre de la categoría |
+| description | TEXT | | Descripción |
+| created_at | TIMESTAMP | | Fecha de creación |
+| updated_at | TIMESTAMP | | Última modificación |
 
 ## Relaciones
 
-- N:M con Products.
-
-## Campos principales
-
-| Campo | Descripción |
-|--------|-------------|
-| id | Identificador. |
-| name | Nombre de la categoría. |
-| description | Descripción. |
+- N:M con **products**
 
 ---
 
-# Products
+# Tabla: products
 
-Productos disponibles en el catálogo.
+## Descripción
+
+Representa los productos disponibles para la venta.
+
+## Campos
+
+| Campo | Tipo | Restricciones | Descripción |
+|--------|------|---------------|-------------|
+| id | BIGINT | PK, AI | Identificador |
+| name | VARCHAR | NN | Nombre del producto |
+| description | TEXT | | Descripción |
+| price | DECIMAL | NN | Precio |
+| stock | INTEGER | NN | Stock disponible |
+| image | VARCHAR | | Imagen |
+| created_at | TIMESTAMP | | Fecha de creación |
+| updated_at | TIMESTAMP | | Última modificación |
 
 ## Relaciones
 
-- N:M con Categories.
-- 1:N con Reviews.
-- 1:N con Order_Items.
-- N:M con Users mediante Wishlists.
-
-## Campos principales
-
-| Campo | Descripción |
-|--------|-------------|
-| id | Identificador. |
-| name | Nombre del producto. |
-| description | Descripción. |
-| price | Precio unitario. |
-| stock | Cantidad disponible. |
-| image | Imagen del producto. |
+- N:M con **categories**
+- 1:N con **order_items**
+- 1:N con **reviews**
+- 1:N con **wishlists**
 
 ---
 
-# Category_Product
+# Tabla: category_product
 
-Tabla pivote que implementa la relación muchos a muchos entre categorías y productos.
+## Descripción
+
+Tabla pivote que relaciona productos y categorías.
+
+## Campos
+
+| Campo | Tipo | Restricciones | Descripción |
+|--------|------|---------------|-------------|
+| product_id | BIGINT | PK, FK | Producto |
+| category_id | BIGINT | PK, FK | Categoría |
 
 ## Relaciones
 
-- FK → Categories
-- FK → Products
+- N:1 con **products**
+- N:1 con **categories**
 
 ---
 
-# Orders
+# Tabla: orders
 
-Representa los pedidos realizados por los clientes.
+## Descripción
+
+Representa las compras realizadas por los clientes.
+
+## Campos
+
+| Campo | Tipo | Restricciones | Descripción |
+|--------|------|---------------|-------------|
+| id | BIGINT | PK, AI | Identificador |
+| user_id | BIGINT | FK | Cliente |
+| address_id | BIGINT | FK | Dirección de envío |
+| total | DECIMAL | NN | Importe total |
+| status | ENUM / VARCHAR | NN | Estado del pedido |
+| created_at | TIMESTAMP | | Fecha de creación |
+| updated_at | TIMESTAMP | | Última modificación |
 
 ## Relaciones
 
-- FK → Users
-- FK → Addresses
-- 1:N con Order_Items
-
-## Campos principales
-
-| Campo | Descripción |
-|--------|-------------|
-| id | Identificador. |
-| user_id | Cliente. |
-| address_id | Dirección de envío. |
-| total | Importe total. |
-| status | Estado del pedido. |
-
-### Estados permitidos
-
-```text
-Pendiente
-Pagado
-Enviado
-Entregado
-Cancelado
-```
+- N:1 con **users**
+- N:1 con **addresses**
+- 1:N con **order_items**
 
 ---
 
-# Order_Items
+# Tabla: order_items
 
-Detalle de productos pertenecientes a un pedido.
+## Descripción
+
+Detalle de productos incluidos en un pedido.
+
+## Campos
+
+| Campo | Tipo | Restricciones | Descripción |
+|--------|------|---------------|-------------|
+| id | BIGINT | PK, AI | Identificador |
+| order_id | BIGINT | FK | Pedido |
+| product_id | BIGINT | FK | Producto |
+| quantity | INTEGER | NN | Cantidad |
+| unit_price | DECIMAL | NN | Precio unitario |
+| subtotal | DECIMAL | NN | Subtotal |
+| created_at | TIMESTAMP | | Fecha de creación |
+| updated_at | TIMESTAMP | | Última modificación |
 
 ## Relaciones
 
-- FK → Orders
-- FK → Products
-
-## Campos principales
-
-| Campo | Descripción |
-|--------|-------------|
-| id | Identificador. |
-| order_id | Pedido asociado. |
-| product_id | Producto. |
-| quantity | Cantidad. |
-| unit_price | Precio unitario. |
-| subtotal | Importe parcial. |
+- N:1 con **orders**
+- N:1 con **products**
 
 ---
 
-# Reviews
+# Tabla: reviews
 
-Reseñas realizadas por los clientes.
+## Descripción
+
+Almacena las reseñas realizadas por los clientes sobre los productos adquiridos.
+
+## Campos
+
+| Campo | Tipo | Restricciones | Descripción |
+|--------|------|---------------|-------------|
+| id | BIGINT | PK, AI | Identificador |
+| user_id | BIGINT | FK | Usuario |
+| product_id | BIGINT | FK | Producto |
+| rating | INTEGER | NN | Puntuación |
+| comment | TEXT | | Comentario |
+| created_at | TIMESTAMP | | Fecha de creación |
+| updated_at | TIMESTAMP | | Última modificación |
 
 ## Relaciones
 
-- FK → Users
-- FK → Products
-
-## Campos principales
-
-| Campo | Descripción |
-|--------|-------------|
-| id | Identificador. |
-| rating | Calificación. |
-| comment | Comentario. |
+- N:1 con **users**
+- N:1 con **products**
 
 ---
 
-# Wishlists
+# Tabla: wishlists
 
-Lista de productos favoritos de cada usuario.
+## Descripción
 
-Implementa una relación muchos a muchos entre usuarios y productos.
+Entidad utilizada para implementar el **carrito de compras** del sistema.
+
+> [!note]
+> Aunque el nombre de la tabla es **wishlists**, funcionalmente representa el carrito de compras utilizado por los clientes durante el proceso de compra.
+
+## Campos
+
+| Campo | Tipo | Restricciones | Descripción |
+|--------|------|---------------|-------------|
+| id | BIGINT | PK, AI | Identificador |
+| user_id | BIGINT | FK | Usuario |
+| product_id | BIGINT | FK | Producto |
+| quantity | INTEGER | NN | Cantidad seleccionada |
+| created_at | TIMESTAMP | | Fecha de creación |
+| updated_at | TIMESTAMP | | Última modificación |
 
 ## Relaciones
 
-- FK → Users
-- FK → Products
+- N:1 con **users**
+- N:1 con **products**
+
+---
+
+# Estados del Pedido
+
+La entidad **orders** implementa un ciclo de vida basado en estados.
+
+| Estado | Descripción |
+|---------|-------------|
+| Pendiente | Pedido generado, pendiente de procesamiento |
+| Pagado | Pago registrado |
+| Enviado | Pedido despachado |
+| Entregado | Pedido entregado al cliente |
+| Cancelado | Pedido cancelado |
+
+La representación gráfica puede consultarse en:
+
+➡️ [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md)
 
 ---
 
 # Resumen General
 
 | Tabla | Propósito |
-|---------|-----------|
-| Users | Usuarios del sistema. |
-| Addresses | Direcciones de envío. |
-| Categories | Clasificación del catálogo. |
-| Products | Productos disponibles. |
-| Category_Product | Relación entre productos y categorías. |
-| Orders | Pedidos realizados. |
-| Order_Items | Detalle de pedidos. |
-| Reviews | Valoraciones de productos. |
-| Wishlists | Productos favoritos. |
+|--------|-----------|
+| users | Usuarios del sistema |
+| addresses | Direcciones de envío |
+| categories | Categorías del catálogo |
+| products | Productos disponibles |
+| category_product | Relación productos-categorías |
+| orders | Pedidos |
+| order_items | Detalle de pedidos |
+| reviews | Reseñas |
+| wishlists | Carrito de compras |
 
 ---
 
-# Consideraciones
+# Documentación Relacionada
 
-La estructura de la base de datos fue implementada mediante migraciones de Laravel y relaciones Eloquent ORM, garantizando integridad referencial y facilitando la evolución del esquema mediante control de versiones.
+Este documento complementa la siguiente documentación:
+
+- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
+- [03_BaseDatos](docs/docs/03_BaseDatos.md)
+- [04_DER](docs/docs/04_DER.md)
+- [[07_UML]]
+- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+
+Diagramas relacionados:
+
+- [diagramas/10_DER](docs/diagramas/10_DER].md)
+- [diagramas/11_ModeloDominio](docs/diagramas/11_ModeloDominio.md)
+- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
 
 ---
 
-## Documentación relacionada
+# Consideraciones Finales
 
-- [[README]]
-- [[02_ModeloDominio]]
-- [[03_BaseDatos]]
-- [[04_DER]]
+El presente diccionario de datos documenta la estructura lógica de la base de datos implementada en **Rincón del Pan**, proporcionando una referencia clara para comprender el propósito de cada entidad, sus atributos y sus relaciones.
+
+Su mantenimiento en paralelo con las migraciones y los modelos Eloquent garantiza la coherencia entre la documentación técnica y la implementación del sistema, facilitando futuras tareas de mantenimiento, ampliación y evolución del proyecto.

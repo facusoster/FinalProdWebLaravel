@@ -1,116 +1,173 @@
-# 🚀 Manual de Instalación
+# 🛠️ Manual de Instalación
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
->
-> **Documentación relacionada**
-> - [[README]]
-> - [[08_ManualTecnico]]
-> - [[setup-local-dev]]
+> **Proyecto:** Rincón del Pan  
+> **Framework:** Laravel Framework 13.23.0  
+> **Lenguaje:** PHP 8.3.32
 
 ---
 
 # Introducción
 
-Este documento describe el procedimiento necesario para instalar y ejecutar el proyecto Rincón del Pan en un entorno local.
+Este documento describe el procedimiento recomendado para instalar y ejecutar el proyecto **Rincón del Pan** en un entorno local de desarrollo.
 
-La guía contempla la instalación desde un repositorio limpio utilizando Composer, Docker y las herramientas estándar del ecosistema Laravel.
+El objetivo es permitir que cualquier integrante del equipo pueda reconstruir completamente el entorno de trabajo utilizando únicamente el repositorio del proyecto y las herramientas necesarias.
 
----
+La configuración detallada del entorno utilizado durante el desarrollo puede consultarse en:
 
-# Requisitos
-
-Antes de comenzar es necesario contar con:
-
-- PHP 8 o superior
-- Composer
-- Docker Desktop
-- Docker Compose
-- Git
-- Node.js
-- npm
-
-La instalación detallada de estas herramientas se encuentra documentada en:
-
-[[setup-local-dev]]
+➡️ [setup-local-dev](docs/setup-local-dev.md)
 
 ---
 
-# Obtener el Proyecto
+# Requisitos Previos
 
-Clonar el repositorio:
+Antes de comenzar, se recomienda contar con el siguiente software instalado.
+
+| Software | Versión recomendada |
+|-----------|---------------------|
+| PHP | 8.3.32 o superior |
+| Composer | Última versión estable |
+| MySQL | 8.x |
+| Docker Desktop | Última versión |
+| Git | Última versión |
+| Visual Studio Code | Opcional |
+| Obsidian | Opcional (documentación) |
+
+---
+
+# Clonar el Proyecto
+
+Clonar el repositorio desde GitHub.
 
 ```bash
 git clone <URL_DEL_REPOSITORIO>
 ```
 
-Ingresar al proyecto:
+Ingresar al directorio del proyecto.
 
 ```bash
-cd <NOMBRE_DEL_PROYECTO>
+cd finalLaravel
 ```
 
 ---
 
 # Instalar Dependencias PHP
 
+Instalar todas las dependencias definidas por Composer.
+
 ```bash
 composer install
 ```
 
----
-
-# Instalar Dependencias Frontend
-
-```bash
-npm install
-```
+Este comando descargará automáticamente todos los paquetes definidos en `composer.json`.
 
 ---
 
-# Configurar Variables de Entorno
+# Configurar el Archivo .env
 
-Copiar el archivo de ejemplo:
+Copiar el archivo de ejemplo.
 
 ```bash
 cp .env.example .env
 ```
 
-Editar las variables correspondientes a la base de datos.
+En Windows PowerShell también puede utilizarse:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Editar posteriormente el archivo `.env` con los datos correspondientes al entorno local.
+
+Ejemplo:
+
+```dotenv
+APP_NAME="Rincón del Pan"
+
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://127.0.0.1:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=<nombre_base>
+DB_USERNAME=<usuario>
+DB_PASSWORD=<contraseña>
+```
+
+> [!warning]
+> Nunca incluir el archivo `.env` dentro del repositorio Git.
 
 ---
 
-# Generar la Clave
+# Generar la Clave de Laravel
+
+Laravel requiere generar una clave única para el proyecto.
+
+Ejecutar:
 
 ```bash
 php artisan key:generate
 ```
 
----
-
-# Levantar la Base de Datos
-
-Si se utiliza Docker:
-
-```bash
-docker compose up -d
-```
-
-Verificar:
-
-```bash
-docker ps
-```
+El comando actualizará automáticamente la variable `APP_KEY` del archivo `.env`.
 
 ---
 
-# Ejecutar Migraciones
+# Crear la Base de Datos
+
+Crear previamente una base de datos vacía en MySQL.
+
+Por ejemplo:
+
+```text
+rincon_del_pan
+```
+
+La base deberá coincidir con el nombre configurado en el archivo `.env`.
+
+---
+
+# Ejecutar las Migraciones
+
+Crear toda la estructura de la base de datos.
+
+```bash
+php artisan migrate
+```
+
+---
+
+# Cargar Datos Iniciales
+
+Generar los registros de prueba mediante Seeders.
+
+```bash
+php artisan db:seed
+```
+
+También es posible realizar ambos pasos simultáneamente.
 
 ```bash
 php artisan migrate --seed
 ```
 
-Este proceso crea todas las tablas y carga información inicial.
+Para reconstruir completamente la base de datos:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+---
+
+# Instalar Dependencias Front-End
+
+Instalar las dependencias administradas mediante NPM.
+
+```bash
+npm install
+```
 
 ---
 
@@ -130,13 +187,15 @@ npm run build
 
 ---
 
-# Ejecutar el Proyecto
+# Iniciar el Servidor
+
+Ejecutar:
 
 ```bash
 php artisan serve
 ```
 
-Acceder mediante:
+La aplicación estará disponible en:
 
 ```text
 http://127.0.0.1:8000
@@ -144,91 +203,159 @@ http://127.0.0.1:8000
 
 ---
 
-# Credenciales de Prueba
+# Usuarios de Prueba
 
-Las credenciales utilizadas durante el desarrollo son generadas mediante los Seeders.
+Los usuarios iniciales son creados automáticamente por los Seeders.
 
-Por motivos de seguridad, no se incluyen usuarios ni contraseñas reales en esta documentación.
-
-En caso de ser necesario, consultar la implementación de los Seeders correspondientes dentro de la carpeta:
+Las credenciales exactas pueden consultarse en los archivos de seed correspondientes dentro de:
 
 ```text
 database/seeders/
 ```
 
----
-
-# Verificación
-
-Luego de la instalación se recomienda comprobar:
-
-- Acceso al sitio.
-- Conexión con la base de datos.
-- Ejecución correcta de las migraciones.
-- Datos cargados mediante Seeders.
-- Funcionamiento del proceso de autenticación.
+> [!note]
+> En la documentación pública no se incluyen credenciales reales para evitar exponer información sensible.
 
 ---
 
-# Resolución de Problemas
+# Estructura Esperada
+
+Una vez finalizada la instalación, el proyecto debería presentar una estructura similar a la siguiente.
+
+```text
+app/
+bootstrap/
+config/
+database/
+public/
+resources/
+routes/
+storage/
+tests/
+
+artisan
+composer.json
+package.json
+vite.config.js
+.env
+```
+
+---
+
+# Verificación de la Instalación
+
+La instalación puede considerarse correcta cuando:
+
+- Laravel inicia sin errores.
+- La página principal responde correctamente.
+- La base de datos contiene todas las tablas.
+- Los Seeders generan información de prueba.
+- Es posible iniciar sesión con usuarios generados por el sistema.
+- El panel administrativo funciona correctamente para usuarios con rol de administrador.
+
+---
+
+# Problemas Frecuentes
 
 ## Error de conexión con MySQL
 
 Verificar:
 
-- Docker en ejecución.
-- Variables del archivo `.env`.
-- Puerto configurado.
-- Estado del contenedor MySQL.
+- Servicio MySQL iniciado.
+- Puerto configurado correctamente.
+- Credenciales del archivo `.env`.
+- Existencia de la base de datos.
 
 ---
 
-## Error al ejecutar Composer
-
-Verificar:
-
-```bash
-php -v
-
-composer --version
-```
-
----
-
-## Error de permisos
+## APP_KEY inexistente
 
 Ejecutar nuevamente:
 
 ```bash
-php artisan storage:link
+php artisan key:generate
 ```
 
-si la aplicación utiliza almacenamiento público.
+---
+
+## Dependencias faltantes
+
+Actualizar Composer.
+
+```bash
+composer install
+```
+
+Actualizar dependencias JavaScript.
+
+```bash
+npm install
+```
+
+---
+
+## Caché de Configuración
+
+Si se modificó el archivo `.env`, limpiar la caché.
+
+```bash
+php artisan optimize:clear
+```
 
 ---
 
 # Actualización del Proyecto
 
-Para obtener los últimos cambios:
+Para actualizar el proyecto desde Git:
 
 ```bash
 git pull
+```
 
+Luego ejecutar nuevamente:
+
+```bash
 composer install
-
+npm install
 php artisan migrate
 ```
 
----
-
-# Resumen
-
-El proyecto puede instalarse completamente utilizando las herramientas estándar del ecosistema Laravel. Gracias al uso de migraciones, seeders y Docker, cualquier desarrollador puede reconstruir el entorno de trabajo de forma reproducible y consistente.
+En caso de existir nuevas migraciones.
 
 ---
 
-## Documentación relacionada
+# Configuración del Entorno
+
+La configuración completa del entorno de desarrollo utilizado durante la realización del proyecto se encuentra documentada en:
+
+➡️ [setup-local-dev](docs/setup-local-dev.md)
+
+Este documento incluye:
+
+- Instalación de PHP.
+- Composer.
+- Docker Desktop.
+- MySQL.
+- phpMyAdmin.
+- Git.
+- GitHub.
+- Visual Studio Code.
+- Configuración inicial del proyecto Laravel.
+
+---
+
+# Documentación Relacionada
 
 - [[README]]
-- [[08_ManualTecnico]]
-- [[setup-local-dev]]
+- [HOME](docs/HOME.md)
+- [setup-local-dev](docs/setup-local-dev.md)
+- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [03_BaseDatos](docs/docs/03_BaseDatos.md)
+
+---
+
+# Consideraciones Finales
+
+El proyecto **Rincón del Pan** fue desarrollado siguiendo las convenciones oficiales de **Laravel Framework 13** y puede ser reconstruido completamente a partir del repositorio utilizando las migraciones, los seeders y el archivo `.env.example`.
+
+La separación entre el **Manual de Instalación** y el documento **setup-local-dev** permite distinguir el procedimiento general de despliegue del proyecto respecto de la configuración específica del entorno de desarrollo utilizado por el equipo.

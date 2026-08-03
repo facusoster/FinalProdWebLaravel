@@ -1,39 +1,43 @@
-# 🔐 UML - Secuencia de Inicio de Sesión
+# 🔐 UML - Diagrama de Secuencia: Inicio de Sesión
 
 > [!info]
-> Documento perteneciente a la documentación UML del proyecto **Rincón del Pan**.
->
-> Documento relacionado:
-> - [[05_CasosUso]]
-> - [[08_ManualTecnico]]
+> **Proyecto:** Rincón del Pan  
+> **Framework:** Laravel Framework 13.23.0  
+> **Tipo de Diagrama:** UML - Secuencia
 
 ---
 
-# Introducción
+# Objetivo
 
-El siguiente diagrama representa la interacción entre los principales componentes del sistema durante el proceso de autenticación de un usuario.
+Este diagrama describe la interacción entre los distintos componentes del sistema durante el proceso de autenticación de un usuario.
+
+El flujo refleja el funcionamiento implementado mediante el **AuthController**, las rutas de Laravel, el modelo **User**, la base de datos MySQL y el sistema de autenticación basado en sesiones.
+
+Este documento complementa la descripción funcional desarrollada en [05_CasosUso](docs/docs/05_CasosUso.md).
 
 ---
 
-# Diagrama de Secuencia
+# Diagrama
 
 ```mermaid
 sequenceDiagram
 
 actor Usuario
 
-participant Browser
+participant Navegador
 participant Routes
 participant AuthController
 participant User
 participant MySQL
 participant Session
 
-Usuario->>Browser: Completa formulario Login
+Usuario->>Navegador: Completa formulario de Login
 
-Browser->>Routes: POST /login
+Navegador->>Routes: POST /login
 
 Routes->>AuthController: login()
+
+AuthController->>AuthController: Validar credenciales
 
 AuthController->>User: Buscar usuario por email
 
@@ -43,48 +47,154 @@ MySQL-->>User: Datos del usuario
 
 User-->>AuthController: Usuario encontrado
 
-AuthController->>AuthController: Verificar contraseña
-
 alt Credenciales válidas
 
-AuthController->>Session: Crear sesión
+    AuthController->>Session: Crear sesión
 
-Session-->>Browser: Usuario autenticado
+    Session-->>AuthController: Sesión iniciada
 
-Browser-->>Usuario: Redirección al Dashboard
+    AuthController-->>Navegador: Redirect Dashboard
+
+    Navegador-->>Usuario: Panel principal
 
 else Credenciales inválidas
 
-AuthController-->>Browser: Error de autenticación
+    AuthController-->>Navegador: Redirect Login + Error
 
-Browser-->>Usuario: Mostrar mensaje de error
+    Navegador-->>Usuario: Mostrar mensaje
 
 end
 ```
 
 ---
 
-# Flujo
+# Descripción del Flujo
 
-1. El usuario completa el formulario de inicio de sesión.
-2. Laravel recibe la solicitud mediante la ruta correspondiente.
-3. El controlador consulta el modelo User.
-4. Eloquent obtiene la información desde MySQL.
-5. Se valida la contraseña.
-6. Si las credenciales son correctas se crea la sesión.
-7. El usuario es redirigido a la aplicación.
+El proceso de autenticación comienza cuando el usuario completa el formulario de inicio de sesión y envía sus credenciales.
 
----
+Laravel recibe la solicitud mediante la ruta correspondiente y la deriva al **AuthController**, responsable de validar los datos ingresados y autenticar al usuario.
 
-# Observaciones
+Si las credenciales son correctas, se crea una sesión y el usuario es redirigido al panel principal.
 
-Este flujo representa el comportamiento general implementado mediante autenticación basada en sesiones de Laravel.
-
-Las validaciones específicas pueden evolucionar sin modificar la estructura principal del proceso.
+En caso contrario, el sistema vuelve al formulario de login mostrando un mensaje de error.
 
 ---
 
-## Documentación relacionada
+# Participantes
 
-- [[05_CasosUso]]
-- [[08_ManualTecnico]]
+## 👤 Usuario
+
+Persona que intenta acceder al sistema utilizando su correo electrónico y contraseña.
+
+---
+
+## 🌐 Navegador
+
+Envía la solicitud HTTP y recibe las respuestas generadas por Laravel.
+
+---
+
+## 🛣️ Routes
+
+Resuelven la URL solicitada y derivan la petición al controlador correspondiente.
+
+---
+
+## 🎮 AuthController
+
+Coordina todo el proceso de autenticación.
+
+Sus responsabilidades incluyen:
+
+- Validar datos.
+- Buscar el usuario.
+- Verificar la contraseña.
+- Crear la sesión.
+- Redireccionar al usuario.
+
+---
+
+## 📦 User
+
+Modelo Eloquent encargado de representar los usuarios registrados.
+
+Realiza la consulta sobre la base de datos.
+
+---
+
+## 🗄️ MySQL
+
+Almacena la información de los usuarios registrados.
+
+---
+
+## 🔑 Session
+
+Gestiona la autenticación basada en sesiones de Laravel.
+
+Una vez creada la sesión, el usuario puede acceder a las rutas protegidas por el middleware `auth`.
+
+---
+
+# Escenarios Posibles
+
+## Autenticación Exitosa
+
+El sistema:
+
+- encuentra el usuario;
+- valida la contraseña;
+- crea la sesión;
+- redirige al dashboard correspondiente.
+
+---
+
+## Autenticación Fallida
+
+Si las credenciales son incorrectas:
+
+- no se crea ninguna sesión;
+- el usuario permanece sin autenticar;
+- se muestra un mensaje de error;
+- se redirecciona nuevamente al formulario de login.
+
+---
+
+# Relación con Laravel
+
+Durante este proceso intervienen los siguientes componentes del framework:
+
+- Routes
+- AuthController
+- Middleware `guest`
+- Middleware `auth`
+- Modelo `User`
+- Eloquent ORM
+- Sistema de Sesiones
+- Blade
+
+---
+
+# Relación con otros Diagramas
+
+Este diagrama se complementa con:
+
+- [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md)
+- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
+- [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido)
+
+---
+
+# Documentación Relacionada
+
+- [05_CasosUso](docs/docs/05_CasosUso.md)
+- [[07_UML]]
+- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+
+---
+
+# Consideraciones Finales
+
+El proceso de autenticación implementado en **Rincón del Pan** sigue el flujo habitual de una aplicación Laravel basada en sesiones.
+
+La separación entre rutas, controlador, modelo, persistencia y gestión de sesiones permite mantener una arquitectura clara y facilita el mantenimiento del sistema, respetando el patrón MVC y las buenas prácticas recomendadas por el framework.

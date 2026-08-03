@@ -1,234 +1,267 @@
-# 🗂️ Diagrama Entidad-Relación (DER)
+# 🗄️ Diagrama Entidad–Relación (DER)
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
->
-> **Documentación relacionada**
-> - [[README]]
-> - [[00_AnalisisRequisitos]]
-> - [[01_Arquitectura]]
-> - [[02_ModeloDominio]]
-> - [[03_BaseDatos]]
-> - [[07_UML]]
+> **Proyecto:** Rincón del Pan  
+> **Framework:** Laravel Framework 13.23.0  
+> **Motor de Base de Datos:** MySQL 8
 
 ---
 
 # Introducción
 
-El Diagrama Entidad-Relación (DER) representa la estructura lógica de la base de datos del proyecto **Rincón del Pan**.
+El presente documento describe el **Modelo Entidad–Relación (DER)** implementado en **Rincón del Pan**.
 
-Su propósito es mostrar las entidades que conforman el sistema, los atributos más relevantes y las relaciones existentes entre ellas, constituyendo el puente entre el análisis funcional y la implementación mediante Eloquent ORM.
+El DER constituye la representación lógica de la base de datos y muestra las entidades que conforman el sistema, sus atributos principales y las relaciones existentes entre ellas.
 
-El modelo fue diseñado durante la etapa de análisis y posteriormente implementado mediante migraciones de Laravel.
+Este modelo fue diseñado durante la etapa de análisis y posteriormente implementado mediante **Migraciones** y **Eloquent ORM**, respetando la estructura relacional definida para el proyecto.
+
+El diagrama detallado se encuentra documentado por separado para facilitar su mantenimiento.
+
+➡️ [diagramas/10_DER](docs/diagramas/10_DER].md)
 
 ---
 
 # Objetivos
 
-El DER permite:
+El diseño del modelo entidad–relación persigue los siguientes objetivos:
 
-- Modelar las entidades del negocio.
-- Definir las relaciones entre tablas.
-- Garantizar la integridad referencial.
-- Servir como base para la implementación mediante Eloquent ORM.
-- Facilitar futuras tareas de mantenimiento.
+- Representar correctamente el dominio del negocio.
+- Mantener la integridad referencial.
+- Reducir la redundancia de datos.
+- Facilitar el mantenimiento de la base de datos.
+- Favorecer la escalabilidad del sistema.
+- Integrarse naturalmente con Eloquent ORM.
 
 ---
 
-# Entidades
+# Entidades Principales
 
-El sistema se compone de las siguientes entidades:
+El modelo de datos está compuesto por las siguientes entidades.
 
 | Entidad | Descripción |
 |----------|-------------|
-| Users | Usuarios registrados del sistema (clientes y administradores). |
-| Addresses | Direcciones de envío de cada usuario. |
-| Categories | Categorías del catálogo. |
-| Products | Productos comercializados. |
-| Category_Product | Tabla pivote entre categorías y productos. |
-| Orders | Pedidos realizados por los clientes. |
-| Order_Items | Productos pertenecientes a cada pedido. |
-| Reviews | Reseñas realizadas por los clientes. |
-| Wishlists | Lista de productos favoritos. |
+| **Users** | Usuarios registrados del sistema (clientes y administradores). |
+| **Addresses** | Direcciones de envío pertenecientes a cada usuario. |
+| **Products** | Productos comercializados por la tienda. |
+| **Categories** | Clasificación de productos del catálogo. |
+| **Orders** | Pedidos realizados por los clientes. |
+| **OrderItems** | Productos incluidos dentro de un pedido. |
+| **Reviews** | Reseñas realizadas por los clientes. |
+| **Wishlists** | Entidad utilizada como implementación del carrito de compras. |
+| **Category_Product** | Tabla pivote que relaciona productos y categorías. |
 
 ---
 
 # Relaciones
 
-## User → Address
-
-**Cardinalidad**
-
-```text
-1 : N
-```
+## Usuario — Dirección
 
 Un usuario puede registrar múltiples direcciones de envío.
 
----
-
-## User → Orders
+Cardinalidad:
 
 ```text
-1 : N
+User (1) ──────────────── (N) Address
 ```
+
+---
+
+## Usuario — Pedido
 
 Cada pedido pertenece a un único usuario.
 
----
-
-## User → Reviews
+Cardinalidad:
 
 ```text
-1 : N
-```
-
-Un usuario puede realizar múltiples reseñas.
-
----
-
-## User ↔ Product (Wishlist)
-
-```text
-N : M
-```
-
-Implementada mediante la tabla:
-
-```text
-wishlists
+User (1) ──────────────── (N) Order
 ```
 
 ---
 
-## Category ↔ Product
+## Dirección — Pedido
+
+Cada pedido utiliza una única dirección de envío.
+
+Una dirección puede ser reutilizada en distintos pedidos.
+
+Cardinalidad:
 
 ```text
-N : M
+Address (1) ──────────────── (N) Order
 ```
 
-Implementada mediante la tabla pivote:
+---
+
+## Pedido — Detalle del Pedido
+
+Cada pedido contiene uno o más productos.
+
+Esta relación se implementa mediante la entidad **OrderItem**.
+
+Cardinalidad:
+
+```text
+Order (1) ──────────────── (N) OrderItem
+```
+
+---
+
+## Producto — Detalle del Pedido
+
+Un mismo producto puede formar parte de múltiples pedidos.
+
+Cardinalidad:
+
+```text
+Product (1) ──────────────── (N) OrderItem
+```
+
+---
+
+## Producto — Categoría
+
+Los productos pueden pertenecer a múltiples categorías y cada categoría puede contener múltiples productos.
+
+Se implementa mediante la tabla pivote:
 
 ```text
 category_product
 ```
 
----
-
-## Order → Order_Items
+Cardinalidad:
 
 ```text
-1 : N
+Product (N) ──────────────── (N) Category
 ```
-
-Cada pedido posee uno o más productos.
 
 ---
 
-## Product → Order_Items
+## Usuario — Reseña
+
+Cada usuario puede publicar múltiples reseñas.
+
+Cardinalidad:
 
 ```text
-1 : N
+User (1) ──────────────── (N) Review
 ```
-
-Un producto puede aparecer en múltiples pedidos.
 
 ---
 
-## Product → Reviews
-
-```text
-1 : N
-```
+## Producto — Reseña
 
 Cada producto puede recibir múltiples reseñas.
 
----
-
-# Diagrama Conceptual
+Cardinalidad:
 
 ```text
-                 User
-                / |  \
-               /  |   \
-              /   |    \
-     Address Orders Reviews
-                 |
-                 |
-            Order_Items
-                 |
-              Product
-             /      \
-            /        \
-     Categories    Wishlist
+Product (1) ──────────────── (N) Review
 ```
+
+---
+
+## Usuario — Carrito de Compras
+
+La implementación actual utiliza la entidad **Wishlist** para representar el carrito de compras.
+
+Cardinalidad:
+
+```text
+User (1) ──────────────── (N) Wishlist
+```
+
+---
+
+## Producto — Carrito de Compras
+
+Cada registro del carrito referencia un único producto.
+
+Cardinalidad:
+
+```text
+Product (1) ──────────────── (N) Wishlist
+```
+
+---
+
+# Relaciones Resumidas
+
+| Entidad | Cardinalidad | Entidad |
+|----------|--------------|----------|
+| User | 1 : N | Address |
+| User | 1 : N | Order |
+| Address | 1 : N | Order |
+| Order | 1 : N | OrderItem |
+| Product | 1 : N | OrderItem |
+| Product | N : M | Category |
+| User | 1 : N | Review |
+| Product | 1 : N | Review |
+| User | 1 : N | Wishlist |
+| Product | 1 : N | Wishlist |
 
 ---
 
 # Integridad Referencial
 
-La base de datos implementa claves foráneas para garantizar la consistencia entre entidades.
+El modelo implementa integridad referencial mediante claves foráneas administradas por Laravel.
 
-Las relaciones fueron implementadas mediante:
+Cada relación fue definida utilizando Migraciones y Eloquent ORM, garantizando la consistencia de los datos.
 
-- `foreignId()->constrained()`
-- Restricciones de eliminación (`onDelete`)
-- Relaciones Eloquent
+Las claves foráneas permiten:
+
+- mantener relaciones válidas entre entidades;
+- evitar registros huérfanos;
+- facilitar la navegación mediante Eloquent;
+- preservar la consistencia del modelo.
 
 ---
 
-# Reglas de Negocio
+# Normalización
 
-El modelo contempla las siguientes reglas:
+El diseño de la base de datos sigue criterios de normalización para minimizar redundancias y mantener la coherencia de la información.
 
-- Un usuario puede tener múltiples direcciones.
-- Un pedido pertenece a un único usuario.
-- Un pedido contiene uno o más productos.
-- Un producto puede pertenecer a múltiples categorías.
-- Un producto puede formar parte de múltiples pedidos.
-- Un usuario puede guardar múltiples productos en su Wishlist.
-- Un usuario puede publicar reseñas sobre productos.
-- Los pedidos siguen un flujo controlado de estados.
+Entre las decisiones adoptadas se destacan:
+
+- separación de entidades según responsabilidades;
+- utilización de tablas pivote para relaciones N:M;
+- uso de claves primarias autoincrementales;
+- utilización de claves foráneas para mantener la integridad referencial.
 
 ---
 
 # Correspondencia con Laravel
 
-Cada entidad del DER posee un modelo Eloquent asociado.
+Cada entidad del DER posee un modelo Eloquent correspondiente dentro del proyecto.
 
-Las relaciones se implementan utilizando:
+Las relaciones fueron implementadas mediante:
 
-- belongsTo()
-- hasMany()
-- belongsToMany()
+- `hasMany()`
+- `belongsTo()`
+- `belongsToMany()`
 
-Esto mantiene una correspondencia directa entre el modelo conceptual y la implementación.
-
----
-
-# Diagrama Definitivo
-
-> [!todo]
->
-> Incorporar aquí el DER definitivo exportado desde la herramienta de modelado utilizada durante el desarrollo (PNG, PDF o SVG).
+Esta correspondencia mantiene sincronizado el modelo conceptual con la implementación realizada en Laravel.
 
 ---
 
-# Diccionario de Datos
+# Documentación Relacionada
 
-El detalle de atributos, claves primarias, claves foráneas y tipos de datos se encuentra documentado en [[03_BaseDatos]].
+Este documento se complementa con:
 
----
-
-# Resumen
-
-El DER constituye la representación formal del modelo de datos de Rincón del Pan y sirve como referencia para comprender la organización de la información y las relaciones implementadas mediante Laravel y MySQL.
-
----
-
-## Documentación relacionada
-
-- [[README]]
-- [[02_ModeloDominio]]
-- [[03_BaseDatos]]
+- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
+- [03_BaseDatos](docs/docs/03_BaseDatos.md)
 - [[07_UML]]
+- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
+
+Diagramas relacionados:
+
+- [diagramas/10_DER](docs/diagramas/10_DER].md)
+- [diagramas/11_ModeloDominio](docs/diagramas/11_ModeloDominio.md)
+- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
+
+---
+
+# Consideraciones Finales
+
+El Modelo Entidad–Relación representa la estructura lógica sobre la que se construyó la aplicación **Rincón del Pan**.
+
+La implementación mediante **Migraciones**, **Eloquent ORM** y **MySQL** permitió mantener una correspondencia directa entre el análisis funcional, el modelo de dominio y la base de datos, facilitando el mantenimiento, la evolución del proyecto y la incorporación de nuevas funcionalidades.
