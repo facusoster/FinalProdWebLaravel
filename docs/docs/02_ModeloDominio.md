@@ -253,17 +253,17 @@ Esta correspondencia permite mantener alineado el modelo conceptual con la imple
 
 El modelo de dominio se complementa con los siguientes documentos:
 
-- [00_AnalisisRequisitos](docs/docs/00_AnalisisRequisitos.md)
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [07_UML](docs/07_UML.md)
+- [00_AnalisisRequisitos](./00_AnalisisRequisitos.md)
+- [01_Arquitectura](./01_Arquitectura.md)
+- [03_BaseDatos](./03_BaseDatos.md)
+- [04_DER](./04_DER.md)
+- [05_CasosUso](./05_CasosUso.md)
+- [07_UML](./07_UML.md)
 
 Diagramas relacionados:
 
-- [diagramas/11_ModeloDominio](docs/diagramas/11_ModeloDominio.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
+- [diagramas/11_ModeloDominio](../diagramas/11_ModeloDominio.md)
+- [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md)
 
 ---
 

@@ -13,7 +13,7 @@ Este diagrama representa el flujo completo que sigue un cliente desde que navega
 
 A diferencia del diagrama de secuencia, aquí se modelan las **actividades**, **decisiones** y el flujo general del proceso de negocio, sin enfocarse en los componentes internos del sistema.
 
-Este documento complementa la descripción funcional presentada en [05_CasosUso](docs/docs/05_CasosUso.md) y el flujo técnico detallado en [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido).
+Este documento complementa la descripción funcional presentada en [05_CasosUso](../docs/05_CasosUso.md) y el flujo técnico detallado en [23_UML_SecuenciaPedido](./23_UML_SecuenciaPedido.md).
 
 ---
 
@@ -176,19 +176,19 @@ Este flujo involucra principalmente los siguientes componentes del framework:
 
 Este diagrama complementa:
 
-- [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
-- [diagramas/22_UML_SecuenciaLogin](docs/diagramas/22_UML_SecuenciaLogin.md)
-- [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido)
-- [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md)
+- [20_UML_CasosUso](./20_UML_CasosUso.md)
+- [21_UML_Clases](./21_UML_Clases.md)
+- [22_UML_SecuenciaLogin](./22_UML_SecuenciaLogin.md)
+- [23_UML_SecuenciaPedido](./23_UML_SecuenciaPedido.md)
+- [25_UML_EstadosPedido](./25_UML_EstadosPedido.md)
 
 ---
 
 # Documentación Relacionada
 
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
-- [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
+- [05_CasosUso](../docs/05_CasosUso.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
+- [09_ManualInstalacion](../docs/09_ManualInstalacion.md)
 
 ---
 

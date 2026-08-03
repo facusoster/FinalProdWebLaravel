@@ -108,7 +108,7 @@ La lógica de negocio se encuentra organizada mediante:
 
 La arquitectura completa se encuentra documentada en:
 
-➡️ [01_Arquitectura](docs/docs/01_Arquitectura.md)
+➡️ [01_Arquitectura](./docs/docs/01_Arquitectura.md)
 
 ---
 
@@ -129,7 +129,7 @@ Estas entidades representan el funcionamiento completo del e-commerce y sus rela
 
 Más información:
 
-[02_ModeloDominio](docs/docs/02_ModeloDominio.md)
+➡️ [02_ModeloDominio](./docs/docs/02_ModeloDominio.md)
 
 ---
 
@@ -147,9 +147,9 @@ Características principales:
 
 La documentación correspondiente se encuentra en:
 
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
+- [03_BaseDatos](./docs/docs/03_BaseDatos.md)
+- [04_DER](./docs/docs/04_DER.md)
+- [10_DiccionarioDatos](./docs/docs/10_DiccionarioDatos.md)
 
 ---
 
@@ -159,17 +159,17 @@ Toda la documentación técnica del proyecto se encuentra organizada dentro de l
 
 | Documento | Descripción |
 |-----------|-------------|
-| [00_AnalisisRequisitos](docs/docs/00_AnalisisRequisitos.md) | Relevamiento de requisitos funcionales y no funcionales. |
-| [01_Arquitectura](docs/docs/01_Arquitectura.md) | Arquitectura general del sistema. |
-| [02_ModeloDominio](docs/docs/02_ModeloDominio.md) | Modelo de dominio y entidades principales. |
-| [03_BaseDatos](docs/docs/03_BaseDatos.md) | Implementación de la base de datos. |
-| [04_DER](docs/docs/04_DER.md) | Modelo Entidad-Relación. |
-| [05_CasosUso](docs/docs/05_CasosUso.md) | Casos de uso del sistema. |
-| [07_UML](docs/docs/07_UML.md)| Diagramas UML del proyecto. |
-| [08_ManualTecnico](docs/docs/08_ManualTecnico.md) | Documentación técnica de implementación. |
-| [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md) | Instalación y configuración del entorno. |
-| [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md) | Diccionario de datos de la base de datos. |
-| [setup-local-dev](docs/setup-local-dev.md) | Preparación del entorno de desarrollo. |
+| [00_AnalisisRequisitos](./docs/docs/00_AnalisisRequisitos.md) | Relevamiento de requisitos funcionales y no funcionales. |
+| [01_Arquitectura](./docs/docs/01_Arquitectura.md) | Arquitectura general del sistema. |
+| [02_ModeloDominio](./docs/docs/02_ModeloDominio.md) | Modelo de dominio y entidades principales. |
+| [03_BaseDatos](./docs/docs/03_BaseDatos.md) | Implementación de la base de datos. |
+| [04_DER](./docs/docs/04_DER.md) | Modelo Entidad-Relación. |
+| [05_CasosUso](./docs/docs/05_CasosUso.md) | Casos de uso del sistema. |
+| [07_UML](./docs/docs/07_UML.md) | Diagramas UML del proyecto. |
+| [08_ManualTecnico](./docs/docs/08_ManualTecnico.md) | Documentación técnica de implementación. |
+| [09_ManualInstalacion](./docs/docs/09_ManualInstalacion.md) | Instalación y configuración del entorno. |
+| [10_DiccionarioDatos](./docs/docs/10_DiccionarioDatos.md) | Diccionario de datos de la base de datos. |
+| [setup-local-dev](./docs/setup-local-dev.md) | Preparación del entorno de desarrollo. |
 
 ---
 
@@ -179,17 +179,16 @@ Los diagramas del proyecto se encuentran organizados dentro de la carpeta **diag
 
 Entre ellos se incluyen:
 
-- [Arquitectura MVC](docs/diagramas/01_ArquitecturaMVC.md)
-- [Componentes](docs/diagramas/02_Componentes.md)
-- [Deployment](docs/diagramas/03_Deployment.md)
-- [DER](docs/diagramas/10_DER.md)
-- [Modelo de Dominio](docs/diagramas/11_ModeloDominio.md)
-- [UML Casos de Uso](docs/diagramas/20_UML_CasosUso.md)
-- [UML de Clases](docs/diagramas/21_UML_Clases.md)
-- [UML de Secuencia Login](docs/diagramas/22_UML_SecuenciaLogin.md)
-- [UML de Secuencia Pedido](docs/diagramas/23_UML_SecuenciaPedido.md)
-- [UML de Actividades Compra](docs/diagramas/24_UML_ActividadCompra.md)
-- [UML de Estados](docs/diagramas/25_UML_EstadosPedido.md)
+- Arquitectura MVC
+- Componentes
+- Deployment
+- DER
+- Modelo de Dominio
+- Casos de Uso
+- UML de Clases
+- UML de Secuencia
+- UML de Actividades
+- UML de Estados
 
 ---
 
@@ -253,7 +252,7 @@ Las credenciales utilizadas para las pruebas son generadas mediante los **Seeder
 
 Consultar:
 
-- [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
+- [09_ManualInstalacion]()
 
 ---
 

@@ -15,8 +15,8 @@ Su finalidad es mostrar cómo se distribuyen los distintos componentes del siste
 
 Este diagrama complementa la información presentada en:
 
-- [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
-- [setup-local-dev](docs/setup-local-dev.md)
+- [09_ManualInstalacion](../docs/09_ManualInstalacion.md)
+- [setup-local-dev](../setup-local-dev.md)
 
 ---
 
@@ -231,10 +231,10 @@ El entorno utilizado durante la realización del proyecto está compuesto por:
 
 Este diagrama complementa los siguientes documentos:
 
-- [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
-- [setup-local-dev](docs/setup-local-dev.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
+- [09_ManualInstalacion](../docs/09_ManualInstalacion.md)
+- [setup-local-dev](../setup-local-dev.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
+- [01_Arquitectura](../docs/01_Arquitectura.md)
 
 ---
 

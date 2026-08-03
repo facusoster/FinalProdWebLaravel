@@ -15,8 +15,8 @@ A diferencia del diagrama de Arquitectura MVC, este documento ofrece una visión
 
 Complementa la documentación desarrollada en:
 
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [01_Arquitectura](../docs/01_Arquitectura.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
 
 ---
 
@@ -250,7 +250,7 @@ Este diagrama representa una vista lógica de los principales componentes del si
 
 Mientras que:
 
-- [diagramas/01_ArquitecturaMVC](docs/diagramas/01_ArquitecturaMVC.md)
+- [diagramas/01_ArquitecturaMVC](./01_ArquitecturaMVC.md)
 
 describe el patrón MVC,
 
@@ -260,10 +260,10 @@ este documento muestra cómo se relacionan los distintos módulos que conforman 
 
 # Documentación Relacionada
 
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
-- [diagramas/01_ArquitecturaMVC](docs/diagramas/01_ArquitecturaMVC.md)
-- [diagramas/03_Deployment](docs/diagramas/03_Deployment.md)
+- [01_Arquitectura](../docs/01_Arquitectura.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
+- [diagramas/01_ArquitecturaMVC](./01_ArquitecturaMVC.md)
+- [diagramas/03_Deployment](03_Deployment.md)
 
 ---
 

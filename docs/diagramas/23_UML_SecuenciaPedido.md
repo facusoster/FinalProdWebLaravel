@@ -222,19 +222,19 @@ En este proceso participan los siguientes componentes del framework:
 
 Este diagrama complementa:
 
-- [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
-- [diagramas/24_UML_ActividadCompra](docs/diagramas/24_UML_ActividadCompra.md)
-- [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md)
+- [20_UML_CasosUso](./20_UML_CasosUso.md)
+- [21_UML_Clases](./21_UML_Clases.md)
+- [24_UML_ActividadCompra](./24_UML_ActividadCompra.md)
+- [25_UML_EstadosPedido](./25_UML_EstadosPedido.md)
 
 ---
 
 # Documentación Relacionada
 
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [05_CasosUso](../docs/05_CasosUso.md)
+- [03_BaseDatos](../docs/03_BaseDatos.md)
+- [04_DER](../docs/04_DER.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
 
 ---
 

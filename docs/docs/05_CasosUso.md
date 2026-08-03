@@ -15,7 +15,7 @@ Los casos de uso representan las interacciones entre los actores y el sistema, p
 
 El detalle gráfico de los diagramas UML asociados se encuentra documentado por separado.
 
-➡️ [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md)
+➡️ [diagramas/20_UML_CasosUso](../diagramas/20_UML_CasosUso.md)
 
 ---
 
@@ -385,12 +385,12 @@ La lógica de negocio se encuentra distribuida respetando la arquitectura MVC de
 
 Los diagramas UML que representan estos procesos pueden consultarse en:
 
-- [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
-- [diagramas/22_UML_SecuenciaLogin](docs/diagramas/22_UML_SecuenciaLogin.md)
-- [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido)
-- [diagramas/24_UML_ActividadCompra](docs/diagramas/24_UML_ActividadCompra.md)
-- [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md)
+- [diagramas/20_UML_CasosUso](../diagramas/20_UML_CasosUso.md)
+- [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md)
+- [diagramas/22_UML_SecuenciaLogin](../diagramas/22_UML_SecuenciaLogin.md)
+- [diagramas/23_UML_SecuenciaPedido](../diagramas/23_UML_SecuenciaPedido.md)
+- [diagramas/24_UML_ActividadCompra](../diagramas/24_UML_ActividadCompra.md)
+- [diagramas/25_UML_EstadosPedido](../diagramas/25_UML_EstadosPedido.md)
 
 ---
 
@@ -398,12 +398,12 @@ Los diagramas UML que representan estos procesos pueden consultarse en:
 
 Este documento se complementa con:
 
-- [00_AnalisisRequisitos](docs/docs/00_AnalisisRequisitos.md)
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [04_DER](docs/docs/04_DER.md)
-- [07_UML](docs/07_UML.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [00_AnalisisRequisitos](./00_AnalisisRequisitos.md)
+- [01_Arquitectura](./01_Arquitectura.md)
+- [02_ModeloDominio](./02_ModeloDominio.md)
+- [04_DER](./04_DER.md)
+- [07_UML](./07_UML.md)
+- [08_ManualTecnico](./08_ManualTecnico.md)
 
 ---
 

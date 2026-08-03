@@ -9,13 +9,13 @@
 
 > [!info]
 > **Documentación relacionada**
-> - [README](README.md)
-> - [01_Arquitectura](docs/docs/01_Arquitectura.md)
-> - [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-> - [03_BaseDatos](docs/docs/03_BaseDatos.md)
-> - [04_DER](docs/docs/04_DER.md)
-> - [05_CasosUso](docs/docs/05_CasosUso.md)
-> - [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+> - [[README]]
+> - [[01_Arquitectura]]
+> - [[02_ModeloDominio]]
+> - [[03_BaseDatos]]
+> - [[04_DER]]
+> - [[05_CasosUso]]
+> - [[08_ManualTecnico]]
 
 ---
 
@@ -231,10 +231,10 @@ Aunque su implementación aún se encuentra pendiente, el diseño presentado est
 
 ## Documentación relacionada
 
-- [README](README.md)
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [[README]]
+- [[01_Arquitectura]]
+- [[02_ModeloDominio]]
+- [[03_BaseDatos]]
+- [[04_DER]]
+- [[05_CasosUso]]
+- [[08_ManualTecnico]]

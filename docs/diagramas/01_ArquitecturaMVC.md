@@ -14,7 +14,7 @@ Este diagrama representa la arquitectura general de **Rincón del Pan**, desarro
 
 Su propósito es mostrar el flujo de una solicitud desde que un usuario interactúa con la aplicación hasta que se genera la respuesta HTML correspondiente.
 
-Este diagrama complementa la explicación desarrollada en [01_Arquitectura](docs/docs/01_Arquitectura.md).
+Este diagrama complementa la explicación desarrollada en [01_Arquitectura](../docs/01_Arquitectura.md).
 
 ---
 
@@ -219,10 +219,10 @@ La implementación sigue las recomendaciones oficiales de Laravel:
 
 # Documentación Relacionada
 
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [01_Arquitectura](../docs/01_Arquitectura.md)
+- [02_ModeloDominio](../docs/02_ModeloDominio.md)
+- [03_BaseDatos](../docs/03_BaseDatos.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
 
 ---
 

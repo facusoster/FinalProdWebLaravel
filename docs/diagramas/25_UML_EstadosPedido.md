@@ -179,19 +179,19 @@ La documentación de la materia recomienda implementar este comportamiento media
 
 Este diagrama complementa:
 
-- [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
-- [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido)
-- [diagramas/24_UML_ActividadCompra](docs/diagramas/24_UML_ActividadCompra.md)
+- [20_UML_CasosUso](./20_UML_CasosUso.md)
+- [21_UML_Clases](./21_UML_Clases.md)
+- [23_UML_SecuenciaPedido](./23_UML_SecuenciaPedido.md)
+- [24_UML_ActividadCompra](./24_UML_ActividadCompra.md)
 
 ---
 
 # Documentación Relacionada
 
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [03_BaseDatos](../docs/03_BaseDatos.md)
+- [04_DER](../docs/04_DER.md)
+- [05_CasosUso](../docs/05_CasosUso.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
 
 ---
 

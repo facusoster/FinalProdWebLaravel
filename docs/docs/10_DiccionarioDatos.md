@@ -271,7 +271,7 @@ La entidad **orders** implementa un ciclo de vida basado en estados.
 
 La representación gráfica puede consultarse en:
 
-➡️ [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md)
+➡️ [diagramas/25_UML_EstadosPedido](../diagramas/25_UML_EstadosPedido.md)
 
 ---
 
@@ -295,17 +295,17 @@ La representación gráfica puede consultarse en:
 
 Este documento complementa la siguiente documentación:
 
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [07_UML](docs/07_UML.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [02_ModeloDominio](./02_ModeloDominio.md)
+- [03_BaseDatos](./03_BaseDatos.md)
+- [04_DER](./04_DER.md)
+- [07_UML](./07_UML.md)
+- [08_ManualTecnico](./08_ManualTecnico.md)
 
 Diagramas relacionados:
 
-- [diagramas/10_DER](docs/diagramas/10_DER].md)
-- [diagramas/11_ModeloDominio](docs/diagramas/11_ModeloDominio.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
+- [diagramas/10_DER](../diagramas/10_DER.md)
+- [diagramas/11_ModeloDominio](../diagramas/11_ModeloDominio.md)
+- [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md)
 
 ---
 

@@ -36,12 +36,12 @@ La documentación UML del proyecto se encuentra organizada en los siguientes arc
 
 | Diagrama | Descripción |
 |----------|-------------|
-| [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md) | Interacción entre actores y funcionalidades del sistema. |
-| [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md) | Representación de las clases del dominio y sus relaciones. |
-| [diagramas/22_UML_SecuenciaLogin](docs/diagramas/22_UML_SecuenciaLogin.md) | Flujo de autenticación de usuarios. |
-| [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido) | Proceso completo de creación de un pedido. |
-| [diagramas/24_UML_ActividadCompra](docs/diagramas/24_UML_ActividadCompra.md) | Flujo de actividades durante una compra. |
-| [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md) | Ciclo de vida y transiciones de los pedidos. |
+| [diagramas/20_UML_CasosUso](../diagramas/20_UML_CasosUso.md) | Interacción entre actores y funcionalidades del sistema. |
+| [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md) | Representación de las clases del dominio y sus relaciones. |
+| [diagramas/22_UML_SecuenciaLogin](../diagramas/22_UML_SecuenciaLogin.md) | Flujo de autenticación de usuarios. |
+| [diagramas/23_UML_SecuenciaPedido](../diagramas/23_UML_SecuenciaPedido.md) | Proceso completo de creación de un pedido. |
+| [diagramas/24_UML_ActividadCompra](../diagramas/24_UML_ActividadCompra.md) | Flujo de actividades durante una compra. |
+| [diagramas/25_UML_EstadosPedido](../diagramas/25_UML_EstadosPedido.md) | Ciclo de vida y transiciones de los pedidos. |
 
 ---
 
@@ -58,7 +58,7 @@ Permite identificar:
 
 Se encuentra disponible en:
 
-➡️ [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md)
+➡️ [diagramas/20_UML_CasosUso](../diagramas/20_UML_CasosUso.md) 
 
 ---
 
@@ -77,7 +77,7 @@ Este diagrama mantiene una correspondencia directa con los modelos Eloquent impl
 
 Disponible en:
 
-➡️ [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
+➡️ [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md)
 
 ---
 
@@ -102,7 +102,7 @@ Incluye:
 
 Diagrama:
 
-➡️ [diagramas/22_UML_SecuenciaLogin](docs/diagramas/22_UML_SecuenciaLogin.md)
+➡️ [diagramas/22_UML_SecuenciaLogin](../diagramas/22_UML_SecuenciaLogin.md)
 
 ---
 
@@ -120,7 +120,7 @@ Incluye:
 
 Diagrama:
 
-➡️ [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido)
+➡️ [diagramas/23_UML_SecuenciaPedido](../diagramas/23_UML_SecuenciaPedido.md)
 
 ---
 
@@ -139,7 +139,7 @@ Entre las actividades modeladas se encuentran:
 
 Disponible en:
 
-➡️ [diagramas/24_UML_ActividadCompra](docs/diagramas/24_UML_ActividadCompra.md)
+➡️ [diagramas/24_UML_ActividadCompra](../diagramas/24_UML_ActividadCompra.md)
 
 ---
 
@@ -159,7 +159,7 @@ Además, documenta las transiciones válidas entre cada uno de ellos, facilitand
 
 Disponible en:
 
-➡️ [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md)
+➡️ [diagramas/25_UML_EstadosPedido](../diagramas/25_UML_EstadosPedido.md)
 
 ---
 
@@ -218,13 +218,13 @@ Esta decisión permite:
 
 Este documento complementa la siguiente documentación técnica:
 
-- [00_AnalisisRequisitos](docs/docs/00_AnalisisRequisitos.md)
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [00_AnalisisRequisitos](./00_AnalisisRequisitos.md)
+- [01_Arquitectura](./01_Arquitectura.md)
+- [02_ModeloDominio](./02_ModeloDominio.md)
+- [03_BaseDatos](./03_BaseDatos.md)
+- [04_DER](./04_DER.md)
+- [05_CasosUso](./05_CasosUso.md)
+- [08_ManualTecnico](./08_ManualTecnico.md)
 
 ---
 

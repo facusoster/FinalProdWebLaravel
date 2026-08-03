@@ -258,11 +258,11 @@ Por esta razón ambos diagramas son complementarios y cumplen funciones diferent
 
 Este diagrama complementa:
 
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
+- [02_ModeloDominio](../docs/02_ModeloDominio.md)
+- [03_BaseDatos](../docs/03_BaseDatos.md)
+- [04_DER](../docs/04_DER.md)
+- [10_DiccionarioDatos](../docs/10_DiccionarioDatos.md)
+- [21_UML_Clases](./21_UML_Clases.md)
 
 ---
 

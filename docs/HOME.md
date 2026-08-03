@@ -20,37 +20,37 @@ El objetivo de esta Wiki es centralizar toda la documentación técnica y funcio
 
 ## 📋 Análisis
 
-- [00_AnalisisRequisitos](docs/docs/00_AnalisisRequisitos.md)
+- [00_AnalisisRequisitos](./docs/00_AnalisisRequisitos.md)
 
 ---
 
 ## 🏛️ Arquitectura
 
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
+- [01_Arquitectura](./docs/01_Arquitectura.md)
+- [02_ModeloDominio](./docs/02_ModeloDominio.md)
+- [03_BaseDatos](./docs/03_BaseDatos.md)
+- [04_DER](./docs/04_DER.md)
+- [10_DiccionarioDatos](./docs/10_DiccionarioDatos.md)
 
 ---
 
 ## 👥 Diseño Funcional
 
-- [05_CasosUso](docs/docs/05_CasosUso.md)
+- [05_CasosUso](./docs/05_CasosUso.md)
 
 ---
 
 ## 📐 UML
 
-- [07_UML](docs/07_UML.md)
+- [07_UML](./docs/07_UML.md)
 
 ---
 
 ## ⚙️ Implementación
 
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
-- [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
-- [setup-local-dev](docs/setup-local-dev.md)
+- [08_ManualTecnico](./docs/08_ManualTecnico.md)
+- [09_ManualInstalacion](./docs/09_ManualInstalacion.md)
+- [setup-local-dev](./setup-local-dev.md)
 
 ---
 
@@ -68,24 +68,23 @@ La documentación gráfica del proyecto se encuentra organizada en la carpeta **
 
 ## Arquitectura
 
-- [diagramas/01_ArquitecturaMVC](docs/diagramas/01_ArquitecturaMVC.md)
-- [diagramas/02_Componentes](docs/diagramas/02_Componentes.md)
-- [diagramas/03_Deployment](docs/diagramas/03_Deployment.md)
+- [diagramas/01_ArquitecturaMVC](./diagramas/01_ArquitecturaMVC.md)
+- [diagramas/02_Componentes](./diagramas/02_Componentes.md)
+- [diagramas/03_Deployment](./diagramas/03_Deployment.md)
 
 ## Modelo de Datos
 
-- [diagramas/10_DER](docs/diagramas/10_DER].md)
-- [diagramas/11_ModeloDominio](docs/diagramas/11_ModeloDominio.md)
+- [diagramas/10_DER](./diagramas/10_DER.md)
+- [diagramas/11_ModeloDominio](./diagramas/11_ModeloDominio.md)
 
 ## UML
 
-- [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
-- [diagramas/22_UML_SecuenciaLogin](docs/diagramas/22_UML_SecuenciaLogin.md)
-- [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido)
-- [diagramas/24_UML_ActividadCompra](docs/diagramas/24_UML_ActividadCompra.md)
-- [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md)
-
+- [diagramas/20_UML_CasosUso](./diagramas/20_UML_CasosUso.md)
+- [diagramas/21_UML_Clases](./diagramas/21_UML_Clases.md)
+- [diagramas/22_UML_SecuenciaLogin](./diagramas/22_UML_SecuenciaLogin.md)
+- [diagramas/23_UML_SecuenciaPedido](./diagramas/23_UML_SecuenciaPedido.md)
+- [diagramas/24_UML_ActividadCompra](./diagramas/24_UML_ActividadCompra.md)
+- [diagramas/25_UML_EstadosPedido](./diagramas/25_UML_EstadosPedido.md)
 ---
 
 # Tecnologías utilizadas

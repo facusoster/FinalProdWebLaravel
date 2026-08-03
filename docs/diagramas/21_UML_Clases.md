@@ -245,22 +245,22 @@ Durante el desarrollo se adoptaron las siguientes decisiones:
 
 Este diagrama constituye el núcleo de la documentación UML y se complementa con:
 
-- [diagramas/10_DER](docs/diagramas/10_DER].md)
-- [diagramas/11_ModeloDominio](docs/diagramas/11_ModeloDominio.md)
-- [diagramas/22_UML_SecuenciaLogin](docs/diagramas/22_UML_SecuenciaLogin.md)
-- [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido)
-- [diagramas/24_UML_ActividadCompra](docs/diagramas/24_UML_ActividadCompra.md)
-- [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md)
+- [10_DER](../docs/04_DER.md)
+- [11_ModeloDominio](../docs/02_ModeloDominio.md)
+- [22_UML_SecuenciaLogin](./22_UML_SecuenciaLogin.md)
+- [23_UML_SecuenciaPedido](./23_UML_SecuenciaPedido.md)
+- [24_UML_ActividadCompra](./24_UML_ActividadCompra.md)
+- [25_UML_EstadosPedido](./25_UML_EstadosPedido.md)
 
 ---
 
 # Documentación Relacionada
 
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [07_UML](docs/07_UML.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
+- [02_ModeloDominio](../docs/02_ModeloDominio.md)
+- [03_BaseDatos](../docs/03_BaseDatos.md)
+- [04_DER](../docs/04_DER.md)
+- [07_UML](../docs/07_UML.md)
+- [10_DiccionarioDatos](../docs/10_DiccionarioDatos.md)
 
 ---
 

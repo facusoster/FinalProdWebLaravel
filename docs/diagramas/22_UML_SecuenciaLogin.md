@@ -13,7 +13,7 @@ Este diagrama describe la interacción entre los distintos componentes del siste
 
 El flujo refleja el funcionamiento implementado mediante el **AuthController**, las rutas de Laravel, el modelo **User**, la base de datos MySQL y el sistema de autenticación basado en sesiones.
 
-Este documento complementa la descripción funcional desarrollada en [05_CasosUso](docs/docs/05_CasosUso.md).
+Este documento complementa la descripción funcional desarrollada en [05_CasosUso](../docs/05_CasosUso.md).
 
 ---
 
@@ -179,17 +179,17 @@ Durante este proceso intervienen los siguientes componentes del framework:
 
 Este diagrama se complementa con:
 
-- [diagramas/20_UML_CasosUso](docs/diagramas/20_UML_CasosUso.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
-- [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido)
+- [20_UML_CasosUso](./20_UML_CasosUso.md)
+- [21_UML_Clases](./21_UML_Clases.md)
+- [23_UML_SecuenciaPedido](./23_UML_SecuenciaPedido.md)
 
 ---
 
 # Documentación Relacionada
 
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [07_UML](docs/07_UML.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [05_CasosUso](../docs/05_CasosUso.md)
+- [07_UML](../docs/07_UML.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
 
 ---
 

@@ -271,18 +271,18 @@ Durante el desarrollo se procuró respetar las siguientes buenas prácticas:
 
 La arquitectura presentada en este documento se complementa con los siguientes apartados de la documentación:
 
-- [00_AnalisisRequisitos](docs/docs/00_AnalisisRequisitos.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [07_UML](docs/07_UML.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [00_AnalisisRequisitos](./00_AnalisisRequisitos.md)
+- [02_ModeloDominio](./02_ModeloDominio.md)
+- [03_BaseDatos](./03_BaseDatos.md)
+- [04_DER](./04_DER.md)
+- [07_UML](./07_UML.md)
+- [08_ManualTecnico](./08_ManualTecnico.md)
 
 Los diagramas correspondientes pueden consultarse en:
 
-- [diagramas/01_ArquitecturaMVC](docs/diagramas/01_ArquitecturaMVC.md)
-- [diagramas/02_Componentes](docs/diagramas/02_Componentes.md)
-- [diagramas/03_Deployment](docs/diagramas/03_Deployment.md)
+- [diagramas/01_ArquitecturaMVC](../diagramas/01_ArquitecturaMVC.md)
+- [diagramas/02_Componentes](../diagramas/02_Componentes.md)
+- [diagramas/03_Deployment](../diagramas/03_Deployment.md)
 
 ---
 

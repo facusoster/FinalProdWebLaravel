@@ -13,7 +13,7 @@ Este diagrama representa los principales casos de uso del sistema **Rincón del 
 
 Su finalidad es brindar una visión funcional del sistema antes de analizar aspectos técnicos como la arquitectura o el modelo de datos.
 
-Este documento complementa la información desarrollada en [05_CasosUso](docs/docs/05_CasosUso.md).
+Este documento complementa la información desarrollada en [05_CasosUso](../docs/05_CasosUso.md).
 
 ---
 
@@ -221,19 +221,19 @@ Estos aspectos son desarrollados en los diagramas UML específicos y en la docum
 
 Este diagrama sirve como punto de partida para comprender los restantes modelos UML del proyecto:
 
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
-- [diagramas/22_UML_SecuenciaLogin](docs/diagramas/22_UML_SecuenciaLogin.md)
-- [diagramas/23_UML_SecuenciaPedido](docs/diagramas/23_UML_SecuenciaPedido)
-- [diagramas/24_UML_ActividadCompra](docs/diagramas/24_UML_ActividadCompra.md)
-- [diagramas/25_UML_EstadosPedido](docs/diagramas/25_UML_EstadosPedido.md)
+- [21_UML_Clases](./21_UML_Clases.md)
+- [22_UML_SecuenciaLogin](./22_UML_SecuenciaLogin.md)
+- [23_UML_SecuenciaPedido](./23_UML_SecuenciaPedido.md)
+- [24_UML_ActividadCompra](./24_UML_ActividadCompra.md)
+- [25_UML_EstadosPedido](./25_UML_EstadosPedido.md)
 
 ---
 
 # Documentación Relacionada
 
-- [00_AnalisisRequisitos](docs/docs/00_AnalisisRequisitos.md)
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [07_UML](docs/07_UML.md)
+- [00_AnalisisRequisitos](../docs/00_AnalisisRequisitos.md)
+- [05_CasosUso](../docs/05_CasosUso.md)
+- [07_UML](../docs/07_UML.md)
 
 ---
 

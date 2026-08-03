@@ -133,7 +133,7 @@ Los procesos funcionales más relevantes identificados durante el análisis son:
 
 La descripción detallada de estos procesos puede consultarse en:
 
-➡️ [05_CasosUso](docs/docs/05_CasosUso.md)
+➡️ [05_CasosUso](./05_CasosUso.md)
 
 ---
 
@@ -205,13 +205,13 @@ El presente análisis constituye el punto de partida para el resto de la documen
 
 Los requisitos aquí definidos se reflejan posteriormente en:
 
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [07_UML](docs/07_UML.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [01_Arquitectura](./01_Arquitectura.md)
+- [02_ModeloDominio](./02_ModeloDominio.md)
+- [03_BaseDatos](./03_BaseDatos.md)
+- [04_DER](./04_DER.md)
+- [05_CasosUso](./05_CasosUso.md)
+- [07_UML](./07_UML.md)
+- [08_ManualTecnico](./08_ManualTecnico.md)
 
 ---
 

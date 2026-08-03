@@ -17,7 +17,7 @@ No se trata de un procedimiento obligatorio para ejecutar la aplicación, sino d
 El objetivo es facilitar la reproducción del entorno por parte de otros integrantes del equipo o futuros desarrolladores.
 
 > [!note]
-> Para instalar únicamente el proyecto consultar [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md).
+> Para instalar únicamente el proyecto consultar [09_ManualInstalacion](./docs/09_ManualInstalacion.md).
 
 ---
 
@@ -422,10 +422,10 @@ Durante el desarrollo del proyecto se siguieron las siguientes recomendaciones:
 
 # Documentación Relacionada
 
-- [README](README.md)
-- [HOME](docs/HOME.md)
-- [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [README](../README.md)
+- [HOME](./HOME.md)
+- [09_ManualInstalacion](./docs/09_ManualInstalacion.md)
+- [08_ManualTecnico](./docs/08_ManualTecnico.md)
 
 ---
 

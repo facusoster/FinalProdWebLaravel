@@ -17,7 +17,7 @@ Este modelo fue diseñado durante la etapa de análisis y posteriormente impleme
 
 El diagrama detallado se encuentra documentado por separado para facilitar su mantenimiento.
 
-➡️ [diagramas/10_DER](docs/diagramas/10_DER].md)
+➡️ [diagramas/10_DER](../diagramas/10_DER.md)
 
 ---
 
@@ -247,16 +247,16 @@ Esta correspondencia mantiene sincronizado el modelo conceptual con la implement
 
 Este documento se complementa con:
 
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [07_UML](docs/07_UML.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
+- [02_ModeloDominio](./02_ModeloDominio.md)
+- [03_BaseDatos](./03_BaseDatos.md)
+- [07_UML](./07_UML.md)
+- [10_DiccionarioDatos](./10_DiccionarioDatos.md)
 
 Diagramas relacionados:
 
-- [diagramas/10_DER](docs/diagramas/10_DER].md)
-- [diagramas/11_ModeloDominio](docs/diagramas/11_ModeloDominio.md)
-- [diagramas/21_UML_Clases](docs/diagramas/21_UML_Clases.md)
+- [diagramas/10_DER](../diagramas/10_DER.md)
+- [diagramas/11_ModeloDominio](../diagramas/11_ModeloDominio.md)
+- [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md)
 
 ---
 

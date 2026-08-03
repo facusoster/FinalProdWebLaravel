@@ -15,7 +15,7 @@ El objetivo es permitir que cualquier integrante del equipo pueda reconstruir co
 
 La configuración detallada del entorno utilizado durante el desarrollo puede consultarse en:
 
-➡️ [setup-local-dev](docs/setup-local-dev.md)
+➡️ [setup-local-dev](../setup-local-dev.md)
 
 ---
 
@@ -328,7 +328,7 @@ En caso de existir nuevas migraciones.
 
 La configuración completa del entorno de desarrollo utilizado durante la realización del proyecto se encuentra documentada en:
 
-➡️ [setup-local-dev](docs/setup-local-dev.md)
+➡️ [setup-local-dev](../setup-local-dev.md)
 
 Este documento incluye:
 
@@ -346,11 +346,11 @@ Este documento incluye:
 
 # Documentación Relacionada
 
-- [README](README.md)
-- [HOME](docs/HOME.md)
-- [setup-local-dev](docs/setup-local-dev.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
+- [README](../../README.md)
+- [HOME](../HOME.md)
+- [setup-local-dev](../setup-local-dev.md)
+- [08_ManualTecnico](./08_ManualTecnico.md)
+- [03_BaseDatos](./03_BaseDatos.md)
 
 ---
 

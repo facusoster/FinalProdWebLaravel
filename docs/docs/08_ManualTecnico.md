@@ -49,7 +49,7 @@ Cada componente posee una responsabilidad específica:
 
 La documentación completa de la arquitectura puede consultarse en:
 
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
+- [01_Arquitectura](./01_Arquitectura.md)
 
 ---
 
@@ -123,9 +123,9 @@ La estructura de la base de datos se encuentra completamente versionada mediante
 
 La documentación correspondiente puede consultarse en:
 
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
+- [03_BaseDatos](./03_BaseDatos.md)
+- [04_DER](./04_DER.md)
+- [10_DiccionarioDatos](./10_DiccionarioDatos.md)
 
 ---
 
@@ -334,15 +334,15 @@ Entre las funcionalidades previstas para futuras versiones se encuentran:
 
 # Documentación Relacionada
 
-- [00_AnalisisRequisitos](docs/docs/00_AnalisisRequisitos.md)
-- [01_Arquitectura](docs/docs/01_Arquitectura.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [04_DER](docs/docs/04_DER.md)
-- [05_CasosUso](docs/docs/05_CasosUso.md)
-- [07_UML](docs/07_UML.md)
-- [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
+- [[00_AnalisisRequisitos]]
+- [[01_Arquitectura]]
+- [[02_ModeloDominio]]
+- [[03_BaseDatos]]
+- [[04_DER]]
+- [[05_CasosUso]]
+- [[07_UML]]
+- [[09_ManualInstalacion]]
+- [[10_DiccionarioDatos]]
 
 ---
 

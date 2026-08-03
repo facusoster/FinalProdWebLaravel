@@ -271,15 +271,15 @@ Esto permite mantener las credenciales fuera del código fuente y adaptar fácil
 
 La estructura de la base de datos se complementa con los siguientes documentos:
 
-- [04_DER](docs/docs/04_DER.md)
-- [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
-- [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
-- [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
+- [04_DER](./04_DER.md)
+- [10_DiccionarioDatos](./10_DiccionarioDatos.md)
+- [02_ModeloDominio](./02_ModeloDominio.md)
+- [08_ManualTecnico](./08_ManualTecnico.md)
 
 Diagramas relacionados:
 
-- [diagramas/10_DER](docs/diagramas/10_DER].md)
-- [diagramas/11_ModeloDominio](docs/diagramas/11_ModeloDominio.md)
+- [diagramas/10_DER](../diagramas/10_DER.md)
+- [diagramas/11_ModeloDominio](../diagramas/11_ModeloDominio.md)
 
 ---
 
