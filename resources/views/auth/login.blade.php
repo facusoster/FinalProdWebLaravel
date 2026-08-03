@@ -44,6 +44,8 @@
                 </div>
 
                 <div class="text-center mt-4">
+                    <p class="mb-1 text-muted">Admin: admin@sweetstore.test - password123</p>
+                    <p class="mb-1 text-muted">Cliente: maria.gonzalez@sweetstore.test - password123</p>
                     <p class="mb-1 text-muted">¿No tenés cuenta aún?</p>
                     <a href="{{ route('register') }}" class="link-secondary fw-semibold">Regístrate aquí</a>
                 </div>
