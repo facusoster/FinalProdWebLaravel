@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +23,19 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="{{ route('products.index') }}">Productos</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('categories.index') }}">Categorías</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.orders.index') }}">Pedidos</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="{{ route('admin.orders.index') }}">
+                            Pedidos
+                            @php
+                            $pendingOrders = \App\Models\Order::where('status', 'pending')->count();
+                            @endphp
+                            @if($pendingOrders > 0)
+                            <span class="badge bg-danger rounded-pill ms-1" style="font-size: 0.65rem; padding: 0.35em 0.6em;">
+                                {{ $pendingOrders }}
+                            </span>
+                            @endif
+                        </a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('admin.reviews.index') }}">Reseñas</a></li>
                 </ul>
 
@@ -36,9 +49,30 @@
 
     <div class="container mt-4">
         <hr class="my-3">
+
+        {{-- Banner de pedidos pendientes (visible en todas las páginas del admin) --}}
+        @php
+        $pendingOrders = \App\Models\Order::where('status', 'pending')->count();
+        @endphp
+
+        @if($pendingOrders > 0)
+        <div class="alert alert-warning alert-dismissible fade show shadow-sm border-0 mb-4" role="alert">
+            <div class="d-flex align-items-center">
+                <span class="me-2">🔔</span>
+                <div>
+                    <strong>¡Tenés pedidos pendientes!</strong>
+                    Hay <strong>{{ $pendingOrders }}</strong> pedido{{ $pendingOrders > 1 ? 's' : '' }} esperando ser procesado{{ $pendingOrders > 1 ? 's' : '' }}.
+                    <a href="{{ route('admin.orders.index') }}" class="alert-link fw-bold ms-1">Ver pedidos →</a>
+                </div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+        @endif
+
         @yield('content')
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
