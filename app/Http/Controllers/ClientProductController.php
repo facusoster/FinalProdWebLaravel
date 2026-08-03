@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ClientProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $categories = Category::all();
+        $selectedCategoryId = $request->query('category');
 
-        return view('clients.products.index', compact('products'));
+        $products = Product::with('category')
+            ->when($selectedCategoryId, fn($query) => $query->where('category_id', $selectedCategoryId))
+            ->get();
+
+        return view('clients.products.index', compact('products', 'categories', 'selectedCategoryId'));
     }
 }
