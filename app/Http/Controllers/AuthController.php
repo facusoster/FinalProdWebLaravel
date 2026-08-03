@@ -48,8 +48,8 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         return Auth::user()->role === 'admin'
-            ? redirect()->route('admin.dashboard')
-            : redirect()->route('dashboard');
+            ? redirect()->route('products.index')
+            : redirect()->route('client.products.index');
     }
 
     public function logout()
