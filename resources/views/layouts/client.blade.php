@@ -22,6 +22,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="{{ route('client.products.index') }}">Productos</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('orders.index') }}">Mis Pedidos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('addresses.index') }}">Mis Direcciones</a></li>
                 </ul>
 
                 <div class="d-flex align-items-center">

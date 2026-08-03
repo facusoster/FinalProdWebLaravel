@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AddressController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,7 @@ Route::get('/dashboard', function () {
 
 /*
 |--------------------------------------------------------------------------
-| CLIENTE - WISHLIST / PRODUCTOS / PEDIDOS
+| CLIENTE - WISHLIST / PRODUCTOS / PEDIDOS / DIRECCIONES
 |--------------------------------------------------------------------------
 */
 
@@ -84,6 +85,29 @@ Route::middleware(['auth'])->group(function () {
 
     Route::put('/orders/{order}/cancel', [\App\Http\Controllers\OrderController::class, 'cancel'])
         ->name('orders.cancel');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Direcciones del cliente
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/addresses', [\App\Http\Controllers\AddressController::class, 'index'])
+        ->name('addresses.index');
+
+    Route::get('/addresses/create', [\App\Http\Controllers\AddressController::class, 'create'])
+        ->name('addresses.create');
+
+    Route::post('/addresses', [\App\Http\Controllers\AddressController::class, 'store'])
+        ->name('addresses.store');
+
+    Route::get('/addresses/{address}/edit', [\App\Http\Controllers\AddressController::class, 'edit'])
+        ->name('addresses.edit');
+
+    Route::put('/addresses/{address}', [\App\Http\Controllers\AddressController::class, 'update'])
+        ->name('addresses.update');
+
+    Route::delete('/addresses/{address}', [\App\Http\Controllers\AddressController::class, 'destroy'])
+        ->name('addresses.destroy');
 });
 
 
