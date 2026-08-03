@@ -12,49 +12,42 @@
         </div>
     </div>
 
-    <h3 class="mb-3">Productos</h3>
+    <div class="card border-0 shadow-sm wishlist-summary p-4" style="max-width: 640px;">
+        <div class="d-flex justify-content-between align-items-start mb-4">
+            <div>
+                <h1 class="h4 mb-1">Productos</h1>
+            </div>
+        </div>
 
-    <div class="table-responsive">
-        <table class="table table-striped align-middle">
-            <thead class="table-light">
-                <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                    @if($order->status === 'completed')
-                        <th>Reseña</th>
-                    @endif
-                </tr>
-            </thead>
-            <tbody>
+        <div class="mb-4">
+            <h3 class="h6 mb-3">Resumen de productos</h3>
+            <div class="list-group list-group-flush rounded-4 overflow-hidden">
                 @foreach ($order->items as $item)
-                <tr>
-                    <td>{{ $item->product->name }}</td>
-                    <td>{{ $item->quantity }}</td>
-                    <td>${{ number_format($item->subtotal, 2, ',', '.') }}</td>
-                    @if($order->status === 'completed')
-                        <td>
-                            @if(in_array($item->product_id, $reviewedProductIds))
-                                <span class="badge bg-success">✓ Reseñado</span>
-                            @else
-                                <a href="{{ route('reviews.create', $item->product_id) }}" class="btn btn-sm btn-outline-primary">Dejar reseña</a>
-                            @endif
-                        </td>
-                    @endif
-                </tr>
+                <div class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center border-0 border-bottom">
+                    <div>
+                        <div class="fw-semibold">{{ $item->quantity }}x {{ $item->product->name }}</div>
+                        <small class="text-muted">${{ number_format($item->product->price, 2, ',', '.') }} c/u</small>
+                    </div>
+                    <div class="text-end">
+                        <div class="fw-semibold">${{ number_format($item->product->price * $item->quantity, 2, ',', '.') }}</div>
+                    </div>
+                </div>
                 @endforeach
-            </tbody>
-        </table>
+            </div>
+        </div>
+
+        <div>
+            @if ($order->status === 'pending')
+            <form action="{{ route('orders.cancel', $order->id) }}" method="POST" class="mt-3">
+                @csrf
+                @method('PUT')
+                <button class="btn btn-outline-danger">Cancelar Pedido</button>
+            </form>
+            @endif
+
+            <a href="{{ route('orders.index') }}" class="btn btn-outline-secondary mt-3">Volver a mis pedidos</a>
+        </div>
+
     </div>
-
-    @if ($order->status === 'pending')
-    <form action="{{ route('orders.cancel', $order->id) }}" method="POST" class="mt-3">
-        @csrf
-        @method('PUT')
-        <button class="btn btn-outline-danger">Cancelar Pedido</button>
-    </form>
-    @endif
-
-    <a href="{{ route('orders.index') }}" class="btn btn-outline-secondary mt-3">Volver a mis pedidos</a>
 </div>
 @endsection

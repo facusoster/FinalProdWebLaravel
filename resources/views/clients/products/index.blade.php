@@ -44,8 +44,6 @@
             @endif
         </div>
 
-        <div id="wishlist-feedback" class="alert alert-success d-none" role="alert"></div>
-
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
             @forelse ($products as $product)
                 <div class="col">
@@ -79,16 +77,16 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const feedback = document.getElementById('wishlist-feedback');
+        const feedback = document.getElementById('wishlist-toast');
 
         function showFeedback(message, type = 'success') {
             feedback.textContent = message;
-            feedback.classList.remove('d-none', 'alert-success', 'alert-danger');
-            feedback.classList.add('alert-' + type);
-            feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            feedback.classList.remove('d-none', 'toast-success', 'toast-danger');
+            feedback.classList.add(type === 'danger' ? 'toast-danger' : 'toast-success', 'show');
 
             setTimeout(() => {
                 feedback.classList.add('d-none');
+                feedback.classList.remove('show');
             }, 3000);
         }
 
@@ -122,4 +120,6 @@
         });
     });
 </script>
+
+<div id="wishlist-toast" class="wishlist-toast d-none" role="status" aria-live="polite" aria-atomic="true"></div>
 @endsection
