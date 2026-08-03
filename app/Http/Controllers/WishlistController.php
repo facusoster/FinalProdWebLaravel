@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Wishlist;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
@@ -17,7 +18,7 @@ class WishlistController extends Controller
         return view('clients.wishlist.index', compact('items'));
     }
 
-    public function add(Product $product)
+    public function add(Request $request, Product $product)
     {
         $item = Wishlist::where('user_id', Auth::id())
             ->where('product_id', $product->id)
@@ -31,6 +32,13 @@ class WishlistController extends Controller
                 'user_id' => Auth::id(),
                 'product_id' => $product->id,
                 'quantity' => 1,
+            ]);
+        }
+
+        if ($request->expectsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Producto agregado al carrito',
             ]);
         }
 

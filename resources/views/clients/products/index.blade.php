@@ -59,9 +59,9 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">{{ $product->name }}</h5>
                             <p class="text-muted mb-3">${{ number_format($product->price, 2, ',', '.') }}</p>
-                            <form action="{{ route('wishlist.add', $product->id) }}" method="POST" class="mt-auto">
+                            <form action="{{ route('wishlist.add', $product->id) }}" method="POST" class="mt-auto wishlist-add-form">
                                 @csrf
-                                <button type="submit" class="btn btn-card w-100">Agregar al carrito</button>
+                                <button type="submit" class="btn btn-green w-100">Agregar al carrito</button>
                             </form>
                         </div>
                     </div>
@@ -74,4 +74,52 @@
         </div>
     </section>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const feedback = document.getElementById('wishlist-toast');
+
+        function showFeedback(message, type = 'success') {
+            feedback.textContent = message;
+            feedback.classList.remove('d-none', 'toast-success', 'toast-danger');
+            feedback.classList.add(type === 'danger' ? 'toast-danger' : 'toast-success', 'show');
+
+            setTimeout(() => {
+                feedback.classList.add('d-none');
+                feedback.classList.remove('show');
+            }, 3000);
+        }
+
+        document.querySelectorAll('.wishlist-add-form').forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const url = form.action;
+                const formData = new FormData(form);
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showFeedback(data.message || 'Producto agregado al carrito');
+                    } else {
+                        showFeedback(data.message || 'No se pudo agregar el producto', 'danger');
+                    }
+                })
+                .catch(() => {
+                    showFeedback('Error al agregar el producto', 'danger');
+                });
+            });
+        });
+    });
+</script>
+
+<div id="wishlist-toast" class="wishlist-toast d-none" role="status" aria-live="polite" aria-atomic="true"></div>
 @endsection
