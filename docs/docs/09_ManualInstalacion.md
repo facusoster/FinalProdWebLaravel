@@ -346,7 +346,7 @@ Este documento incluye:
 
 # Documentación Relacionada
 
-- [[README]]
+- [README](README.md)
 - [HOME](docs/HOME.md)
 - [setup-local-dev](docs/setup-local-dev.md)
 - [08_ManualTecnico](docs/docs/08_ManualTecnico.md)

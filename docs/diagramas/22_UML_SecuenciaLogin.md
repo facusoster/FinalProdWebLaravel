@@ -188,7 +188,7 @@ Este diagrama se complementa con:
 # Documentación Relacionada
 
 - [05_CasosUso](docs/docs/05_CasosUso.md)
-- [[07_UML]]
+- [07_UML](docs/07_UML.md)
 - [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
 
 ---

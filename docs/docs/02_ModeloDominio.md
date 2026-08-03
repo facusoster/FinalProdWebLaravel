@@ -258,7 +258,7 @@ El modelo de dominio se complementa con los siguientes documentos:
 - [03_BaseDatos](docs/docs/03_BaseDatos.md)
 - [04_DER](docs/docs/04_DER.md)
 - [05_CasosUso](docs/docs/05_CasosUso.md)
-- [[07_UML]]
+- [07_UML](docs/07_UML.md)
 
 Diagramas relacionados:
 

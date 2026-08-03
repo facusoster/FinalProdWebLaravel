@@ -42,7 +42,7 @@ El objetivo de esta Wiki es centralizar toda la documentación técnica y funcio
 
 ## 📐 UML
 
-- [[07_UML]]
+- [07_UML](docs/07_UML.md)
 
 ---
 

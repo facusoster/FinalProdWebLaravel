@@ -233,7 +233,7 @@ Este diagrama sirve como punto de partida para comprender los restantes modelos 
 
 - [00_AnalisisRequisitos](docs/docs/00_AnalisisRequisitos.md)
 - [05_CasosUso](docs/docs/05_CasosUso.md)
-- [[07_UML]]
+- [07_UML](docs/07_UML.md)
 
 ---
 

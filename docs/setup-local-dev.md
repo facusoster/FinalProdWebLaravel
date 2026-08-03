@@ -422,7 +422,7 @@ Durante el desarrollo del proyecto se siguieron las siguientes recomendaciones:
 
 # Documentación Relacionada
 
-- [[README]]
+- [README](README.md)
 - [HOME](docs/HOME.md)
 - [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
 - [08_ManualTecnico](docs/docs/08_ManualTecnico.md)

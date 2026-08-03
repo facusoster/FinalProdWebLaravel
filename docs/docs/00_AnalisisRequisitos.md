@@ -210,7 +210,7 @@ Los requisitos aquí definidos se reflejan posteriormente en:
 - [03_BaseDatos](docs/docs/03_BaseDatos.md)
 - [04_DER](docs/docs/04_DER.md)
 - [05_CasosUso](docs/docs/05_CasosUso.md)
-- [[07_UML]]
+- [07_UML](docs/07_UML.md)
 - [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
 
 ---

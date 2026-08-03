@@ -9,7 +9,7 @@
 
 > [!info]
 > **Documentación relacionada**
-> - [[README]]
+> - [README](README.md)
 > - [01_Arquitectura](docs/docs/01_Arquitectura.md)
 > - [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
 > - [03_BaseDatos](docs/docs/03_BaseDatos.md)
@@ -231,7 +231,7 @@ Aunque su implementación aún se encuentra pendiente, el diseño presentado est
 
 ## Documentación relacionada
 
-- [[README]]
+- [README](README.md)
 - [01_Arquitectura](docs/docs/01_Arquitectura.md)
 - [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
 - [03_BaseDatos](docs/docs/03_BaseDatos.md)

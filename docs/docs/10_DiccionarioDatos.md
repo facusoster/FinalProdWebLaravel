@@ -298,7 +298,7 @@ Este documento complementa la siguiente documentación:
 - [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
 - [03_BaseDatos](docs/docs/03_BaseDatos.md)
 - [04_DER](docs/docs/04_DER.md)
-- [[07_UML]]
+- [07_UML](docs/07_UML.md)
 - [08_ManualTecnico](docs/docs/08_ManualTecnico.md)
 
 Diagramas relacionados:

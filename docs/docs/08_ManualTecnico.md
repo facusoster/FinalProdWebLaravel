@@ -340,7 +340,7 @@ Entre las funcionalidades previstas para futuras versiones se encuentran:
 - [03_BaseDatos](docs/docs/03_BaseDatos.md)
 - [04_DER](docs/docs/04_DER.md)
 - [05_CasosUso](docs/docs/05_CasosUso.md)
-- [[07_UML]]
+- [07_UML](docs/07_UML.md)
 - [09_ManualInstalacion](docs/docs/09_ManualInstalacion.md)
 - [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
 

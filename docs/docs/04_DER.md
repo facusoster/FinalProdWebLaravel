@@ -249,7 +249,7 @@ Este documento se complementa con:
 
 - [02_ModeloDominio](docs/docs/02_ModeloDominio.md)
 - [03_BaseDatos](docs/docs/03_BaseDatos.md)
-- [[07_UML]]
+- [07_UML](docs/07_UML.md)
 - [10_DiccionarioDatos](docs/docs/10_DiccionarioDatos.md)
 
 Diagramas relacionados:
