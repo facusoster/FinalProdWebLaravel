@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="d-flex justify-content-end mt-4">
-                        <button type="submit" class="btn btn-primary-custom px-4 py-2">Actualizar producto</button>
+                        <button type="submit" class="btn btn-primary-green px-4 py-2">Actualizar producto</button>
                     </div>
                 </form>
             </div>

@@ -64,7 +64,7 @@
                         @if($product->stock > 0)
                         <form action="{{ route('wishlist.add', $product->id) }}" method="POST" class="mt-auto wishlist-add-form">
                             @csrf
-                            <button type="submit" class="btn btn-green w-100">Agregar al carrito</button>
+                            <button type="submit" class="btn btn-primary-green w-100">Agregar al carrito</button>
                         </form>
                         <small class="text-muted mt-1">Stock: {{ $product->stock }}</small>
                         @else

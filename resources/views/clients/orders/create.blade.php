@@ -55,7 +55,7 @@
                         @endforeach
                     </select>
                 </div>
-                <button class="btn btn-green w-100">Crear Pedido</button>
+                <button class="btn btn-primary-green w-100">Crear Pedido</button>
             </form>
         </div>
     </div>

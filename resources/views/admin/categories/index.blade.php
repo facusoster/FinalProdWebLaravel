@@ -3,7 +3,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="h3 mb-0">Categorías</h1>
-    <a href="{{ route('categories.create') }}" class="btn btn-primary-custom">Crear Categoría</a>
+    <a href="{{ route('categories.create') }}" class="btn btn-primary-green">Crear Categoría</a>
 </div>
 
 <div class="row justify-content-center">
