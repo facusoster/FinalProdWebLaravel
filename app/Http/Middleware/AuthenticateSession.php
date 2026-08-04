@@ -10,7 +10,7 @@ class AuthenticateSession
     public function handle($request, Closure $next)
     {
         if (!Auth::check()) {
-            abort(403, 'Inicie sesion para acceder');
+            return response()->view('auth.unauthorized', [], 403);
         }
 
         return $next($request);
