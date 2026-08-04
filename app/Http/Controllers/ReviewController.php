@@ -25,7 +25,7 @@ class ReviewController extends Controller
     public function create(Product $product)
     {
         $hasCompletedOrder = Order::where('user_id', Auth::id())
-            ->where('status', 'completed')
+            ->whereIn('status', ['delivered'])
             ->whereHas('items', fn($q) => $q->where('product_id', $product->id))
             ->exists();
 
@@ -49,7 +49,7 @@ class ReviewController extends Controller
     public function store(Request $request, Product $product)
     {
         $hasCompletedOrder = Order::where('user_id', Auth::id())
-            ->where('status', 'completed')
+            ->whereIn('status', ['delivered'])
             ->whereHas('items', fn($q) => $q->where('product_id', $product->id))
             ->exists();
 

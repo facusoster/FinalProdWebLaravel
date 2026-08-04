@@ -31,7 +31,7 @@ class OrderSeeder extends Seeder
                 $order = Order::create([
                     'user_id'    => $client->id,
                     'address_id' => $address->id,
-                    'status'     => 'completed',
+                    'status'     => 'delivered',
                     'total'      => 0,
                 ]);
 
