@@ -20,9 +20,9 @@
     <div class="col-12 col-xl-8">
         <div class="card border-0 shadow-sm wishlist-card">
             <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive border-table">
                     <table class="table wishlist-table align-middle mb-0">
-                        <thead class="table-light">
+                        <thead>
                             <tr>
                                 <th>Producto</th>
                                 <th>Cantidad</th>
@@ -71,7 +71,7 @@
     <aside class="col-12 col-xl-4">
         <div class="card border-0 shadow-sm wishlist-summary p-4 h-100">
             <h4 class="mb-3">Resumen de compra</h4>
-            <dl class="row mb-4">
+            <dl class="row mb-0">
                 <dt class="col-6 text-muted">Items</dt>
                 <dd class="col-6 text-end">{{ $items->sum('quantity') }}</dd>
 
@@ -84,7 +84,7 @@
                     <span class="text-muted">Total</span>
                     <span class="total-amount">${{ number_format($items->sum(fn($item) => $item->product->price * $item->quantity), 2, ',', '.') }}</span>
                 </div>
-                <a href="{{ route('orders.create') }}" class="btn btn-green w-100">Confirmar Pedido</a>
+                <a href="{{ route('orders.create') }}" class="btn btn-primary-green w-100">Confirmar Pedido</a>
             </div>
         </div>
     </aside>

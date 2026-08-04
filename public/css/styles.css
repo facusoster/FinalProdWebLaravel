@@ -5,7 +5,7 @@
     --brown-300: #e6d3c3;
     --brown-100: #dfd5cc;
     --beige: #efe6da;
-    --cream: #f6efe6;
+    --cream: #f7f3ee;
     --dark-green: #2f5d4e;
     --dark-green-hover: #416957;
     --special-green: #074722;
@@ -44,13 +44,13 @@ body{
     display: block;
 }
 
-.btn-green{
+.btn-primary-green{
     color:#fff;
     background: var(--dark-green);
     border:none;
 }
 
-.btn-green:hover{
+.btn-primary-green:hover{
     background: var(--dark-green-hover);
 }
 
@@ -70,7 +70,6 @@ body{
 }
 
 .btn-primary-custom:hover {
-    transform: translateY(-2px);
     background: var(--brown-hover);
 }
 
@@ -81,6 +80,10 @@ body{
 
 .sidebar-card .card-body {
     padding: 1.25rem;
+}
+
+.card {
+    background: var(--beige);
 }
 
 .sidebar-title {
@@ -141,16 +144,16 @@ body{
 }
 
 .wishlist-card {
-    background-color: rgba(255, 250, 243, 0.92);
+    background-color: var(--beige);
     border-radius: 1.25rem;
 }
 
 .wishlist-card table {
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: var(--beige);
 }
 
 .wishlist-card thead {
-    background-color: rgba(239, 230, 218, 0.85);
+    background-color: var(--beige);
 }
 
 .wishlist-card th,
@@ -161,7 +164,18 @@ body{
 .wishlist-table th,
 .wishlist-table td {
     vertical-align: middle;
+    border: 0 !important;
 }
+
+.wishlist-table,
+.wishlist-table > :not(caption) > * > * {
+    border-color: transparent !important;
+    border-width: 0 !important;
+}
+
+/* .border-table {
+    border-radius: 0.75rem;
+} */
 
 .product-thumb {
     width: 84px;

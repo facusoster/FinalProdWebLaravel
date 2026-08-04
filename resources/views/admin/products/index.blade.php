@@ -3,7 +3,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="h3 mb-0">Productos</h1>
-    <a href="{{ route('products.create') }}" class="btn btn-primary-custom">Crear Producto</a>
+    <a href="{{ route('products.create') }}" class="btn btn-primary-green">Crear Producto</a>
 </div>
 
 <div class="table-responsive table-wrapper">

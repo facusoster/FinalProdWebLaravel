@@ -9,10 +9,9 @@
 <table>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Total</th>
-            <th>Estado</th>
             <th>Fecha</th>
+            <th>Estado</th>
+            <th>Total</th>
             <th></th>
         </tr>
     </thead>
@@ -20,10 +19,9 @@
     <tbody>
         @foreach ($orders as $order)
         <tr>
-            <td>{{ $order->id }}</td>
-            <td>${{ $order->total }}</td>
-            <td>{{ $order->status }}</td>
             <td>{{ $order->created_at }}</td>
+            <td>{{ $order->status }}</td>
+            <td>${{ $order->total }}</td>
             <td>
                 <a href="{{ route('orders.show', $order->id) }}">Ver</a>
             </td>
