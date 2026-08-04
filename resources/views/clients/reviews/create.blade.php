@@ -11,7 +11,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">Calificación</label>
-                    <select name="rating" class="form-select @error('rating') is-invalid @enderror" required>
+                    <select name="rating" class="form-select border border-secondary-subtle @error('rating') is-invalid @enderror" required>
                         <option value="">Seleccionar...</option>
                         @for ($i = 1; $i <= 5; $i++)
                             <option value="{{ $i }}" @selected(old('rating') == $i)>{{ $i }} estrella{{ $i > 1 ? 's' : '' }}</option>
@@ -21,14 +21,14 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Comentario</label>
-                    <textarea name="comment" rows="4" class="form-control @error('comment') is-invalid @enderror" required>{{ old('comment') }}</textarea>
+                    <label class=" form-label">Comentario</label>
+                    <textarea name="comment" rows="4" class="bg-transparent border border-secondary-subtle form-control @error('comment') is-invalid @enderror" required>{{ old('comment') }}</textarea>
                     @error('comment')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
                 <div class="d-flex justify-content-between">
                     <a href="{{ route('orders.index') }}" class="btn btn-outline-secondary">Volver</a>
-                    <button type="submit" class="btn btn-primary">Publicar reseña</button>
+                    <button type="submit" class="btn btn-primary-green">Publicar reseña</button>
                 </div>
             </form>
         </div>
