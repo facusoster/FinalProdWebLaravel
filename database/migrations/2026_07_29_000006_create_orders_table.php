@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->decimal('total', 10, 2)->default(0);
 
-            // Estados: pending, processing, completed, cancelled
+            // Estados: pending, processing, sent, delivered, cancelled
             $table->string('status')->default('pending');
 
             $table->timestamps();

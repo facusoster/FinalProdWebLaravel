@@ -48,9 +48,14 @@ class Order extends Model
         return $query->where('status', 'processing');
     }
 
-    public function scopeCompleted($query)
+    public function scopeSent($query)
     {
-        return $query->where('status', 'completed');
+        return $query->where('status', 'sent');
+    }
+
+    public function scopeDelivered($query)
+    {
+        return $query->where('status', 'delivered');
     }
 
     public function scopeCancelled($query)

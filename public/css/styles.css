@@ -173,9 +173,9 @@ body{
     border-width: 0 !important;
 }
 
-/* .border-table {
-    border-radius: 0.75rem;
-} */
+.form-select {
+    background-color: transparent;
+}
 
 .product-thumb {
     width: 84px;

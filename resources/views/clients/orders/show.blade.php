@@ -8,7 +8,16 @@
         <div class="card-body">
             <p class="mb-1"><strong>Total:</strong> ${{ number_format($order->total, 2, ',', '.') }}</p>
             <p class="mb-1"><strong>Estado:</strong>
-                <span class="badge bg-{{ $order->status === 'completed' ? 'success' : ($order->status === 'cancelled' ? 'danger' : 'secondary') }}">
+                @php
+                    $badges = [
+                        'pending'    => 'bg-warning text-dark',
+                        'processing' => 'bg-info text-dark',
+                        'sent'       => 'bg-primary',
+                        'delivered'  => 'bg-success',
+                        'cancelled'  => 'bg-danger',
+                    ];
+                @endphp
+                <span class="badge {{ $badges[$order->status] ?? 'bg-secondary' }}">
                     {{ ucfirst($order->status) }}
                 </span>
             </p>
@@ -33,13 +42,13 @@
                         <small class="text-muted">${{ number_format($item->product->price, 2, ',', '.') }} c/u</small>
 
                         {{-- ===== INICIO: Botón de reseña ===== --}}
-                        @if ($order->status === 'completed')
+                        @if ($order->status === 'delivered')
                             @if (in_array($item->product_id, $reviewedProductIds))
                                 <div class="mt-2">
                                     <span class="badge bg-success">✓ Ya reseñaste este producto</span>
                                 </div>
                             @else
-                                <a href="{{ route('reviews.create', $item->product) }}" class="btn btn-sm btn-outline-primary mt-2">
+                                <a href="{{ route('reviews.create', $item->product) }}" class="btn btn-sm btn-outline-success mt-2">
                                     Dejar reseña
                                 </a>
                             @endif
