@@ -1,108 +1,245 @@
-# 🛒 UML - Secuencia: Realizar Pedido
+# 🛒 UML - Diagrama de Secuencia: Realizar Pedido
 
 > [!info]
-> Documento perteneciente a la documentación UML del proyecto **Rincón del Pan**.
->
-> Documento relacionado:
-> - [[05_CasosUso]]
-> - [[02_ModeloDominio]]
-> - [[08_ManualTecnico]]
+> **Proyecto:** Rincón del Pan  
+> **Framework:** Laravel Framework 13.23.0  
+> **Tipo de Diagrama:** UML - Secuencia
 
 ---
 
-# Introducción
+# Objetivo
 
-El siguiente diagrama representa la secuencia de eventos que ocurre cuando un cliente realiza un pedido dentro del sistema.
+Este diagrama representa la interacción entre los principales componentes del sistema durante el proceso de creación de un pedido.
 
-El flujo fue elaborado a partir de la implementación del proyecto y del dominio definido para Rincón del Pan.
+El flujo comienza cuando un cliente confirma la compra de los productos agregados al carrito y finaliza cuando el pedido queda registrado en la base de datos con su correspondiente detalle.
+
+Este proceso constituye una de las funcionalidades principales del sistema.
 
 ---
 
-# Diagrama de Secuencia
+# Diagrama
 
 ```mermaid
 sequenceDiagram
 
 actor Cliente
 
-participant Browser
+participant Navegador
 participant Routes
 participant OrderController
-participant Product
+participant Wishlist
 participant Order
 participant OrderItem
+participant Product
 participant MySQL
 
-Cliente->>Browser: Confirmar compra
+Cliente->>Navegador: Confirmar compra
 
-Browser->>Routes: POST /orders
+Navegador->>Routes: POST /orders
 
 Routes->>OrderController: store()
 
-OrderController->>Product: Validar stock
+OrderController->>Wishlist: Obtener productos del carrito
 
-Product->>MySQL: Consultar productos
+Wishlist->>MySQL: SELECT carrito
 
-MySQL-->>Product: Stock disponible
+MySQL-->>Wishlist: Productos seleccionados
 
-Product-->>OrderController: Validación correcta
+Wishlist-->>OrderController: Lista de productos
+
+OrderController->>OrderController: Calcular total
 
 OrderController->>Order: Crear pedido
 
-Order->>MySQL: INSERT Order
+Order->>MySQL: INSERT order
 
 MySQL-->>Order: Pedido creado
 
 loop Por cada producto
 
-OrderController->>OrderItem: Crear detalle
+    OrderController->>OrderItem: Crear detalle
 
-OrderItem->>MySQL: INSERT OrderItem
+    OrderItem->>MySQL: INSERT order_item
 
-MySQL-->>OrderItem: Registro creado
+    MySQL-->>OrderItem: Registro creado
+
+    OrderController->>Product: Actualizar stock
+
+    Product->>MySQL: UPDATE stock
+
+    MySQL-->>Product: Stock actualizado
 
 end
 
-OrderController->>Product: Actualizar stock
+OrderController->>Wishlist: Vaciar carrito
 
-Product->>MySQL: UPDATE Products
+Wishlist->>MySQL: DELETE carrito
 
-MySQL-->>Product: Stock actualizado
+MySQL-->>Wishlist: Carrito vacío
 
-OrderController-->>Browser: Pedido confirmado
+OrderController-->>Navegador: Redirect Confirmación
 
-Browser-->>Cliente: Mostrar resumen del pedido
+Navegador-->>Cliente: Pedido realizado
 ```
 
 ---
 
-# Flujo
+# Descripción del Flujo
 
-1. El cliente confirma la compra.
-2. Laravel recibe la solicitud.
-3. Se valida el stock de cada producto.
-4. Se crea el pedido.
-5. Se generan los registros de OrderItem.
-6. Se actualiza el stock.
-7. Se devuelve la confirmación al usuario.
+El proceso comienza cuando el cliente confirma la compra de los productos almacenados en su carrito.
 
----
+El controlador recupera los productos seleccionados, calcula el importe total del pedido y registra una nueva orden en la base de datos.
 
-# Observaciones
+Posteriormente genera un registro en **OrderItem** por cada producto adquirido, actualiza el stock disponible y finalmente elimina los productos del carrito.
 
-El diagrama representa el comportamiento esperado del proceso de compra dentro del sistema.
-
-Dependiendo de futuras mejoras, podrían incorporarse validaciones adicionales como:
-
-- transacciones de base de datos
-- integración con pasarela de pagos
-- envío de correos electrónicos
-- generación de comprobantes
+Una vez completado el proceso, el usuario es redirigido a la pantalla de confirmación.
 
 ---
 
-## Documentación relacionada
+# Participantes
 
-- [[05_CasosUso]]
-- [[02_ModeloDominio]]
-- [[08_ManualTecnico]]
+## 👤 Cliente
+
+Usuario autenticado que realiza la compra.
+
+---
+
+## 🌐 Navegador
+
+Envía la solicitud HTTP y presenta la respuesta generada por Laravel.
+
+---
+
+## 🛣️ Routes
+
+Reciben la solicitud y la derivan al controlador correspondiente.
+
+---
+
+## 🎮 OrderController
+
+Coordina todo el proceso de creación del pedido.
+
+Entre sus responsabilidades se encuentran:
+
+- obtener el carrito;
+- calcular el total;
+- crear el pedido;
+- generar el detalle;
+- actualizar el stock;
+- finalizar la operación.
+
+---
+
+## 🛒 Wishlist
+
+Aunque mantiene este nombre en la implementación, representa el **carrito de compras** del sistema.
+
+Contiene los productos seleccionados por el cliente antes de confirmar la compra.
+
+---
+
+## 📦 Order
+
+Representa el pedido principal generado durante la compra.
+
+Incluye información como:
+
+- cliente;
+- dirección;
+- estado;
+- importe total.
+
+---
+
+## 📄 OrderItem
+
+Representa cada uno de los productos incluidos dentro del pedido.
+
+Cada registro almacena:
+
+- producto;
+- cantidad;
+- precio unitario;
+- subtotal.
+
+---
+
+## 🍞 Product
+
+Modelo encargado de representar los productos del catálogo.
+
+Durante este proceso actualiza el stock disponible luego de registrar la venta.
+
+---
+
+## 🗄️ MySQL
+
+Persistencia de toda la información relacionada con el pedido y sus detalles.
+
+---
+
+# Operaciones Realizadas
+
+Durante el proceso se ejecutan las siguientes acciones principales:
+
+- Recuperar el contenido del carrito.
+- Calcular el importe total.
+- Crear el pedido.
+- Registrar los productos adquiridos.
+- Actualizar el stock.
+- Vaciar el carrito.
+- Confirmar la operación al usuario.
+
+---
+
+# Reglas de Negocio Representadas
+
+El flujo refleja las siguientes reglas del sistema:
+
+- Solo un usuario autenticado puede generar pedidos.
+- El pedido debe contener al menos un producto.
+- Cada producto genera un registro independiente en **OrderItem**.
+- El stock debe actualizarse inmediatamente después de registrar la compra.
+- Una vez confirmado el pedido, el carrito queda vacío.
+
+---
+
+# Relación con Laravel
+
+En este proceso participan los siguientes componentes del framework:
+
+- Routes
+- Middleware `auth`
+- OrderController
+- Modelos Eloquent
+- Relaciones `hasMany()` y `belongsTo()`
+- MySQL
+
+---
+
+# Relación con otros Diagramas
+
+Este diagrama complementa:
+
+- [20_UML_CasosUso](./20_UML_CasosUso.md)
+- [21_UML_Clases](./21_UML_Clases.md)
+- [24_UML_ActividadCompra](./24_UML_ActividadCompra.md)
+- [25_UML_EstadosPedido](./25_UML_EstadosPedido.md)
+
+---
+
+# Documentación Relacionada
+
+- [05_CasosUso](../docs/05_CasosUso.md)
+- [03_BaseDatos](../docs/03_BaseDatos.md)
+- [04_DER](../docs/04_DER.md)
+- [08_ManualTecnico](../docs/08_ManualTecnico.md)
+
+---
+
+# Consideraciones Finales
+
+El proceso de creación de pedidos constituye el núcleo funcional de **Rincón del Pan**.
+
+El diagrama muestra cómo colaboran los distintos componentes del sistema para transformar el contenido del carrito de compras en un pedido persistente, manteniendo la consistencia de la información mediante la creación del pedido, sus ítems asociados y la actualización del stock de los productos.

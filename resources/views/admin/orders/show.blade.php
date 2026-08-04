@@ -23,7 +23,8 @@
                                     $badges = [
                                         'pending'    => 'bg-warning text-dark',
                                         'processing' => 'bg-info text-dark',
-                                        'completed'  => 'bg-success',
+                                        'sent'       => 'bg-primary',
+                                        'delivered'  => 'bg-success',
                                         'cancelled'  => 'bg-danger',
                                     ];
                                 @endphp
@@ -71,8 +72,9 @@
             @php
                 $allowedTransitions = [
                     'pending'    => ['processing' => 'Procesando', 'cancelled' => 'Cancelado'],
-                    'processing' => ['completed' => 'Completado', 'cancelled' => 'Cancelado'],
-                    'completed'  => [],
+                    'processing' => ['sent' => 'Enviado', 'cancelled' => 'Cancelado'],
+                    'sent'       => ['delivered' => 'Entregado', 'cancelled' => 'Cancelado'],
+                    'delivered'  => [],
                     'cancelled'  => [],
                 ];
                 $nextStates = $allowedTransitions[$order->status] ?? [];

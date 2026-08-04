@@ -1,210 +1,355 @@
 # ⚙️ Manual Técnico
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
->
-> **Documentación relacionada**
-> - [[README]]
-> - [[01_Arquitectura]]
-> - [[02_ModeloDominio]]
-> - [[03_BaseDatos]]
-> - [[09_ManualInstalacion]]
-> - [[setup-local-dev]]
+> **Proyecto:** Rincón del Pan  
+> **Framework:** Laravel Framework 13.23.0  
+> **Lenguaje:** PHP 8.3.32  
+> **Patrón Arquitectónico:** Modelo - Vista - Controlador (MVC)
 
 ---
 
 # Introducción
 
-Este documento describe la implementación técnica del proyecto **Rincón del Pan**, desarrollado utilizando Laravel bajo el patrón Modelo–Vista–Controlador (MVC).
+Este documento describe los aspectos técnicos más relevantes de la implementación del proyecto **Rincón del Pan**.
 
-Su objetivo es brindar una visión de la estructura interna del sistema, las tecnologías utilizadas y las decisiones adoptadas durante el desarrollo.
-
----
-
-# Objetivos
-
-Este manual permite:
-
-- Comprender la organización del proyecto.
-- Facilitar el mantenimiento del código.
-- Documentar la estructura técnica.
-- Servir como referencia para futuros desarrolladores.
+Su objetivo es proporcionar una visión general de la estructura del sistema, las tecnologías utilizadas y las decisiones adoptadas durante el desarrollo, facilitando el mantenimiento, la comprensión del código y la incorporación de futuras funcionalidades.
 
 ---
 
 # Tecnologías Utilizadas
 
-## Backend
+| Tecnología | Versión |
+|------------|---------|
+| Laravel | 13.23.0 |
+| PHP | 8.3.32 |
+| MySQL | 8 |
+| Composer | 2.x |
+| Bootstrap | 5 |
+| Vite | Integrado con Laravel |
+| Blade | Motor de plantillas |
+| Eloquent ORM | Integrado con Laravel |
+| Git | Control de versiones |
+| GitHub | Repositorio remoto |
+| Docker Desktop | Entorno de base de datos |
+| phpMyAdmin | Administración de MySQL |
+| Obsidian | Documentación técnica |
+| Mermaid | Diagramas |
 
-- PHP 8
-- Laravel 12
+---
 
-## Base de Datos
+# Arquitectura
 
-- MySQL 8
-- Eloquent ORM
+El proyecto sigue el patrón **Modelo - Vista - Controlador (MVC)** recomendado por Laravel.
 
-## Frontend
+Cada componente posee una responsabilidad específica:
 
-- Blade Templates
-- Bootstrap
+- **Modelos**: representan las entidades del dominio y gestionan el acceso a la base de datos mediante Eloquent ORM.
+- **Vistas**: implementadas con Blade Templates para la presentación de la información.
+- **Controladores**: reciben las solicitudes HTTP, coordinan la lógica de negocio y generan la respuesta correspondiente.
 
-## Herramientas
+La documentación completa de la arquitectura puede consultarse en:
 
-- Composer
-- Docker WSL
-- Docker Compose
-- Git
-- GitHub
-- Visual Studio Code
+- [01_Arquitectura](./01_Arquitectura.md)
 
 ---
 
 # Organización del Proyecto
 
-El proyecto mantiene la estructura estándar de Laravel.
+La estructura principal del proyecto sigue las convenciones establecidas por Laravel.
 
 ```text
 app/
+├── Http/
+│   ├── Controllers/
+│   ├── Middleware/
+│   └── Requests/
+│
+├── Models/
+│
 bootstrap/
 config/
 database/
+│
+├── factories/
+├── migrations/
+└── seeders/
+│
 public/
 resources/
+│
+├── css/
+├── js/
+└── views/
+│
 routes/
 storage/
 tests/
 ```
 
+Esta organización facilita la separación de responsabilidades y mejora la mantenibilidad del código.
+
 ---
 
-# Modelos
+# Modelos Implementados
 
-Cada entidad del dominio se implementa mediante un modelo Eloquent.
-
-Entre ellas:
+El sistema implementa los siguientes modelos Eloquent:
 
 - User
 - Address
-- Product
 - Category
+- Product
 - Order
 - OrderItem
 - Review
-- Wishlist
+- Wishlist *(utilizada funcionalmente como carrito de compras)*
 
-Las relaciones se implementan utilizando los métodos nativos de Eloquent.
+Cada modelo define:
+
+- Relaciones entre entidades.
+- Asignación masiva mediante `fillable`.
+- Conversión de atributos mediante `casts` cuando corresponde.
+- Métodos de navegación entre relaciones.
 
 ---
 
-# Controladores
+# Base de Datos
 
-Los controladores gestionan las solicitudes HTTP y coordinan la interacción entre modelos y vistas.
+La persistencia se implementa mediante **MySQL** utilizando **Eloquent ORM**.
 
-Entre los principales módulos implementados se encuentran:
+La estructura de la base de datos se encuentra completamente versionada mediante:
 
-- Autenticación
-- Productos
-- Categorías
-- Pedidos
-- Direcciones
-- Wishlist
-- Reseñas
+- Migraciones.
+- Seeders.
+
+La documentación correspondiente puede consultarse en:
+
+- [03_BaseDatos](./03_BaseDatos.md)
+- [04_DER](./04_DER.md)
+- [10_DiccionarioDatos](./10_DiccionarioDatos.md)
+
+---
+
+# Migraciones
+
+Las migraciones permiten construir el esquema completo de la base de datos desde cero.
+
+Se ejecutan mediante:
+
+```bash
+php artisan migrate
+```
+
+Para recrear completamente el entorno:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+---
+
+# Seeders
+
+Los seeders generan información inicial para facilitar el desarrollo y las pruebas.
+
+Se incluyen registros de:
+
+- Usuarios.
+- Categorías.
+- Productos.
+- Direcciones.
+- Pedidos.
+- Detalles de pedidos.
+- Reseñas.
+- Carrito de compras.
+
+---
+
+# Enrutamiento
+
+Las rutas del sistema se organizan principalmente en:
+
+```text
+routes/
+├── web.php
+├── console.php
+```
+
+Las rutas web gestionan:
+
+- Autenticación.
+- Catálogo.
+- Productos.
+- Categorías.
+- Pedidos.
+- Direcciones.
+- Reseñas.
+- Panel administrativo.
+
+La API REST se encuentra prevista como una etapa posterior del proyecto.
+
+---
+
+# Autenticación y Autorización
+
+El sistema implementa autenticación basada en sesiones utilizando los mecanismos provistos por Laravel.
+
+El acceso a las funcionalidades privadas se controla mediante middleware.
+
+Se distinguen dos tipos de usuarios:
+
+- Cliente.
+- Administrador.
+
+Los administradores poseen permisos para gestionar el catálogo y actualizar el estado de los pedidos.
 
 ---
 
 # Middleware
 
-El proyecto utiliza middleware para controlar el acceso a determinadas funcionalidades.
+Los middleware permiten interceptar solicitudes antes de llegar a los controladores.
 
-Entre ellos:
+Se utilizan para:
 
-- Autenticación de usuarios.
-- Restricción por rol de administrador.
+- Verificar autenticación.
+- Restringir acceso según el rol.
+- Proteger el panel administrativo.
 
----
-
-# Persistencia
-
-La persistencia se implementa mediante:
-
-- Migraciones.
-- Seeders.
-- Claves foráneas.
-- Relaciones Eloquent.
-
-No se utilizan consultas SQL manuales como mecanismo principal de acceso a datos.
+Esta estrategia evita duplicar validaciones dentro de los controladores.
 
 ---
 
-# Gestión de Recursos
+# Gestión de Archivos
 
-Los recursos estáticos del proyecto incluyen:
+Los productos pueden almacenar imágenes asociadas.
 
-- Imágenes de productos.
-- Hojas de estilo.
-- Archivos JavaScript.
-- Plantillas Blade.
+Laravel administra estos recursos mediante el sistema de almacenamiento configurado para el proyecto.
+
+Las vistas acceden a las imágenes utilizando las herramientas proporcionadas por el framework.
 
 ---
 
-# Seguridad
+# Motor de Plantillas
 
-El sistema implementa:
+La interfaz de usuario fue desarrollada utilizando **Blade Templates**.
 
-- Autenticación basada en sesiones.
-- Protección CSRF.
-- Hash de contraseñas.
-- Validación de formularios.
-- Middleware de autorización.
+Se emplean:
+
+- Layouts reutilizables.
+- Componentes compartidos.
+- Directivas Blade.
+- Secciones (`@section`).
+- Herencia mediante `@extends`.
+
+Esto permite mantener una interfaz consistente y reducir la duplicación de código.
+
+---
+
+# Front-End
+
+El proyecto utiliza **Bootstrap** como framework CSS.
+
+La compilación de recursos se realiza mediante **Vite**, integrado de forma nativa con Laravel.
+
+El diseño busca ofrecer una experiencia de uso adecuada tanto en equipos de escritorio como en dispositivos móviles.
+
+---
+
+# Configuración del Entorno
+
+La configuración de la aplicación se centraliza en el archivo `.env`.
+
+Entre las variables más relevantes se encuentran:
+
+- APP_NAME
+- APP_ENV
+- APP_KEY
+- APP_DEBUG
+- APP_URL
+- DB_CONNECTION
+- DB_HOST
+- DB_PORT
+- DB_DATABASE
+- DB_USERNAME
+- DB_PASSWORD
+
+El archivo `.env` no forma parte del repositorio por motivos de seguridad.
 
 ---
 
 # Control de Versiones
 
-Durante el desarrollo se utilizó Git para el versionado del código fuente.
+El desarrollo del proyecto se gestionó utilizando Git.
 
 Las principales prácticas adoptadas fueron:
 
 - Commits frecuentes.
-- Versionado del código.
+- Repositorio remoto en GitHub.
 - Exclusión de archivos sensibles mediante `.gitignore`.
-- Publicación del proyecto en GitHub.
+- Versionado de la documentación junto con el código fuente.
 
 ---
 
-# Entorno de Desarrollo
+# Documentación Técnica
 
-La preparación del entorno se documenta en:
+Toda la documentación se encuentra desarrollada en formato Markdown y organizada dentro de la carpeta `docs`.
 
-[[setup-local-dev]]
+La documentación incluye:
 
----
-
-# Posibles Mejoras
-
-Como evolución del proyecto podrían incorporarse:
-
-- Services para encapsular lógica de negocio.
-- Policies de Laravel.
-- Jobs y Queues.
-- Cache.
-- API REST completa.
-- Pruebas automatizadas.
-- Integración continua (CI/CD).
+- Relevamiento de requisitos.
+- Arquitectura.
+- Modelo de dominio.
+- Base de datos.
+- DER.
+- Casos de uso.
+- UML.
+- Manual de instalación.
+- Diccionario de datos.
+- Diagramas Mermaid.
 
 ---
 
-# Resumen
+# Mantenimiento
 
-El proyecto fue desarrollado siguiendo la arquitectura propuesta por Laravel, manteniendo una estructura modular, organizada y fácilmente mantenible, apoyándose en Eloquent ORM, Blade y MySQL como tecnologías principales.
+Para mantener la documentación sincronizada con el proyecto se recomienda:
+
+- Actualizar la documentación junto con cada cambio funcional.
+- Mantener los diagramas Mermaid alineados con la implementación.
+- Registrar nuevas entidades o relaciones en el diccionario de datos.
+- Versionar toda modificación mediante Git.
 
 ---
 
-## Documentación relacionada
+# Mejoras Futuras
 
-- [[README]]
+Entre las funcionalidades previstas para futuras versiones se encuentran:
+
+- Implementación de la API REST solicitada por la asignatura.
+- Documentación de la colección de Postman.
+- Incorporación de pruebas automatizadas.
+- Mejoras en la gestión del carrito de compras.
+- Optimización de consultas mediante Eloquent.
+- Incorporación de nuevas funcionalidades administrativas.
+
+---
+
+# Documentación Relacionada
+
+- [[00_AnalisisRequisitos]]
 - [[01_Arquitectura]]
+- [[02_ModeloDominio]]
 - [[03_BaseDatos]]
+- [[04_DER]]
+- [[05_CasosUso]]
+- [[07_UML]]
 - [[09_ManualInstalacion]]
-- [[setup-local-dev]]
+- [[10_DiccionarioDatos]]
+
+---
+
+# Consideraciones Finales
+
+La implementación de **Rincón del Pan** sigue las buenas prácticas recomendadas por Laravel, manteniendo una estructura organizada, modular y fácilmente mantenible.
+
+La utilización de **Laravel Framework 13**, **PHP 8.3**, **Eloquent ORM**, **Blade**, **Bootstrap**, **Migraciones** y **Seeders** permitió desarrollar una aplicación consistente y alineada con los objetivos planteados durante la etapa de análisis.
+
+La documentación técnica acompaña al código fuente y constituye una herramienta fundamental para comprender la arquitectura del sistema, facilitar su mantenimiento y apoyar futuras ampliaciones del proyecto.

@@ -1,97 +1,118 @@
-# 🧁 Modelo de Dominio
+# 🧩 Modelo de Dominio
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
->
-> **Documentación relacionada**
-> - [[README]]
-> - [[00_AnalisisRequisitos]]
-> - [[01_Arquitectura]]
-> - [[03_BaseDatos]]
-> - [[04_DER]]
-> - [[05_CasosUso]]
+> **Proyecto:** Rincón del Pan  
+> **Framework:** Laravel Framework 13.23.0  
+> **Lenguaje:** PHP 8.3.32
 
 ---
 
 # Introducción
 
-El modelo de dominio describe las entidades que intervienen en el negocio y las relaciones existentes entre ellas.
+El modelo de dominio describe las entidades principales que conforman **Rincón del Pan** y las relaciones funcionales existentes entre ellas.
 
-Cada entidad representa un concepto del dominio del e-commerce y posteriormente se implementa mediante modelos Eloquent dentro del proyecto Laravel.
+Su objetivo es representar el funcionamiento del negocio desde una perspectiva conceptual, independientemente de la implementación física de la base de datos.
 
----
-
-# Objetivos
-
-El modelo de dominio permite:
-
-- Comprender la estructura del negocio.
-- Identificar las entidades principales.
-- Definir relaciones entre objetos.
-- Servir como base para el diseño de la base de datos.
+Este documento constituye el puente entre el relevamiento de requisitos y el diseño de la base de datos, permitiendo comprender cómo interactúan los distintos actores con la información administrada por el sistema.
 
 ---
 
-# Entidades Principales
+# Dominio del Negocio
 
-El sistema se compone de las siguientes entidades.
+**Rincón del Pan** es una aplicación web de comercio electrónico orientada a la comercialización de productos de panadería y pastelería.
+
+El sistema permite que un cliente:
+
+- Se registre e inicie sesión.
+- Explore el catálogo de productos.
+- Agregue productos a su carrito de compras.
+- Gestione direcciones de envío.
+- Realice pedidos.
+- Consulte el historial de compras.
+- Publique reseñas sobre productos adquiridos.
+
+Por otra parte, un administrador dispone de un panel para gestionar el catálogo y supervisar el estado de los pedidos.
+
+---
+
+# Entidades del Dominio
+
+El dominio del sistema se encuentra compuesto por las siguientes entidades.
 
 ## User
 
-Representa a las personas que utilizan la plataforma.
+Representa a los usuarios registrados en la aplicación.
 
-Existen dos roles:
+Existen dos perfiles principales:
 
 - Cliente
 - Administrador
 
 Responsabilidades:
 
-- Autenticarse.
-- Gestionar direcciones.
-- Realizar pedidos.
-- Publicar reseñas.
-- Gestionar Wishlist.
+- Autenticación.
+- Gestión de direcciones.
+- Gestión del carrito de compras.
+- Gestión de pedidos.
+- Publicación de reseñas.
+
+Relaciones:
+
+- 1:N con Address.
+- 1:N con Order.
+- 1:N con Review.
+- 1:N con Wishlist.
 
 ---
 
 ## Address
 
-Representa una dirección de envío asociada a un usuario.
+Representa una dirección de envío perteneciente a un usuario.
 
-Cada usuario puede registrar múltiples direcciones.
+Permite registrar múltiples domicilios para facilitar futuras compras.
+
+Relaciones:
+
+- N:1 con User.
+- 1:N con Order.
 
 ---
 
 ## Product
 
-Representa un producto comercializado por la tienda.
+Representa un artículo comercializado por la tienda.
 
-Contiene información como:
+Cada producto almacena información como:
 
 - Nombre.
 - Descripción.
 - Precio.
-- Stock.
+- Stock disponible.
 - Imagen.
 
-Un producto puede pertenecer a múltiples categorías.
+Relaciones:
+
+- N:M con Category.
+- 1:N con OrderItem.
+- 1:N con Review.
+- 1:N con Wishlist.
 
 ---
 
 ## Category
 
-Permite clasificar los productos del catálogo.
+Agrupa los productos del catálogo según su clasificación comercial.
 
-Cada categoría agrupa productos relacionados.
+Ejemplos:
 
----
+- Panificados
+- Facturas
+- Tortas
+- Pastelería
 
-## Wishlist
+Relaciones:
 
-Representa la lista de productos favoritos de un usuario.
-
-Implementa una relación muchos a muchos entre usuarios y productos.
+- N:M con Product.
 
 ---
 
@@ -99,142 +120,155 @@ Implementa una relación muchos a muchos entre usuarios y productos.
 
 Representa una compra realizada por un cliente.
 
-Cada pedido registra:
+Cada pedido posee:
 
-- Usuario.
+- Usuario asociado.
 - Dirección de envío.
 - Estado.
-- Total.
+- Total de la compra.
 
-Estados previstos:
+Relaciones:
 
-```text
-Pendiente
-Pagado
-Enviado
-Entregado
-Cancelado
-```
+- N:1 con User.
+- N:1 con Address.
+- 1:N con OrderItem.
 
 ---
 
-## Order Item
+## OrderItem
 
-Representa cada producto incluido dentro de un pedido.
+Representa el detalle de cada producto incluido dentro de un pedido.
 
-Almacena:
+Cada registro almacena:
 
+- Producto.
 - Cantidad.
 - Precio unitario.
 - Subtotal.
+
+Relaciones:
+
+- N:1 con Order.
+- N:1 con Product.
 
 ---
 
 ## Review
 
-Representa la valoración realizada por un cliente sobre un producto.
+Representa la valoración realizada por un cliente sobre un producto adquirido.
 
-Incluye:
+Cada reseña contiene:
 
-- Calificación.
+- Puntuación.
 - Comentario.
+
+Relaciones:
+
+- N:1 con User.
+- N:1 con Product.
+
+---
+
+## Wishlist
+
+En la implementación actual del proyecto, esta entidad se utiliza como **carrito de compras**.
+
+Permite asociar productos seleccionados por el cliente antes de confirmar un pedido.
+
+> [!note]
+> Aunque el nombre técnico de la entidad y de la tabla es **Wishlist**, funcionalmente representa el **carrito de compras** del sistema.
+
+Relaciones:
+
+- N:1 con User.
+- N:1 con Product.
 
 ---
 
 # Relaciones del Dominio
 
-```text
-User
- ├── Addresses
- ├── Orders
- ├── Reviews
- └── Wishlist
-
-Category
- └── Products
-
-Product
- ├── Categories
- ├── Reviews
- ├── Wishlist
- └── Order Items
-
-Order
- └── Order Items
-```
+| Entidad | Relación | Entidad |
+|----------|----------|----------|
+| User | 1:N | Address |
+| User | 1:N | Order |
+| User | 1:N | Review |
+| User | 1:N | Wishlist |
+| Address | 1:N | Order |
+| Order | 1:N | OrderItem |
+| Product | 1:N | OrderItem |
+| Product | N:M | Category |
+| Product | 1:N | Review |
+| Product | 1:N | Wishlist |
 
 ---
 
-# Reglas de Negocio
+# Reglas del Negocio
 
-Durante el análisis se definieron las siguientes reglas:
+Durante el análisis del dominio se establecieron las siguientes reglas principales:
 
-- Un usuario puede registrar múltiples direcciones.
-- Un producto puede pertenecer a múltiples categorías.
-- Un pedido pertenece a un único usuario.
-- Un pedido posee uno o más ítems.
-- Un producto puede aparecer en múltiples pedidos.
-- Los estados de un pedido deben respetar el flujo definido por el negocio.
-- Solo los clientes autenticados pueden generar pedidos.
-- Las reseñas corresponden a un usuario y un producto.
-
----
-
-# Roles del Sistema
-
-## Cliente
-
-Puede:
-
-- Registrarse.
-- Iniciar sesión.
-- Consultar productos.
-- Gestionar Wishlist.
-- Gestionar direcciones.
-- Realizar pedidos.
-- Consultar pedidos.
-- Publicar reseñas.
+- Un usuario puede registrar múltiples direcciones de envío.
+- Un producto puede pertenecer a varias categorías.
+- Una categoría puede contener múltiples productos.
+- Cada pedido pertenece a un único cliente.
+- Un pedido debe contener al menos un producto.
+- Cada pedido registra el importe total de la compra.
+- Un cliente únicamente puede consultar sus propios pedidos.
+- Solo los administradores pueden gestionar el catálogo.
+- Solo los administradores pueden modificar el estado de un pedido.
+- Un cliente puede publicar reseñas únicamente sobre productos adquiridos.
+- El carrito de compras pertenece exclusivamente al usuario autenticado.
 
 ---
 
-## Administrador
+# Modelo Conceptual
 
-Puede:
+El dominio fue diseñado para representar las operaciones habituales de un comercio electrónico, manteniendo una separación clara entre:
 
-- Gestionar categorías.
-- Gestionar productos.
-- Consultar pedidos.
-- Actualizar estados.
-- Administrar el catálogo.
+- Gestión de usuarios.
+- Gestión del catálogo.
+- Gestión de pedidos.
+- Gestión del carrito.
+- Gestión de direcciones.
+- Gestión de reseñas.
+
+Cada módulo mantiene responsabilidades bien definidas y se comunica mediante relaciones establecidas en el modelo de datos.
 
 ---
 
 # Correspondencia con Laravel
 
-Cada entidad del dominio posee su representación dentro del proyecto mediante un modelo Eloquent.
+Cada entidad del dominio posee su correspondiente modelo Eloquent dentro del proyecto.
 
-Las relaciones entre entidades se implementan utilizando:
+Los modelos implementan las relaciones utilizando:
 
-- hasOne
-- hasMany
-- belongsTo
-- belongsToMany
+- hasMany()
+- belongsTo()
+- belongsToMany()
 
-Esto permite mantener una correspondencia directa entre el modelo conceptual y la implementación.
-
----
-
-# Resumen
-
-El modelo de dominio constituye la representación conceptual de Rincón del Pan y describe los objetos principales del negocio junto con sus relaciones y responsabilidades. Sobre este modelo se construyeron posteriormente la base de datos y la implementación en Laravel.
+Esta correspondencia permite mantener alineado el modelo conceptual con la implementación física de la aplicación.
 
 ---
 
-## Documentación relacionada
+# Relación con la Documentación
 
-- [[README]]
-- [[00_AnalisisRequisitos]]
-- [[01_Arquitectura]]
-- [[03_BaseDatos]]
-- [[04_DER]]
-- [[05_CasosUso]]
+El modelo de dominio se complementa con los siguientes documentos:
+
+- [00_AnalisisRequisitos](./00_AnalisisRequisitos.md)
+- [01_Arquitectura](./01_Arquitectura.md)
+- [03_BaseDatos](./03_BaseDatos.md)
+- [04_DER](./04_DER.md)
+- [05_CasosUso](./05_CasosUso.md)
+- [07_UML](./07_UML.md)
+
+Diagramas relacionados:
+
+- [diagramas/11_ModeloDominio](../diagramas/11_ModeloDominio.md)
+- [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md)
+
+---
+
+# Conclusiones
+
+El modelo de dominio define la estructura conceptual de **Rincón del Pan** y constituye la base para el diseño de la base de datos y la implementación de la lógica de negocio.
+
+Su correcta definición permitió construir una aplicación organizada, coherente y alineada con los requisitos funcionales establecidos durante la etapa de análisis.

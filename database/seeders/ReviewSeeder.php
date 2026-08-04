@@ -10,7 +10,7 @@ class ReviewSeeder extends Seeder
 {
     public function run(): void
     {
-        $completedOrders = Order::where('status', 'completed')->with('items.product')->get();
+        $completedOrders = Order::where('status', 'delivered')->with('items.product')->get();
 
         $comments = [
             'Excelente producto, muy recomendable.',

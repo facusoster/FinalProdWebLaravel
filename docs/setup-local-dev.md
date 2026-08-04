@@ -1,132 +1,125 @@
-# 💻 Setup Local de Desarrollo
+# 💻 Setup del Entorno de Desarrollo
 
 > [!info]
-> Este documento describe el entorno de desarrollo utilizado durante la implementación del proyecto **Rincón del Pan**.
->
-> La configuración presentada tiene como objetivo permitir que cualquier desarrollador pueda reproducir el entorno de trabajo desde cero.
->
-> Toda la información sensible (usuarios, contraseñas, repositorios, credenciales y datos personales) fue anonimizada para su publicación en GitHub.
+> **Proyecto:** Rincón del Pan  
+> **Framework:** Laravel Framework 13.23.0  
+> **Lenguaje:** PHP 8.3.32  
+> **Sistema Operativo utilizado:** Windows 11
 
 ---
 
-# Objetivo
+# Introducción
 
-Documentar paso a paso la preparación del entorno de desarrollo utilizado para implementar el proyecto.
+Este documento describe el entorno de desarrollo utilizado durante la implementación del proyecto **Rincón del Pan**.
 
-El objetivo es que cualquier integrante del equipo pueda clonar el repositorio y disponer de un ambiente funcional utilizando las mismas herramientas.
+No se trata de un procedimiento obligatorio para ejecutar la aplicación, sino de una guía que documenta las herramientas, configuraciones y decisiones adoptadas durante el desarrollo.
 
----
+El objetivo es facilitar la reproducción del entorno por parte de otros integrantes del equipo o futuros desarrolladores.
 
-# Herramientas Utilizadas
-
-- Windows 11
-- Visual Studio Code
-- PHP 8.x
-- Composer
-- Docker en WSL
-- Docker Compose
-- MySQL 8
-- phpMyAdmin
-- Git for Windows
-- Windows Terminal
-- GitHub
+> [!note]
+> Para instalar únicamente el proyecto consultar [09_ManualInstalacion](./docs/09_ManualInstalacion.md).
 
 ---
 
-# Arquitectura del Entorno Local
+# Entorno Utilizado
 
-```text
-                 Visual Studio Code
-                        │
-                        ▼
-                 Proyecto Laravel
-                        │
-        ┌───────────────┴───────────────┐
-        │                               │
-        ▼                               ▼
-     PHP 8.x                        Docker WSL
-                                        │
-                         ┌──────────────┴──────────────┐
-                         ▼                             ▼
-                     MySQL 8                    phpMyAdmin
-```
+| Software | Versión |
+|-----------|----------|
+| Windows | 11 |
+| PHP | 8.3.32 |
+| Laravel | 13.23.0 |
+| Composer | 2.x |
+| Docker Desktop | Última versión estable |
+| MySQL | 8.x |
+| phpMyAdmin | Incluido en Docker |
+| Git for Windows | Última versión |
+| Visual Studio Code | Última versión |
+| Windows Terminal | Última versión |
+| Obsidian | Documentación |
+| GitHub | Repositorio remoto |
 
 ---
 
 # 1. Instalación de PHP
 
-Descargar PHP para Windows desde el sitio oficial.
+Descargar PHP para Windows desde el sitio oficial:
 
-Extraer el contenido en una carpeta similar a:
+https://windows.php.net/download/
+
+Extraer el contenido en:
 
 ```text
 C:\php\
 ```
 
-Agregar la carpeta al **PATH** del sistema.
+Agregar la carpeta al `PATH` del sistema.
 
 Verificar la instalación:
 
 ```bash
-php -v
+php --version
 ```
 
-La salida deberá mostrar la versión instalada de PHP.
+Resultado esperado:
+
+```text
+PHP 8.3.32
+```
 
 ---
 
 # 2. Instalación de Composer
 
-Descargar Composer desde su sitio oficial.
+Descargar Composer desde:
 
-Durante la instalación, Composer detectará automáticamente la instalación de PHP.
+https://getcomposer.org/download/
 
-Verificar:
+Finalizada la instalación verificar:
 
 ```bash
 composer --version
 ```
 
+Composer detectará automáticamente la instalación de PHP.
+
 ---
 
 # 3. Instalación de Docker Desktop
 
-Instalar Docker dentro de WSL.
+Descargar Docker Desktop desde:
 
-Una vez iniciado el servicio, verificar que Docker funcione correctamente:
+https://www.docker.com/
+
+Verificar:
 
 ```bash
 docker --version
 ```
 
-y
-
-```bash
-docker compose version
-```
+Luego comprobar que Docker se encuentre ejecutándose correctamente.
 
 ---
 
-# 4. Base de Datos con Docker
+# 4. Base de Datos con Docker Compose
 
-El proyecto utiliza contenedores Docker para ejecutar MySQL y phpMyAdmin.
+El entorno utiliza contenedores Docker para MySQL y phpMyAdmin.
 
-Levantar el entorno:
+Levantar los servicios:
 
 ```bash
 docker compose up -d
 ```
 
-Verificar los contenedores:
+Verificar:
 
 ```bash
 docker ps
 ```
 
-Servicios disponibles:
+Servicios esperados:
 
 | Servicio | Puerto |
-|----------|:------:|
+|----------|---------|
 | MySQL | 3306 |
 | phpMyAdmin | 8080 |
 
@@ -188,52 +181,45 @@ volumes:
 
 # 5. Creación del Proyecto Laravel
 
-Crear un nuevo proyecto utilizando Composer.
+Crear el proyecto mediante Composer.
 
 ```bash
-composer create-project laravel/laravel <NOMBRE_DEL_PROYECTO>
+composer create-project laravel/laravel finalLaravel
 ```
 
 Ingresar al directorio:
 
 ```bash
-cd <NOMBRE_DEL_PROYECTO>
+cd finalLaravel
 ```
 
 ---
 
-# 6. Configuración del Archivo `.env`
+# 6. Configuración del Archivo .env
 
-Editar las variables correspondientes a la conexión con MySQL.
+Copiar el archivo de ejemplo:
+
+```bash
+cp .env.example .env
+```
+
+Configurar la conexión a la base de datos.
 
 Ejemplo:
 
-```env
-APP_NAME=SweetStore
-
-APP_ENV=local
-
-APP_DEBUG=true
-
-APP_URL=http://localhost:8000
-
+```dotenv
 DB_CONNECTION=mysql
-
 DB_HOST=127.0.0.1
-
 DB_PORT=3306
-
-DB_DATABASE=<NOMBRE_BASE>
-
-DB_USERNAME=<USUARIO_BASE>
-
-DB_PASSWORD=<PASSWORD_BASE>
+DB_DATABASE=<NOMBRE_BASE_DE_DATOS>
+DB_USERNAME=<USUARIO_MYSQL>
+DB_PASSWORD=<CONTRASEÑA_MYSQL>
 ```
 
 > [!warning]
-> Nunca subir el archivo `.env` al repositorio.
+> Nunca almacenar credenciales reales en el repositorio Git.
 >
-> El proyecto únicamente debe incluir `.env.example`.
+> El archivo `.env` debe permanecer excluido mediante `.gitignore`.
 
 ---
 
@@ -245,36 +231,38 @@ Ejecutar:
 php artisan key:generate
 ```
 
-Laravel generará automáticamente la clave utilizada para cifrado y sesiones.
+Este comando crea automáticamente la variable `APP_KEY`.
 
 ---
 
-# 8. Verificación del Servidor
+# 8. Verificar el Funcionamiento
 
-Iniciar el servidor integrado de Laravel.
+Iniciar el servidor integrado.
 
 ```bash
 php artisan serve
 ```
 
-Acceder mediante el navegador:
+Acceder a:
 
 ```text
 http://127.0.0.1:8000
 ```
 
+Si aparece la pantalla inicial de Laravel, el entorno se encuentra correctamente configurado.
+
 ---
 
 # 9. Instalación de Git
 
-Instalar **Git for Windows** utilizando la configuración recomendada.
+Instalar **Git for Windows** utilizando las opciones recomendadas.
 
-Opciones sugeridas durante el asistente:
+Durante la instalación se utilizaron las siguientes configuraciones:
 
-| Opción | Valor recomendado |
-|---------|-------------------|
+| Opción | Configuración |
+|---------|---------------|
 | Editor | Visual Studio Code |
-| Rama inicial | Valor por defecto |
+| Rama inicial | Let Git decide |
 | Cliente SSH | Bundled OpenSSH |
 | Terminal | Windows Default Console |
 | Credential Manager | Git Credential Manager |
@@ -284,27 +272,25 @@ Opciones sugeridas durante el asistente:
 
 # 10. Integración con Windows Terminal
 
-Agregar un perfil para Git Bash dentro de Windows Terminal.
-
-Ejemplo:
+Agregar manualmente el perfil de Git Bash.
 
 ```json
 {
     "commandline": "C:/Program Files/Git/bin/bash.exe --login -i",
-    "guid": "{GENERAR-UN-GUID-PROPIO}",
+    "guid": "{00000000-0000-0000-0000-000000000001}",
     "icon": "C:/Program Files/Git/mingw64/share/git/git-for-windows.ico",
     "name": "Git Bash",
     "startingDirectory": "%USERPROFILE%"
 }
 ```
 
-En caso de existir perfiles duplicados, eliminar aquellos que no sean necesarios.
+Eliminar perfiles duplicados si existieran.
 
 ---
 
-# 11. Inicializar el Repositorio Git
+# 11. Inicializar Git
 
-Dentro del proyecto:
+Dentro del proyecto ejecutar:
 
 ```bash
 git init
@@ -314,12 +300,13 @@ git init
 
 # 12. Configurar la Identidad de Git
 
-Configurar la identidad global del desarrollador.
+Cada desarrollador deberá configurar su propia identidad.
+
+Ejemplo:
 
 ```bash
 git config --global user.name "<TU_NOMBRE>"
-
-git config --global user.email "<TU_CORREO>"
+git config --global user.email "<TU_EMAIL>"
 ```
 
 Verificar:
@@ -329,19 +316,19 @@ git config --global --list
 ```
 
 > [!note]
-> Cada integrante del equipo debe utilizar su propia identidad de Git.
+> Reemplazar los valores por la identidad personal de cada desarrollador.
 
 ---
 
 # 13. Primer Commit
 
-Agregar todos los archivos del proyecto:
+Agregar todos los archivos:
 
 ```bash
 git add .
 ```
 
-Crear el primer commit:
+Crear el commit inicial:
 
 ```bash
 git commit -m "Proyecto iniciado"
@@ -349,11 +336,11 @@ git commit -m "Proyecto iniciado"
 
 ---
 
-# 14. Publicación en GitHub
+# 14. Crear el Repositorio Remoto
 
-Crear previamente un repositorio vacío.
+Crear un nuevo repositorio en GitHub.
 
-Vincular el repositorio local:
+Asociarlo al proyecto:
 
 ```bash
 git remote add origin <URL_DEL_REPOSITORIO>
@@ -365,19 +352,19 @@ Renombrar la rama principal:
 git branch -M main
 ```
 
-Publicar el proyecto:
+Enviar los cambios:
 
 ```bash
 git push -u origin main
 ```
 
-La autenticación puede gestionarse mediante **Git Credential Manager**.
+La autenticación puede realizarse mediante **Git Credential Manager**.
 
 ---
 
-# 15. Verificación del Repositorio
+# 15. Verificar el Repositorio
 
-Una vez publicado el proyecto verificar que se encuentren versionados archivos como:
+Confirmar que el repositorio contiene los archivos principales:
 
 ```text
 app/
@@ -387,68 +374,65 @@ database/
 public/
 resources/
 routes/
-storage/
+
 artisan
 composer.json
 package.json
+vite.config.js
 ```
 
-Y confirmar que **NO** se encuentren publicados:
+Y verificar que **NO** se encuentren versionados:
 
 ```text
 .env
-
 vendor/
-
 node_modules/
-
-.idea/
-
-.vscode/
-
-storage/logs/
-
-bootstrap/cache/*.php
 ```
 
 ---
 
-# Buenas Prácticas
+# Herramientas Utilizadas Durante el Desarrollo
 
-- No almacenar credenciales en el repositorio.
-- Versionar únicamente `.env.example`.
-- Utilizar migraciones para crear la base de datos.
-- Utilizar seeders para generar datos iniciales.
-- Mantener actualizado el archivo `.gitignore`.
-- Realizar commits pequeños y descriptivos.
-- Documentar cualquier cambio relevante en la Wiki del proyecto.
+Además del stack principal, se utilizaron las siguientes herramientas:
 
----
-
-# Posibles Mejoras
-
-En futuras versiones del entorno podrían incorporarse:
-
-- Laravel Sail.
-- Redis.
-- Mailpit para pruebas de correo.
-- Contenedor específico para PHP.
-- Contenedor Nginx o Apache.
-- Pipeline de integración continua (CI/CD).
+- Visual Studio Code
+- GitHub
+- Git Bash
+- Windows Terminal
+- Docker Desktop
+- phpMyAdmin
+- Obsidian
+- Mermaid
+- Composer
 
 ---
 
-# Resumen
+# Buenas Prácticas Adoptadas
 
-El entorno de desarrollo documentado permite reproducir de manera consistente la implementación de **Rincón del Pan**, manteniendo una separación clara entre el código fuente y la configuración específica de cada desarrollador.
+Durante el desarrollo del proyecto se siguieron las siguientes recomendaciones:
 
-La anonimización de credenciales y configuraciones sensibles garantiza que este documento pueda formar parte del repositorio público del proyecto sin comprometer la seguridad ni exponer información personal.
+- Utilizar Git desde el inicio del proyecto.
+- Versionar el código mediante commits frecuentes.
+- Mantener el archivo `.env` fuera del repositorio.
+- Utilizar migraciones y seeders para reconstruir la base de datos.
+- Mantener la documentación en formato Markdown junto con el código fuente.
+- Gestionar los diagramas mediante Mermaid para facilitar su mantenimiento y versionado.
 
 ---
 
-## Documentación relacionada
+# Documentación Relacionada
 
-- [[README]]
-- [[01_Arquitectura]]
-- [[08_ManualTecnico]]
-- [[09_ManualInstalacion]]
+- [README](../README.md)
+- [HOME](./HOME.md)
+- [09_ManualInstalacion](./docs/09_ManualInstalacion.md)
+- [08_ManualTecnico](./docs/08_ManualTecnico.md)
+
+---
+
+# Consideraciones Finales
+
+El entorno descrito en este documento corresponde al utilizado durante el desarrollo de **Rincón del Pan**.
+
+La combinación de **Laravel Framework 13.23.0**, **PHP 8.3.32**, **Docker Desktop**, **MySQL**, **Git** y **Visual Studio Code** permitió disponer de un entorno de desarrollo moderno, reproducible y alineado con las buenas prácticas recomendadas para proyectos Laravel.
+
+Este documento complementa el **Manual de Instalación**, documentando el proceso completo de preparación del entorno local utilizado por el equipo de desarrollo, sin exponer información sensible ni credenciales privadas.

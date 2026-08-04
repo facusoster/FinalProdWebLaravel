@@ -1,151 +1,235 @@
 # 📐 Diagramas UML
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
->
-> **Documentación relacionada**
-> - [[README]]
-> - [[01_Arquitectura]]
-> - [[02_ModeloDominio]]
-> - [[04_DER]]
-> - [[05_CasosUso]]
-> - [[08_ManualTecnico]]
+> **Proyecto:** Rincón del Pan  
+> **Framework:** Laravel Framework 13.23.0  
+> **Lenguaje:** PHP 8.3.32
 
 ---
 
 # Introducción
 
-Este documento centraliza los diagramas UML del proyecto.
+El presente documento describe los diagramas UML elaborados durante el desarrollo de **Rincón del Pan**.
 
-Su objetivo es representar gráficamente la estructura y el comportamiento del sistema, complementando la documentación funcional y técnica.
+Los diagramas constituyen una representación gráfica del análisis, diseño e implementación del sistema y permiten comprender su estructura, comportamiento e interacción entre los distintos componentes.
 
-Los diagramas fueron elaborados a partir del análisis funcional y posteriormente contrastados con la implementación realizada en Laravel.
+Con el objetivo de facilitar su mantenimiento y evolución, cada diagrama se documenta de manera independiente dentro de la carpeta **diagramas**, permitiendo actualizar cada representación sin afectar el resto de la documentación.
 
 ---
 
 # Objetivos
 
-Los diagramas UML permiten:
+Los diagramas UML tienen como finalidad:
 
-- Comprender la arquitectura lógica.
-- Visualizar las relaciones entre clases.
-- Representar la interacción entre actores y sistema.
-- Facilitar el mantenimiento y futuras ampliaciones.
+- Representar gráficamente la arquitectura del sistema.
+- Documentar las entidades y sus relaciones.
+- Mostrar la interacción entre los actores y la aplicación.
+- Facilitar el mantenimiento del proyecto.
+- Servir como documentación técnica para futuras modificaciones.
+- Mantener trazabilidad entre el análisis y la implementación.
 
 ---
 
 # Diagramas Incluidos
 
-| Diagrama | Estado |
-|-----------|:------:|
-| Casos de Uso | 🚧 Pendiente |
-| Clases | 🚧 Pendiente |
-| Secuencia | ⏳ Opcional |
-| Actividad | ⏳ Opcional |
-| Componentes | ⏳ Opcional |
+La documentación UML del proyecto se encuentra organizada en los siguientes archivos.
+
+| Diagrama | Descripción |
+|----------|-------------|
+| [diagramas/20_UML_CasosUso](../diagramas/20_UML_CasosUso.md) | Interacción entre actores y funcionalidades del sistema. |
+| [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md) | Representación de las clases del dominio y sus relaciones. |
+| [diagramas/22_UML_SecuenciaLogin](../diagramas/22_UML_SecuenciaLogin.md) | Flujo de autenticación de usuarios. |
+| [diagramas/23_UML_SecuenciaPedido](../diagramas/23_UML_SecuenciaPedido.md) | Proceso completo de creación de un pedido. |
+| [diagramas/24_UML_ActividadCompra](../diagramas/24_UML_ActividadCompra.md) | Flujo de actividades durante una compra. |
+| [diagramas/25_UML_EstadosPedido](../diagramas/25_UML_EstadosPedido.md) | Ciclo de vida y transiciones de los pedidos. |
 
 ---
 
 # Diagrama de Casos de Uso
 
-Representa la interacción entre los actores y las funcionalidades del sistema.
+Este diagrama representa las funcionalidades disponibles para los distintos actores del sistema.
 
-Base documental:
+Permite identificar:
 
-[[05_CasosUso]]
+- Clientes.
+- Administradores.
+- Funcionalidades disponibles para cada rol.
+- Alcance funcional del proyecto.
 
-> [!todo]
-> Incorporar diagrama UML de Casos de Uso.
+Se encuentra disponible en:
+
+➡️ [diagramas/20_UML_CasosUso](../diagramas/20_UML_CasosUso.md) 
 
 ---
 
 # Diagrama de Clases
 
-Representa las entidades principales del dominio y las relaciones implementadas mediante Eloquent ORM.
+El diagrama de clases representa la estructura estática del sistema.
 
-Base documental:
+Incluye:
 
-- [[02_ModeloDominio]]
-- [[04_DER]]
+- Modelos principales.
+- Relaciones entre entidades.
+- Cardinalidades.
+- Dependencias del dominio.
 
-> [!todo]
-> Incorporar diagrama UML de Clases.
+Este diagrama mantiene una correspondencia directa con los modelos Eloquent implementados en Laravel.
 
----
+Disponible en:
 
-# Diagramas Complementarios
-
-En futuras versiones de la documentación podrán incorporarse:
-
-## Diagrama de Secuencia
-
-Permitirá representar procesos como:
-
-- Inicio de sesión.
-- Registro.
-- Realización de pedidos.
+➡️ [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md)
 
 ---
 
-## Diagrama de Actividad
+# Diagramas de Secuencia
 
-Permitirá representar:
+Los diagramas de secuencia documentan el intercambio de mensajes entre los distintos componentes durante la ejecución de procesos relevantes.
 
-- Flujo de compra.
-- Gestión de pedidos.
-- Administración del catálogo.
+Actualmente se documentan los siguientes procesos:
 
----
+## Inicio de Sesión
 
-## Diagrama de Componentes
+Representa el flujo de autenticación del usuario.
 
-Permitirá representar:
+Incluye:
 
-- Laravel
-- Base de datos
-- API REST
-- Blade
-- Middleware
-
----
-
-# Herramientas Utilizadas
-
-Los diagramas podrán elaborarse utilizando:
-
-- Mermaid
-- PlantUML
-- Draw.io
-
-La elección dependerá del contexto de publicación (Obsidian o GitHub).
-
----
-
-# Correspondencia con el Proyecto
-
-Los diagramas representan la implementación realizada en:
-
-- Modelos Eloquent.
+- Cliente.
+- Rutas.
 - Controladores.
-- Middleware.
+- Modelo.
 - Base de datos.
-- Relaciones ORM.
+- Respuesta al navegador.
 
-No constituyen diagramas teóricos sino documentación del sistema implementado.
+Diagrama:
 
----
-
-# Resumen
-
-Los diagramas UML complementan la documentación escrita del proyecto proporcionando una representación visual de la arquitectura, el dominio y las interacciones del sistema.
+➡️ [diagramas/22_UML_SecuenciaLogin](../diagramas/22_UML_SecuenciaLogin.md)
 
 ---
 
-## Documentación relacionada
+## Realización de Pedido
 
-- [[README]]
-- [[01_Arquitectura]]
-- [[02_ModeloDominio]]
-- [[04_DER]]
-- [[05_CasosUso]]
-- [[08_ManualTecnico]]
+Describe el proceso completo desde la confirmación de la compra hasta el almacenamiento del pedido.
+
+Incluye:
+
+- Cliente.
+- Carrito de compras.
+- Pedido.
+- Detalle del pedido.
+- Base de datos.
+
+Diagrama:
+
+➡️ [diagramas/23_UML_SecuenciaPedido](../diagramas/23_UML_SecuenciaPedido.md)
+
+---
+
+# Diagrama de Actividades
+
+Representa el flujo funcional que sigue un cliente al realizar una compra.
+
+Entre las actividades modeladas se encuentran:
+
+- Navegación del catálogo.
+- Selección de productos.
+- Gestión del carrito.
+- Selección de dirección.
+- Confirmación del pedido.
+- Registro de la compra.
+
+Disponible en:
+
+➡️ [diagramas/24_UML_ActividadCompra](../diagramas/24_UML_ActividadCompra.md)
+
+---
+
+# Diagrama de Estados
+
+El diagrama de estados representa el ciclo de vida de un pedido dentro del sistema.
+
+Los estados contemplados son:
+
+- Pendiente
+- Pagado
+- Enviado
+- Entregado
+- Cancelado
+
+Además, documenta las transiciones válidas entre cada uno de ellos, facilitando la comprensión de las reglas de negocio implementadas.
+
+Disponible en:
+
+➡️ [diagramas/25_UML_EstadosPedido](../diagramas/25_UML_EstadosPedido.md)
+
+---
+
+# Relación con la Implementación
+
+Los diagramas UML fueron elaborados tomando como referencia:
+
+- El relevamiento de requisitos.
+- El modelo de dominio.
+- La base de datos implementada.
+- Los modelos Eloquent.
+- Los controladores.
+- La arquitectura MVC de Laravel.
+
+Esto garantiza la coherencia entre la documentación y la implementación del proyecto.
+
+---
+
+# Organización de los Diagramas
+
+```text
+diagramas/
+│
+├── 01_ArquitecturaMVC.md
+├── 02_Componentes.md
+├── 03_Deployment.md
+│
+├── 10_DER.md
+├── 11_ModeloDominio.md
+│
+├── 20_UML_CasosUso.md
+├── 21_UML_Clases.md
+├── 22_UML_SecuenciaLogin.md
+├── 23_UML_SecuenciaPedido.md
+├── 24_UML_ActividadCompra.md
+└── 25_UML_EstadosPedido.md
+```
+
+---
+
+# Herramienta Utilizada
+
+Todos los diagramas fueron desarrollados utilizando **Mermaid**, integrado con **Obsidian**.
+
+Esta decisión permite:
+
+- Mantener los diagramas versionados junto con el código.
+- Editarlos mediante archivos Markdown.
+- Visualizarlos automáticamente en Obsidian.
+- Integrarlos con Git y GitHub.
+- Facilitar futuras modificaciones sin depender de herramientas externas.
+
+---
+
+# Documentación Relacionada
+
+Este documento complementa la siguiente documentación técnica:
+
+- [00_AnalisisRequisitos](./00_AnalisisRequisitos.md)
+- [01_Arquitectura](./01_Arquitectura.md)
+- [02_ModeloDominio](./02_ModeloDominio.md)
+- [03_BaseDatos](./03_BaseDatos.md)
+- [04_DER](./04_DER.md)
+- [05_CasosUso](./05_CasosUso.md)
+- [08_ManualTecnico](./08_ManualTecnico.md)
+
+---
+
+# Consideraciones Finales
+
+La documentación UML de **Rincón del Pan** proporciona una visión gráfica de la arquitectura y del comportamiento del sistema, complementando la documentación textual del proyecto.
+
+La decisión de mantener cada diagrama en un archivo independiente favorece la modularidad de la documentación, simplifica su mantenimiento y permite actualizar cada representación de forma aislada a medida que evoluciona el proyecto, manteniendo siempre sincronizados el análisis, el diseño y la implementación.

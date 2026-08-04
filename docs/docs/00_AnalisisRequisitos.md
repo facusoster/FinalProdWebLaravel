@@ -1,203 +1,222 @@
 # 📋 Análisis de Requisitos
 
 > [!info]
-> Documento perteneciente a la documentación técnica del proyecto **Rincón del Pan**.
->
-> **Documentación relacionada**
-> - [[README]]
-> - [[01_Arquitectura]]
-> - [[02_ModeloDominio]]
-> - [[05_CasosUso]]
+> **Proyecto:** Rincón del Pan  
+> **Materia:** Desarrollo de Aplicaciones Web con Laravel  
+> **Carrera:** Tecnicatura Superior en Análisis de Sistemas  
+> **Institución:** Escuela Da Vinci
 
 ---
 
 # Introducción
 
-Este documento reúne el relevamiento funcional realizado durante la etapa de análisis del proyecto **Rincón del Pan**.
+Este documento presenta el relevamiento de requisitos realizado durante la etapa de análisis del proyecto **Rincón del Pan**, una aplicación web de comercio electrónico desarrollada utilizando **Laravel Framework 13.23.0** y **MySQL**.
 
-Su objetivo es definir los actores, requisitos funcionales, requisitos no funcionales, alcance y supuestos del sistema antes de su implementación.
+El análisis funcional constituye la base sobre la cual se diseñó el modelo de dominio, la arquitectura del sistema y la implementación del proyecto.
 
-Este análisis constituye la base sobre la cual se diseñó el modelo de datos, la arquitectura MVC y las funcionalidades desarrolladas en Laravel.
-
----
-
-# Objetivos
-
-- Comprender el problema a resolver.
-- Identificar los actores del sistema.
-- Definir las funcionalidades requeridas.
-- Establecer restricciones y criterios de calidad.
-- Delimitar el alcance del proyecto.
+Los requisitos aquí definidos permitieron establecer el alcance del sistema y sirvieron como guía para el desarrollo de las distintas funcionalidades.
 
 ---
 
-# Actores
+# Objetivo General
+
+Desarrollar una aplicación web que permita administrar un comercio electrónico dedicado a la venta de productos de panadería y pastelería, diferenciando funcionalidades para clientes y administradores mediante un sistema de autenticación y autorización basado en roles.
+
+---
+
+# Objetivos Específicos
+
+- Implementar un catálogo de productos organizado por categorías.
+- Permitir el registro y autenticación de usuarios.
+- Gestionar pedidos de clientes.
+- Administrar direcciones de envío.
+- Implementar un carrito de compras.
+- Permitir la publicación de reseñas.
+- Desarrollar un panel administrativo para la gestión del catálogo.
+- Documentar todas las etapas del proyecto.
+
+---
+
+# Actores del Sistema
 
 ## Cliente
 
-Usuario registrado que interactúa con la tienda para consultar el catálogo, administrar su cuenta y realizar compras.
+Corresponde al usuario registrado que utiliza la plataforma para realizar compras.
 
-### Funcionalidades principales
+Entre sus principales acciones se encuentran:
 
 - Registrarse.
 - Iniciar sesión.
-- Consultar productos.
+- Consultar el catálogo.
+- Administrar su carrito de compras.
 - Gestionar direcciones.
-- Gestionar Wishlist.
 - Realizar pedidos.
-- Consultar historial de compras.
-- Publicar reseñas.
+- Consultar pedidos anteriores.
+- Publicar reseñas de productos adquiridos.
 
 ---
 
 ## Administrador
 
-Usuario encargado de administrar el contenido y la operación del sistema.
+Es el usuario responsable de la administración del sitio.
 
-### Funcionalidades principales
+Posee permisos para:
 
-- Administrar productos.
-- Administrar categorías.
-- Gestionar pedidos.
-- Actualizar estados de pedidos.
+- Gestionar categorías.
+- Gestionar productos.
+- Consultar todos los pedidos.
+- Actualizar el estado de los pedidos.
+- Administrar el catálogo.
 
 ---
 
-# Requisitos Funcionales (RF)
+# Requisitos Funcionales
 
 | ID | Requisito | Actor |
 |----|-----------|-------|
-| RF01 | Registrarse en el sistema. | Cliente |
-| RF02 | Iniciar sesión. | Cliente |
-| RF03 | Cerrar sesión. | Cliente |
-| RF04 | Consultar el catálogo de productos. | Cliente |
-| RF05 | Consultar el detalle de un producto. | Cliente |
-| RF06 | Gestionar direcciones de envío. | Cliente |
-| RF07 | Gestionar la Wishlist. | Cliente |
-| RF08 | Realizar pedidos. | Cliente |
-| RF09 | Consultar pedidos realizados. | Cliente |
-| RF10 | Publicar reseñas de productos. | Cliente |
-| RF11 | Administrar categorías (CRUD). | Administrador |
-| RF12 | Administrar productos (CRUD). | Administrador |
-| RF13 | Gestionar el stock de productos. | Administrador |
-| RF14 | Consultar todos los pedidos. | Administrador |
-| RF15 | Actualizar el estado de los pedidos. | Administrador |
-| RF16 | Validar las transiciones permitidas entre estados de pedidos. | Sistema |
+| RF01 | El sistema debe permitir registrar nuevos usuarios. | Cliente |
+| RF02 | El sistema debe permitir iniciar y cerrar sesión. | Cliente |
+| RF03 | El sistema debe mostrar el catálogo organizado por categorías. | Cliente |
+| RF04 | El sistema debe mostrar el detalle de cada producto. | Cliente |
+| RF05 | El sistema debe permitir gestionar un carrito de compras. | Cliente |
+| RF06 | El sistema debe permitir registrar múltiples direcciones de envío. | Cliente |
+| RF07 | El sistema debe permitir realizar pedidos. | Cliente |
+| RF08 | El sistema debe calcular automáticamente el total del pedido. | Sistema |
+| RF09 | El sistema debe registrar los productos incluidos en cada pedido. | Sistema |
+| RF10 | El sistema debe permitir consultar el historial de pedidos. | Cliente |
+| RF11 | El sistema debe permitir publicar reseñas de productos comprados. | Cliente |
+| RF12 | El administrador debe poder crear categorías. | Administrador |
+| RF13 | El administrador debe poder modificar categorías. | Administrador |
+| RF14 | El administrador debe poder eliminar categorías. | Administrador |
+| RF15 | El administrador debe poder crear productos. | Administrador |
+| RF16 | El administrador debe poder modificar productos. | Administrador |
+| RF17 | El administrador debe poder eliminar productos. | Administrador |
+| RF18 | El administrador debe poder consultar todos los pedidos. | Administrador |
+| RF19 | El administrador debe poder actualizar el estado de los pedidos. | Administrador |
+| RF20 | El sistema debe restringir el acceso al panel administrativo según el rol del usuario. | Sistema |
 
 ---
 
-# Requisitos No Funcionales (RNF)
+# Requisitos No Funcionales
 
 | ID | Requisito |
 |----|-----------|
-| RNF01 | Interfaz intuitiva y de fácil utilización. |
-| RNF02 | Diseño responsive compatible con dispositivos móviles. |
-| RNF03 | Contraseñas almacenadas mediante hash. |
-| RNF04 | Tiempo de respuesta adecuado para un entorno académico. |
-| RNF05 | Arquitectura basada en el patrón MVC. |
-| RNF06 | Persistencia mediante MySQL utilizando Eloquent ORM. |
-| RNF07 | Integridad referencial mediante claves foráneas. |
-| RNF08 | Documentación técnica del proyecto disponible en el repositorio. |
+| RNF01 | La aplicación debe desarrollarse utilizando Laravel Framework 13. |
+| RNF02 | La persistencia debe implementarse mediante MySQL y Eloquent ORM. |
+| RNF03 | Las credenciales sensibles deben almacenarse en el archivo `.env`. |
+| RNF04 | La interfaz debe ser responsive y funcionar correctamente en dispositivos móviles. |
+| RNF05 | El proyecto debe estar completamente documentado en formato Markdown. |
+| RNF06 | El código fuente debe mantenerse bajo control de versiones mediante Git. |
+| RNF07 | La base de datos debe poder reconstruirse utilizando migraciones y seeders. |
+| RNF08 | Las vistas deben reutilizar layouts mediante Blade Templates. |
+| RNF09 | La autenticación debe proteger las funcionalidades privadas del sistema. |
+| RNF10 | El sistema debe mantener integridad referencial entre todas las entidades del modelo de datos. |
 
 ---
 
 # Casos de Uso Principales
 
-Los principales casos de uso del sistema se documentan en [[05_CasosUso]].
+Los procesos funcionales más relevantes identificados durante el análisis son:
 
-Entre ellos se encuentran:
-
-- Registrarse.
+- Registrar usuario.
 - Iniciar sesión.
+- Consultar catálogo.
+- Consultar detalle de producto.
+- Gestionar carrito de compras.
+- Gestionar direcciones.
 - Realizar pedido.
+- Consultar pedidos.
+- Publicar reseña.
 - Gestionar productos.
 - Gestionar categorías.
-- Publicar reseñas.
 - Actualizar estado de pedidos.
 
+La descripción detallada de estos procesos puede consultarse en:
+
+➡️ [05_CasosUso](./05_CasosUso.md)
+
 ---
 
-# Alcance
+# Alcance del Proyecto
 
-## Incluido
+El proyecto contempla la implementación de un sistema de comercio electrónico que permita administrar productos, categorías, clientes y pedidos mediante una aplicación web desarrollada con Laravel.
 
-- Registro de usuarios.
-- Inicio de sesión.
-- Catálogo de productos.
-- Gestión de categorías.
+Incluye:
+
+- Gestión de usuarios.
+- Gestión del catálogo.
+- Administración de categorías.
+- Gestión de productos.
+- Carrito de compras.
+- Gestión de pedidos.
 - Gestión de direcciones.
-- Wishlist.
-- Pedidos.
-- Reseñas.
+- Sistema de reseñas.
 - Panel administrativo.
-- API REST básica (como componente adicional del trabajo práctico).
+- Documentación técnica.
 
 ---
 
-## Fuera del Alcance
+# Fuera del Alcance
 
-- Integración con pasarelas de pago.
+Con el objetivo de mantener el proyecto dentro del alcance académico definido por la asignatura, no se implementan las siguientes funcionalidades:
+
+- Pasarela de pagos.
+- Integración con servicios de logística.
 - Facturación electrónica.
-- Gestión logística.
-- Integración con servicios de envío.
-- Aplicación móvil nativa.
+- Gestión de stock en tiempo real.
+- Notificaciones por correo electrónico.
+- Integración con redes sociales.
+- Recuperación de contraseña mediante correo.
+- API REST completa (en desarrollo).
 
 ---
 
 # Supuestos
 
-Durante el diseño del sistema se consideraron los siguientes supuestos:
+Durante el desarrollo se asumieron las siguientes condiciones:
 
-- Los productos poseen stock disponible.
-- Los precios son administrados manualmente.
-- Los pedidos cambian de estado mediante acciones del administrador.
-- Un usuario puede registrar múltiples direcciones.
-- Un producto puede pertenecer a múltiples categorías.
-- Solo los clientes que hayan adquirido un producto podrán publicar reseñas.
-- Los estados válidos de un pedido son:
-
-```text
-Pendiente
-Pagado
-Enviado
-Entregado
-Cancelado
-```
+- Todos los productos se encuentran disponibles para su comercialización.
+- El stock es administrado manualmente por el administrador.
+- Cada pedido posee una única dirección de envío.
+- Cada usuario administra exclusivamente su propia información.
+- Los administradores poseen permisos globales sobre el sistema.
+- El proyecto se ejecuta en un entorno local de desarrollo.
 
 ---
 
-# Entidades del Sistema
+# Restricciones
 
-El modelo de datos contempla las siguientes entidades:
+El desarrollo se realizó respetando los lineamientos establecidos por la materia:
 
-- Users
-- Addresses
-- Categories
-- Products
-- Category_Product
-- Orders
-- Order_Items
-- Reviews
-- Wishlists
-
-La descripción detallada se encuentra en:
-
-- [[02_ModeloDominio]]
-- [[03_BaseDatos]]
-- [[04_DER]]
+- Uso obligatorio de Laravel Framework.
+- Arquitectura MVC.
+- Base de datos MySQL.
+- ORM Eloquent.
+- Migraciones y Seeders.
+- Middleware para autenticación y autorización.
+- Uso de Blade como motor de vistas.
+- Documentación técnica del proyecto.
 
 ---
 
-# Resumen
+# Trazabilidad
 
-El relevamiento de requisitos constituye el punto de partida del proyecto Rincón del Pan y define las funcionalidades, restricciones y supuestos que guiaron el diseño de la arquitectura, el modelo de datos y la implementación de la aplicación.
+El presente análisis constituye el punto de partida para el resto de la documentación técnica.
+
+Los requisitos aquí definidos se reflejan posteriormente en:
+
+- [01_Arquitectura](./01_Arquitectura.md)
+- [02_ModeloDominio](./02_ModeloDominio.md)
+- [03_BaseDatos](./03_BaseDatos.md)
+- [04_DER](./04_DER.md)
+- [05_CasosUso](./05_CasosUso.md)
+- [07_UML](./07_UML.md)
+- [08_ManualTecnico](./08_ManualTecnico.md)
 
 ---
 
-## Documentación relacionada
+# Conclusiones
 
-- [[README]]
-- [[01_Arquitectura]]
-- [[02_ModeloDominio]]
-- [[04_DER]]
-- [[05_CasosUso]]
+El relevamiento permitió definir el alcance funcional del sistema y establecer una base sólida para el diseño e implementación del proyecto.
+
+La separación entre requisitos funcionales, requisitos no funcionales, actores y restricciones facilitó el desarrollo incremental de **Rincón del Pan**, manteniendo la coherencia entre el análisis inicial, el modelo de datos, la arquitectura de software y el código implementado en Laravel.
