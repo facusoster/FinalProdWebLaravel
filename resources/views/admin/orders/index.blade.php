@@ -42,7 +42,7 @@
                     </span>
                 </td>
                 <td>
-                    <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-sm btn-primary">
+                    <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-sm btn-primary-green">
                         Ver
                     </a>
                 </td>

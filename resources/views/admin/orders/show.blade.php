@@ -103,7 +103,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100">Guardar cambio</button>
+                        <button type="submit" class="btn btn-primary-green w-100">Guardar cambio</button>
                     </form>
                 </div>
             </div>

@@ -13,6 +13,7 @@
                 <thead class="table-light">
                     <tr>
                         <th>Nombre</th>
+                        <th>Descripción</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -21,6 +22,7 @@
                     @foreach ($categories as $category)
                     <tr>
                         <td>{{ $category->name }}</td>
+                        <td>{{ $category->description }}</td>
                         <td class="text-nowrap">
                             <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-outline-primary me-1">Editar</a>
 

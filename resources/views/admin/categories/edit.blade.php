@@ -15,6 +15,11 @@
                         <input type="text" name="name" id="name" class="bg-transparent border border-secondary-subtle form-control @error('name') is-invalid @enderror" value="{{ $category->name }}" required>
                         @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descripción</label>
+                        <textarea name="description" id="description" class="bg-transparent border border-secondary-subtle form-control @error('description') is-invalid @enderror">{{ $category->description }}</textarea>
+                        @error('description')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
                 </div>
                 <div class="d-flex justify-content-between">
                     <a href="{{ route('categories.index') }}" class="btn btn-outline-secondary">Volver</a>
