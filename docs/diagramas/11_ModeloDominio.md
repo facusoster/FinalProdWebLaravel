@@ -166,15 +166,13 @@ Este diseño permitió reutilizar la estructura existente sin modificar la lógi
 
 Representa una compra realizada por un cliente.
 
-Cada pedido mantiene un estado que describe su ciclo de vida dentro del proceso comercial.
+El estado del pedido se encuentra controlado mediante un **Enum de Laravel**, permitiendo únicamente los siguientes estados:
 
-Estados posibles:
-
-- Pendiente
-- Pagado
-- Enviado
-- Entregado
-- Cancelado
+- Pending
+- Processing
+- Sent
+- Delivered
+- Cancelled
 
 ---
 
@@ -269,5 +267,7 @@ Este diagrama complementa:
 # Consideraciones Finales
 
 El Modelo de Dominio de **Rincón del Pan** ofrece una visión conceptual del funcionamiento del negocio, identificando las entidades fundamentales y las relaciones que permiten implementar el proceso de compra de un comercio electrónico.
+
+La representación del ciclo de vida de los pedidos se mantiene alineada con la implementación mediante el **Enum** definido en Laravel, asegurando la correspondencia entre el modelo conceptual y la lógica de negocio desarrollada.
 
 Este modelo constituye el punto de partida para el diseño de la base de datos, la implementación de los modelos Eloquent y el desarrollo de la lógica de negocio siguiendo el patrón MVC propuesto por Laravel.

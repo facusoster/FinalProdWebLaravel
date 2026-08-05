@@ -113,10 +113,12 @@ Describe el proceso completo desde la confirmación de la compra hasta el almace
 Incluye:
 
 - Cliente.
-- Carrito de compras.
+- Carrito de compras (implementado mediante la entidad `Wishlist`).
 - Pedido.
 - Detalle del pedido.
 - Base de datos.
+
+El flujo contempla la creación del pedido con estado inicial **`pending`**, el cálculo automático del total, la generación de los registros asociados en `order_items` y la posterior actualización del estado por parte del administrador.
 
 Diagrama:
 
@@ -149,13 +151,13 @@ El diagrama de estados representa el ciclo de vida de un pedido dentro del siste
 
 Los estados contemplados son:
 
-- Pendiente
-- Pagado
-- Enviado
-- Entregado
-- Cancelado
+- `pending`
+- `processing`
+- `sent`
+- `delivered`
+- `cancelled`
 
-Además, documenta las transiciones válidas entre cada uno de ellos, facilitando la comprensión de las reglas de negocio implementadas.
+El diagrama documenta las transiciones válidas entre estos estados y refleja la lógica implementada en el modelo `Order`, donde **`delivered`** reemplaza al estado **`completed`** inicialmente previsto durante el análisis del proyecto.
 
 Disponible en:
 
@@ -172,6 +174,7 @@ Los diagramas UML fueron elaborados tomando como referencia:
 - La base de datos implementada.
 - Los modelos Eloquent.
 - Los controladores.
+- Las rutas web y API.
 - La arquitectura MVC de Laravel.
 
 Esto garantiza la coherencia entre la documentación y la implementación del proyecto.
@@ -224,6 +227,7 @@ Este documento complementa la siguiente documentación técnica:
 - [03_BaseDatos](./03_BaseDatos.md)
 - [04_DER](./04_DER.md)
 - [05_CasosUso](./05_CasosUso.md)
+- [06_API_REST](./06_API_REST.md)
 - [08_ManualTecnico](./08_ManualTecnico.md)
 
 ---
@@ -232,4 +236,6 @@ Este documento complementa la siguiente documentación técnica:
 
 La documentación UML de **Rincón del Pan** proporciona una visión gráfica de la arquitectura y del comportamiento del sistema, complementando la documentación textual del proyecto.
 
-La decisión de mantener cada diagrama en un archivo independiente favorece la modularidad de la documentación, simplifica su mantenimiento y permite actualizar cada representación de forma aislada a medida que evoluciona el proyecto, manteniendo siempre sincronizados el análisis, el diseño y la implementación.
+Los diagramas fueron actualizados para reflejar la implementación final desarrollada en **Laravel Framework 13.23.0**, incluyendo el flujo de creación de pedidos, la incorporación de la API REST documentada y el ciclo de vida definitivo de los pedidos con los estados **`pending`**, **`processing`**, **`sent`**, **`delivered`** y **`cancelled`**.
+
+La decisión de mantener cada diagrama en un archivo independiente favorece la modularidad de la documentación, simplifica su mantenimiento y permite actualizar cada representación de forma aislada a medida que evoluciona el proyecto, manteniendo sincronizados el análisis, el diseño y la implementación.

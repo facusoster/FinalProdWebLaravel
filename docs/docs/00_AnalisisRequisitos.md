@@ -2,7 +2,7 @@
 
 > [!info]
 > **Proyecto:** Rincón del Pan  
-> **Materia:** Desarrollo de Aplicaciones Web con Laravel  
+> **Materia:** Produccion Web  
 > **Carrera:** Tecnicatura Superior en Análisis de Sistemas  
 > **Institución:** Escuela Da Vinci
 
@@ -26,13 +26,14 @@ Desarrollar una aplicación web que permita administrar un comercio electrónico
 
 # Objetivos Específicos
 
-- Implementar un catálogo de productos organizado por categorías.
-- Permitir el registro y autenticación de usuarios.
-- Gestionar pedidos de clientes.
-- Administrar direcciones de envío.
-- Implementar un carrito de compras.
-- Permitir la publicación de reseñas.
+- Implementar un sistema de autenticación de usuarios.
+- Desarrollar un catálogo de productos organizado por categorías.
+- Permitir la gestión de un carrito de compras.
+- Administrar direcciones de envío por usuario.
+- Gestionar el ciclo de vida de los pedidos.
+- Implementar un sistema de reseñas de productos.
 - Desarrollar un panel administrativo para la gestión del catálogo.
+- Exponer un conjunto acotado de funcionalidades mediante una API REST.
 - Documentar todas las etapas del proyecto.
 
 ---
@@ -47,11 +48,12 @@ Entre sus principales acciones se encuentran:
 
 - Registrarse.
 - Iniciar sesión.
-- Consultar el catálogo.
-- Administrar su carrito de compras.
-- Gestionar direcciones.
+- Consultar el catálogo de productos.
+- Consultar el detalle de cada producto.
+- Gestionar el carrito de compras.
+- Administrar direcciones de envío.
 - Realizar pedidos.
-- Consultar pedidos anteriores.
+- Consultar el historial de pedidos.
 - Publicar reseñas de productos adquiridos.
 
 ---
@@ -94,6 +96,7 @@ Posee permisos para:
 | RF18 | El administrador debe poder consultar todos los pedidos. | Administrador |
 | RF19 | El administrador debe poder actualizar el estado de los pedidos. | Administrador |
 | RF20 | El sistema debe restringir el acceso al panel administrativo según el rol del usuario. | Sistema |
+| RF21 | El sistema debe exponer un subconjunto de funcionalidades mediante una API REST que devuelva respuestas en formato JSON. | Sistema |
 
 ---
 
@@ -125,11 +128,12 @@ Los procesos funcionales más relevantes identificados durante el análisis son:
 - Gestionar carrito de compras.
 - Gestionar direcciones.
 - Realizar pedido.
-- Consultar pedidos.
-- Publicar reseña.
+- Consultar historial de pedidos.
+- Publicar reseñas.
 - Gestionar productos.
 - Gestionar categorías.
-- Actualizar estado de pedidos.
+- Actualizar el estado de los pedidos.
+- Consultar recursos mediante la API REST.
 
 La descripción detallada de estos procesos puede consultarse en:
 
@@ -152,6 +156,7 @@ Incluye:
 - Gestión de direcciones.
 - Sistema de reseñas.
 - Panel administrativo.
+- API REST para consulta de recursos.
 - Documentación técnica.
 
 ---
@@ -166,8 +171,9 @@ Con el objetivo de mantener el proyecto dentro del alcance académico definido p
 - Gestión de stock en tiempo real.
 - Notificaciones por correo electrónico.
 - Integración con redes sociales.
-- Recuperación de contraseña mediante correo.
-- API REST completa (en desarrollo).
+- Recuperación de contraseña mediante correo electrónico.
+- API REST completa con operaciones de creación, modificación y eliminación de recursos.
+- Autenticación mediante tokens (Sanctum o Passport).
 
 ---
 
@@ -194,7 +200,8 @@ El desarrollo se realizó respetando los lineamientos establecidos por la materi
 - ORM Eloquent.
 - Migraciones y Seeders.
 - Middleware para autenticación y autorización.
-- Uso de Blade como motor de vistas.
+- Blade como motor de vistas.
+- API REST como componente adicional.
 - Documentación técnica del proyecto.
 
 ---
@@ -210,6 +217,7 @@ Los requisitos aquí definidos se reflejan posteriormente en:
 - [03_BaseDatos](./03_BaseDatos.md)
 - [04_DER](./04_DER.md)
 - [05_CasosUso](./05_CasosUso.md)
+- [06_API_REST](./06_API_REST.md)
 - [07_UML](./07_UML.md)
 - [08_ManualTecnico](./08_ManualTecnico.md)
 

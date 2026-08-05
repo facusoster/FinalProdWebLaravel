@@ -391,7 +391,7 @@ node_modules/
 
 ---
 
-# Herramientas Utilizadas Durante el Desarrollo
+# Herramientas Complementarias para el Desarrollo
 
 Además del stack principal, se utilizaron las siguientes herramientas:
 
@@ -417,6 +417,8 @@ Durante el desarrollo del proyecto se siguieron las siguientes recomendaciones:
 - Utilizar migraciones y seeders para reconstruir la base de datos.
 - Mantener la documentación en formato Markdown junto con el código fuente.
 - Gestionar los diagramas mediante Mermaid para facilitar su mantenimiento y versionado.
+- Documentar la arquitectura, el modelo de datos y los diagramas junto con la evolución del código.
+- Mantener sincronizada la documentación técnica con la implementación del proyecto.
 
 ---
 
@@ -436,3 +438,5 @@ El entorno descrito en este documento corresponde al utilizado durante el desarr
 La combinación de **Laravel Framework 13.23.0**, **PHP 8.3.32**, **Docker Desktop**, **MySQL**, **Git** y **Visual Studio Code** permitió disponer de un entorno de desarrollo moderno, reproducible y alineado con las buenas prácticas recomendadas para proyectos Laravel.
 
 Este documento complementa el **Manual de Instalación**, documentando el proceso completo de preparación del entorno local utilizado por el equipo de desarrollo, sin exponer información sensible ni credenciales privadas.
+
+El objetivo es facilitar la reproducción del entorno utilizado durante el desarrollo del proyecto, permitiendo a otros integrantes del equipo o a futuros desarrolladores disponer de una configuración equivalente para compilar, ejecutar y mantener la aplicación.

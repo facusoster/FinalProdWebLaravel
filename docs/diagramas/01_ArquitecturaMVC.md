@@ -10,7 +10,7 @@
 
 # Objetivo
 
-Este diagrama representa la arquitectura general de **Rincón del Pan**, desarrollada siguiendo el patrón **MVC (Model–View–Controller)** propuesto por Laravel.
+Este diagrama representa la arquitectura general de **Rincón del Pan**, desarrollada siguiendo el patrón **Modelo–Vista–Controlador (MVC)** propuesto por Laravel.
 
 Su propósito es mostrar el flujo de una solicitud desde que un usuario interactúa con la aplicación hasta que se genera la respuesta HTML correspondiente.
 
@@ -56,11 +56,12 @@ El procesamiento de una solicitud dentro del sistema sigue las siguientes etapas
 
 1. El usuario realiza una petición desde el navegador.
 2. Laravel identifica la ruta correspondiente en `routes/web.php`.
-3. Los **Middleware** verifican autenticación y permisos antes de permitir el acceso.
-4. El **Controller** recibe la solicitud y coordina la lógica de negocio.
-5. Cuando es necesario acceder a información persistente, el controlador utiliza los **Models**, que interactúan con la base de datos mediante **Eloquent ORM**.
-6. El controlador obtiene los datos necesarios y los envía a una **Vista Blade**.
-7. Blade genera el HTML final que será enviado nuevamente al navegador.
+3. Los **Middleware** verifican la autenticación y los permisos antes de permitir el acceso.
+4. El **Controller** recibe la solicitud, coordina la lógica de negocio y procesa la información.
+5. Cuando es necesario acceder a datos persistentes, el controlador utiliza los **Models**, que interactúan con la base de datos mediante **Eloquent ORM**.
+6. Las validaciones específicas de formularios pueden delegarse a **Form Requests**.
+7. El controlador obtiene los datos necesarios y los envía a una **Vista Blade**.
+8. Blade genera el HTML que finalmente se devuelve al navegador.
 
 ---
 
@@ -132,7 +133,7 @@ Los principales modelos del proyecto son:
 - Order
 - OrderItem
 - Review
-- Wishlist *(utilizada como carrito de compras)*
+- Wishlist *(utilizada funcionalmente como carrito de compras)*
 
 ---
 
@@ -142,9 +143,9 @@ Toda la información se almacena en una base de datos **MySQL**.
 
 La estructura se administra mediante:
 
-- Migraciones
-- Seeders
-- Relaciones Eloquent
+- Migraciones.
+- Seeders.
+- Relaciones implementadas con Eloquent ORM.
 
 ---
 
@@ -157,13 +158,13 @@ Permite:
 - Reutilizar layouts.
 - Crear componentes.
 - Organizar vistas.
-- Separar presentación y lógica.
+- Separar la presentación de la lógica de negocio.
 
 ---
 
 ## 📄 Form Requests
 
-Las validaciones de formularios se implementan mediante **Form Requests**, manteniendo los controladores limpios y favoreciendo la reutilización de reglas de validación.
+Las validaciones de formularios pueden implementarse mediante **Form Requests**, manteniendo los controladores más organizados y favoreciendo la reutilización de reglas de validación.
 
 ---
 
@@ -171,8 +172,8 @@ Las validaciones de formularios se implementan mediante **Form Requests**, mante
 
 Laravel centraliza la configuración del sistema mediante:
 
-- Archivos ubicados en `config/`
-- Variables definidas en `.env`
+- Archivos ubicados en `config/`.
+- Variables definidas en `.env`.
 
 Esto permite desacoplar la configuración del código fuente.
 
@@ -192,13 +193,13 @@ Los Seeders generan información inicial para el desarrollo y las pruebas.
 
 Incluyen registros de:
 
-- Usuarios
-- Categorías
-- Productos
-- Direcciones
-- Pedidos
-- Reseñas
-- Carrito de compras
+- Usuarios.
+- Categorías.
+- Productos.
+- Direcciones.
+- Pedidos.
+- Reseñas.
+- Carrito de compras.
 
 ---
 
@@ -228,6 +229,6 @@ La implementación sigue las recomendaciones oficiales de Laravel:
 
 # Consideraciones Finales
 
-La arquitectura implementada en **Rincón del Pan** adopta el patrón **MVC** propuesto por Laravel, promoviendo una estructura organizada, mantenible y escalable.
+La arquitectura implementada en **Rincón del Pan** adopta el patrón **Modelo–Vista–Controlador (MVC)** propuesto por Laravel, promoviendo una estructura organizada, mantenible y escalable.
 
 La separación entre rutas, middleware, controladores, modelos, vistas y base de datos facilita la evolución del proyecto y permite incorporar nuevas funcionalidades respetando las buenas prácticas del framework.

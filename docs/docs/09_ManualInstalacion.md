@@ -28,7 +28,9 @@ Antes de comenzar, se recomienda contar con el siguiente software instalado.
 | PHP | 8.3.32 o superior |
 | Composer | Última versión estable |
 | MySQL | 8.x |
-| Docker Desktop | Última versión |
+| Node.js | Versión LTS |
+| NPM | Incluido con Node.js |
+| Docker Desktop | Última versión (opcional para la base de datos) |
 | Git | Última versión |
 | Visual Studio Code | Opcional |
 | Obsidian | Opcional (documentación) |
@@ -203,6 +205,24 @@ http://127.0.0.1:8000
 
 ---
 
+# Verificar la API REST
+
+Una vez iniciada la aplicación, también es posible comprobar el funcionamiento de los endpoints REST implementados.
+
+Los principales recursos disponibles son:
+
+```text
+GET /api/products
+GET /api/products/{id}
+GET /api/orders
+```
+
+Las pruebas realizadas con Postman se encuentran documentadas en:
+
+- [06_API_REST](./06_API_REST.md)
+
+---
+
 # Usuarios de Prueba
 
 Los usuarios iniciales son creados automáticamente por los Seeders.
@@ -252,6 +272,8 @@ La instalación puede considerarse correcta cuando:
 - Los Seeders generan información de prueba.
 - Es posible iniciar sesión con usuarios generados por el sistema.
 - El panel administrativo funciona correctamente para usuarios con rol de administrador.
+- Los endpoints de la API REST responden correctamente mediante Postman.
+- El endpoint protegido de pedidos requiere autenticación para su acceso.
 
 ---
 
@@ -349,6 +371,7 @@ Este documento incluye:
 - [README](../../README.md)
 - [HOME](../HOME.md)
 - [setup-local-dev](../setup-local-dev.md)
+- [06_API_REST](./06_API_REST.md)
 - [08_ManualTecnico](./08_ManualTecnico.md)
 - [03_BaseDatos](./03_BaseDatos.md)
 
@@ -357,5 +380,7 @@ Este documento incluye:
 # Consideraciones Finales
 
 El proyecto **Rincón del Pan** fue desarrollado siguiendo las convenciones oficiales de **Laravel Framework 13** y puede ser reconstruido completamente a partir del repositorio utilizando las migraciones, los seeders y el archivo `.env.example`.
+
+Además de la aplicación web, el proyecto incorpora una **API REST** para la consulta de productos y pedidos, cuya instalación no requiere configuraciones adicionales una vez desplegada la aplicación.
 
 La separación entre el **Manual de Instalación** y el documento **setup-local-dev** permite distinguir el procedimiento general de despliegue del proyecto respecto de la configuración específica del entorno de desarrollo utilizado por el equipo.

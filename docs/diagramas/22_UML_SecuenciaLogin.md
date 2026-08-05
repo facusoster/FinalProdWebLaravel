@@ -31,13 +31,13 @@ participant User
 participant MySQL
 participant Session
 
-Usuario->>Navegador: Completa formulario de Login
+Usuario->>Navegador: Completa formulario de inicio de sesión
 
 Navegador->>Routes: POST /login
 
 Routes->>AuthController: login()
 
-AuthController->>AuthController: Validar credenciales
+AuthController->>AuthController: Validar datos del formulario
 
 AuthController->>User: Buscar usuario por email
 
@@ -53,15 +53,15 @@ alt Credenciales válidas
 
     Session-->>AuthController: Sesión iniciada
 
-    AuthController-->>Navegador: Redirect Dashboard
+    AuthController-->>Navegador: Redirect según rol
 
-    Navegador-->>Usuario: Panel principal
+    Navegador-->>Usuario: Acceso al sistema
 
 else Credenciales inválidas
 
     AuthController-->>Navegador: Redirect Login + Error
 
-    Navegador-->>Usuario: Mostrar mensaje
+    Navegador-->>Usuario: Mostrar mensaje de error
 
 end
 ```
@@ -74,9 +74,9 @@ El proceso de autenticación comienza cuando el usuario completa el formulario d
 
 Laravel recibe la solicitud mediante la ruta correspondiente y la deriva al **AuthController**, responsable de validar los datos ingresados y autenticar al usuario.
 
-Si las credenciales son correctas, se crea una sesión y el usuario es redirigido al panel principal.
+Si las credenciales son correctas, el sistema crea una sesión y redirige al usuario según su rol dentro de la aplicación.
 
-En caso contrario, el sistema vuelve al formulario de login mostrando un mensaje de error.
+En caso contrario, el sistema vuelve al formulario de inicio de sesión mostrando un mensaje de error.
 
 ---
 
@@ -110,7 +110,7 @@ Sus responsabilidades incluyen:
 - Buscar el usuario.
 - Verificar la contraseña.
 - Crear la sesión.
-- Redireccionar al usuario.
+- Redireccionar al usuario según su rol.
 
 ---
 
@@ -145,7 +145,7 @@ El sistema:
 - encuentra el usuario;
 - valida la contraseña;
 - crea la sesión;
-- redirige al dashboard correspondiente.
+- redirige al usuario según el rol asignado.
 
 ---
 
@@ -156,7 +156,7 @@ Si las credenciales son incorrectas:
 - no se crea ninguna sesión;
 - el usuario permanece sin autenticar;
 - se muestra un mensaje de error;
-- se redirecciona nuevamente al formulario de login.
+- se redirecciona nuevamente al formulario de inicio de sesión.
 
 ---
 
@@ -197,4 +197,4 @@ Este diagrama se complementa con:
 
 El proceso de autenticación implementado en **Rincón del Pan** sigue el flujo habitual de una aplicación Laravel basada en sesiones.
 
-La separación entre rutas, controlador, modelo, persistencia y gestión de sesiones permite mantener una arquitectura clara y facilita el mantenimiento del sistema, respetando el patrón MVC y las buenas prácticas recomendadas por el framework.
+La separación entre rutas, controladores, modelos, persistencia y gestión de sesiones permite mantener una arquitectura organizada y facilita el mantenimiento del sistema, respetando el patrón MVC y las buenas prácticas recomendadas por el framework.

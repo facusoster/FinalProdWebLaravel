@@ -37,6 +37,7 @@ flowchart LR
         R["🌐 Routes"]
         MW["🛡️ Middleware"]
         C["🎮 Controllers"]
+        FR["📄 Form Requests"]
         M["📦 Models"]
         E["🔗 Eloquent ORM"]
     end
@@ -55,6 +56,7 @@ flowchart LR
 
     R --> MW
     MW --> C
+    C -. Valida .-> FR
     C --> M
     M --> E
     E --> DB
@@ -158,6 +160,18 @@ Entre sus responsabilidades se encuentran:
 
 ---
 
+## 📄 Form Requests
+
+Centralizan la validación de los datos recibidos desde formularios antes de que sean procesados por los controladores.
+
+Permiten:
+
+- Reutilizar reglas de validación.
+- Mantener los controladores más simples.
+- Separar la validación de la lógica de negocio.
+
+---
+
 ## 📦 Models
 
 Representan las entidades del dominio utilizando **Eloquent ORM**.
@@ -171,7 +185,7 @@ Principales modelos:
 - OrderItem
 - Review
 - Address
-- Wishlist *(utilizada como carrito de compras)*
+- Wishlist *(utilizada funcionalmente como carrito de compras)*
 
 ---
 
@@ -236,11 +250,12 @@ El funcionamiento de la aplicación puede resumirse de la siguiente manera:
 2. Blade envía la solicitud.
 3. Laravel resuelve la ruta correspondiente.
 4. El Middleware valida permisos.
-5. El Controller ejecuta la lógica.
-6. Los Models consultan la base de datos mediante Eloquent.
-7. La información regresa al Controller.
-8. Blade genera la respuesta HTML.
-9. El navegador presenta el resultado al usuario.
+5. Cuando corresponde, los **Form Requests** validan los datos de entrada.
+6. El Controller ejecuta la lógica de negocio.
+7. Los Models consultan la base de datos mediante Eloquent.
+8. La información regresa al Controller.
+9. Blade genera la respuesta HTML.
+10. El navegador presenta el resultado al usuario.
 
 ---
 
@@ -271,4 +286,4 @@ este documento muestra cómo se relacionan los distintos módulos que conforman 
 
 El proyecto **Rincón del Pan** se apoya en los componentes principales del ecosistema Laravel para construir una aplicación modular y organizada.
 
-La integración entre Blade, Bootstrap, Vite, Middleware, Controladores, Modelos, Eloquent ORM y MySQL permite implementar una arquitectura consistente, fácilmente mantenible y alineada con las buenas prácticas recomendadas por el framework.
+La integración entre Blade, Bootstrap, Vite, Middleware, Form Requests, Controladores, Modelos, Eloquent ORM y MySQL permite implementar una arquitectura consistente, fácilmente mantenible y alineada con las buenas prácticas recomendadas por el framework.

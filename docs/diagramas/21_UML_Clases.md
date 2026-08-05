@@ -60,7 +60,7 @@ class Wishlist{
 class Order{
     +id
     +total
-    +status
+    +status : OrderStatus
 }
 
 class OrderItem{
@@ -169,6 +169,14 @@ Cada pedido registra:
 - importe total;
 - estado.
 
+El atributo **status** se implementa mediante el **Enum `OrderStatus` de Laravel**, garantizando que únicamente puedan asignarse los siguientes estados:
+
+- Pending
+- Processing
+- Sent
+- Delivered
+- Cancelled
+
 ---
 
 ## OrderItem
@@ -237,7 +245,7 @@ Durante el desarrollo se adoptaron las siguientes decisiones:
 - Separación de responsabilidades siguiendo el patrón MVC.
 - Implementación de relaciones mediante métodos Eloquent.
 - Reutilización de la entidad **Wishlist** para implementar el carrito de compras, evitando duplicar estructuras.
-- Gestión del estado de los pedidos mediante un atributo específico (`status`), documentado en el diagrama de estados.
+- Gestión del estado de los pedidos mediante el **Enum `OrderStatus` de Laravel**, restringiendo los valores válidos a `Pending`, `Processing`, `Sent`, `Delivered` y `Cancelled`.
 
 ---
 
@@ -267,5 +275,7 @@ Este diagrama constituye el núcleo de la documentación UML y se complementa co
 # Consideraciones Finales
 
 El diagrama de clases resume la estructura lógica del proyecto **Rincón del Pan**, mostrando las entidades del dominio implementadas mediante **Laravel Eloquent** y las relaciones que mantienen entre sí.
+
+La representación del atributo **status** se mantiene alineada con la implementación del proyecto mediante el **Enum `OrderStatus`**, garantizando la consistencia entre la documentación UML y el código fuente.
 
 Su objetivo es facilitar la comprensión de la organización interna del sistema y servir como referencia para futuras tareas de mantenimiento, evolución y ampliación de la aplicación.

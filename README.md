@@ -1,6 +1,6 @@
 # 🍞 Rincón del Pan
 
-> Proyecto Final de la materia **Desarrollo de Aplicaciones Web con Laravel**  
+> Proyecto Final de la materia **Produccion Web**  
 > Tecnicatura Superior en Análisis de Sistemas — Escuela Da Vinci
 
 ---
@@ -9,9 +9,11 @@
 
 **Rincón del Pan** es una aplicación web desarrollada con **Laravel 13** que implementa un sistema de comercio electrónico para una panadería y pastelería artesanal.
 
-El proyecto fue realizado como trabajo integrador de la materia **Desarrollo de Aplicaciones Web con Laravel**, aplicando el patrón de arquitectura **MVC**, el framework **Laravel**, **Eloquent ORM**, **Blade**, **Bootstrap**, **MySQL** y herramientas modernas de desarrollo.
+El proyecto fue realizado como trabajo integrador de la materia **Produccion Web**, aplicando el patrón de arquitectura **MVC**, el framework **Laravel**, **Eloquent ORM**, **Blade**, **Bootstrap**, **MySQL** y herramientas modernas de desarrollo.
 
 El sistema permite que los clientes puedan explorar el catálogo de productos, administrar una lista de favoritos, realizar pedidos, gestionar direcciones de envío y publicar reseñas sobre productos adquiridos. Asimismo, incorpora un panel de administración para la gestión del catálogo y de los pedidos.
+
+Como componente adicional, el proyecto incorpora una **API REST** desarrollada con Laravel para exponer parte de la funcionalidad del sistema mediante respuestas JSON, cumpliendo con los requisitos establecidos en la consigna del trabajo final.
 
 La documentación del proyecto fue desarrollada en paralelo al código fuente y reúne el análisis funcional, el diseño de la base de datos, la arquitectura de software y la documentación técnica necesaria para comprender la implementación.
 
@@ -23,7 +25,7 @@ La documentación del proyecto fue desarrollada en paralelo al código fuente y 
 | ----------- | -------------------------------------------- |
 | Institución | Escuela Da Vinci                             |
 | Carrera     | Tecnicatura Superior en Análisis de Sistemas |
-| Materia     | Desarrollo de Aplicaciones Web con Laravel   |
+| Materia     | Produccion Web   |
 | Proyecto    | Rincón del Pan                               |
 | Integrantes | Facundo Nahuel Soster · Julián Verdirame     |
 | Profesor    | Nicolás Ariel Calderón                       |
@@ -69,6 +71,16 @@ Desarrollar una aplicación web utilizando Laravel y MySQL que permita gestionar
 - Gestión de productos.
 - Administración de pedidos.
 - Actualización del estado de los pedidos.
+
+## Funcionalidades técnicas
+
+- Arquitectura MVC.
+- Autenticación mediante sesiones.
+- Middleware de autorización por rol.
+- Migraciones y Seeders.
+- Relaciones Eloquent.
+- API REST para consulta de productos y pedidos.
+- Documentación técnica completa.
 
 ---
 
@@ -155,10 +167,15 @@ La documentación correspondiente se encuentra en:
 
 # Documentación
 
-Toda la documentación técnica del proyecto se encuentra organizada dentro de la carpeta **docs**.
+Toda la documentación técnica se encuentra organizada dentro de la carpeta **docs**, incluyendo el análisis funcional, la arquitectura del sistema, el modelo de dominio, la base de datos, los diagramas UML, el manual técnico y el manual de instalación.
+
+Para comenzar la lectura de la documentación se recomienda acceder al siguiente índice:
+
+➡️ **[HOME.md](./docs/HOME.md)**
 
 | Documento | Descripción |
 |-----------|-------------|
+| [HOME](./docs/HOME.md)      | Base documental del proyecto                              |
 | [00_AnalisisRequisitos](./docs/docs/00_AnalisisRequisitos.md) | Relevamiento de requisitos funcionales y no funcionales. |
 | [01_Arquitectura](./docs/docs/01_Arquitectura.md) | Arquitectura general del sistema. |
 | [02_ModeloDominio](./docs/docs/02_ModeloDominio.md) | Modelo de dominio y entidades principales. |
@@ -175,20 +192,20 @@ Toda la documentación técnica del proyecto se encuentra organizada dentro de l
 
 # Diagramas
 
-Los diagramas del proyecto se encuentran organizados dentro de la carpeta **diagramas**.
+La documentación incluye diagramas desarrollados mediante **Mermaid**, entre los que se encuentran:
 
-Entre ellos se incluyen:
+- Arquitectura MVC.
+- Componentes del sistema.
+- Deployment.
+- Diagrama Entidad-Relación (DER).
+- Modelo de Dominio.
+- Casos de Uso.
+- UML de Clases.
+- UML de Secuencia.
+- UML de Actividades.
+- UML de Estados.
 
-- Arquitectura MVC
-- Componentes
-- Deployment
-- DER
-- Modelo de Dominio
-- Casos de Uso
-- UML de Clases
-- UML de Secuencia
-- UML de Actividades
-- UML de Estados
+Todos los diagramas pueden consultarse desde la carpeta **docs/diagramas/** o navegando desde el índice de documentación.
 
 ---
 
@@ -244,6 +261,9 @@ npm run dev
 php artisan serve
 ```
 
+> [!tip]
+> Para una explicación detallada del entorno de desarrollo utilizado durante el proyecto, consultar el documento **[setup-local-dev.md](./docs/setup-local-dev.md)**.
+> 
 ---
 
 # Credenciales de prueba
@@ -252,17 +272,17 @@ Las credenciales utilizadas para las pruebas son generadas mediante los **Seeder
 
 Consultar:
 
-- [09_ManualInstalacion]()
+- [09_ManualInstalacion](./docs/docs/09_ManualInstalacion.md)
 
 ---
 
 # API REST
 
-La implementación de la API REST forma parte de los requisitos del trabajo práctico y será incorporada en una etapa posterior del desarrollo.
+Como parte de los requisitos del Trabajo Final, el proyecto incorpora una API REST que expone un subconjunto de la funcionalidad del sistema mediante respuestas JSON.
 
-Su documentación estará disponible en:
+La documentación completa de la API, junto con ejemplos de uso, capturas de Postman y descripción de los endpoints implementados, puede consultarse en:
 
-- `06_API_REST.md`
+➡️ **[06_API_REST.md](docs/06_API_REST.md)**
 
 ---
 
@@ -327,11 +347,11 @@ Actualmente el proyecto cuenta con:
 - Sistema de reseñas.
 - Panel administrativo.
 - Documentación técnica integral.
+- API REST
 
-La implementación de la API REST corresponde a una etapa posterior para completar los requisitos de la asignatura.
 
 ---
 
 # Licencia
 
-Este proyecto fue desarrollado con fines académicos como trabajo práctico para la materia **Desarrollo de Aplicaciones Web con Laravel** de la **Escuela Da Vinci**.
+Este proyecto fue desarrollado con fines académicos como trabajo práctico para la materia **Produccion Web** de la **Escuela Da Vinci**.

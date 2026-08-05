@@ -2,7 +2,7 @@
 
 > [!info]
 > **Proyecto Final**  
-> Desarrollo de Aplicaciones Web con Laravel  
+> Produccion Web  
 > Tecnicatura Superior en Análisis de Sistemas  
 > Escuela Da Vinci
 
@@ -56,9 +56,7 @@ El objetivo de esta Wiki es centralizar toda la documentación técnica y funcio
 
 ## 🌐 API REST
 
-> En desarrollo.
-
-- `06_API_REST.md`
+- [06_API_REST](../docs/docs/06_API_REST.md)
 
 ---
 
@@ -127,6 +125,15 @@ docs/
 ├── 10_DiccionarioDatos.md
 ├── setup-local-dev.md
 │
+├── api/
+│   ├── 01-A-Postman_Productos.png
+│   ├── 02-A-Postman_DetalleProducto_OK.png
+│   ├── 02-B-Postman_DetalleProducto_NotFound.png
+│   ├── 03-A-SessionValue_DevTools.png
+│   ├── 03-B-AddSession_PostmanCookie.png
+│   ├── 03-C-OrderClient_Authenticated.png
+│   └── 03-D-OrderClient_NoAuthenticated.png
+│
 └── diagramas/
     ├── 01_ArquitecturaMVC.md
     ├── 02_Componentes.md
@@ -158,7 +165,7 @@ docs/
 | Manual de instalación | ✅ |
 | Diccionario de datos | ✅ |
 | Documentación Mermaid | ✅ |
-| API REST | 🚧 En desarrollo |
+| API REST | ✅ |
 
 ---
 
