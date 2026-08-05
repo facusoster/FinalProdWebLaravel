@@ -32,6 +32,7 @@ Su objetivo es proporcionar una visión general de la estructura del sistema, la
 | GitHub | Repositorio remoto |
 | Docker Desktop | Entorno de base de datos |
 | phpMyAdmin | Administración de MySQL |
+| Postman | Pruebas de la API REST |
 | Obsidian | Documentación técnica |
 | Mermaid | Diagramas |
 
@@ -82,6 +83,11 @@ resources/
 └── views/
 │
 routes/
+│
+├── web.php
+├── api.php
+└── console.php
+│
 storage/
 tests/
 ```
@@ -109,6 +115,15 @@ Cada modelo define:
 - Asignación masiva mediante `fillable`.
 - Conversión de atributos mediante `casts` cuando corresponde.
 - Métodos de navegación entre relaciones.
+
+El modelo **Order** implementa además un atributo `status` para representar el ciclo de vida del pedido mediante los estados:
+
+- `pending`
+- `processing`
+- `sent`
+- `delivered`
+- `cancelled`
+
 
 ---
 
@@ -171,7 +186,8 @@ Las rutas del sistema se organizan principalmente en:
 ```text
 routes/
 ├── web.php
-├── console.php
+├── api.php
+└── cons
 ```
 
 Las rutas web gestionan:
@@ -185,7 +201,30 @@ Las rutas web gestionan:
 - Reseñas.
 - Panel administrativo.
 
-La API REST se encuentra prevista como una etapa posterior del proyecto.
+Además, el proyecto incorpora una **API REST** implementada mediante controladores específicos y rutas registradas en `routes/api.php`, cuya documentación funcional puede consultarse en:
+
+- [06_API_REST](./06_API_REST.md)
+
+---
+
+# API REST
+
+Como parte de los requisitos de la asignatura se implementó una API REST para exponer información del sistema.
+
+La implementación contempla:
+
+- Controladores API independientes de los controladores web.
+- Rutas definidas en `routes/api.php`.
+- Registro de las rutas API en `bootstrap/app.php`.
+- Respuestas en formato JSON.
+- Códigos HTTP apropiados.
+- Pruebas funcionales mediante Postman.
+
+Los recursos implementados corresponden a:
+
+- Consulta del catálogo de productos.
+- Consulta del detalle de un producto.
+- Consulta de pedidos del usuario autenticado.
 
 ---
 
@@ -202,6 +241,9 @@ Se distinguen dos tipos de usuarios:
 
 Los administradores poseen permisos para gestionar el catálogo y actualizar el estado de los pedidos.
 
+En la API REST, el acceso a los pedidos del usuario requiere autenticación, reutilizando los mecanismos de seguridad provistos por Laravel.
+
+
 ---
 
 # Middleware
@@ -213,6 +255,7 @@ Se utilizan para:
 - Verificar autenticación.
 - Restringir acceso según el rol.
 - Proteger el panel administrativo.
+- Restringir el acceso a los endpoints protegidos de la API.
 
 Esta estrategia evita duplicar validaciones dentro de los controladores.
 
@@ -301,6 +344,7 @@ La documentación incluye:
 - Base de datos.
 - DER.
 - Casos de uso.
+- API REST.
 - UML.
 - Manual de instalación.
 - Diccionario de datos.
@@ -315,6 +359,7 @@ Para mantener la documentación sincronizada con el proyecto se recomienda:
 - Actualizar la documentación junto con cada cambio funcional.
 - Mantener los diagramas Mermaid alineados con la implementación.
 - Registrar nuevas entidades o relaciones en el diccionario de datos.
+- Actualizar la documentación de la API REST cuando se incorporen nuevos endpoints.
 - Versionar toda modificación mediante Git.
 
 ---
@@ -323,8 +368,8 @@ Para mantener la documentación sincronizada con el proyecto se recomienda:
 
 Entre las funcionalidades previstas para futuras versiones se encuentran:
 
-- Implementación de la API REST solicitada por la asignatura.
-- Documentación de la colección de Postman.
+- Ampliación de la API REST con nuevos recursos.
+- Incorporación de autenticación basada en tokens para la API.
 - Incorporación de pruebas automatizadas.
 - Mejoras en la gestión del carrito de compras.
 - Optimización de consultas mediante Eloquent.
@@ -334,15 +379,16 @@ Entre las funcionalidades previstas para futuras versiones se encuentran:
 
 # Documentación Relacionada
 
-- [[00_AnalisisRequisitos]]
-- [[01_Arquitectura]]
-- [[02_ModeloDominio]]
-- [[03_BaseDatos]]
-- [[04_DER]]
-- [[05_CasosUso]]
-- [[07_UML]]
-- [[09_ManualInstalacion]]
-- [[10_DiccionarioDatos]]
+- [00_AnalisisRequisitos](./00_AnalisisRequisitos.md)
+- [01_Arquitectura](./01_Arquitectura.md)
+- [02_ModeloDominio](./02_ModeloDominio.md)
+- [03_BaseDatos](./03_BaseDatos.md)
+- [04_DER](./04_DER.md)
+- [05_CasosUso](./05_CasosUso.md)
+- [06_API_REST](./06_API_REST.md)
+- [07_UML](./07_UML.md)
+- [09_ManualInstalacion](./09_ManualInstalacion.md)
+- [10_DiccionarioDatos](./10_DiccionarioDatos.md)
 
 ---
 

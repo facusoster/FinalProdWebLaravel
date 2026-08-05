@@ -174,6 +174,8 @@ Las relaciones implementadas incluyen:
 - `belongsTo()`
 - `belongsToMany()`
 
+Además, el proyecto utiliza **Casts** y **Enums** para representar determinados atributos del dominio, como el estado de los pedidos.
+
 Esto permite navegar entre entidades utilizando objetos del dominio en lugar de consultas SQL manuales.
 
 ---
@@ -221,13 +223,14 @@ Cada pedido posee un estado que representa su ciclo de vida dentro del sistema.
 
 Los estados previstos son:
 
-- Pendiente
-- Pagado
-- Enviado
-- Entregado
-- Cancelado
+- Pending
+- Processing
+- Sent
+- Delivered
+- Cancelled
 
-Las transiciones entre estados son administradas por la lógica de negocio implementada en la aplicación.
+El atributo `status` se encuentra implementado mediante un **Enum de Laravel**, garantizando que únicamente puedan utilizarse estados válidos definidos por la aplicación.
+
 
 ---
 
@@ -271,10 +274,11 @@ Esto permite mantener las credenciales fuera del código fuente y adaptar fácil
 
 La estructura de la base de datos se complementa con los siguientes documentos:
 
-- [04_DER](./04_DER.md)
-- [10_DiccionarioDatos](./10_DiccionarioDatos.md)
 - [02_ModeloDominio](./02_ModeloDominio.md)
+- [04_DER](./04_DER.md)
+- [06_API_REST](./06_API_REST.md)
 - [08_ManualTecnico](./08_ManualTecnico.md)
+- [10_DiccionarioDatos](./10_DiccionarioDatos.md)
 
 Diagramas relacionados:
 

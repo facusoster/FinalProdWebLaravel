@@ -71,6 +71,7 @@ Puede:
 - Iniciar sesión.
 - Consultar productos.
 - Gestionar el carrito de compras.
+- Gestionar direcciones de envío.
 - Realizar pedidos.
 - Consultar pedidos anteriores.
 - Publicar reseñas.
@@ -149,7 +150,8 @@ Durante este proceso el sistema:
 
 - calcula el importe total;
 - registra el pedido;
-- genera el detalle correspondiente.
+- genera el detalle correspondiente;
+- asigna el estado inicial **Pending**.
 
 ---
 
@@ -197,7 +199,15 @@ Incluye:
 
 ## Gestionar pedidos
 
-Permite al administrador supervisar todos los pedidos registrados y actualizar su estado dentro del flujo operativo.
+Permite al administrador supervisar todos los pedidos registrados y actualizar su estado.
+
+El estado del pedido se encuentra controlado mediante un **Enum de Laravel**, permitiendo únicamente los siguientes estados:
+
+- Pending
+- Processing
+- Sent
+- Delivered
+- Cancelled
 
 ---
 
@@ -240,5 +250,7 @@ Este diagrama sirve como punto de partida para comprender los restantes modelos 
 # Consideraciones Finales
 
 El diagrama de casos de uso resume las funcionalidades principales de **Rincón del Pan** desde la perspectiva de los actores que interactúan con el sistema.
+
+La gestión de pedidos representada en este diagrama se corresponde con la implementación del proyecto, donde el ciclo de vida de cada pedido se controla mediante un **Enum de Laravel**.
 
 Constituye una representación de alto nivel del comportamiento esperado de la aplicación y sirve como base para comprender los diagramas UML de clases, secuencia, actividad y estados que documentan con mayor detalle el funcionamiento interno del proyecto.

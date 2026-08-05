@@ -28,6 +28,7 @@ La arquitectura del proyecto busca:
 - Centralizar el acceso a la base de datos mediante Eloquent ORM.
 - Implementar un sistema seguro de autenticación y autorización.
 - Favorecer la reutilización de componentes.
+- Facilitar la incorporación de nuevos módulos sin afectar la arquitectura existente.
 
 ---
 
@@ -44,7 +45,8 @@ Entre sus responsabilidades se encuentran:
 - Definir relaciones entre entidades.
 - Gestionar la persistencia de datos.
 - Configurar atributos (`fillable`, `casts`, etc.).
-- Representar el modelo de negocio.
+- Representar las reglas del dominio.
+- Utilizar Enumerations (Enum) para atributos con estados controlados, como el estado de los pedidos.
 
 Modelos principales:
 
@@ -68,6 +70,7 @@ Las vistas permiten:
 - Reutilizar componentes mediante layouts.
 - Mantener una interfaz consistente.
 - Separar la presentación de la lógica del negocio.
+- Mostrar mensajes de validación y errores de forma uniforme.
 
 La interfaz utiliza **Bootstrap** para proporcionar un diseño responsive y una experiencia de usuario homogénea.
 
@@ -79,10 +82,11 @@ Los controladores reciben las solicitudes HTTP, coordinan la lógica de la aplic
 
 Sus principales responsabilidades son:
 
-- Procesar solicitudes.
-- Validar datos de entrada.
-- Invocar modelos.
-- Renderizar vistas.
+- Procesar solicitudes HTTP.
+- Delegar la lógica de negocio.
+- Invocar modelos Eloquent.
+- Renderizar vistas Blade.
+- Devolver respuestas JSON en los endpoints de la API REST.
 - Gestionar redirecciones.
 
 Ejemplos de controladores implementados:
@@ -94,6 +98,7 @@ Ejemplos de controladores implementados:
 - ReviewController
 - WishlistController
 - AddressController
+- Api\ProductApiController
 
 ---
 
@@ -102,28 +107,34 @@ Ejemplos de controladores implementados:
 La interacción entre los distintos componentes puede resumirse de la siguiente manera:
 
 ```text
-Cliente
-    │
-    ▼
-Routes (web.php)
-    │
-    ▼
-Controllers
-    │
-    ▼
-Models (Eloquent ORM)
-    │
-    ▼
-MySQL
-    │
-    ▲
-Blade Views
-    │
-    ▲
-Respuesta HTTP
+                Navegador Web
+                      │
+        ┌─────────────┴─────────────┐
+        │                           │
+        ▼                           ▼
+ routes/web.php              routes/api.php
+        │                           │
+        └─────────────┬─────────────┘
+                      ▼
+                 Middleware
+                      │
+                      ▼
+                 Controllers
+                      │
+                      ▼
+              Models (Eloquent)
+                      │
+                      ▼
+                    MySQL
+                      ▲
+                      │
+          Blade Views / JSON Response
+                      │
+                      ▼
+              Respuesta HTTP
 ```
 
-El flujo de ejecución comienza con una solicitud del usuario, continúa mediante las rutas definidas en Laravel, es procesado por el controlador correspondiente y, cuando es necesario, interactúa con la base de datos mediante Eloquent ORM antes de devolver una vista al navegador.
+El flujo comienza con una solicitud del cliente. Dependiendo del tipo de recurso solicitado, Laravel direcciona la petición hacia las rutas web o hacia los endpoints de la API. Luego de atravesar los middleware correspondientes, el controlador ejecuta la lógica necesaria, interactúa con los modelos Eloquent y devuelve una vista Blade o una respuesta JSON.
 
 ---
 
@@ -136,6 +147,7 @@ Las rutas constituyen el punto de entrada de la aplicación.
 Se organizan principalmente en:
 
 - `routes/web.php`
+- `routes/api.php`
 - `routes/console.php`
 
 Las rutas permiten asociar cada URL con el controlador correspondiente y aplicar middleware cuando es necesario.
@@ -151,6 +163,8 @@ En el proyecto se utilizan para:
 - Verificar autenticación.
 - Restringir acceso según el rol del usuario.
 - Proteger funcionalidades administrativas.
+- Garantizar que únicamente usuarios autenticados puedan acceder al catálogo, realizar pedidos y consultar información privada.
+
 
 Esta separación evita duplicar controles de seguridad dentro de los controladores.
 
@@ -165,6 +179,7 @@ Las principales ventajas de esta aproximación son:
 - Consultas orientadas a objetos.
 - Relaciones entre modelos.
 - Integración con migraciones.
+- Integración con Seeders y Factories.
 - Mayor legibilidad del código.
 - Independencia respecto del motor de base de datos.
 
@@ -189,16 +204,31 @@ Los seeders generan información inicial para facilitar las pruebas del sistema.
 
 Incluyen datos como:
 
-- Usuarios.
+- Usuarios (Administrador y Cliente).
 - Categorías.
 - Productos.
 - Direcciones.
-- Pedidos.
+- Pedidos con distintos estados.
 - Reseñas.
 
 Esto permite disponer rápidamente de un entorno funcional para desarrollo y demostración.
 
 ---
+
+## API REST
+
+Como complemento de la aplicación web, el proyecto incorpora una API REST desarrollada utilizando los componentes nativos de Laravel.
+
+Actualmente expone endpoints para:
+
+- Listado de productos.
+- Detalle de productos.
+- Consulta de pedidos del usuario autenticado.
+
+Las respuestas se generan en formato **JSON**, utilizando los códigos de estado HTTP correspondientes.
+
+---
+
 
 # Seguridad
 
@@ -212,6 +242,8 @@ Entre ellos:
 - Middleware de autenticación.
 - Autorización basada en roles.
 - Protección frente a asignación masiva mediante `fillable`.
+- Validaciones mediante Form Requests.
+- Protección de rutas administrativas.
 
 ---
 
@@ -223,6 +255,7 @@ La estructura principal del proyecto sigue la organización recomendada por Lara
 app/
 ├── Http/
 │   ├── Controllers/
+│   │   └── Api/
 │   ├── Middleware/
 │   └── Requests/
 │
@@ -244,6 +277,11 @@ resources/
 └── views/
 │
 routes/
+│
+├── web.php
+├── api.php
+└── console.php
+│
 storage/
 tests/
 ```
@@ -257,13 +295,16 @@ Esta organización facilita la separación de responsabilidades y mantiene una e
 Durante el desarrollo se procuró respetar las siguientes buenas prácticas:
 
 - Separación de responsabilidades.
+- Arquitectura MVC.
 - Reutilización de componentes.
 - Organización modular.
 - Uso del ORM de Laravel.
 - Evitar consultas SQL embebidas.
 - Configuración mediante archivos `.env`.
+- Uso de migraciones, seeders y factories.
 - Control de versiones con Git.
 - Documentación paralela al desarrollo.
+
 
 ---
 
@@ -275,6 +316,7 @@ La arquitectura presentada en este documento se complementa con los siguientes a
 - [02_ModeloDominio](./02_ModeloDominio.md)
 - [03_BaseDatos](./03_BaseDatos.md)
 - [04_DER](./04_DER.md)
+- [06_API_REST](./06_API_REST.md)
 - [07_UML](./07_UML.md)
 - [08_ManualTecnico](./08_ManualTecnico.md)
 

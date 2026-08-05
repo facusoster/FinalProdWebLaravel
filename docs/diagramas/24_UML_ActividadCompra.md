@@ -19,7 +19,6 @@ Este documento complementa la descripción funcional presentada en [05_CasosUso]
 
 # Diagrama
 
-
 ```mermaid
 flowchart TD
 
@@ -43,7 +42,7 @@ Direccion[Seleccionar dirección de envío]
 
 Confirmar[Confirmar pedido]
 
-Procesar[Generar pedido]
+Procesar[Generar pedido<br/>Estado inicial: Pending]
 
 Actualizar[Actualizar stock]
 
@@ -86,7 +85,6 @@ Vaciar --> Exito
 Exito --> Fin
 ```
 
-
 ---
 
 # Descripción del Flujo
@@ -99,7 +97,7 @@ Al visualizar un producto, el cliente puede agregarlo al carrito de compras y de
 
 Cuando decide completar la compra, selecciona una de sus direcciones de envío registradas y confirma el pedido.
 
-Finalmente, el sistema genera el pedido, registra su detalle, actualiza el stock de los productos involucrados, vacía el carrito de compras y muestra una pantalla de confirmación indicando que la operación se realizó correctamente.
+Finalmente, el sistema genera el pedido con el estado inicial **Pending**, registra su detalle, actualiza el stock de los productos involucrados, vacía el carrito de compras y muestra una pantalla de confirmación indicando que la operación se realizó correctamente.
 
 ---
 
@@ -115,7 +113,7 @@ El diagrama modela las principales actividades que conforman el proceso de compr
 - Continuar agregando productos al carrito.
 - Seleccionar una dirección de envío.
 - Confirmar el pedido.
-- Generar el pedido.
+- Generar el pedido con estado **Pending**.
 - Actualizar el stock de los productos.
 - Vaciar el carrito de compras.
 - Mostrar la confirmación de la compra.
@@ -152,7 +150,8 @@ El diagrama refleja las siguientes reglas del sistema:
 - Solo los usuarios autenticados pueden realizar pedidos.
 - El cliente puede agregar múltiples productos al carrito antes de confirmar la compra.
 - Cada pedido requiere la selección de una dirección de envío previamente registrada.
-- Al confirmar la compra, el sistema genera automáticamente el pedido y su detalle.
+- Al confirmar la compra, el sistema genera automáticamente el pedido con el estado inicial **Pending**.
+- El estado del pedido se administra mediante el **Enum `OrderStatus`**, permitiendo las transiciones **Pending**, **Processing**, **Sent**, **Delivered** y **Cancelled**.
 - El stock de los productos se actualiza inmediatamente después de registrar el pedido.
 - Una vez completada la compra, el carrito queda vacío.
 
@@ -167,6 +166,7 @@ Este flujo involucra principalmente los siguientes componentes del framework:
 - Rutas Web.
 - Controladores.
 - Modelos Eloquent.
+- Enum `OrderStatus`.
 - Vistas Blade.
 - Base de datos MySQL.
 
@@ -196,4 +196,4 @@ Este diagrama complementa:
 
 El diagrama de actividad describe el proceso completo de compra implementado en **Rincón del Pan**, comenzando con la autenticación obligatoria del usuario y finalizando con la generación del pedido.
 
-Su objetivo es representar el flujo funcional del sistema desde la perspectiva del usuario, mostrando las actividades, decisiones y reglas de negocio involucradas en una compra típica, manteniendo coherencia con la implementación desarrollada en Laravel.
+Su objetivo es representar el flujo funcional del sistema desde la perspectiva del usuario, mostrando las actividades, decisiones y reglas de negocio involucradas en una compra típica, manteniendo coherencia con la implementación desarrollada en Laravel y con la gestión del ciclo de vida de los pedidos mediante el **Enum `OrderStatus`**.

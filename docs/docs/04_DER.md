@@ -243,6 +243,22 @@ Esta correspondencia mantiene sincronizado el modelo conceptual con la implement
 
 ---
 
+# Estados del Pedido
+
+La entidad **Order** implementa un ciclo de vida representado mediante un campo de estado.
+
+Los estados definidos en la implementación son:
+
+- `pending`
+- `processing`
+- `sent`
+- `delivered`
+- `cancelled`
+
+Las transiciones entre estos estados son administradas por la lógica de negocio de la aplicación y se encuentran representadas en el diagrama **25_UML_EstadosPedido**.
+
+---
+
 # Documentación Relacionada
 
 Este documento se complementa con:
@@ -257,6 +273,7 @@ Diagramas relacionados:
 - [diagramas/10_DER](../diagramas/10_DER.md)
 - [diagramas/11_ModeloDominio](../diagramas/11_ModeloDominio.md)
 - [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md)
+- [diagramas/25_UML_EstadosPedido](../diagramas/25_UML_EstadosPedido.md)
 
 ---
 
@@ -265,3 +282,5 @@ Diagramas relacionados:
 El Modelo Entidad–Relación representa la estructura lógica sobre la que se construyó la aplicación **Rincón del Pan**.
 
 La implementación mediante **Migraciones**, **Eloquent ORM** y **MySQL** permitió mantener una correspondencia directa entre el análisis funcional, el modelo de dominio y la base de datos, facilitando el mantenimiento, la evolución del proyecto y la incorporación de nuevas funcionalidades.
+
+La separación entre el documento descriptivo y el diagrama Mermaid favorece el versionado de la documentación y permite mantener ambos artefactos sincronizados con los cambios realizados sobre el modelo de datos.

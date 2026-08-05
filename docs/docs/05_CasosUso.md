@@ -48,6 +48,9 @@ Puede:
 - Consultar compras anteriores.
 - Publicar reseñas.
 
+> [!note]
+> El acceso al catálogo requiere que el usuario se encuentre autenticado. La pantalla inicial de la aplicación corresponde al inicio de sesión.
+
 ---
 
 ## Administrador
@@ -115,7 +118,7 @@ Cliente
 1. Ingresa correo electrónico y contraseña.
 2. El sistema valida las credenciales.
 3. Se inicia la sesión.
-4. Se redirecciona al usuario.
+4. Se redirecciona al catálogo de productos.
 
 ### Resultado
 
@@ -133,12 +136,17 @@ Permite visualizar los productos disponibles organizados por categorías.
 
 Cliente
 
+### Precondiciones
+
+- Usuario autenticado.
+
 ### Flujo Principal
 
-1. Accede al catálogo.
-2. Navega entre categorías.
-3. Consulta productos.
-4. Visualiza el detalle de cada producto.
+1. Inicia sesión.
+2. Accede al catálogo.
+3. Navega entre categorías.
+4. Consulta productos.
+5. Visualiza el detalle de cada producto.
 
 ### Resultado
 
@@ -159,12 +167,17 @@ Permite administrar los productos seleccionados antes de confirmar una compra.
 
 Cliente
 
+### Precondiciones
+
+- Usuario autenticado.
+
 ### Flujo Principal
 
 1. Selecciona un producto.
 2. Lo agrega al carrito.
-3. Modifica cantidades cuando corresponde.
-4. Elimina productos si lo desea.
+3. Continúa comprando si lo desea.
+4. Elimina productos cuando corresponde.
+5. Visualiza el contenido actualizado del carrito.
 
 ### Resultado
 
@@ -181,6 +194,10 @@ Permite registrar y administrar direcciones de envío.
 ### Actor
 
 Cliente
+
+### Precondiciones
+
+- Usuario autenticado.
 
 ### Flujo Principal
 
@@ -208,20 +225,23 @@ Cliente
 
 - Usuario autenticado.
 - Carrito con productos.
-- Dirección registrada.
+- Al menos una dirección registrada.
 
 ### Flujo Principal
 
-1. Revisa el carrito.
-2. Selecciona una dirección.
-3. Confirma la compra.
-4. El sistema registra el pedido.
-5. Se calcula automáticamente el total.
-6. Se generan los detalles del pedido.
+1. Accede al carrito.
+2. Revisa los productos seleccionados.
+3. Selecciona una dirección de envío.
+4. Confirma la compra.
+5. El sistema registra el pedido.
+6. Se calcula automáticamente el total.
+7. Se generan los detalles del pedido.
+8. Se actualiza el stock de los productos.
+9. Se vacía el carrito de compras.
 
 ### Resultado
 
-Pedido registrado correctamente.
+Pedido registrado correctamente con estado inicial **Pending**.
 
 ---
 
@@ -239,7 +259,7 @@ Cliente
 
 1. Accede al historial.
 2. Consulta los pedidos registrados.
-3. Visualiza su estado y detalle.
+3. Visualiza el estado y el detalle de cada pedido.
 
 ### Resultado
 
@@ -264,7 +284,7 @@ Cliente
 ### Flujo Principal
 
 1. Selecciona un producto.
-2. Ingresa puntuación.
+2. Ingresa una puntuación.
 3. Escribe un comentario.
 4. Guarda la reseña.
 
@@ -339,9 +359,17 @@ Administrador
 ### Flujo Principal
 
 1. Accede al panel administrativo.
-2. Consulta pedidos.
-3. Selecciona uno.
-4. Modifica su estado.
+2. Consulta todos los pedidos.
+3. Selecciona un pedido.
+4. Actualiza su estado.
+
+Los estados implementados son:
+
+- Pending
+- Processing
+- Sent
+- Delivered
+- Cancelled
 
 ### Resultado
 
@@ -372,10 +400,12 @@ Estado del pedido actualizado.
 Cada caso de uso se corresponde con uno o más módulos implementados en Laravel mediante:
 
 - Rutas (`routes/web.php`)
+- Rutas API (`routes/api.php`) para los endpoints REST desarrollados
 - Controladores
 - Modelos Eloquent
-- Vistas Blade
+- Blade Templates
 - Middleware de autenticación y autorización
+- Migraciones y Seeders
 
 La lógica de negocio se encuentra distribuida respetando la arquitectura MVC del framework.
 
@@ -402,6 +432,7 @@ Este documento se complementa con:
 - [01_Arquitectura](./01_Arquitectura.md)
 - [02_ModeloDominio](./02_ModeloDominio.md)
 - [04_DER](./04_DER.md)
+- [06_API_REST](./06_API_REST.md)
 - [07_UML](./07_UML.md)
 - [08_ManualTecnico](./08_ManualTecnico.md)
 
@@ -412,3 +443,5 @@ Este documento se complementa con:
 Los casos de uso documentan las funcionalidades implementadas en **Rincón del Pan** desde la perspectiva de los actores del sistema.
 
 Su definición permitió establecer una correspondencia directa entre el análisis funcional, el diseño del modelo de dominio y la implementación realizada con **Laravel Framework 13.23.0**, asegurando la trazabilidad entre los requisitos del proyecto y el comportamiento de la aplicación.
+
+La descripción de los procesos mantiene correspondencia con los diagramas UML del proyecto, facilitando el mantenimiento de la documentación y su evolución junto con el código fuente.

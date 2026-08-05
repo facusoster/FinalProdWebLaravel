@@ -13,6 +13,8 @@ Este diagrama representa la interacción entre los principales componentes del s
 
 El flujo comienza cuando un cliente confirma la compra de los productos agregados al carrito y finaliza cuando el pedido queda registrado en la base de datos con su correspondiente detalle.
 
+Durante este proceso, el pedido se crea con el estado inicial **Pending**, definido mediante el **Enum `OrderStatus`** implementado en Laravel.
+
 Este proceso constituye una de las funcionalidades principales del sistema.
 
 ---
@@ -49,7 +51,7 @@ Wishlist-->>OrderController: Lista de productos
 
 OrderController->>OrderController: Calcular total
 
-OrderController->>Order: Crear pedido
+OrderController->>Order: Crear pedido (status = Pending)
 
 Order->>MySQL: INSERT order
 
@@ -88,7 +90,7 @@ Navegador-->>Cliente: Pedido realizado
 
 El proceso comienza cuando el cliente confirma la compra de los productos almacenados en su carrito.
 
-El controlador recupera los productos seleccionados, calcula el importe total del pedido y registra una nueva orden en la base de datos.
+El controlador recupera los productos seleccionados, calcula el importe total y registra una nueva orden en la base de datos utilizando el estado inicial **Pending**.
 
 Posteriormente genera un registro en **OrderItem** por cada producto adquirido, actualiza el stock disponible y finalmente elimina los productos del carrito.
 
@@ -125,6 +127,7 @@ Entre sus responsabilidades se encuentran:
 - obtener el carrito;
 - calcular el total;
 - crear el pedido;
+- asignar el estado inicial del pedido;
 - generar el detalle;
 - actualizar el stock;
 - finalizar la operación.
@@ -149,6 +152,8 @@ Incluye información como:
 - dirección;
 - estado;
 - importe total.
+
+El atributo **status** se implementa mediante el **Enum `OrderStatus`**, iniciando el ciclo de vida del pedido con el valor **Pending**.
 
 ---
 
@@ -185,7 +190,7 @@ Durante el proceso se ejecutan las siguientes acciones principales:
 
 - Recuperar el contenido del carrito.
 - Calcular el importe total.
-- Crear el pedido.
+- Crear el pedido con estado **Pending**.
 - Registrar los productos adquiridos.
 - Actualizar el stock.
 - Vaciar el carrito.
@@ -199,6 +204,7 @@ El flujo refleja las siguientes reglas del sistema:
 
 - Solo un usuario autenticado puede generar pedidos.
 - El pedido debe contener al menos un producto.
+- Todo pedido nuevo se crea con el estado **Pending**.
 - Cada producto genera un registro independiente en **OrderItem**.
 - El stock debe actualizarse inmediatamente después de registrar la compra.
 - Una vez confirmado el pedido, el carrito queda vacío.
@@ -213,6 +219,7 @@ En este proceso participan los siguientes componentes del framework:
 - Middleware `auth`
 - OrderController
 - Modelos Eloquent
+- Enum `OrderStatus`
 - Relaciones `hasMany()` y `belongsTo()`
 - MySQL
 
@@ -243,3 +250,5 @@ Este diagrama complementa:
 El proceso de creación de pedidos constituye el núcleo funcional de **Rincón del Pan**.
 
 El diagrama muestra cómo colaboran los distintos componentes del sistema para transformar el contenido del carrito de compras en un pedido persistente, manteniendo la consistencia de la información mediante la creación del pedido, sus ítems asociados y la actualización del stock de los productos.
+
+Asimismo, refleja la implementación del ciclo de vida del pedido mediante el **Enum `OrderStatus`**, garantizando que la operación se inicie con el estado **Pending** y continúe posteriormente con las transiciones definidas por la aplicación.

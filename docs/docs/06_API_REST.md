@@ -1,240 +1,343 @@
 # 🌐 API REST
 
-> [!warning]
-> **Estado:** 🚧 En desarrollo
->
-> Este documento describe el diseño previsto de la API REST del proyecto **Rincón del Pan**, solicitado como componente adicional por la consigna de la materia **Desarrollo de Aplicaciones Web con Laravel**.
->
-> Al momento de redactar esta documentación, los endpoints aún no se encuentran implementados. La información presentada corresponde al diseño funcional previsto y será actualizada una vez finalizado el desarrollo.
-
 > [!info]
-> **Documentación relacionada**
-> - [[README]]
-> - [[01_Arquitectura]]
-> - [[02_ModeloDominio]]
-> - [[03_BaseDatos]]
-> - [[04_DER]]
-> - [[05_CasosUso]]
-> - [[08_ManualTecnico]]
+> **Proyecto:** Rincón del Pan  
+> **Materia:** Producción Web  
+> **Framework:** Laravel Framework 13.23.0  
+> **Lenguaje:** PHP 8.3.32
 
 ---
 
 # Introducción
 
-Como complemento a la aplicación web desarrollada mediante vistas **Blade**, el proyecto contempla la implementación de una **API REST** que exponga parte de la información del sistema en formato **JSON**.
+Como componente adicional del Trabajo Final, se desarrolló una API REST con el objetivo de exponer parte de la funcionalidad del sistema mediante respuestas en formato **JSON**, independientemente de las vistas Blade utilizadas por la aplicación web.
 
-El objetivo de esta API no es reemplazar la interfaz web, sino aplicar los conceptos básicos de servicios REST utilizando Laravel, diferenciando claramente una respuesta HTML de una respuesta destinada al consumo por otras aplicaciones.
+La implementación sigue la consigna de la materia, permitiendo comprender la diferencia entre una aplicación tradicional basada en vistas y un servicio orientado al intercambio de datos mediante HTTP.
 
-La implementación seguirá los lineamientos establecidos por la consigna de la materia.
+La API fue desarrollada utilizando las herramientas provistas por Laravel, reutilizando el mismo modelo de datos y la lógica de negocio implementada para la aplicación principal.
 
 ---
 
 # Objetivos
 
-La API REST tiene como finalidad:
+Los objetivos de esta implementación fueron:
 
-- Exponer información del sistema mediante respuestas JSON.
-- Aplicar conceptos básicos de arquitectura REST.
-- Reutilizar la lógica de negocio existente en la aplicación.
-- Comprender la diferencia entre una vista Blade y un servicio REST.
-- Facilitar futuras integraciones con aplicaciones externas.
-
----
-
-# Alcance
-
-De acuerdo con la consigna del trabajo práctico, la API incluirá un subconjunto reducido de funcionalidades.
-
-Inicialmente se implementarán los siguientes endpoints:
-
-| Método | Endpoint | Estado |
-|---------|----------|:------:|
-| GET | `/api/products` | 🚧 Pendiente |
-| GET | `/api/products/{id}` | 🚧 Pendiente |
-| GET | `/api/orders` | 🚧 Pendiente |
+- Comprender el funcionamiento básico de una API REST.
+- Exponer recursos del sistema en formato JSON.
+- Reutilizar la lógica de negocio existente.
+- Diferenciar respuestas HTML de respuestas JSON.
+- Practicar el uso de Postman para el consumo y prueba de endpoints.
 
 ---
 
-# Endpoints
+# Arquitectura
 
-## GET /api/products
+La API se implementó siguiendo la arquitectura MVC de Laravel.
 
-### Descripción
+```
+Cliente (Postman / Aplicación)
 
-Obtiene el listado de productos disponibles en el catálogo.
+        │
 
-### Respuesta esperada
+        ▼
 
-Código HTTP:
+routes/api.php
 
-```text
-200 OK
+        │
+
+        ▼
+
+ProductApiController
+
+        │
+
+        ▼
+
+Modelos Eloquent
+
+        │
+
+        ▼
+
+MySQL
 ```
 
-Formato:
+Las rutas reciben las solicitudes HTTP y delegan el procesamiento al controlador correspondiente, el cual consulta los modelos Eloquent y devuelve la información serializada en formato JSON.
+
+---
+
+# Proceso de Implementación
+
+La implementación de la API se realizó siguiendo los siguientes pasos.
+
+## 1. Creación del controlador
+
+Se generó un controlador específico para la API utilizando Artisan.
+
+```bash
+php artisan make:controller Api/ProductApiController --api
+```
+
+El modificador `--api` crea automáticamente la estructura de un controlador REST con los métodos habituales utilizados por Laravel.
+
+---
+
+## 2. Implementación de la lógica
+
+Se desarrolló la lógica necesaria para consultar los recursos mediante Eloquent y devolver las respuestas en formato JSON.
+
+Los métodos implementados utilizan los modelos existentes del proyecto, evitando duplicar la lógica de acceso a datos.
+
+---
+
+## 3. Definición de rutas
+
+Se creó el archivo:
+
+```text
+routes/api.php
+```
+
+En este archivo se definieron los endpoints correspondientes a la API REST.
+
+---
+
+## 4. Registro de las rutas
+
+Las rutas API fueron registradas dentro del archivo:
+
+```text
+bootstrap/app.php
+```
+
+De esta manera Laravel incorpora automáticamente el archivo `api.php` dentro del ciclo de ejecución de la aplicación.
+
+---
+
+## 5. Pruebas funcionales
+
+Las pruebas fueron realizadas mediante **Postman**, verificando:
+
+- respuestas JSON;
+- códigos HTTP;
+- estructura de los recursos devueltos.
+
+La colección utilizada para las pruebas forma parte de los entregables del proyecto.
+
+---
+
+# Endpoints Implementados
+
+## Obtener catálogo de productos
+
+```http
+GET /api/products
+```
+
+Descripción:
+
+Obtiene el listado completo de productos disponibles.
+
+Respuesta esperada:
+
+```text
+HTTP 200 OK
+```
+
+Ejemplo de respuesta:
 
 ```json
 [
     {
         "id": 1,
-        "name": "Producto",
-        "price": 1500
+        "name": "Pan Integral",
+        "price": 1200
     }
 ]
 ```
 
-### Posibles respuestas
-
-| Código | Descripción |
-|---------|-------------|
-| 200 | Consulta realizada correctamente. |
-| 500 | Error interno del servidor. |
-
 ---
 
-## GET /api/products/{id}
+## Obtener detalle de un producto
 
-### Descripción
+```http
+GET /api/products/{id}
+```
+
+Descripción:
 
 Obtiene la información detallada de un producto específico.
 
-### Parámetros
-
-| Parámetro | Descripción |
-|-----------|-------------|
-| id | Identificador del producto. |
-
-### Respuesta esperada
-
-Código HTTP:
+Respuesta esperada:
 
 ```text
-200 OK
+HTTP 200 OK
+```
+
+Si el producto no existe:
+
+```text
+HTTP 404 Not Found
 ```
 
 Ejemplo:
 
 ```json
 {
-    "id": 1,
-    "name": "Producto",
-    "description": "Descripción",
-    "price": 1500
+    "id": 3,
+    "name": "Torta Rogel",
+    "description": "...",
+    "price": 8500
 }
 ```
 
-### Posibles respuestas
-
-| Código | Descripción |
-|---------|-------------|
-| 200 | Producto encontrado. |
-| 404 | Producto inexistente. |
-| 500 | Error interno del servidor. |
-
 ---
 
-## GET /api/orders
+## Obtener pedidos del usuario autenticado
 
-### Descripción
+```http
+GET /api/orders
+```
 
-Obtiene el listado de pedidos correspondientes al usuario autenticado.
+Descripción:
 
-Este endpoint reutilizará el mecanismo de autenticación implementado por la aplicación web.
+Devuelve los pedidos pertenecientes al usuario autenticado.
 
-### Respuesta esperada
+Este endpoint reutiliza la autenticación basada en sesión utilizada por la aplicación web, tal como lo establece la consigna del trabajo práctico.
 
-Código HTTP:
+Respuesta esperada:
 
 ```text
-200 OK
+HTTP 200 OK
 ```
-
-Ejemplo:
-
-```json
-[
-    {
-        "id": 15,
-        "status": "Pendiente",
-        "total": 25000
-    }
-]
-```
-
-### Posibles respuestas
-
-| Código | Descripción |
-|---------|-------------|
-| 200 | Consulta realizada correctamente. |
-| 401 | Usuario no autenticado. |
-| 500 | Error interno del servidor. |
 
 ---
 
-# Formato de Respuesta
+# Códigos HTTP Utilizados
 
-Las respuestas de la API utilizarán el formato **JSON**.
-
-Los códigos de estado HTTP se emplearán para indicar el resultado de cada operación, siguiendo las convenciones habituales de los servicios REST.
-
-Entre los códigos previstos se encuentran:
-
-| Código | Significado |
+| Código | Descripción |
 |---------|-------------|
 | 200 | Solicitud procesada correctamente. |
-| 401 | Usuario no autenticado. |
-| 404 | Recurso no encontrado. |
+| 404 | Recurso inexistente. |
 | 500 | Error interno del servidor. |
 
 ---
 
 # Autenticación
 
-La API reutilizará el mecanismo de autenticación basado en sesiones implementado por la aplicación web.
+La API reutiliza el mecanismo de autenticación implementado por la aplicación web.
 
-No se contempla la utilización de tokens JWT, OAuth o Laravel Sanctum, ya que la consigna establece que los endpoints pueden utilizar la misma sesión iniciada desde las vistas Blade.
-
----
-
-# Pruebas
-
-Como parte de la entrega final se incorporará una colección de **Postman** que incluirá todos los endpoints implementados.
-
-Cada solicitud contará con pruebas automáticas para verificar, como mínimo:
-
-- Código de estado HTTP.
-- Recepción de una respuesta válida.
-- Formato JSON.
-- Existencia de los principales atributos devueltos por cada endpoint.
+No se implementó autenticación mediante tokens (Sanctum o Passport), ya que la consigna del trabajo establece que los endpoints pueden utilizar autenticación basada en sesión.
 
 ---
 
-# Trabajo Pendiente
+# Pruebas Realizadas
 
-La implementación definitiva de la API deberá contemplar:
+Los endpoints fueron probados utilizando **Postman**, verificando:
 
-- Desarrollo de los tres endpoints solicitados.
-- Validación de respuestas HTTP.
-- Pruebas utilizando Postman.
-- Exportación de la colección en formato JSON.
-- Actualización de este documento con ejemplos reales obtenidos durante las pruebas.
+- disponibilidad de cada endpoint;
+- códigos HTTP devueltos;
+- formato JSON de las respuestas;
+- estructura de los recursos obtenidos.
 
----
-
-# Resumen
-
-La API REST constituye un componente complementario de **Rincón del Pan**, cuyo propósito es aplicar los conceptos básicos de servicios web utilizando Laravel.
-
-Aunque su implementación aún se encuentra pendiente, el diseño presentado establece la estructura general que deberá seguir el desarrollo, incluyendo los endpoints requeridos, el formato de las respuestas y la estrategia de autenticación definida por la consigna.
+La colección exportada de Postman forma parte de la entrega del proyecto.
 
 ---
 
-## Documentación relacionada
+# Evidencias
 
-- [[README]]
-- [[01_Arquitectura]]
-- [[02_ModeloDominio]]
-- [[03_BaseDatos]]
-- [[04_DER]]
-- [[05_CasosUso]]
-- [[08_ManualTecnico]]
+Las siguientes capturas corresponden a las pruebas realizadas con **Postman** durante la validación de la API REST.
+
+## Endpoint: GET /api/products
+
+**Resultado esperado:** Obtención del catálogo completo de productos.
+
+![GET Products](../api/01-A-Postman_Productos.png)
+
+---
+
+## Endpoint: GET /api/products/{id} - Producto existente
+
+**Resultado esperado:** Obtención del detalle de un producto válido (**HTTP 200 OK**).
+
+![GET Product OK](../api/02-A-Postman_DetalleProducto_OK.png)
+
+---
+
+## Endpoint: GET /api/products/{id} - Producto inexistente
+
+**Resultado esperado:** Respuesta **HTTP 404 Not Found** cuando el identificador no existe.
+
+![GET Product Not Found](../api/02-B-Postman_DetalleProducto_NotFound.png)
+
+---
+
+## Autenticación mediante sesión
+
+La API reutiliza la autenticación basada en sesión utilizada por la aplicación web.
+
+### Valor de la sesión en el navegador
+
+Captura obtenida desde las herramientas de desarrollo del navegador mostrando el identificador de sesión generado por Laravel.
+
+![Session Value](../api/03-A-SessionValue_DevTools.png)
+
+---
+
+### Importación de la sesión en Postman
+
+Configuración de la cookie de sesión dentro de Postman para autenticar las solicitudes.
+
+![Postman Cookie](../api/03-B-AddSession_PostmanCookie.png)
+
+---
+
+## Endpoint: GET /api/orders - Usuario autenticado
+
+**Resultado esperado:** Obtención del listado de pedidos pertenecientes al usuario autenticado (**HTTP 200 OK**).
+
+![Orders Authenticated](../api/03-C-OrderClient_Authenticated.png)
+
+---
+
+## Endpoint: GET /api/orders - Usuario no autenticado
+
+**Resultado esperado:** Rechazo de la solicitud al no existir una sesión válida (**HTTP 401 Unauthorized** o el código configurado por la aplicación).
+
+![Orders Not Authenticated](../api/03-D-OrderClient_NoAuthenticated.png)
+
+---
+
+# Colección Postman
+
+La colección utilizada para validar la API se entrega junto con el proyecto.
+
+Incluye pruebas automáticas (`pm.test(...)`) para verificar el código de estado HTTP de cada endpoint implementado.
+
+---
+
+# Relación con otros Documentos
+
+- [01_Arquitectura](./01_Arquitectura.md)
+- [03_BaseDatos](./03_BaseDatos.md)
+- [04_DER](./04_DER.md)
+- [08_ManualTecnico](./08_ManualTecnico.md)
+
+---
+
+# Diagramas Relacionados
+
+- [diagramas/01_ArquitecturaMVC](../diagramas/01_ArquitecturaMVC.md)
+- [diagramas/02_Componentes](../diagramas/02_Componentes.md)
+- [diagramas/21_UML_Clases](../diagramas/21_UML_Clases.md)
+- [diagramas/23_UML_SecuenciaPedido](../diagramas/23_UML_SecuenciaPedido.md)
+
+---
+
+# Consideraciones Finales
+
+La API REST desarrollada permite acceder a un subconjunto de la información del sistema mediante servicios HTTP que devuelven respuestas JSON.
+
+Su implementación cumple con los objetivos planteados por la materia **Producción Web**, reutilizando la arquitectura MVC de Laravel y la lógica de negocio existente, sin necesidad de duplicar funcionalidades.
+
+Este componente constituye una primera aproximación al desarrollo de servicios REST y sienta las bases para futuras ampliaciones del sistema, como autenticación mediante tokens, operaciones CRUD completas o integración con aplicaciones externas.

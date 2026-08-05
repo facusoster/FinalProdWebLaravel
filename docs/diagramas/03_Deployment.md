@@ -95,6 +95,7 @@ Incluye:
 
 - Rutas
 - Middleware
+- Form Requests
 - Controladores
 - Modelos
 - Vistas Blade
@@ -203,8 +204,9 @@ El proceso de ejecución de la aplicación puede resumirse en los siguientes pas
 2. MySQL queda disponible para Laravel.
 3. Laravel se ejecuta mediante el servidor integrado de PHP.
 4. El usuario accede desde un navegador web.
-5. Laravel procesa la solicitud y consulta la base de datos cuando es necesario.
-6. La respuesta HTML es enviada nuevamente al navegador.
+5. Laravel procesa la solicitud mediante rutas, middleware, controladores y modelos.
+6. Cuando es necesario, la aplicación consulta la base de datos mediante Eloquent ORM.
+7. La respuesta HTML generada por Blade es enviada nuevamente al navegador.
 
 ---
 

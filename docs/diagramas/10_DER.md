@@ -165,7 +165,13 @@ Permite que:
 
 Representa cada compra realizada por un cliente.
 
-Cada pedido mantiene su estado mediante el atributo **status**.
+El estado del pedido se encuentra controlado mediante un **Enum de Laravel**, permitiendo únicamente los siguientes valores:
+
+- Pending
+- Processing
+- Sent
+- Delivered
+- Cancelled
 
 ---
 
@@ -175,10 +181,10 @@ Detalle de productos pertenecientes a un pedido.
 
 Cada registro almacena:
 
-- producto
-- cantidad
-- precio unitario
-- subtotal
+- producto;
+- cantidad;
+- precio unitario;
+- subtotal.
 
 ---
 
@@ -225,7 +231,8 @@ El modelo contempla las siguientes reglas principales:
 - Un producto puede formar parte de múltiples pedidos.
 - Un producto puede pertenecer a múltiples categorías.
 - Un usuario puede agregar productos al carrito de compras.
-- Un usuario puede publicar reseñas sobre productos.
+- Un usuario puede publicar reseñas sobre productos adquiridos.
+- El estado de un pedido únicamente puede adoptar uno de los valores definidos por el **Enum** de Laravel.
 
 ---
 
@@ -240,6 +247,7 @@ El modelo fue implementado utilizando las siguientes características del framew
 - Relaciones `belongsTo()`.
 - Relaciones `belongsToMany()`.
 - Tabla pivote `category_product`.
+- Enum `OrderStatus` para el control del estado de los pedidos.
 
 ---
 
@@ -258,4 +266,4 @@ Este diagrama complementa:
 
 El modelo entidad–relación implementado en **Rincón del Pan** constituye la base estructural del sistema, definiendo las entidades necesarias para gestionar usuarios, productos, pedidos, categorías, reseñas, direcciones y el carrito de compras.
 
-Su implementación mediante migraciones y relaciones Eloquent garantiza la integridad referencial de la base de datos y facilita la evolución futura del proyecto.
+Su implementación mediante migraciones, relaciones Eloquent y un **Enum** para controlar el ciclo de vida de los pedidos garantiza la integridad del modelo de datos y facilita la evolución futura del proyecto.

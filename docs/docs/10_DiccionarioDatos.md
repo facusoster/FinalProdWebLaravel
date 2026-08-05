@@ -259,17 +259,21 @@ Entidad utilizada para implementar el **carrito de compras** del sistema.
 
 # Estados del Pedido
 
-La entidad **orders** implementa un ciclo de vida basado en estados.
+La entidad **orders** implementa el estado de cada pedido mediante un **Enum de Laravel**, lo que garantiza que únicamente puedan asignarse valores válidos definidos por la aplicación.
 
-| Estado | Descripción |
-|---------|-------------|
-| Pendiente | Pedido generado, pendiente de procesamiento |
-| Pagado | Pago registrado |
-| Enviado | Pedido despachado |
-| Entregado | Pedido entregado al cliente |
-| Cancelado | Pedido cancelado |
+Los estados implementados son los siguientes:
 
-La representación gráfica puede consultarse en:
+| Estado (Enum) | Descripción |
+|---------------|-------------|
+| `Pending` | Pedido registrado y pendiente de procesamiento. |
+| `Processing` | Pedido en preparación o procesamiento. |
+| `Sent` | Pedido despachado al cliente. |
+| `Delivered` | Pedido entregado correctamente. |
+| `Cancelled` | Pedido cancelado antes de su entrega. |
+
+La lógica de negocio controla las transiciones permitidas entre estos estados mediante el Enum y los controladores de la aplicación.
+
+La representación gráfica del ciclo de vida del pedido puede consultarse en:
 
 ➡️ [diagramas/25_UML_EstadosPedido](../diagramas/25_UML_EstadosPedido.md)
 
@@ -295,6 +299,8 @@ La representación gráfica puede consultarse en:
 
 Este documento complementa la siguiente documentación:
 
+- [00_AnalisisRequisitos](./00_AnalisisRequisitos.md)
+- [01_Arquitectura](./01_Arquitectura.md)
 - [02_ModeloDominio](./02_ModeloDominio.md)
 - [03_BaseDatos](./03_BaseDatos.md)
 - [04_DER](./04_DER.md)

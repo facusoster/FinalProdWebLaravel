@@ -33,6 +33,8 @@ El sistema permite que un cliente:
 
 Por otra parte, un administrador dispone de un panel para gestionar el catálogo y supervisar el estado de los pedidos.
 
+Como complemento de la aplicación web, el sistema incorpora una **API REST** para la consulta de información del catálogo y de los pedidos del usuario autenticado.
+
 ---
 
 # Entidades del Dominio
@@ -127,6 +129,14 @@ Cada pedido posee:
 - Estado.
 - Total de la compra.
 
+El estado del pedido se encuentra controlado mediante un **Enum de Laravel**, permitiendo únicamente las siguientes transiciones:
+
+- Pending
+- Processing
+- Sent
+- Delivered
+- Cancelled
+
 Relaciones:
 
 - N:1 con User.
@@ -215,6 +225,7 @@ Durante el análisis del dominio se establecieron las siguientes reglas principa
 - Un cliente únicamente puede consultar sus propios pedidos.
 - Solo los administradores pueden gestionar el catálogo.
 - Solo los administradores pueden modificar el estado de un pedido.
+- Los estados válidos del pedido son: **Pending**, **Processing**, **Sent**, **Delivered** y **Cancelled**.
 - Un cliente puede publicar reseñas únicamente sobre productos adquiridos.
 - El carrito de compras pertenece exclusivamente al usuario autenticado.
 
@@ -230,6 +241,7 @@ El dominio fue diseñado para representar las operaciones habituales de un comer
 - Gestión del carrito.
 - Gestión de direcciones.
 - Gestión de reseñas.
+- Consulta de recursos mediante API REST.
 
 Cada módulo mantiene responsabilidades bien definidas y se comunica mediante relaciones establecidas en el modelo de datos.
 
@@ -241,9 +253,17 @@ Cada entidad del dominio posee su correspondiente modelo Eloquent dentro del pro
 
 Los modelos implementan las relaciones utilizando:
 
-- hasMany()
-- belongsTo()
-- belongsToMany()
+- `hasMany()`
+- `belongsTo()`
+- `belongsToMany()`
+
+Además, el proyecto utiliza características propias de Laravel como:
+
+- Enums para el estado de los pedidos.
+- Middleware para autenticación y autorización.
+- Form Requests para validación.
+- Route Model Binding.
+- API Controllers para la exposición de recursos en formato JSON.
 
 Esta correspondencia permite mantener alineado el modelo conceptual con la implementación física de la aplicación.
 
@@ -258,6 +278,7 @@ El modelo de dominio se complementa con los siguientes documentos:
 - [03_BaseDatos](./03_BaseDatos.md)
 - [04_DER](./04_DER.md)
 - [05_CasosUso](./05_CasosUso.md)
+- [06_API_REST](./06_API_REST.md)
 - [07_UML](./07_UML.md)
 
 Diagramas relacionados:
